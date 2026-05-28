@@ -1,0 +1,22 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-student",
+      "description": "A focused student studying in a modern library with a view of Dehradun hills",
+      "imageUrl": "https://picsum.photos/seed/drona1/1200/800",
+      "imageHint": "student studying"
+    },
+    {
+      "id": "parent-dashboard-ui",
+      "description": "Mockup of a professional analytics dashboard",
+      "imageUrl": "https://picsum.photos/seed/drona2/800/600",
+      "imageHint": "analytics dashboard"
+    },
+    {
+      "id": "mentor-session",
+      "description": "A teacher mentoring a student with AI tools",
+      "imageUrl": "https://picsum.photos/seed/drona3/600/400",
+      "imageHint": "teacher mentoring"
+    }
+  ]
+}
