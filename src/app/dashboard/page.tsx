@@ -3,6 +3,7 @@
 import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, TrendingUp, BookOpen, Clock, ShieldCheck, Star, Award, ChevronRight } from 'lucide-react';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
