@@ -41,7 +41,7 @@ export default function DashboardPage() {
                 </div>
               </div>
               <h1 className="text-3xl md:text-4xl font-extrabold font-headline">Aarav Sharma's Progress</h1>
-              <p className="text-white/60 font-light italic">NDA Foundation Batch | Student ID: DIQ-2024-089</p>
+              <p className="text-white/60 font-light italic">NDA Foundation Batch 2026-27 | Student ID: DIQ-2026-089</p>
             </div>
             <div className="flex gap-4">
               <div className="bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/10">
@@ -173,10 +173,10 @@ export default function DashboardPage() {
                   </thead>
                   <tbody className="divide-y divide-muted">
                     {[
-                      { date: 'May 04, 2024', title: 'Periodic Test - Kinematics', score: '42/50', percentile: '92nd' },
-                      { date: 'Apr 28, 2024', title: 'Full Length - NDA Mock #4', score: '380/600', percentile: '88th' },
-                      { date: 'Apr 15, 2024', title: 'Calculus Intensive', score: '88/100', percentile: '95th' },
-                      { date: 'Apr 02, 2024', title: 'English Proficiency V', score: '95/100', percentile: '99th' },
+                      { date: 'May 04, 2026', title: 'Periodic Test - Kinematics', score: '42/50', percentile: '92nd' },
+                      { date: 'Apr 28, 2026', title: 'Full Length - NDA Mock #4', score: '380/600', percentile: '88th' },
+                      { date: 'Apr 15, 2026', title: 'Calculus Intensive', score: '88/100', percentile: '95th' },
+                      { date: 'Apr 02, 2026', title: 'English Proficiency V', score: '95/100', percentile: '99th' },
                     ].map((test, i) => (
                       <tr key={i} className="hover:bg-muted/30 transition-colors">
                         <td className="px-6 py-4 font-medium text-muted-foreground">{test.date}</td>

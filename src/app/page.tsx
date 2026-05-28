@@ -21,7 +21,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
               <Badge variant="secondary" className="px-4 py-1.5 text-sm font-semibold bg-accent text-white uppercase tracking-widest border-none">
-                Admission 2024-25 Open
+                Admission 2026-27 Open
               </Badge>
               <h1 className="font-headline text-5xl lg:text-7xl font-extrabold text-white leading-tight">
                 Engineering <span className="text-accent italic">Exceptional</span> Futures in Dehradun
@@ -246,7 +246,7 @@ export default function Home() {
                 <li><Link href="/diagnostic" className="hover:text-accent transition-colors">AI Diagnostic Tool</Link></li>
                 <li><Link href="/assistant" className="hover:text-accent transition-colors">Study Assistant</Link></li>
                 <li><Link href="/dashboard" className="hover:text-accent transition-colors">Parent Portal</Link></li>
-                <li><Link href="/admissions" className="hover:text-accent transition-colors">Admissions 2024</Link></li>
+                <li><Link href="/admissions" className="hover:text-accent transition-colors">Admissions 2026</Link></li>
               </ul>
             </div>
             <div>
@@ -260,7 +260,7 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-8 border-t border-white/5 flex flex-col md:row justify-between items-center text-xs gap-4">
-            <p>© 2024 Drona IQ Academy. All rights reserved.</p>
+            <p>© 2026 Drona IQ Academy. All rights reserved.</p>
             <div className="flex gap-6">
               <Link href="#" className="hover:text-white">Privacy Policy</Link>
               <Link href="#" className="hover:text-white">Terms of Service</Link>

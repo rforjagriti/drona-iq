@@ -55,7 +55,7 @@ export default function AdmissionsPage() {
                 Secure Your Seat at <br/> <span className="text-accent">Drona IQ Academy</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Join the elite cadre of students in Dehradun bridging the gap between potential and performance. Limited slots available for Batch 2024.
+                Join the elite cadre of students in Dehradun bridging the gap between potential and performance. Limited slots available for Batch 2026-27.
               </p>
             </div>
 
@@ -99,7 +99,7 @@ export default function AdmissionsPage() {
           <Card className="border-none shadow-2xl p-2 bg-white">
             <CardHeader className="bg-primary text-white rounded-xl py-8 mb-4">
               <CardTitle className="font-headline uppercase tracking-tight">Admission Inquiry</CardTitle>
-              <CardDescription className="text-white/60">Fill in the details to start your child's success journey.</CardDescription>
+              <CardDescription className="text-white/60">Fill in the details to start your child's success journey for 2026-27.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
