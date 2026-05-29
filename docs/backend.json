@@ -40,16 +40,6 @@
         "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted", "inactive"] },
         "createdAt": { "type": "string", "format": "date-time" }
       }
-    },
-    "Attendance": {
-      "title": "Attendance",
-      "description": "Daily attendance records.",
-      "type": "object",
-      "properties": {
-        "studentId": { "type": "string" },
-        "date": { "type": "string", "format": "date" },
-        "status": { "type": "string", "enum": ["present", "absent", "late"] }
-      }
     }
   },
   "auth": {
@@ -67,10 +57,6 @@
     "/leads/{leadId}": {
       "schema": "Lead",
       "description": "CRM leads for admissions."
-    },
-    "/attendance/{attendanceId}": {
-      "schema": "Attendance",
-      "description": "Daily attendance tracking."
     }
   }
 }
