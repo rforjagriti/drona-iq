@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User, Sparkles, LogIn, LogOut } from 'lucide-react';
+import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User, Sparkles, LogIn, LogOut, BookOpen, Target, Star } from 'lucide-react';
 import { useState } from 'react';
 import { useUser, useAuth } from '@/firebase';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
@@ -50,6 +50,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center space-x-8">
           <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">AI Health</Link>
           <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition Network</Link>
+          <Link href="/why-drona-iq" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Why DIQ?</Link>
           
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
@@ -99,13 +100,13 @@ export function Navbar() {
 
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
-              AI Tools <ChevronDown className="h-3 w-3" />
+              AI Hub <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 p-2 rounded-xl border-none shadow-2xl">
-              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Neural Hub</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Neural Engine</DropdownMenuLabel>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/ai-study-planner" className="flex items-center gap-3">
-                  <LayoutDashboard className="h-4 w-4 text-accent" /> Study Planner
+                  <Target className="h-4 w-4 text-accent" /> Study Planner
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
@@ -123,7 +124,9 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
-          {loading ? null : !user ? (
+          {loading ? (
+            <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />
+          ) : !user ? (
             <Button onClick={handleLogin} className="font-headline font-bold uppercase tracking-widest text-[9px] h-9 px-6 rounded-full shadow-lg bg-primary text-white flex items-center gap-2">
               <LogIn className="h-3 w-3" /> Secure Login
             </Button>
@@ -147,6 +150,10 @@ export function Navbar() {
                 <DropdownMenuItem asChild className="cursor-pointer rounded-lg py-3">
                   <Link href="/student" className="flex items-center gap-2"><User className="h-4 w-4" /> My Profile</Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer rounded-lg py-3">
+                  <Link href="/dashboard" className="flex items-center gap-2"><LayoutDashboard className="h-4 w-4" /> Reports</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-lg py-3 flex items-center gap-2">
                   <LogOut className="h-4 w-4" /> Logout
                 </DropdownMenuItem>

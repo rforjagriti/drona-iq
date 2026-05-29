@@ -63,6 +63,7 @@ export default function ParentDashboard() {
       <main className="container mx-auto px-4 -mt-10 relative z-10">
         <div className="grid lg:grid-cols-4 gap-8">
           
+          {/* Sidebar Alerts */}
           <div className="space-y-6">
             <Card className="border-none shadow-xl">
               <CardHeader className="bg-primary text-white rounded-t-xl">
@@ -99,6 +100,7 @@ export default function ParentDashboard() {
             </Button>
           </div>
 
+          {/* Main Dashboard */}
           <div className="lg:col-span-3 space-y-8">
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -108,7 +110,10 @@ export default function ParentDashboard() {
               ].map((stat, i) => (
                 <Card key={i} className="border-none shadow-md flex items-center p-6 gap-4">
                   <div className="bg-muted p-3 rounded-xl"><stat.icon className={`h-6 w-6 ${stat.color}`} /></div>
-                  <div><p className="text-[10px] font-extrabold text-muted-foreground uppercase">{stat.label}</p><p className="text-xl font-bold font-headline">{stat.value}</p></div>
+                  <div>
+                    <p className="text-[10px] font-extrabold text-muted-foreground uppercase">{stat.label}</p>
+                    <p className="text-xl font-bold font-headline">{stat.value}</p>
+                  </div>
                 </Card>
               ))}
             </div>
