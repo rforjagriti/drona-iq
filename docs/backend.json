@@ -1,0 +1,76 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Base user information with role-based access control.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "parent", "tutor", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "StudentProfile": {
+      "title": "Student Profile",
+      "description": "Academic and gamification data for students.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "parentId": { "type": "string" },
+        "grade": { "type": "string" },
+        "xp": { "type": "number" },
+        "level": { "type": "number" },
+        "badges": { "type": "array", "items": { "type": "string" } },
+        "targetExam": { "type": "string" }
+      }
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "Sales and inquiry leads for the CRM.",
+      "type": "object",
+      "properties": {
+        "parentName": { "type": "string" },
+        "phone": { "type": "string" },
+        "studentClass": { "type": "string" },
+        "locality": { "type": "string" },
+        "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted", "inactive"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Attendance": {
+      "title": "Attendance",
+      "description": "Daily attendance records.",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "status": { "type": "string", "enum": ["present", "absent", "late"] }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["google.com", "password"]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "System users and their roles."
+    },
+    "/students/{studentId}": {
+      "schema": "StudentProfile",
+      "description": "Detailed student academic records."
+    },
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "CRM leads for admissions."
+    },
+    "/attendance/{attendanceId}": {
+      "schema": "Attendance",
+      "description": "Daily attendance tracking."
+    }
+  }
+}
