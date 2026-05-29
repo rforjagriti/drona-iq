@@ -1,9 +1,9 @@
-
 "use client"
 
 import { Navbar } from '@/components/navbar';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Star, GraduationCap, Trophy, Quote, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
