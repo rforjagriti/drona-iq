@@ -20,22 +20,64 @@
       "imageHint": "happy parent child"
     },
     {
-      "id": "class-5-8",
-      "description": "Primary school students learning with modern technology and joy",
-      "imageUrl": "https://picsum.photos/seed/drona_kids_premium/1000/800",
-      "imageHint": "children technology"
+      "id": "class-5",
+      "description": "Young primary student exploring science with joy",
+      "imageUrl": "https://picsum.photos/seed/drona_c5/1000/800",
+      "imageHint": "child science"
     },
     {
-      "id": "class-9-10",
-      "description": "Focused board exam preparation with high-end study materials",
-      "imageUrl": "https://picsum.photos/seed/drona_boards_premium/1000/800",
-      "imageHint": "student library"
+      "id": "class-6",
+      "description": "Middle school student solving mathematical patterns",
+      "imageUrl": "https://picsum.photos/seed/drona_c6/1000/800",
+      "imageHint": "student math"
     },
     {
-      "id": "class-11-12",
-      "description": "Senior student planning a career roadmap in a professional setting",
-      "imageUrl": "https://picsum.photos/seed/drona_senior_premium/1000/800",
-      "imageHint": "career student"
+      "id": "class-7",
+      "description": "Student in a creative thinking workshop",
+      "imageUrl": "https://picsum.photos/seed/drona_c7/1000/800",
+      "imageHint": "creative student"
+    },
+    {
+      "id": "class-8",
+      "description": "Focused student building a robot or model",
+      "imageUrl": "https://picsum.photos/seed/drona_c8/1000/800",
+      "imageHint": "robotics student"
+    },
+    {
+      "id": "class-9",
+      "description": "Intense board exam preparation session",
+      "imageUrl": "https://picsum.photos/seed/drona_c9/1000/800",
+      "imageHint": "study session"
+    },
+    {
+      "id": "class-10",
+      "description": "Student receiving a top rank certificate",
+      "imageUrl": "https://picsum.photos/seed/drona_c10/1000/800",
+      "imageHint": "academic achievement"
+    },
+    {
+      "id": "class-11-science",
+      "description": "Science student performing physics experiment",
+      "imageUrl": "https://picsum.photos/seed/drona_c11s/1200/900",
+      "imageHint": "physics lab"
+    },
+    {
+      "id": "class-11-commerce",
+      "description": "Commerce student analyzing business charts",
+      "imageUrl": "https://picsum.photos/seed/drona_c11c/1200/900",
+      "imageHint": "business analytics"
+    },
+    {
+      "id": "class-11-humanities",
+      "description": "Humanities student in a leadership debate",
+      "imageUrl": "https://picsum.photos/seed/drona_c11h/1200/900",
+      "imageHint": "student debate"
+    },
+    {
+      "id": "class-12-science",
+      "description": "Senior science student preparing for JEE/NEET",
+      "imageUrl": "https://picsum.photos/seed/drona_c12s/1200/900",
+      "imageHint": "intense prep"
     },
     {
       "id": "home-tutor-session",
