@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Search, Loader2, GraduationCap, Trophy, Target, Filter, MoreVertical, UserPlus, FileText } from 'lucide-react';
+import { Search, Loader2, GraduationCap, Trophy, Target, MoreVertical, UserPlus, FileText } from 'lucide-react';
 import { useFirestore, useCollection } from '@/firebase';
 import { collection, query, orderBy } from 'firebase/firestore';
 import {
