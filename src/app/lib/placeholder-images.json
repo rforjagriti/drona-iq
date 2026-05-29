@@ -8,22 +8,46 @@
       "imageHint": "student studying"
     },
     {
-      "id": "tutor-demo",
-      "description": "Professional home tutor explaining concepts to a student",
-      "imageUrl": "https://picsum.photos/seed/drona4/800/600",
+      "id": "class-5-8",
+      "description": "Primary school students learning concepts with excitement",
+      "imageUrl": "https://picsum.photos/seed/drona_kids/800/600",
+      "imageHint": "children learning"
+    },
+    {
+      "id": "class-9-10",
+      "description": "Student preparing for board exams with a study planner",
+      "imageUrl": "https://picsum.photos/seed/drona_boards/800/600",
+      "imageHint": "student exam"
+    },
+    {
+      "id": "class-11-12",
+      "description": "Senior students discussing career pathways in a laboratory",
+      "imageUrl": "https://picsum.photos/seed/drona_senior/800/600",
+      "imageHint": "senior student"
+    },
+    {
+      "id": "home-tutor-session",
+      "description": "One-on-one home tuition session in a comfortable setting",
+      "imageUrl": "https://picsum.photos/seed/drona_home/800/600",
       "imageHint": "home tutor"
     },
     {
-      "id": "parent-dashboard-ui",
-      "description": "Mockup of a professional analytics dashboard",
-      "imageUrl": "https://picsum.photos/seed/drona2/800/600",
-      "imageHint": "analytics dashboard"
+      "id": "nda-foundation",
+      "description": "Student in NDA foundation training wearing a smart uniform",
+      "imageUrl": "https://picsum.photos/seed/drona_nda/800/600",
+      "imageHint": "military student"
     },
     {
-      "id": "success-celebration",
-      "description": "Students celebrating exam success in Dehradun",
-      "imageUrl": "https://picsum.photos/seed/drona5/800/600",
-      "imageHint": "student success"
+      "id": "parent-app-mockup",
+      "description": "Parent checking child progress on a smartphone",
+      "imageUrl": "https://picsum.photos/seed/drona_app/800/600",
+      "imageHint": "mobile analytics"
+    },
+    {
+      "id": "student-app-mockup",
+      "description": "Student completing tasks on their dashboard",
+      "imageUrl": "https://picsum.photos/seed/drona_student_app/800/600",
+      "imageHint": "student dashboard"
     }
   ]
 }
