@@ -8,11 +8,41 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ShieldCheck, UserCheck, Star, Clock, Home, MapPin, CheckCircle2, GraduationCap } from 'lucide-react';
-import Image from 'next/image';
+import { ShieldCheck, UserCheck, Star, Clock, Home, MapPin, CheckCircle2, GraduationCap, Loader2 } from 'lucide-react';
+import { useFirestore } from '@/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function HomeTuitionPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const firestore = useFirestore();
+
+  const [formData, setFormData] = useState({
+    parentName: '',
+    phone: '',
+    studentClass: '9-10',
+    subject: '',
+    mode: 'home',
+    locality: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (firestore) {
+      await addDoc(collection(firestore, 'leads'), {
+        ...formData,
+        type: 'home_tuition',
+        status: 'new',
+        createdAt: new Date().toISOString(),
+        timestamp: serverTimestamp()
+      });
+    }
+
+    setLoading(false);
+    setSubmitted(true);
+  };
 
   return (
     <div className="min-h-screen bg-muted/20">
@@ -32,20 +62,6 @@ export default function HomeTuitionPage() {
             <p className="text-xl text-white/70 font-light">
               Verified subject experts delivered to your doorstep. Tailored learning for CBSE, ICSE, and Competitive Exam Foundation.
             </p>
-            <div className="flex gap-6 pt-4">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="text-accent h-5 w-5" />
-                <span className="text-sm font-medium">Verified Tutors</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <UserCheck className="text-accent h-5 w-5" />
-                <span className="text-sm font-medium">Background Checked</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="text-accent h-5 w-5 fill-current" />
-                <span className="text-sm font-medium">4.9/5 Rating</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -61,22 +77,35 @@ export default function HomeTuitionPage() {
                   <CardDescription>Our coordinator will match you with the perfect tutor within 2 hours.</CardDescription>
                 </CardHeader>
                 <CardContent className="p-8">
-                  <form onSubmit={(e) => {e.preventDefault(); setSubmitted(true);}} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Parent Name</Label>
-                        <Input placeholder="Full Name" required className="bg-muted/30" />
+                        <Input 
+                          placeholder="Full Name" 
+                          required 
+                          className="bg-muted/30" 
+                          value={formData.parentName}
+                          onChange={(e) => setFormData({...formData, parentName: e.target.value})}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</Label>
-                        <Input type="tel" placeholder="+91 XXXX" required className="bg-muted/30" />
+                        <Input 
+                          type="tel" 
+                          placeholder="+91 XXXX" 
+                          required 
+                          className="bg-muted/30"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
                       <div className="space-y-2">
                         <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Student Class</Label>
-                        <Select>
+                        <Select value={formData.studentClass} onValueChange={(v) => setFormData({...formData, studentClass: v})}>
                           <SelectTrigger className="bg-muted/30">
                             <SelectValue placeholder="Select Class" />
                           </SelectTrigger>
@@ -89,11 +118,16 @@ export default function HomeTuitionPage() {
                       </div>
                       <div className="space-y-2">
                         <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Subject</Label>
-                        <Input placeholder="e.g. Math, Physics" className="bg-muted/30" />
+                        <Input 
+                          placeholder="e.g. Math, Physics" 
+                          className="bg-muted/30"
+                          value={formData.subject}
+                          onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Learning Mode</Label>
-                        <Select defaultValue="home">
+                        <Select value={formData.mode} onValueChange={(v) => setFormData({...formData, mode: v})}>
                           <SelectTrigger className="bg-muted/30">
                             <SelectValue />
                           </SelectTrigger>
@@ -108,11 +142,16 @@ export default function HomeTuitionPage() {
 
                     <div className="space-y-2">
                       <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Locality in Dehradun</Label>
-                      <Input placeholder="e.g. Rajpur Road, Jakhan, Vasant Vihar" className="bg-muted/30" />
+                      <Input 
+                        placeholder="e.g. Rajpur Road, Jakhan, Vasant Vihar" 
+                        className="bg-muted/30"
+                        value={formData.locality}
+                        onChange={(e) => setFormData({...formData, locality: e.target.value})}
+                      />
                     </div>
 
-                    <Button type="submit" className="w-full py-7 h-auto text-lg font-headline bg-accent hover:bg-accent/90">
-                      Book Free Trial Class
+                    <Button type="submit" disabled={loading} className="w-full py-7 h-auto text-lg font-headline bg-accent hover:bg-accent/90">
+                      {loading ? <Loader2 className="animate-spin" /> : "Book Free Trial Class"}
                     </Button>
                   </form>
                 </CardContent>
@@ -125,7 +164,7 @@ export default function HomeTuitionPage() {
                   </div>
                   <h2 className="text-3xl font-extrabold font-headline text-primary">Demo Requested!</h2>
                   <p className="text-muted-foreground max-w-md mx-auto">
-                    Thank you. A counselor from our Rajpur Road hub will contact you shortly to confirm your demo schedule.
+                    Thank you. A coordinator from our Rajpur Road hub will contact you shortly to confirm your demo schedule.
                   </p>
                   <Button variant="outline" onClick={() => setSubmitted(false)}>Request for another child</Button>
                 </CardContent>
@@ -154,13 +193,6 @@ export default function HomeTuitionPage() {
                 </div>
               ))}
             </div>
-
-            <Card className="bg-primary text-white border-none">
-              <CardContent className="p-6 text-center space-y-4">
-                <p className="italic text-white/80">"The tutor provided by Drona IQ for my son's Class 10 Boards was exceptional. His Math score improved from 65 to 94!"</p>
-                <p className="font-bold text-accent">— Mrs. Rawat, Jakhan</p>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </main>

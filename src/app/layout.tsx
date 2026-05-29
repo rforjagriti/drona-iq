@@ -28,20 +28,22 @@ export default function RootLayout({
         <FirebaseClientProvider>
           {children}
           
-          <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+          {/* Floating Conversion UI */}
+          <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
             <Link 
               href="https://wa.me/919999900000" 
-              className="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center"
-              title="WhatsApp Support"
+              target="_blank"
+              className="bg-green-500 text-white p-4 rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.4)] hover:scale-110 transition-transform flex items-center justify-center animate-bounce"
+              title="WhatsApp for Quick Demo"
             >
-              <MessageCircle className="h-6 w-6" />
+              <MessageCircle className="h-7 w-7" />
             </Link>
             <Link 
               href="tel:+919999900000" 
-              className="bg-primary text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center"
-              title="Call Counselor"
+              className="bg-primary text-white p-4 rounded-full shadow-[0_10px_30px_rgba(11,19,43,0.4)] hover:scale-110 transition-transform flex items-center justify-center"
+              title="Call Academic Counselor"
             >
-              <Phone className="h-6 w-6" />
+              <Phone className="h-7 w-7 text-accent" />
             </Link>
           </div>
 

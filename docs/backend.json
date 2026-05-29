@@ -31,20 +31,6 @@
         "status": { "type": "string", "enum": ["active", "suspended", "graduated"] }
       }
     },
-    "TutorProfile": {
-      "title": "Tutor Profile",
-      "description": "Verified educator profile.",
-      "type": "object",
-      "properties": {
-        "userId": { "type": "string" },
-        "tutorName": { "type": "string" },
-        "status": { "type": "string", "enum": ["pending", "verified", "active", "blocked"] },
-        "expertise": { "type": "array", "items": { "type": "string" } },
-        "experience": { "type": "number" },
-        "rating": { "type": "number" },
-        "assignedStudents": { "type": "array", "items": { "type": "string" } }
-      }
-    },
     "Lead": {
       "title": "Lead",
       "description": "CRM inquiry for admission or home tuition.",
@@ -56,10 +42,23 @@
         "class": { "type": "string" },
         "subject": { "type": "string" },
         "locality": { "type": "string" },
-        "type": { "type": "string", "enum": ["admission", "home_tuition", "tutor_app"] },
+        "type": { "type": "string", "enum": ["admission", "home_tuition", "general_enquiry"] },
         "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted", "inactive"] },
-        "createdAt": { "type": "string" },
-        "timestamp": { "type": "object" }
+        "createdAt": { "type": "string" }
+      }
+    },
+    "HealthCheck": {
+      "title": "Health Check",
+      "description": "Stored AI Diagnostic reports for students.",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string" },
+        "gradeLevel": { "type": "string" },
+        "subject": { "type": "string" },
+        "score": { "type": "number" },
+        "totalScore": { "type": "number" },
+        "reportSummary": { "type": "string" },
+        "createdAt": { "type": "string" }
       }
     }
   },
@@ -75,13 +74,17 @@
       "schema": "StudentProfile",
       "description": "In-depth academic records."
     },
-    "/tutors/{tutorId}": {
-      "schema": "TutorProfile",
-      "description": "Verified faculty database."
-    },
     "/leads/{leadId}": {
       "schema": "Lead",
-      "description": "Unified CRM pipeline."
+      "description": "Unified CRM pipeline for admissions and tuition."
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": "Lead",
+      "description": "General website inquiries."
+    },
+    "/health_checks/{checkId}": {
+      "schema": "HealthCheck",
+      "description": "Captured diagnostic data for lead nurturing."
     }
   }
 }

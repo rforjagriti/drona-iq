@@ -12,11 +12,14 @@ import { academicDiagnosticReport, type AcademicDiagnosticReportOutput } from '@
 import { BrainCircuit, Loader2, CheckCircle2, AlertTriangle, ArrowRight, User, GraduationCap, ClipboardList, Info, Star, ShieldCheck } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { useFirestore } from '@/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function AcademicHealthCheck() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AcademicDiagnosticReportOutput | null>(null);
   const [step, setStep] = useState(1);
+  const firestore = useFirestore();
 
   const [formData, setFormData] = useState({
     studentName: '',
@@ -28,7 +31,8 @@ export default function AcademicHealthCheck() {
     totalScore: '100',
     weakAreas: '',
     strengths: '',
-    additionalContext: ''
+    additionalContext: '',
+    phone: '' // Added for lead capturing
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,8 +49,36 @@ export default function AcademicHealthCheck() {
           weakAreas: formData.weakAreas.split(',').map(s => s.trim()),
           strengths: formData.strengths.split(',').map(s => s.trim())
         }],
-        additionalContext: `School: ${formData.school}. Career Goal: ${formData.careerGoal}. ${formData.additionalContext}`
+        additionalContext: `School: ${formData.school}. Career Goal: ${formData.careerGoal}. Phone: ${formData.phone}. ${formData.additionalContext}`
       });
+
+      // Save to Firebase for Admin Lead Management
+      if (firestore) {
+        addDoc(collection(firestore, 'health_checks'), {
+          studentName: formData.studentName,
+          phone: formData.phone,
+          gradeLevel: formData.gradeLevel,
+          subject: formData.subject,
+          score: parseInt(formData.score),
+          totalScore: parseInt(formData.totalScore),
+          reportSummary: response.reportSummary,
+          createdAt: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        });
+
+        // Also save as a general Lead
+        addDoc(collection(firestore, 'leads'), {
+          parentName: `Parent of ${formData.studentName}`,
+          studentName: formData.studentName,
+          phone: formData.phone,
+          currentClass: formData.gradeLevel,
+          type: 'general_enquiry',
+          status: 'new',
+          createdAt: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        });
+      }
+
       setResult(response);
       setStep(3);
     } catch (error) {
@@ -90,6 +122,15 @@ export default function AcademicHealthCheck() {
                   />
                 </div>
                 <div className="space-y-2">
+                  <Label className="text-xs font-bold uppercase text-muted-foreground">Parent Phone Number</Label>
+                  <Input 
+                    placeholder="+91 XXXX" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="border-primary/10 h-12 bg-muted/30 focus-visible:ring-accent"
+                  />
+                </div>
+                <div className="space-y-2">
                   <Label className="text-xs font-bold uppercase text-muted-foreground">Class / Grade</Label>
                   <Input 
                     placeholder="e.g. Class 10th (CBSE)" 
@@ -107,15 +148,6 @@ export default function AcademicHealthCheck() {
                     className="border-primary/10 h-12 bg-muted/30 focus-visible:ring-accent"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label className="text-xs font-bold uppercase text-muted-foreground">Career Goal / Target</Label>
-                  <Input 
-                    placeholder="e.g. NDA / JEE / Doctor" 
-                    value={formData.careerGoal}
-                    onChange={(e) => setFormData({...formData, careerGoal: e.target.value})}
-                    className="border-primary/10 h-12 bg-muted/30 focus-visible:ring-accent"
-                  />
-                </div>
               </div>
             </CardContent>
             <CardFooter className="p-8 bg-muted/20 border-t flex justify-between items-center rounded-b-xl">
@@ -124,7 +156,7 @@ export default function AcademicHealthCheck() {
               </div>
               <Button 
                 onClick={() => setStep(2)} 
-                disabled={!formData.studentName || !formData.gradeLevel}
+                disabled={!formData.studentName || !formData.phone}
                 className="font-headline px-12 py-7 h-auto text-lg uppercase tracking-widest font-bold"
               >
                 Continue <ArrowRight className="ml-2 h-5 w-5" />
@@ -200,6 +232,7 @@ export default function AcademicHealthCheck() {
 
         {step === 3 && result && (
           <div className="space-y-12 animate-in fade-in slide-in-from-bottom duration-700">
+            {/* ... result view remains same ... */}
             <Card className="border-4 border-accent shadow-2xl bg-white overflow-hidden">
               <div className="navy-gradient p-12 text-white relative">
                 <div className="absolute top-0 right-0 p-8 opacity-20"><BrainCircuit className="h-32 w-32" /></div>
