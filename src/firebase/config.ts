@@ -1,15 +1,17 @@
-
 'use client';
 
 /**
  * Firebase Configuration for Drona IQ
- * These values connect your application to your specific Firebase project.
+ * Automatically generated based on your project ID: dronaiq
+ * 
+ * IMPORTANT: You must copy your specific values from the Firebase Console 
+ * (Project Settings > General > Your Apps) to replace these placeholders.
  */
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY", // Get this from Firebase Project Settings
+  apiKey: "AIzaSyB_REPLACE_WITH_ACTUAL_KEY", // Get this from Firebase Console
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  messagingSenderId: "593821034921", // Placeholder - Update from console
+  appId: "1:593821034921:web:d8a2b3c4e5f6g7h8i9j0" // Placeholder - Update from console
 };
