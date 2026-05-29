@@ -2,19 +2,16 @@
 
 The strongest student success ecosystem in North India. One Backend. One Database. Multiple Portals.
 
-## 🚀 Setup Instructions
+## 🚀 CRITICAL: Fix auth/unauthorized-domain Error
 
-To resolve `auth/unauthorized-domain` error:
+This error happens when you try to log in from a URL that isn't whitelisted in Firebase.
 
-1. Go to [Firebase Authentication Settings](https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings).
-2. Click on the **Authorized Domains** tab.
-3. Add these two domains:
-   - `drona-iq.vercel.app` (Your Production URL)
-   - `*.workstations.googleusercontent.com` (Your Development URL)
-
-To resolve Firestore permissions:
-1. Go to [Firestore Database](https://console.firebase.google.com/u/0/project/dronaiq/firestore).
-2. Ensure you have created a database in **Test Mode** or updated the rules to allow reads/writes for prototyping.
+1.  **Identify your Domain**: Look at the address bar of your browser. It will look like `9002-xxxx.cluster-xxxx.workstations.googleusercontent.com`.
+2.  **Go to Firebase Console**: Navigate to [Authentication > Settings > Authorized Domains](https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings).
+3.  **Add the Domains**:
+    - Add `drona-iq.vercel.app` for production.
+    - Add `*.workstations.googleusercontent.com` (using the asterisk `*` as a wildcard) to cover all development preview URLs.
+    - **Note**: If you don't use the wildcard, you must add the *exact* string between `https://` and the first `/` of your current browser URL.
 
 ## 🛠 Key Modules
 - **Public Site**: Home page & SEO-optimized local landing pages.
