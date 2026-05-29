@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "UserProfile": {
@@ -20,12 +21,14 @@
       "type": "object",
       "properties": {
         "userId": { "type": "string" },
+        "studentName": { "type": "string" },
         "parentId": { "type": "string" },
         "grade": { "type": "string" },
         "xp": { "type": "number" },
         "level": { "type": "number" },
         "targetExam": { "type": "string" },
-        "weakSubjects": { "type": "array", "items": { "type": "string" } }
+        "weakSubjects": { "type": "array", "items": { "type": "string" } },
+        "status": { "type": "string", "enum": ["active", "suspended", "graduated"] }
       }
     },
     "TutorProfile": {
@@ -34,10 +37,12 @@
       "type": "object",
       "properties": {
         "userId": { "type": "string" },
+        "tutorName": { "type": "string" },
         "status": { "type": "string", "enum": ["pending", "verified", "active", "blocked"] },
         "expertise": { "type": "array", "items": { "type": "string" } },
         "experience": { "type": "number" },
-        "rating": { "type": "number" }
+        "rating": { "type": "number" },
+        "assignedStudents": { "type": "array", "items": { "type": "string" } }
       }
     },
     "Lead": {
@@ -52,8 +57,9 @@
         "subject": { "type": "string" },
         "locality": { "type": "string" },
         "type": { "type": "string", "enum": ["admission", "home_tuition", "tutor_app"] },
-        "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted"] },
-        "createdAt": { "type": "string" }
+        "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted", "inactive"] },
+        "createdAt": { "type": "string" },
+        "timestamp": { "type": "object" }
       }
     }
   },
@@ -63,19 +69,19 @@
   "firestore": {
     "/users/{userId}": {
       "schema": "UserProfile",
-      "description": "User directory."
+      "description": "General user directory."
     },
     "/students/{studentId}": {
       "schema": "StudentProfile",
-      "description": "Academic profiles."
+      "description": "In-depth academic records."
     },
     "/tutors/{tutorId}": {
       "schema": "TutorProfile",
-      "description": "Educator profiles."
+      "description": "Verified faculty database."
     },
     "/leads/{leadId}": {
       "schema": "Lead",
-      "description": "CRM database."
+      "description": "Unified CRM pipeline."
     }
   }
 }

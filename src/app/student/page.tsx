@@ -5,16 +5,27 @@ import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks } from 'lucide-react';
+import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useUser } from '@/firebase';
+import { useUser, useFirestore, useDoc } from '@/firebase';
+import { doc } from 'firebase/firestore';
+import { useMemo } from 'react';
 
 export default function StudentPortal() {
   const { user } = useUser();
+  const firestore = useFirestore();
+
+  const studentRef = useMemo(() => {
+    if (!firestore || !user?.uid) return null;
+    return doc(firestore, 'students', user.uid);
+  }, [firestore, user?.uid]);
+
+  const { data: studentData, loading } = useDoc(studentRef);
+
   const stats = [
-    { label: "Current XP", value: "4,250", icon: Zap, color: "text-yellow-500" },
-    { label: "Level", value: "12", icon: Trophy, color: "text-accent" },
+    { label: "Current XP", value: studentData?.xp || "0", icon: Zap, color: "text-yellow-500" },
+    { label: "Level", value: studentData?.level || "1", icon: Trophy, color: "text-accent" },
     { label: "Rank", value: "Top 5%", icon: Target, color: "text-blue-500" },
   ];
 
@@ -29,7 +40,7 @@ export default function StudentPortal() {
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <Badge className="bg-accent text-white border-none uppercase text-[10px] font-bold px-3">Elite Tier</Badge>
-                <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Level 12 Scholar</span>
+                <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Level {studentData?.level || 1} Scholar</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold font-headline">Welcome back, {user?.displayName?.split(' ')[0] || 'Scholar'}!</h1>
               <p className="text-white/60 font-light italic">"Success is the sum of small efforts, repeated day in and day out."</p>
@@ -51,10 +62,7 @@ export default function StudentPortal() {
       <main className="container mx-auto px-4 -mt-10 relative z-10">
         <div className="grid lg:grid-cols-3 gap-8">
           
-          {/* Main Content Area */}
           <div className="lg:col-span-2 space-y-8">
-            
-            {/* XP Cards */}
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               {stats.map((stat, i) => (
                 <Card key={i} className="border-none shadow-xl overflow-hidden hover:scale-[1.02] transition-transform cursor-default">
@@ -69,7 +77,6 @@ export default function StudentPortal() {
               ))}
             </div>
 
-            {/* Daily Roadmap */}
             <Card className="border-none shadow-2xl overflow-hidden bg-white">
               <CardHeader className="border-b bg-muted/30 py-6 px-8 flex flex-row items-center justify-between">
                 <div className="space-y-1">
@@ -105,7 +112,6 @@ export default function StudentPortal() {
               </CardContent>
             </Card>
 
-            {/* Quick AI Doubt Solver Card */}
             <Card className="border-none shadow-2xl bg-primary text-white overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
                 <MessageCircleQuestion className="h-32 w-32" />
@@ -122,14 +128,11 @@ export default function StudentPortal() {
             </Card>
           </div>
 
-          {/* Sidebar Area */}
           <div className="space-y-8">
-            
-            {/* Goal Card */}
             <Card className="border-none shadow-xl bg-accent text-white overflow-hidden">
               <CardContent className="p-8 space-y-4">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold font-headline uppercase">Goal: NDA 2026</h3>
+                  <h3 className="text-2xl font-bold font-headline uppercase">Goal: {studentData?.targetExam || "NDA 2026"}</h3>
                   <Target className="h-8 w-8 opacity-40" />
                 </div>
                 <div className="space-y-2">
@@ -140,11 +143,12 @@ export default function StudentPortal() {
                   <Progress value={68} className="h-1.5 bg-white/20" />
                 </div>
                 <p className="text-xs text-white/70 italic">"You are 12% ahead of your peer group in Dehradun."</p>
-                <Button variant="outline" className="w-full border-white/40 text-white hover:bg-white/10 font-bold uppercase text-[10px] h-12 mt-4 tracking-widest">Update Strategy</Button>
+                <Link href="/ai-study-planner">
+                  <Button variant="outline" className="w-full border-white/40 text-white hover:bg-white/10 font-bold uppercase text-[10px] h-12 mt-4 tracking-widest">Update Strategy</Button>
+                </Link>
               </CardContent>
             </Card>
 
-            {/* Badges Section */}
             <Card className="border-none shadow-xl">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
@@ -163,12 +167,8 @@ export default function StudentPortal() {
                   </Badge>
                 ))}
               </CardContent>
-              <div className="p-4 bg-muted/30 border-t text-center">
-                <button className="text-[10px] font-bold text-accent uppercase hover:underline">View All 14 Badges</button>
-              </div>
             </Card>
 
-            {/* Study Resource Links */}
             <div className="grid grid-cols-2 gap-4">
               <Link href="/revision-generator" className="block">
                 <Card className="border-none shadow-sm hover:bg-muted/50 transition-colors p-4 text-center cursor-pointer">
@@ -176,10 +176,10 @@ export default function StudentPortal() {
                   <p className="text-[10px] font-bold uppercase">Revision</p>
                 </Card>
               </Link>
-              <Link href="/admissions" className="block">
+              <Link href="/academic-health-check" className="block">
                 <Card className="border-none shadow-sm hover:bg-muted/50 transition-colors p-4 text-center cursor-pointer">
-                  <Trophy className="h-6 w-6 mx-auto mb-2 text-primary" />
-                  <p className="text-[10px] font-bold uppercase">Tests</p>
+                  <BrainCircuit className="h-6 w-6 mx-auto mb-2 text-primary" />
+                  <p className="text-[10px] font-bold uppercase">Health Check</p>
                 </Card>
               </Link>
             </div>
@@ -189,4 +189,3 @@ export default function StudentPortal() {
     </div>
   );
 }
-

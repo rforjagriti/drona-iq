@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -5,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Calendar, TrendingUp, BookOpen, Clock, ShieldCheck, Star, Award, ChevronRight, Bell, User, LayoutDashboard, FileText, Wallet, AlertCircle } from 'lucide-react';
+import { Calendar, TrendingUp, BookOpen, Clock, ShieldCheck, Star, Award, ChevronRight, Bell, User, LayoutDashboard, FileText, Wallet, AlertCircle, Info } from 'lucide-react';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { useUser } from '@/firebase';
@@ -63,7 +64,6 @@ export default function ParentDashboard() {
       <main className="container mx-auto px-4 -mt-10 relative z-10">
         <div className="grid lg:grid-cols-4 gap-8">
           
-          {/* Sidebar Alerts */}
           <div className="space-y-6">
             <Card className="border-none shadow-xl">
               <CardHeader className="bg-primary text-white rounded-t-xl">
@@ -100,7 +100,6 @@ export default function ParentDashboard() {
             </Button>
           </div>
 
-          {/* Main Dashboard */}
           <div className="lg:col-span-3 space-y-8">
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -146,29 +145,28 @@ export default function ParentDashboard() {
             </Card>
 
             <Card className="border-none shadow-xl overflow-hidden">
-              <CardHeader className="bg-muted/30 border-b">
-                <CardTitle className="text-lg font-headline uppercase tracking-tight">Active Mentors</CardTitle>
+              <CardHeader className="bg-muted/30 border-b flex justify-between items-center flex-row">
+                <CardTitle className="text-lg font-headline uppercase tracking-tight">Monthly Insights</CardTitle>
+                <Badge variant="outline"><Info className="h-3 w-3 mr-1" /> AI Generated</Badge>
               </CardHeader>
-              <div className="divide-y">
-                {[
-                  { name: "Maj. Gen. (Retd) V.K. Singh", subject: "NDA Strategy", status: "Session Today", time: "4 PM" },
-                  { name: "Dr. Aditi Rawat", subject: "Advanced Physics", status: "Homework Pending", time: "Tomorrow" },
-                ].map((mentor, i) => (
-                  <div key={i} className="p-6 flex items-center justify-between hover:bg-muted/30 transition-colors group">
-                    <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">{mentor.name[0]}</div>
-                      <div>
-                        <p className="font-bold text-primary">{mentor.name}</p>
-                        <p className="text-xs text-muted-foreground">{mentor.subject}</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <Badge variant="outline" className="mb-1 text-[9px] uppercase font-bold">{mentor.status}</Badge>
-                      <p className="text-[10px] font-bold text-accent">{mentor.time}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <CardContent className="p-8">
+                <div className="space-y-6">
+                   <div className="flex gap-4 items-start">
+                     <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0"><TrendingUp className="h-5 w-5 text-accent" /></div>
+                     <div>
+                       <p className="font-bold text-primary mb-1">Consistent Progression</p>
+                       <p className="text-sm text-muted-foreground italic">"Your child has shown a 24% improvement in Physics conceptual clarity over the last 30 days. Focus on 'Wave Optics' is recommended next month."</p>
+                     </div>
+                   </div>
+                   <div className="flex gap-4 items-start">
+                     <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0"><BookOpen className="h-5 w-5 text-blue-600" /></div>
+                     <div>
+                       <p className="font-bold text-primary mb-1">Homework Pattern</p>
+                       <p className="text-sm text-muted-foreground italic">"100% submission rate achieved this month. This discipline is contributing significantly to their mock test rankings."</p>
+                     </div>
+                   </div>
+                </div>
+              </CardContent>
             </Card>
           </div>
         </div>
