@@ -1,10 +1,12 @@
 
 'use client';
 
-// TODO: Replace placeholders with actual values from your Firebase Console
-// Project Settings -> General -> Your Apps -> Firebase SDK snippet (Config)
+/**
+ * Firebase Configuration for Drona IQ
+ * These values connect your application to your specific Firebase project.
+ */
 export const firebaseConfig = {
-  apiKey: "YOUR_ACTUAL_API_KEY",
+  apiKey: "YOUR_API_KEY", // Get this from Firebase Project Settings
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",

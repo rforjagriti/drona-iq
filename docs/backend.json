@@ -3,39 +3,44 @@
   "entities": {
     "UserProfile": {
       "title": "User Profile",
-      "description": "Base user information with role-based access control.",
+      "description": "Core user identity and role management.",
       "type": "object",
       "properties": {
         "uid": { "type": "string" },
         "email": { "type": "string", "format": "email" },
         "displayName": { "type": "string" },
         "role": { "type": "string", "enum": ["student", "parent", "tutor", "admin"] },
+        "phoneNumber": { "type": "string" },
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["uid", "email", "role"]
     },
     "StudentProfile": {
       "title": "Student Profile",
-      "description": "Academic and gamification data for students.",
+      "description": "Academic records, gamification, and progress tracking.",
       "type": "object",
       "properties": {
         "userId": { "type": "string" },
         "parentId": { "type": "string" },
+        "tutorIds": { "type": "array", "items": { "type": "string" } },
         "grade": { "type": "string" },
         "xp": { "type": "number" },
         "level": { "type": "number" },
         "badges": { "type": "array", "items": { "type": "string" } },
-        "targetExam": { "type": "string" }
+        "targetExam": { "type": "string" },
+        "attendancePercentage": { "type": "number" }
       }
     },
     "Lead": {
       "title": "Lead",
-      "description": "Sales and inquiry leads for the CRM.",
+      "description": "Sales CRM entries for tuition inquiries.",
       "type": "object",
       "properties": {
         "parentName": { "type": "string" },
+        "studentName": { "type": "string" },
         "phone": { "type": "string" },
-        "studentClass": { "type": "string" },
+        "class": { "type": "string" },
+        "subject": { "type": "string" },
         "locality": { "type": "string" },
         "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted", "inactive"] },
         "createdAt": { "type": "string", "format": "date-time" }
@@ -48,15 +53,15 @@
   "firestore": {
     "/users/{userId}": {
       "schema": "UserProfile",
-      "description": "System users and their roles."
+      "description": "System-wide user directory."
     },
     "/students/{studentId}": {
       "schema": "StudentProfile",
-      "description": "Detailed student academic records."
+      "description": "Deep academic insights for students."
     },
     "/leads/{leadId}": {
       "schema": "Lead",
-      "description": "CRM leads for admissions."
+      "description": "Sales pipeline for admissions."
     }
   }
 }
