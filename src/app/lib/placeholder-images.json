@@ -14,6 +14,12 @@
       "imageHint": "cinematic classroom"
     },
     {
+      "id": "parent-trust",
+      "description": "Emotional shot of a happy parent and child celebrating academic success",
+      "imageUrl": "https://picsum.photos/seed/drona_parent/1200/800",
+      "imageHint": "happy parent child"
+    },
+    {
       "id": "class-5-8",
       "description": "Primary school students learning with modern technology and joy",
       "imageUrl": "https://picsum.photos/seed/drona_kids_premium/1000/800",
@@ -54,6 +60,30 @@
       "description": "High-res tablet showing gamified learning path and XP",
       "imageUrl": "https://picsum.photos/seed/drona_student_ui/1000/1200",
       "imageHint": "tablet interface"
+    },
+    {
+      "id": "doctor-visual",
+      "description": "Professional doctor in a futuristic medical setting",
+      "imageUrl": "https://picsum.photos/seed/drona_doc/800/1000",
+      "imageHint": "medical doctor"
+    },
+    {
+      "id": "engineer-visual",
+      "description": "Tech engineer working on high-end robotic systems",
+      "imageUrl": "https://picsum.photos/seed/drona_eng/800/1000",
+      "imageHint": "software engineer"
+    },
+    {
+      "id": "pilot-visual",
+      "description": "Commercial pilot in a cockpit with sky background",
+      "imageUrl": "https://picsum.photos/seed/drona_pilot/800/1000",
+      "imageHint": "airplane pilot"
+    },
+    {
+      "id": "officer-visual",
+      "description": "Indian Army officer leading with discipline and pride",
+      "imageUrl": "https://picsum.photos/seed/drona_army/800/1000",
+      "imageHint": "army officer"
     }
   ]
 }
