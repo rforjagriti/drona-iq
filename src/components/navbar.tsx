@@ -1,9 +1,12 @@
+
 "use client"
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard } from 'lucide-react';
+import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User } from 'lucide-react';
 import { useState } from 'react';
+import { useUser, useAuth } from '@/firebase';
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,9 +15,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, loading } = useUser();
+  const auth = useAuth();
+
+  const handleLogin = async () => {
+    if (!auth) return;
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleLogout = () => {
+    if (!auth) return;
+    signOut(auth);
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -45,11 +66,6 @@ export function Navbar() {
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/assistant" className="flex items-center gap-3">
                   <BrainCircuit className="h-4 w-4 text-accent" /> Scholar Assistant
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
-                <Link href="/diagnostic" className="flex items-center gap-3">
-                  <ShieldCheck className="h-4 w-4 text-accent" /> Diagnostic Pro
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -87,11 +103,25 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link href="/admissions">
-            <Button className="hidden sm:flex font-headline font-bold uppercase tracking-widest text-xs h-10 px-6 rounded-full" size="sm">
-              Enroll Now
+          {!user ? (
+            <Button onClick={handleLogin} disabled={loading} className="font-headline font-bold uppercase tracking-widest text-[10px] h-10 px-6 rounded-full">
+              Login
             </Button>
-          </Link>
+          ) : (
+            <DropdownMenu>
+              <DropdownMenuTrigger className="outline-none">
+                <Avatar className="h-10 w-10 border-2 border-primary/10">
+                  <AvatarImage src={user.photoURL || ''} />
+                  <AvatarFallback className="bg-accent text-white uppercase">{user.displayName?.[0] || 'U'}</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 p-2">
+                <DropdownMenuLabel className="text-xs">{user.email}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout} className="text-red-600">Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
           
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -105,10 +135,8 @@ export function Navbar() {
           <Link href="/academic-health-check" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>AI Health Check</Link>
           <Link href="/home-tuition" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Home Tuition</Link>
           <div className="pt-2 border-t">
-            <Link href="/ai-study-planner" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>AI Study Planner</Link>
-            <Link href="/tutor-portal" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Tutor Portal</Link>
-            <Link href="/parent-dashboard" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Parent Dashboard</Link>
             <Link href="/student-dashboard" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Student Dashboard</Link>
+            <Link href="/parent-dashboard" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Parent Dashboard</Link>
           </div>
         </div>
       )}

@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from 'react';
@@ -7,19 +8,55 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CheckCircle2, Phone, Mail, MapPin, Loader2 } from 'lucide-react';
+import { CheckCircle2, Phone, MapPin, Loader2 } from 'lucide-react';
+import { useFirestore } from '@/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { errorEmitter } from '@/firebase/error-emitter';
+import { FirestorePermissionError } from '@/firebase/errors';
 
 export default function AdmissionsPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const db = useFirestore();
+
+  const [formData, setFormData] = useState({
+    parentName: '',
+    phone: '',
+    studentName: '',
+    currentClass: 'class-10',
+    targetExam: 'nda'
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!db) return;
+    
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+
+    const leadData = {
+      ...formData,
+      type: 'admission',
+      status: 'new',
+      createdAt: new Date().toISOString(),
+      timestamp: serverTimestamp()
+    };
+
+    const leadsRef = collection(db, 'leads');
+
+    addDoc(leadsRef, leadData)
+      .then(() => {
+        setLoading(false);
+        setSubmitted(true);
+      })
+      .catch(async (error) => {
+        setLoading(false);
+        const permissionError = new FirestorePermissionError({
+          path: leadsRef.path,
+          operation: 'create',
+          requestResourceData: leadData,
+        });
+        errorEmitter.emit('permission-error', permissionError);
+      });
   };
 
   if (submitted) {
@@ -79,82 +116,72 @@ export default function AdmissionsPage() {
                 </div>
               </div>
             </div>
-
-            <div className="bg-accent/10 p-8 rounded-2xl border border-accent/20">
-              <h4 className="font-headline font-bold text-primary mb-4">The Drona Trust Promise</h4>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm text-primary/70">
-                  <CheckCircle2 className="h-4 w-4 text-accent" /> Guaranteed Gap-Analysis for every new admission.
-                </li>
-                <li className="flex items-center gap-2 text-sm text-primary/70">
-                  <CheckCircle2 className="h-4 w-4 text-accent" /> Direct Mentorship by Subject Matter Experts.
-                </li>
-                <li className="flex items-center gap-2 text-sm text-primary/70">
-                  <CheckCircle2 className="h-4 w-4 text-accent" /> Interactive Parent Monitoring Dashboard Access.
-                </li>
-              </ul>
-            </div>
           </div>
 
           <Card className="border-none shadow-2xl p-2 bg-white">
             <CardHeader className="bg-primary text-white rounded-xl py-8 mb-4">
               <CardTitle className="font-headline uppercase tracking-tight">Admission Inquiry</CardTitle>
-              <CardDescription className="text-white/60">Fill in the details to start your child's success journey for 2026-27.</CardDescription>
+              <CardDescription className="text-white/60">Fill in the details to start your child's success journey.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Parent Name</Label>
-                    <Input placeholder="Full Name" required className="border-muted bg-muted/20" />
+                    <Label className="text-xs font-bold uppercase text-muted-foreground">Parent Name</Label>
+                    <Input 
+                      placeholder="Full Name" 
+                      required 
+                      value={formData.parentName}
+                      onChange={(e) => setFormData({...formData, parentName: e.target.value})}
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</Label>
-                    <Input type="tel" placeholder="+91 XXXX" required className="border-muted bg-muted/20" />
+                    <Label className="text-xs font-bold uppercase text-muted-foreground">Phone Number</Label>
+                    <Input 
+                      type="tel" 
+                      placeholder="+91 XXXX" 
+                      required 
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Student Name</Label>
-                  <Input placeholder="Child's Name" required className="border-muted bg-muted/20" />
+                  <Label className="text-xs font-bold uppercase text-muted-foreground">Student Name</Label>
+                  <Input 
+                    placeholder="Child's Name" 
+                    required 
+                    value={formData.studentName}
+                    onChange={(e) => setFormData({...formData, studentName: e.target.value})}
+                  />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Current Class</Label>
-                    <Select defaultValue="class-8">
-                      <SelectTrigger className="border-muted bg-muted/20">
-                        <SelectValue placeholder="Select Class" />
-                      </SelectTrigger>
+                    <Label className="text-xs font-bold uppercase text-muted-foreground">Current Class</Label>
+                    <Select value={formData.currentClass} onValueChange={(v) => setFormData({...formData, currentClass: v})}>
+                      <SelectTrigger><SelectValue placeholder="Select Class" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="class-8">Class 8th</SelectItem>
-                        <SelectItem value="class-9">Class 9th</SelectItem>
                         <SelectItem value="class-10">Class 10th</SelectItem>
-                        <SelectItem value="class-11">Class 11th</SelectItem>
                         <SelectItem value="class-12">Class 12th</SelectItem>
-                        <SelectItem value="dropper">Dropper</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Target Exam</Label>
-                    <Select defaultValue="nda">
-                      <SelectTrigger className="border-muted bg-muted/20">
-                        <SelectValue placeholder="Select Exam" />
-                      </SelectTrigger>
+                    <Label className="text-xs font-bold uppercase text-muted-foreground">Target Exam</Label>
+                    <Select value={formData.targetExam} onValueChange={(v) => setFormData({...formData, targetExam: v})}>
+                      <SelectTrigger><SelectValue placeholder="Select Exam" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="nda">NDA / Foundation</SelectItem>
-                        <SelectItem value="jee">JEE Mains / Advance</SelectItem>
+                        <SelectItem value="jee">JEE</SelectItem>
                         <SelectItem value="neet">NEET</SelectItem>
-                        <SelectItem value="boards">School Boards Only</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
-                <Button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent/90 text-white font-headline text-lg py-7 h-auto rounded-xl mt-4">
+                <Button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent/90 text-white font-headline text-lg py-7 h-auto rounded-xl">
                   {loading ? <Loader2 className="animate-spin" /> : "Request Callback & Study Path"}
                 </Button>
-                <p className="text-[10px] text-center text-muted-foreground uppercase tracking-widest font-bold">
-                  By submitting, you agree to receive academic updates from Drona IQ.
-                </p>
               </form>
             </CardContent>
           </Card>
