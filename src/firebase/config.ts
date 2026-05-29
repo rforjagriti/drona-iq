@@ -3,15 +3,15 @@
 /**
  * Firebase Configuration for Drona IQ
  * 
- * TO FIX THE ERROR:
- * 1. Go to Firebase Console -> Project Settings -> General
- * 2. Copy the 'apiKey' from your Web App config and paste it below.
+ * TO FIX THE VALIDATION ERROR:
+ * 1. Go to: https://console.firebase.google.com/u/0/project/dronaiq/settings/general
+ * 2. Copy the 'apiKey' value and replace "AIzaSyB_REPLACE_WITH_ACTUAL_KEY" below.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyB_PASTE_YOUR_ACTUAL_KEY_HERE", 
+  apiKey: "AIzaSyB_REPLACE_WITH_ACTUAL_KEY", 
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",
-  messagingSenderId: "593821034921",
-  appId: "1:593821034921:web:placeholder"
+  messagingSenderId: "380315187121", 
+  appId: "1:380315187121:web:07486f9ab96e12d6f8af90"
 };
