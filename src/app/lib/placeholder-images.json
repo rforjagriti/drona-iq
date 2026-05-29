@@ -3,51 +3,57 @@
   "placeholderImages": [
     {
       "id": "hero-student",
-      "description": "A focused student studying in a modern library with a view of Dehradun hills",
-      "imageUrl": "https://picsum.photos/seed/drona1/1200/800",
-      "imageHint": "student studying"
+      "description": "Cinematic shot of a focused student using a tablet in a high-tech modern classroom",
+      "imageUrl": "https://picsum.photos/seed/drona_hero_god/1920/1080",
+      "imageHint": "cinematic student tech"
+    },
+    {
+      "id": "video-placeholder",
+      "description": "Premium cinematic thumbnail for academy introduction video",
+      "imageUrl": "https://picsum.photos/seed/drona_vid/1280/720",
+      "imageHint": "cinematic classroom"
     },
     {
       "id": "class-5-8",
-      "description": "Primary school students learning concepts with excitement",
-      "imageUrl": "https://picsum.photos/seed/drona_kids/800/600",
-      "imageHint": "children learning"
+      "description": "Primary school students learning with modern technology and joy",
+      "imageUrl": "https://picsum.photos/seed/drona_kids_premium/1000/800",
+      "imageHint": "children technology"
     },
     {
       "id": "class-9-10",
-      "description": "Student preparing for board exams with a study planner",
-      "imageUrl": "https://picsum.photos/seed/drona_boards/800/600",
-      "imageHint": "student exam"
+      "description": "Focused board exam preparation with high-end study materials",
+      "imageUrl": "https://picsum.photos/seed/drona_boards_premium/1000/800",
+      "imageHint": "student library"
     },
     {
       "id": "class-11-12",
-      "description": "Senior students discussing career pathways in a laboratory",
-      "imageUrl": "https://picsum.photos/seed/drona_senior/800/600",
-      "imageHint": "senior student"
+      "description": "Senior student planning a career roadmap in a professional setting",
+      "imageUrl": "https://picsum.photos/seed/drona_senior_premium/1000/800",
+      "imageHint": "career student"
     },
     {
       "id": "home-tutor-session",
-      "description": "One-on-one home tuition session in a comfortable setting",
-      "imageUrl": "https://picsum.photos/seed/drona_home/800/600",
-      "imageHint": "home tutor"
+      "description": "High-end 1-on-1 personalized home tuition session",
+      "imageUrl": "https://picsum.photos/seed/drona_home_premium/1000/800",
+      "imageHint": "private tutor"
     },
     {
       "id": "nda-foundation",
-      "description": "Student in NDA foundation training wearing a smart uniform",
-      "imageUrl": "https://picsum.photos/seed/drona_nda/800/600",
-      "imageHint": "military student"
+      "description": "Disciplined student in uniform representing the DrDA legacy",
+      "imageUrl": "https://picsum.photos/seed/drona_nda_premium/1200/900",
+      "imageHint": "military cadet"
     },
     {
       "id": "parent-app-mockup",
-      "description": "Parent checking child progress on a smartphone",
-      "imageUrl": "https://picsum.photos/seed/drona_app/800/600",
-      "imageHint": "mobile analytics"
+      "description": "High-res smartphone showing real-time performance analytics",
+      "imageUrl": "https://picsum.photos/seed/drona_parent_ui/1000/1200",
+      "imageHint": "mobile dashboard"
     },
     {
       "id": "student-app-mockup",
-      "description": "Student completing tasks on their dashboard",
-      "imageUrl": "https://picsum.photos/seed/drona_student_app/800/600",
-      "imageHint": "student dashboard"
+      "description": "High-res tablet showing gamified learning path and XP",
+      "imageUrl": "https://picsum.photos/seed/drona_student_ui/1000/1200",
+      "imageHint": "tablet interface"
     }
   ]
 }
