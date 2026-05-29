@@ -1,14 +1,17 @@
+
 "use client"
 
 import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion } from 'lucide-react';
+import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useUser } from '@/firebase';
 
 export default function StudentPortal() {
+  const { user } = useUser();
   const stats = [
     { label: "Current XP", value: "4,250", icon: Zap, color: "text-yellow-500" },
     { label: "Level", value: "12", icon: Trophy, color: "text-accent" },
@@ -28,12 +31,14 @@ export default function StudentPortal() {
                 <Badge className="bg-accent text-white border-none uppercase text-[10px] font-bold px-3">Elite Tier</Badge>
                 <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Level 12 Scholar</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold font-headline">Welcome back, Rohan!</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold font-headline">Welcome back, {user?.displayName?.split(' ')[0] || 'Scholar'}!</h1>
               <p className="text-white/60 font-light italic">"Success is the sum of small efforts, repeated day in and day out."</p>
             </div>
             <div className="flex gap-4">
-              <Link href="/ai-study-planner">
-                <Button className="bg-white text-primary hover:bg-white/90 font-bold uppercase text-xs tracking-widest px-8 h-12 rounded-xl shadow-lg">Study Planner</Button>
+              <Link href="/revision-generator">
+                <Button className="bg-white text-primary hover:bg-white/90 font-bold uppercase text-xs tracking-widest px-8 h-12 rounded-xl shadow-lg flex items-center gap-2">
+                  <ListChecks className="h-4 w-4 text-accent" /> Revision Pack
+                </Button>
               </Link>
               <Link href="/assistant">
                 <Button className="bg-accent text-white hover:bg-accent/90 font-bold uppercase text-xs tracking-widest px-8 h-12 rounded-xl shadow-lg">Ask AI Tutor</Button>
@@ -165,10 +170,10 @@ export default function StudentPortal() {
 
             {/* Study Resource Links */}
             <div className="grid grid-cols-2 gap-4">
-              <Link href="/performance-center" className="block">
+              <Link href="/revision-generator" className="block">
                 <Card className="border-none shadow-sm hover:bg-muted/50 transition-colors p-4 text-center cursor-pointer">
-                  <BookOpen className="h-6 w-6 mx-auto mb-2 text-primary" />
-                  <p className="text-[10px] font-bold uppercase">Notes</p>
+                  <ListChecks className="h-6 w-6 mx-auto mb-2 text-primary" />
+                  <p className="text-[10px] font-bold uppercase">Revision</p>
                 </Card>
               </Link>
               <Link href="/admissions" className="block">
@@ -184,3 +189,4 @@ export default function StudentPortal() {
     </div>
   );
 }
+

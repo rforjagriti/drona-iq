@@ -1,8 +1,9 @@
+
 "use client"
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User, Sparkles, LogIn, LogOut, BookOpen, Target, Star } from 'lucide-react';
+import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User, Sparkles, LogIn, LogOut, BookOpen, Target, Star, ListChecks } from 'lucide-react';
 import { useState } from 'react';
 import { useUser, useAuth } from '@/firebase';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
@@ -43,13 +44,13 @@ export function Navbar() {
           <div className="rounded-lg bg-primary p-1.5 shadow-sm">
             <GraduationCap className="h-6 w-6 text-accent" />
           </div>
-          <span className="font-headline text-xl font-bold tracking-tighter text-primary">DRONA IQ</span>
+          <span className="font-headline text-xl font-bold tracking-tighter text-primary uppercase">DRONA IQ</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">AI Health</Link>
-          <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition Network</Link>
+          <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition</Link>
           <Link href="/why-drona-iq" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Why DIQ?</Link>
           
           <DropdownMenu>
@@ -57,7 +58,7 @@ export function Navbar() {
               Portals <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-64 p-2 rounded-xl border-none shadow-2xl">
-              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Portals & Hubs</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Unified Hubs</DropdownMenuLabel>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/student" className="flex items-center gap-3">
                   <div className="bg-primary/5 p-2 rounded-lg"><User className="h-4 w-4 text-primary" /></div>
@@ -78,10 +79,10 @@ export function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
-                <Link href="/tutor-portal" className="flex items-center gap-3">
+                <Link href="/tutor/dashboard" className="flex items-center gap-3">
                   <div className="bg-green-50 p-2 rounded-lg"><ShieldCheck className="h-4 w-4 text-green-600" /></div>
                   <div>
-                    <p className="font-bold text-xs">Tutor Network</p>
+                    <p className="font-bold text-xs">Tutor Dashboard</p>
                     <p className="text-[9px] text-muted-foreground">Manage classes & expertise</p>
                   </div>
                 </Link>
@@ -100,10 +101,15 @@ export function Navbar() {
 
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
-              AI Hub <ChevronDown className="h-3 w-3" />
+              AI Tools <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 p-2 rounded-xl border-none shadow-2xl">
-              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Neural Engine</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Neural Core</DropdownMenuLabel>
+              <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
+                <Link href="/revision-generator" className="flex items-center gap-3">
+                  <ListChecks className="h-4 w-4 text-accent" /> Revision Notes
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/ai-study-planner" className="flex items-center gap-3">
                   <Target className="h-4 w-4 text-accent" /> Study Planner
@@ -111,12 +117,7 @@ export function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/assistant" className="flex items-center gap-3">
-                  <BrainCircuit className="h-4 w-4 text-accent" /> Academic Mentor
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
-                <Link href="/career-guidance" className="flex items-center gap-3">
-                  <Sparkles className="h-4 w-4 text-accent" /> Career Guidance
+                  <BrainCircuit className="h-4 w-4 text-accent" /> AI Mentor
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -128,7 +129,7 @@ export function Navbar() {
             <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />
           ) : !user ? (
             <Button onClick={handleLogin} className="font-headline font-bold uppercase tracking-widest text-[9px] h-9 px-6 rounded-full shadow-lg bg-primary text-white flex items-center gap-2">
-              <LogIn className="h-3 w-3" /> Secure Login
+              <LogIn className="h-3 w-3" /> Login
             </Button>
           ) : (
             <DropdownMenu>
@@ -136,7 +137,7 @@ export function Navbar() {
                 <div className="flex items-center gap-3 pr-2 pl-2 py-1 rounded-full border bg-muted/30 hover:bg-muted/50 transition-colors">
                   <div className="hidden md:block text-right">
                     <p className="text-[10px] font-bold text-primary leading-none uppercase">{user.displayName?.split(' ')[0]}</p>
-                    <p className="text-[8px] text-muted-foreground font-bold tracking-tighter">Verified User</p>
+                    <p className="text-[8px] text-muted-foreground font-bold tracking-tighter">DIQ Verified</p>
                   </div>
                   <Avatar className="h-8 w-8 border-2 border-white shadow-sm">
                     <AvatarImage src={user.photoURL || ''} />
@@ -148,10 +149,10 @@ export function Navbar() {
                 <DropdownMenuLabel className="text-[10px] font-bold text-muted-foreground uppercase">{user.email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild className="cursor-pointer rounded-lg py-3">
-                  <Link href="/student" className="flex items-center gap-2"><User className="h-4 w-4" /> My Profile</Link>
+                  <Link href="/student" className="flex items-center gap-2"><User className="h-4 w-4" /> My Learning Hub</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="cursor-pointer rounded-lg py-3">
-                  <Link href="/dashboard" className="flex items-center gap-2"><LayoutDashboard className="h-4 w-4" /> Reports</Link>
+                  <Link href="/parent-dashboard" className="flex items-center gap-2"><LayoutDashboard className="h-4 w-4" /> Reports</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-lg py-3 flex items-center gap-2">
@@ -172,13 +173,13 @@ export function Navbar() {
         <div className="lg:hidden border-t bg-background p-6 space-y-6 animate-in slide-in-from-top duration-300 shadow-xl overflow-y-auto max-h-[80vh]">
           <div className="grid grid-cols-2 gap-4">
             <Link href="/academic-health-check" className="block text-[10px] font-bold uppercase bg-muted/50 p-4 rounded-xl text-center" onClick={() => setIsOpen(false)}>AI Health</Link>
-            <Link href="/home-tuition" className="block text-[10px] font-bold uppercase bg-muted/50 p-4 rounded-xl text-center" onClick={() => setIsOpen(false)}>Home Tuition</Link>
+            <Link href="/revision-generator" className="block text-[10px] font-bold uppercase bg-muted/50 p-4 rounded-xl text-center" onClick={() => setIsOpen(false)}>Revision</Link>
           </div>
           <div className="pt-4 border-t space-y-4">
-            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">Dedicated Portals</p>
+            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">Unified Portals</p>
             <Link href="/student" className="flex items-center gap-3 p-3 bg-primary/5 rounded-xl font-bold text-xs" onClick={() => setIsOpen(false)}><User className="h-4 w-4 text-primary" /> Student Hub</Link>
             <Link href="/parent-dashboard" className="flex items-center gap-3 p-3 bg-accent/10 rounded-xl font-bold text-xs" onClick={() => setIsOpen(false)}><Users className="h-4 w-4 text-accent" /> Parent Portal</Link>
-            <Link href="/tutor-portal" className="flex items-center gap-3 p-3 bg-green-50 rounded-xl font-bold text-xs" onClick={() => setIsOpen(false)}><ShieldCheck className="h-4 w-4 text-green-600" /> Tutor Network</Link>
+            <Link href="/tutor/dashboard" className="flex items-center gap-3 p-3 bg-green-50 rounded-xl font-bold text-xs" onClick={() => setIsOpen(false)}><ShieldCheck className="h-4 w-4 text-green-600" /> Tutor Dashboard</Link>
             <Link href="/admin/leads" className="flex items-center gap-3 p-3 bg-muted rounded-xl font-bold text-xs" onClick={() => setIsOpen(false)}><LayoutDashboard className="h-4 w-4 text-muted-foreground" /> Admin CRM</Link>
           </div>
         </div>
