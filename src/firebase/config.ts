@@ -2,16 +2,16 @@
 
 /**
  * Firebase Configuration for Drona IQ
- * Automatically generated based on your project ID: dronaiq
  * 
- * IMPORTANT: You must copy your specific values from the Firebase Console 
- * (Project Settings > General > Your Apps) to replace these placeholders.
+ * TO FIX THE ERROR:
+ * 1. Go to Firebase Console -> Project Settings -> General
+ * 2. Copy the 'apiKey' from your Web App config and paste it below.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyB_REPLACE_WITH_ACTUAL_KEY", // Get this from Firebase Console
+  apiKey: "AIzaSyB_PASTE_YOUR_ACTUAL_KEY_HERE", 
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",
-  messagingSenderId: "593821034921", // Placeholder - Update from console
-  appId: "1:593821034921:web:d8a2b3c4e5f6g7h8i9j0" // Placeholder - Update from console
+  messagingSenderId: "593821034921",
+  appId: "1:593821034921:web:placeholder"
 };
