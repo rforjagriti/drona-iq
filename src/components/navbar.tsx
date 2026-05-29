@@ -1,9 +1,8 @@
-
 "use client"
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User } from 'lucide-react';
+import { GraduationCap, Menu, X, ChevronDown, BrainCircuit, Users, ShieldCheck, LayoutDashboard, User, Sparkles, MessageCircleQuestion } from 'lucide-react';
 import { useState } from 'react';
 import { useUser, useAuth } from '@/firebase';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
@@ -16,6 +15,7 @@ import {
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,15 +49,15 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
-          <Link href="/academic-health-check" className="text-xs font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">AI Health</Link>
-          <Link href="/home-tuition" className="text-xs font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition</Link>
+          <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">AI Health</Link>
+          <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition</Link>
           
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-xs font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
               AI Tools <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 p-2 rounded-xl border-none shadow-2xl">
-              <DropdownMenuLabel className="text-[10px] font-bold uppercase text-muted-foreground">Smart Assistants</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Neural Hub</DropdownMenuLabel>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/ai-study-planner" className="flex items-center gap-3">
                   <LayoutDashboard className="h-4 w-4 text-accent" /> AI Study Planner
@@ -65,37 +65,58 @@ export function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/assistant" className="flex items-center gap-3">
-                  <BrainCircuit className="h-4 w-4 text-accent" /> Scholar Assistant
+                  <BrainCircuit className="h-4 w-4 text-accent" /> Academic Mentor
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
+                <Link href="/career-guidance" className="flex items-center gap-3">
+                  <Sparkles className="h-4 w-4 text-accent" /> Career Guidance
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-xs font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
               Portals <ChevronDown className="h-3 w-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 p-2 rounded-xl border-none shadow-2xl">
-              <DropdownMenuLabel className="text-[10px] font-bold uppercase text-muted-foreground">Management Hub</DropdownMenuLabel>
+            <DropdownMenuContent align="end" className="w-64 p-2 rounded-xl border-none shadow-2xl">
+              <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest p-2">Portals & Hubs</DropdownMenuLabel>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
-                <Link href="/parent-dashboard" className="flex items-center gap-3">
-                  <Users className="h-4 w-4 text-primary" /> Parent Portal
+                <Link href="/student" className="flex items-center gap-3">
+                  <div className="bg-primary/5 p-2 rounded-lg"><User className="h-4 w-4 text-primary" /></div>
+                  <div>
+                    <p className="font-bold text-xs">Student Hub</p>
+                    <p className="text-[9px] text-muted-foreground">Daily targets & XP tracking</p>
+                  </div>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
-                <Link href="/student-dashboard" className="flex items-center gap-3">
-                  <GraduationCap className="h-4 w-4 text-primary" /> Student Portal
+                <Link href="/parent-dashboard" className="flex items-center gap-3">
+                  <div className="bg-primary/5 p-2 rounded-lg"><Users className="h-4 w-4 text-primary" /></div>
+                  <div>
+                    <p className="font-bold text-xs">Parent Portal</p>
+                    <p className="text-[9px] text-muted-foreground">Performance & tests tracking</p>
+                  </div>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/tutor-portal" className="flex items-center gap-3">
-                  <ShieldCheck className="h-4 w-4 text-accent" /> Tutor Portal
+                  <div className="bg-accent/5 p-2 rounded-lg"><ShieldCheck className="h-4 w-4 text-accent" /></div>
+                  <div>
+                    <p className="font-bold text-xs">Tutor Network</p>
+                    <p className="text-[9px] text-muted-foreground">Manage classes & earnings</p>
+                  </div>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="rounded-lg cursor-pointer py-3">
                 <Link href="/admin/leads" className="flex items-center gap-3">
-                  <LayoutDashboard className="h-4 w-4 text-primary" /> Admin CRM
+                  <div className="bg-primary/10 p-2 rounded-lg"><LayoutDashboard className="h-4 w-4 text-primary" /></div>
+                  <div>
+                    <p className="font-bold text-xs">Admin CRM</p>
+                    <p className="text-[9px] text-muted-foreground">Internal lead management</p>
+                  </div>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -104,39 +125,52 @@ export function Navbar() {
 
         <div className="flex items-center space-x-4">
           {!user ? (
-            <Button onClick={handleLogin} disabled={loading} className="font-headline font-bold uppercase tracking-widest text-[10px] h-10 px-6 rounded-full">
-              Login
+            <Button onClick={handleLogin} disabled={loading} className="font-headline font-bold uppercase tracking-widest text-[9px] h-9 px-6 rounded-full shadow-lg">
+              Secure Login
             </Button>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger className="outline-none">
-                <Avatar className="h-10 w-10 border-2 border-primary/10">
-                  <AvatarImage src={user.photoURL || ''} />
-                  <AvatarFallback className="bg-accent text-white uppercase">{user.displayName?.[0] || 'U'}</AvatarFallback>
-                </Avatar>
+                <div className="flex items-center gap-3 pr-2 pl-2 py-1 rounded-full border bg-muted/30 hover:bg-muted/50 transition-colors">
+                  <div className="hidden md:block text-right">
+                    <p className="text-[10px] font-bold text-primary leading-none uppercase">{user.displayName?.split(' ')[0]}</p>
+                    <p className="text-[8px] text-muted-foreground font-bold tracking-tighter">Verified User</p>
+                  </div>
+                  <Avatar className="h-8 w-8 border-2 border-white shadow-sm">
+                    <AvatarImage src={user.photoURL || ''} />
+                    <AvatarFallback className="bg-accent text-white uppercase text-[10px]">{user.displayName?.[0] || 'U'}</AvatarFallback>
+                  </Avatar>
+                </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 p-2">
-                <DropdownMenuLabel className="text-xs">{user.email}</DropdownMenuLabel>
+              <DropdownMenuContent align="end" className="w-56 p-2 rounded-xl">
+                <DropdownMenuLabel className="text-[10px] font-bold text-muted-foreground uppercase">{user.email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout} className="text-red-600">Logout</DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer rounded-lg">
+                  <Link href="/student" className="flex items-center gap-2"><User className="h-4 w-4" /> My Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-lg">Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           )}
           
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden border-t bg-background p-4 space-y-4 animate-in slide-in-from-top duration-300">
-          <Link href="/academic-health-check" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>AI Health Check</Link>
-          <Link href="/home-tuition" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Home Tuition</Link>
-          <div className="pt-2 border-t">
-            <Link href="/student-dashboard" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Student Dashboard</Link>
-            <Link href="/parent-dashboard" className="block text-sm font-bold uppercase p-2" onClick={() => setIsOpen(false)}>Parent Dashboard</Link>
+        <div className="lg:hidden border-t bg-background p-6 space-y-6 animate-in slide-in-from-top duration-300 shadow-xl">
+          <div className="grid grid-cols-2 gap-4">
+            <Link href="/academic-health-check" className="block text-[10px] font-bold uppercase bg-muted/50 p-4 rounded-xl text-center" onClick={() => setIsOpen(false)}>AI Health</Link>
+            <Link href="/home-tuition" className="block text-[10px] font-bold uppercase bg-muted/50 p-4 rounded-xl text-center" onClick={() => setIsOpen(false)}>Home Tuition</Link>
+          </div>
+          <div className="pt-4 border-t space-y-2">
+            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-4">Dedicated Portals</p>
+            <Link href="/student" className="flex items-center gap-3 p-2 font-bold text-sm" onClick={() => setIsOpen(false)}><User className="h-4 w-4 text-accent" /> Student Hub</Link>
+            <Link href="/parent-dashboard" className="flex items-center gap-3 p-2 font-bold text-sm" onClick={() => setIsOpen(false)}><Users className="h-4 w-4 text-accent" /> Parent Portal</Link>
+            <Link href="/tutor-portal" className="flex items-center gap-3 p-2 font-bold text-sm" onClick={() => setIsOpen(false)}><ShieldCheck className="h-4 w-4 text-accent" /> Tutor Portal</Link>
           </div>
         </div>
       )}
