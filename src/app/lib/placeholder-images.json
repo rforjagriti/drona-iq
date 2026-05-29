@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -7,16 +8,22 @@
       "imageHint": "student studying"
     },
     {
+      "id": "tutor-demo",
+      "description": "Professional home tutor explaining concepts to a student",
+      "imageUrl": "https://picsum.photos/seed/drona4/800/600",
+      "imageHint": "home tutor"
+    },
+    {
       "id": "parent-dashboard-ui",
       "description": "Mockup of a professional analytics dashboard",
       "imageUrl": "https://picsum.photos/seed/drona2/800/600",
       "imageHint": "analytics dashboard"
     },
     {
-      "id": "mentor-session",
-      "description": "A teacher mentoring a student with AI tools",
-      "imageUrl": "https://picsum.photos/seed/drona3/600/400",
-      "imageHint": "teacher mentoring"
+      "id": "success-celebration",
+      "description": "Students celebrating exam success in Dehradun",
+      "imageUrl": "https://picsum.photos/seed/drona5/800/600",
+      "imageHint": "student success"
     }
   ]
 }
