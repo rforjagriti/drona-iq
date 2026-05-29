@@ -36,7 +36,7 @@ export default function AdminLeads() {
         <div className="grid md:grid-cols-4 gap-6 mb-10">
           {[
             { label: "New Leads", count: 24, color: "text-blue-500", bg: "bg-blue-50" },
-            { label: "Demos Today", count: 08, color: "text-orange-500", bg: "bg-orange-50" },
+            { label: "Demos Today", count: 8, color: "text-orange-500", bg: "bg-orange-50" },
             { label: "Converted", count: 142, color: "text-green-500", bg: "bg-green-50" },
             { label: "Revenue Growth", count: "+24%", color: "text-accent", bg: "bg-accent/10" },
           ].map((stat, i) => (
