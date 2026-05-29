@@ -8,10 +8,34 @@
       "imageHint": "cinematic student tech"
     },
     {
-      "id": "video-placeholder",
-      "description": "Premium cinematic thumbnail for academy introduction video",
-      "imageUrl": "https://picsum.photos/seed/drona_vid/1280/720",
-      "imageHint": "cinematic classroom"
+      "id": "campus-main",
+      "description": "Premium exterior view of Drona IQ Hub at Om Tower",
+      "imageUrl": "https://picsum.photos/seed/drona_campus_main/1200/800",
+      "imageHint": "modern academy building"
+    },
+    {
+      "id": "smart-class",
+      "description": "Interactive smart classroom with high-tech displays",
+      "imageUrl": "https://picsum.photos/seed/drona_smart_class/800/600",
+      "imageHint": "high tech classroom"
+    },
+    {
+      "id": "faculty-1",
+      "description": "Professional educator teaching complex physics",
+      "imageUrl": "https://picsum.photos/seed/drona_fac1/400/500",
+      "imageHint": "professional teacher"
+    },
+    {
+      "id": "founder-photo",
+      "description": "Inspirational portrait of the Drona IQ Founder",
+      "imageUrl": "https://picsum.photos/seed/drona_founder/800/1000",
+      "imageHint": "executive portrait"
+    },
+    {
+      "id": "success-wall-1",
+      "description": "Smiling student with top board exam results",
+      "imageUrl": "https://picsum.photos/seed/drona_sw1/400/400",
+      "imageHint": "happy student"
     },
     {
       "id": "parent-trust",
@@ -20,112 +44,10 @@
       "imageHint": "happy parent child"
     },
     {
-      "id": "class-5",
-      "description": "Young primary student exploring science with joy",
-      "imageUrl": "https://picsum.photos/seed/drona_c5/1000/800",
-      "imageHint": "child science"
-    },
-    {
-      "id": "class-6",
-      "description": "Middle school student solving mathematical patterns",
-      "imageUrl": "https://picsum.photos/seed/drona_c6/1000/800",
-      "imageHint": "student math"
-    },
-    {
-      "id": "class-7",
-      "description": "Student in a creative thinking workshop",
-      "imageUrl": "https://picsum.photos/seed/drona_c7/1000/800",
-      "imageHint": "creative student"
-    },
-    {
-      "id": "class-8",
-      "description": "Focused student building a robot or model",
-      "imageUrl": "https://picsum.photos/seed/drona_c8/1000/800",
-      "imageHint": "robotics student"
-    },
-    {
-      "id": "class-9",
-      "description": "Intense board exam preparation session",
-      "imageUrl": "https://picsum.photos/seed/drona_c9/1000/800",
-      "imageHint": "study session"
-    },
-    {
-      "id": "class-10",
-      "description": "Student receiving a top rank certificate",
-      "imageUrl": "https://picsum.photos/seed/drona_c10/1000/800",
-      "imageHint": "academic achievement"
-    },
-    {
-      "id": "class-11-science",
-      "description": "Science student performing physics experiment",
-      "imageUrl": "https://picsum.photos/seed/drona_c11s/1200/900",
-      "imageHint": "physics lab"
-    },
-    {
-      "id": "class-11-commerce",
-      "description": "Commerce student analyzing business charts",
-      "imageUrl": "https://picsum.photos/seed/drona_c11c/1200/900",
-      "imageHint": "business analytics"
-    },
-    {
-      "id": "class-11-humanities",
-      "description": "Humanities student in a leadership debate",
-      "imageUrl": "https://picsum.photos/seed/drona_c11h/1200/900",
-      "imageHint": "student debate"
-    },
-    {
-      "id": "class-12-science",
-      "description": "Senior science student preparing for JEE/NEET",
-      "imageUrl": "https://picsum.photos/seed/drona_c12s/1200/900",
-      "imageHint": "intense prep"
-    },
-    {
-      "id": "home-tutor-session",
-      "description": "High-end 1-on-1 personalized home tuition session",
-      "imageUrl": "https://picsum.photos/seed/drona_home_premium/1000/800",
-      "imageHint": "private tutor"
-    },
-    {
       "id": "nda-foundation",
       "description": "Disciplined student in uniform representing the DrDA legacy",
       "imageUrl": "https://picsum.photos/seed/drona_nda_premium/1200/900",
       "imageHint": "military cadet"
-    },
-    {
-      "id": "parent-app-mockup",
-      "description": "High-res smartphone showing real-time performance analytics",
-      "imageUrl": "https://picsum.photos/seed/drona_parent_ui/1000/1200",
-      "imageHint": "mobile dashboard"
-    },
-    {
-      "id": "student-app-mockup",
-      "description": "High-res tablet showing gamified learning path and XP",
-      "imageUrl": "https://picsum.photos/seed/drona_student_ui/1000/1200",
-      "imageHint": "tablet interface"
-    },
-    {
-      "id": "doctor-visual",
-      "description": "Professional doctor in a futuristic medical setting",
-      "imageUrl": "https://picsum.photos/seed/drona_doc/800/1000",
-      "imageHint": "medical doctor"
-    },
-    {
-      "id": "engineer-visual",
-      "description": "Tech engineer working on high-end robotic systems",
-      "imageUrl": "https://picsum.photos/seed/drona_eng/800/1000",
-      "imageHint": "software engineer"
-    },
-    {
-      "id": "pilot-visual",
-      "description": "Commercial pilot in a cockpit with sky background",
-      "imageUrl": "https://picsum.photos/seed/drona_pilot/800/1000",
-      "imageHint": "airplane pilot"
-    },
-    {
-      "id": "officer-visual",
-      "description": "Indian Army officer leading with discipline and pride",
-      "imageUrl": "https://picsum.photos/seed/drona_army/800/1000",
-      "imageHint": "army officer"
     }
   ]
 }
