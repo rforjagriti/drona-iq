@@ -4,31 +4,29 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 20% 98%;
     --foreground: 225 59% 11%;
     --card: 0 0% 100%;
     --card-foreground: 225 59% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 225 59% 11%;
-    --primary: 225 59% 11%;
+    --primary: 225 59% 11%; /* Deep Navy */
     --primary-foreground: 0 0% 98%;
-    --secondary: 47 71% 45%;
+    --secondary: 197 37% 24%; /* Royal Blue */
     --secondary-foreground: 0 0% 98%;
     --muted: 225 10% 95%;
     --muted-foreground: 225 5% 45%;
-    --accent: 47 71% 45%;
+    --accent: 47 71% 45%; /* Gold */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 225 15% 90%;
     --input: 225 15% 90%;
     --ring: 47 71% 45%;
-    --radius: 0.75rem;
+    --radius: 1rem;
     --chart-1: 225 59% 11%;
     --chart-2: 47 71% 45%;
     --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
   }
 
   .dark {
@@ -66,10 +64,18 @@
   }
 }
 
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
 .gold-gradient {
   background: linear-gradient(135deg, #C5A021 0%, #D4AF37 50%, #B8860B 100%);
 }
 
 .navy-gradient {
   background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+}
+
+.premium-shadow {
+  box-shadow: 0 20px 40px rgba(11, 19, 43, 0.08);
 }

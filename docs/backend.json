@@ -1,4 +1,3 @@
-
 {
   "entities": {
     "UserProfile": {
@@ -43,8 +42,9 @@
         "subject": { "type": "string" },
         "locality": { "type": "string" },
         "type": { "type": "string", "enum": ["admission", "home_tuition", "general_enquiry"] },
-        "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "converted", "inactive"] },
-        "createdAt": { "type": "string" }
+        "status": { "type": "string", "enum": ["new", "contacted", "demo_scheduled", "demo_completed", "converted", "lost"] },
+        "createdAt": { "type": "string" },
+        "source": { "type": "string" }
       }
     },
     "HealthCheck": {
@@ -58,7 +58,30 @@
         "score": { "type": "number" },
         "totalScore": { "type": "number" },
         "reportSummary": { "type": "string" },
-        "createdAt": { "type": "string" }
+        "createdAt": { "type": "string" },
+        "phone": { "type": "string" }
+      }
+    },
+    "Attendance": {
+      "title": "Attendance Record",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string", "enum": ["present", "absent", "late"] },
+        "subject": { "type": "string" }
+      }
+    },
+    "TestResult": {
+      "title": "Test Result",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "testDate": { "type": "string" },
+        "subject": { "type": "string" },
+        "score": { "type": "number" },
+        "maxScore": { "type": "number" },
+        "rank": { "type": "number" }
       }
     }
   },
@@ -78,13 +101,17 @@
       "schema": "Lead",
       "description": "Unified CRM pipeline for admissions and tuition."
     },
-    "/enquiries/{enquiryId}": {
-      "schema": "Lead",
-      "description": "General website inquiries."
-    },
     "/health_checks/{checkId}": {
       "schema": "HealthCheck",
       "description": "Captured diagnostic data for lead nurturing."
+    },
+    "/attendance/{attendanceId}": {
+      "schema": "Attendance",
+      "description": "Daily attendance logs."
+    },
+    "/test_results/{resultId}": {
+      "schema": "TestResult",
+      "description": "Scholar exam results."
     }
   }
 }
