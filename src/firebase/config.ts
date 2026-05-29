@@ -2,6 +2,7 @@
 
 /**
  * Valid Firebase Configuration for Drona IQ
+ * Verified with user-provided production credentials.
  */
 export const firebaseConfig = {
   apiKey: "AIzaSyCln4rghaCCp-mqXtyL6WS8SIYVpT9YYnM",

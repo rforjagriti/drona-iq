@@ -1,11 +1,10 @@
-
 "use client"
 
 import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight } from 'lucide-react';
+import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight, User as UserIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useUser, useFirestore, useDoc } from '@/firebase';
@@ -13,7 +12,7 @@ import { doc } from 'firebase/firestore';
 import { useMemo } from 'react';
 
 export default function StudentPortal() {
-  const { user } = useUser();
+  const { user, loading: authLoading } = useUser();
   const firestore = useFirestore();
 
   const studentRef = useMemo(() => {
@@ -21,7 +20,7 @@ export default function StudentPortal() {
     return doc(firestore, 'students', user.uid);
   }, [firestore, user?.uid]);
 
-  const { data: studentData, loading } = useDoc(studentRef);
+  const { data: studentData, loading: docLoading } = useDoc(studentRef);
 
   const stats = [
     { label: "Current XP", value: studentData?.xp || "0", icon: Zap, color: "text-yellow-500" },
@@ -29,21 +28,57 @@ export default function StudentPortal() {
     { label: "Rank", value: "Top 5%", icon: Target, color: "text-blue-500" },
   ];
 
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-muted/10">
+        <div className="flex flex-col items-center gap-4">
+          <BrainCircuit className="h-12 w-12 text-primary animate-pulse" />
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Initializing Learning Hub...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12">
+            <CardContent className="space-y-6">
+              <div className="bg-primary/5 h-20 w-20 rounded-full flex items-center justify-center mx-auto">
+                <UserIcon className="h-10 w-10 text-primary" />
+              </div>
+              <h2 className="text-3xl font-extrabold font-headline text-primary">Portal Restricted</h2>
+              <p className="text-muted-foreground">
+                Please login to access your personalized Student Hub, XP tracking, and AI mentors.
+              </p>
+              <Button onClick={() => window.location.reload()} className="w-full font-headline bg-accent text-white hover:bg-accent/90">Sign In with Google</Button>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-muted/10 pb-20">
       <Navbar />
       
       {/* Gamified Header */}
-      <div className="navy-gradient py-12 text-white">
-        <div className="container mx-auto px-4">
+      <div className="navy-gradient py-12 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none">
+          <BrainCircuit className="h-96 w-96 -mr-20 -mt-20" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <Badge className="bg-accent text-white border-none uppercase text-[10px] font-bold px-3">Elite Tier</Badge>
                 <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Level {studentData?.level || 1} Scholar</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold font-headline">Welcome back, {user?.displayName?.split(' ')[0] || 'Scholar'}!</h1>
-              <p className="text-white/60 font-light italic">"Success is the sum of small efforts, repeated day in and day out."</p>
+              <h1 className="text-4xl md:text-5xl font-extrabold font-headline uppercase tracking-tighter">Welcome, {user?.displayName?.split(' ')[0] || 'Scholar'}!</h1>
+              <p className="text-white/60 font-light italic">"Precision in practice leads to excellence in performance."</p>
             </div>
             <div className="flex gap-4">
               <Link href="/revision-generator">
@@ -65,7 +100,7 @@ export default function StudentPortal() {
           <div className="lg:col-span-2 space-y-8">
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               {stats.map((stat, i) => (
-                <Card key={i} className="border-none shadow-xl overflow-hidden hover:scale-[1.02] transition-transform cursor-default">
+                <Card key={i} className="border-none shadow-xl overflow-hidden hover:scale-[1.02] transition-transform cursor-default bg-white">
                   <CardContent className="p-6 flex flex-col items-center text-center gap-2">
                     <div className="bg-muted p-4 rounded-2xl"><stat.icon className={`h-8 w-8 ${stat.color}`} /></div>
                     <div>
@@ -81,21 +116,21 @@ export default function StudentPortal() {
               <CardHeader className="border-b bg-muted/30 py-6 px-8 flex flex-row items-center justify-between">
                 <div className="space-y-1">
                   <CardTitle className="text-xl font-headline flex items-center gap-2 text-primary uppercase tracking-tight">
-                    <Clock className="h-5 w-5 text-accent" /> Today's Learning Path
+                    <Clock className="h-5 w-5 text-accent" /> Daily Learning Path
                   </CardTitle>
-                  <p className="text-xs text-muted-foreground">3 tasks remaining to reach daily XP goal.</p>
+                  <p className="text-xs text-muted-foreground">Complete tasks to unlock {studentData?.targetExam || 'NDA'} strategy milestones.</p>
                 </div>
                 <Badge variant="outline" className="border-accent text-accent font-bold">120 XP Reward</Badge>
               </CardHeader>
               <CardContent className="p-0">
                 {[
-                  { time: "4:00 PM", task: "Live Session: Calculus Foundations", type: "Class", done: false, xp: 50 },
-                  { time: "6:00 PM", task: "Self Study: Physics Chapter 4 Revision", type: "Target", done: true, xp: 30 },
-                  { time: "8:00 PM", task: "AI Mock Test: NDA Pattern English", type: "Exam", done: false, xp: 40 },
+                  { time: "04:00 PM", task: "Live Session: Analytical Physics", type: "Class", done: false, xp: 50 },
+                  { time: "06:30 PM", task: "Self Study: Calculus Module 2", type: "Target", done: true, xp: 30 },
+                  { time: "08:00 PM", task: "AI Diagnostic: Weekly Mock Test", type: "Exam", done: false, xp: 40 },
                 ].map((item, i) => (
                   <div key={i} className="group p-6 border-b last:border-0 hover:bg-muted/30 transition-colors flex items-center justify-between">
                     <div className="flex gap-6 items-center">
-                      <div className="text-xs font-bold text-muted-foreground w-16">{item.time}</div>
+                      <div className="text-xs font-bold text-muted-foreground w-20">{item.time}</div>
                       <div className="space-y-1">
                         <p className={`font-bold ${item.done ? 'line-through text-muted-foreground' : 'text-primary'}`}>{item.task}</p>
                         <div className="flex gap-2">
@@ -104,8 +139,8 @@ export default function StudentPortal() {
                         </div>
                       </div>
                     </div>
-                    <div className={`h-6 w-6 rounded-full border-2 flex items-center justify-center ${item.done ? 'bg-green-500 border-green-500 text-white' : 'border-muted-foreground opacity-30'}`}>
-                      {item.done && <Zap className="h-3 w-3 fill-current" />}
+                    <div className={`h-8 w-8 rounded-full border-2 flex items-center justify-center transition-all ${item.done ? 'bg-green-500 border-green-500 text-white' : 'border-muted-foreground opacity-30 group-hover:opacity-100'}`}>
+                      {item.done ? <Zap className="h-4 w-4 fill-current" /> : <div className="h-1 w-1 bg-muted-foreground rounded-full" />}
                     </div>
                   </div>
                 ))}
@@ -121,7 +156,7 @@ export default function StudentPortal() {
                 <p className="text-white/60 max-w-md">Our neural doubt-solver provides instant step-by-step solutions for CBSE, ICSE, and Competitive patterns.</p>
                 <div className="flex pt-4">
                   <Link href="/assistant">
-                    <Button className="bg-accent text-white hover:bg-accent/90 font-bold uppercase text-xs tracking-widest px-8">Launch AI Solver <ChevronRight className="ml-1 h-4 w-4" /></Button>
+                    <Button className="bg-accent text-white hover:bg-accent/90 font-bold uppercase text-xs tracking-widest px-10 h-12 shadow-xl">Launch AI Solver <ChevronRight className="ml-1 h-4 w-4" /></Button>
                   </Link>
                 </div>
               </CardContent>
@@ -132,7 +167,7 @@ export default function StudentPortal() {
             <Card className="border-none shadow-xl bg-accent text-white overflow-hidden">
               <CardContent className="p-8 space-y-4">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold font-headline uppercase">Goal: {studentData?.targetExam || "NDA 2026"}</h3>
+                  <h3 className="text-2xl font-bold font-headline uppercase">{studentData?.targetExam || "NDA 2026"} Target</h3>
                   <Target className="h-8 w-8 opacity-40" />
                 </div>
                 <div className="space-y-2">
@@ -142,16 +177,16 @@ export default function StudentPortal() {
                   </div>
                   <Progress value={68} className="h-1.5 bg-white/20" />
                 </div>
-                <p className="text-xs text-white/70 italic">"You are 12% ahead of your peer group in Dehradun."</p>
+                <p className="text-xs text-white/70 italic leading-relaxed">"Your consistency index is 12% higher than the average Dehradun scholar."</p>
                 <Link href="/ai-study-planner">
-                  <Button variant="outline" className="w-full border-white/40 text-white hover:bg-white/10 font-bold uppercase text-[10px] h-12 mt-4 tracking-widest">Update Strategy</Button>
+                  <Button variant="outline" className="w-full border-white/40 text-white hover:bg-white/10 font-bold uppercase text-[10px] h-12 mt-4 tracking-widest">Refine Strategy</Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-xl">
+            <Card className="border-none shadow-xl bg-white">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm uppercase font-bold text-primary tracking-widest flex items-center gap-2">
+                <CardTitle className="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                   <Star className="h-4 w-4 text-accent fill-current" /> Recent Achievements
                 </CardTitle>
               </CardHeader>
@@ -162,7 +197,7 @@ export default function StudentPortal() {
                   { label: "Night Owl", color: "bg-purple-50 text-purple-600" },
                   { label: "Doubt Solver", color: "bg-green-50 text-green-600" },
                 ].map((b, i) => (
-                  <Badge key={i} className={`py-2 px-4 rounded-full border-none font-bold text-[10px] uppercase ${b.color}`}>
+                  <Badge key={i} className={`py-2 px-4 rounded-full border-none font-bold text-[9px] uppercase shadow-sm ${b.color}`}>
                     {b.label}
                   </Badge>
                 ))}
@@ -171,18 +206,24 @@ export default function StudentPortal() {
 
             <div className="grid grid-cols-2 gap-4">
               <Link href="/revision-generator" className="block">
-                <Card className="border-none shadow-sm hover:bg-muted/50 transition-colors p-4 text-center cursor-pointer">
-                  <ListChecks className="h-6 w-6 mx-auto mb-2 text-primary" />
-                  <p className="text-[10px] font-bold uppercase">Revision</p>
+                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group">
+                  <ListChecks className="h-6 w-6 mx-auto mb-2 text-primary group-hover:text-accent transition-colors" />
+                  <p className="text-[10px] font-bold uppercase tracking-tight">Revision</p>
                 </Card>
               </Link>
               <Link href="/academic-health-check" className="block">
-                <Card className="border-none shadow-sm hover:bg-muted/50 transition-colors p-4 text-center cursor-pointer">
-                  <BrainCircuit className="h-6 w-6 mx-auto mb-2 text-primary" />
-                  <p className="text-[10px] font-bold uppercase">Health Check</p>
+                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group">
+                  <BrainCircuit className="h-6 w-6 mx-auto mb-2 text-primary group-hover:text-accent transition-colors" />
+                  <p className="text-[10px] font-bold uppercase tracking-tight">Health Check</p>
                 </Card>
               </Link>
             </div>
+
+            <Card className="border-none shadow-sm p-6 text-center space-y-2 bg-primary/5">
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">Support Hotline</p>
+              <p className="text-sm font-bold text-primary">+91 99999 00000</p>
+              <p className="text-[10px] text-muted-foreground">Direct access to your Counselor at Rajpur Road.</p>
+            </Card>
           </div>
         </div>
       </main>
