@@ -10,7 +10,7 @@ import { LocalSeoMatrix } from '@/components/home/local-seo';
 import { SocialProofSection } from '@/components/home/social-proof';
 import { FaqFortress } from '@/components/home/faq-fortress';
 import { CompetitiveMatrix } from '@/components/competitive-matrix';
-import { Quote } from 'lucide-react';
+import { Quote, GraduationCap, ShieldCheck, UserCheck, Award, Target, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -56,8 +56,8 @@ export default function HomePage() {
                        { t: "The Home Tutor Roulette", d: "Unverified quality and lack of academic monitoring." },
                        { t: "Travel Fatigue", d: "Losing 2+ hours daily in traffic on Sahastradhara Road or Rajpur Road." }
                      ].map((point, i) => (
-                       <div key={i} className="flex gap-6 items-start">
-                         <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-1"><span className="text-red-600 font-bold text-xs">!</span></div>
+                       <div key={i} className="flex gap-6 items-start group">
+                         <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-1 group-hover:bg-red-200 transition-colors"><span className="text-red-600 font-bold text-xs">!</span></div>
                          <div>
                            <p className="font-bold text-primary uppercase text-sm">{point.t}</p>
                            <p className="text-muted-foreground text-sm leading-relaxed">{point.d}</p>
@@ -171,5 +171,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-import { GraduationCap, ShieldCheck, UserCheck, Award, Target } from 'lucide-react';

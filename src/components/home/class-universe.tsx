@@ -3,54 +3,54 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { BookOpen, Trophy, Target, Zap, Rocket, BrainCircuit, GraduationCap, Calculator, Landmark, Globe, Microscope, Scale, History, Mic2 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { BookOpen, Trophy, Target, Rocket, GraduationCap, Calculator, Landmark, Globe, Microscope, Scale, Microscope as ScienceIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export function ClassUniverseSection() {
   const classes = [
     { 
-      id: 'c5-7', grade: "Class 5 - 7", title: "The Curiosity Hub", 
-      subjects: ["Mental Maths", "Public Speaking", "EVS Mastery"],
+      id: 'c5-7', grade: "Classes 5 - 7", title: "The Curiosity Hub", 
+      subjects: ["Mental Maths", "Vedic Logic", "Public Speaking", "EVS Mastery"],
       image: "https://picsum.photos/seed/drona_c5/800/1000",
       roadmap: "Foundation Stage I: Developing logic and speech.",
-      icon: Rocket, desc: "Building the core foundation before secondary schooling begins."
+      icon: Rocket, desc: "Building the core foundation before secondary schooling begins. We focus on cognitive agility and interest development."
     },
     { 
-      id: 'c8-9', grade: "Class 8 - 9", title: "Pre-Secondary Power", 
-      subjects: ["Advanced Geometry", "Bio-Chemistry", "Analytical Grammar"],
+      id: 'c8-9', grade: "Classes 8 - 9", title: "Pre-Secondary Power", 
+      subjects: ["Advanced Geometry", "Bio-Chemistry", "Analytical Grammar", "Physics Foundation"],
       image: "https://picsum.photos/seed/drona_c8/800/1000",
-      roadmap: "Excellence Stage: Securing top rank in school boards.",
-      icon: Target, desc: "Bridge program to prepare students for high-intensity board exams."
+      roadmap: "Excellence Stage: Securing top rank in school boards and NTSE prep.",
+      icon: Target, desc: "Bridge program to prepare students for high-intensity board exams and competitive mindset."
     },
     { 
-      id: 'c10', grade: "Class 10", title: "Board Command Center", 
-      subjects: ["Full Syllabus Sync", "10 Year PYQ Drills", "Mock Simulation"],
+      id: 'c10', grade: "Class 10 Boards", title: "Board Command Center", 
+      subjects: ["Full Syllabus Sync", "10 Year PYQ Drills", "Mock Simulation", "Speed Drills"],
       image: "https://picsum.photos/seed/drona_c10/800/1000",
-      roadmap: "Goal: 95%+ in Board Exams with AI support.",
-      icon: GraduationCap, desc: "Specialized board prep with focused attention on weak concepts."
+      roadmap: "Goal: 95%+ in Board Exams with AI-driven gap detection.",
+      icon: GraduationCap, desc: "Specialized board prep with focused attention on weak concepts. Our digital twin tracks every single mark."
     },
     { 
-      id: 'c11s', grade: "Class 11 Science", title: "The Engineering/Medical Core", 
-      subjects: ["Analytical Physics", "Organic Chem", "Calculus"],
+      id: 'c11s', grade: "Class 11 Science", title: "Engineering & Medical Core", 
+      subjects: ["Analytical Physics", "Organic Chem", "Calculus", "Biology Depth"],
       image: "https://picsum.photos/seed/drona_c11s/800/1000",
-      roadmap: "JEE/NEET Synchronized Foundation.",
-      icon: Microscope, desc: "Intensive science coaching covering state & central boards."
+      roadmap: "JEE/NEET Synchronized Foundation. School + Entrance mastery.",
+      icon: ScienceIcon, desc: "Intensive science coaching covering state & central boards with high-level conceptual clarity."
     },
     { 
       id: 'c11c', grade: "Class 11 Commerce", title: "The Economic Elite", 
-      subjects: ["Accountancy", "Macro Economics", "Business Studies"],
+      subjects: ["Accountancy", "Macro Economics", "Business Studies", "Applied Math"],
       image: "https://picsum.photos/seed/drona_c11c/800/1000",
-      roadmap: "Finance Path: CA/CS/CLAT Foundation.",
-      icon: Calculator, desc: "Building corporate leaders of tomorrow with conceptual clarity."
+      roadmap: "Finance Path: CA/CS Foundation and CLAT Readiness.",
+      icon: Calculator, desc: "Building corporate leaders of tomorrow. We teach economics via real-world case studies."
     },
     { 
       id: 'c11h', grade: "Class 11 Humanities", title: "Visionary Leaders", 
-      subjects: ["Global History", "Political Science", "Psychology"],
+      subjects: ["Global History", "Political Science", "Psychology", "Geography"],
       image: "https://picsum.photos/seed/drona_c11h/800/1000",
-      roadmap: "UPSC & Law Entrance Readiness.",
-      icon: Landmark, desc: "Deep dive into society and history for civil services aspirants."
+      roadmap: "UPSC Gateway & Law Entrance Readiness. Critical thinking focus.",
+      icon: Landmark, desc: "Deep dive into society, law, and history for elite civil services and humanities aspirants."
     }
   ];
 
@@ -60,7 +60,7 @@ export function ClassUniverseSection() {
         <div className="text-center space-y-6 mb-32 max-w-4xl mx-auto">
           <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Academic Pathways</Badge>
           <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase tracking-tighter leading-none">Grade-Wise <br/> <span className="text-accent italic">Excellence.</span></h2>
-          <p className="text-xl text-muted-foreground font-light">Every student is a unique project. Select your child's grade to see their personalized DIQ Success Roadmap.</p>
+          <p className="text-xl text-muted-foreground font-light italic">"Every student is a unique project. Select your child's grade to see their personalized DIQ Success Roadmap."</p>
         </div>
 
         <div className="space-y-48">
@@ -102,18 +102,18 @@ export function ClassUniverseSection() {
           ))}
         </div>
 
-        {/* 12th Classes Master Blocks */}
+        {/* 12th Classes Master Blocks - The Final Frontier */}
         <div className="mt-48 space-y-12">
-           <h3 className="text-4xl font-extrabold uppercase text-center text-primary">Class 12th <span className="text-accent">Ultimate Mastery</span></h3>
+           <h3 className="text-4xl md:text-6xl font-extrabold uppercase text-center text-primary tracking-tighter">Class 12th <span className="text-accent italic">Ultimate Mastery</span></h3>
            <div className="grid lg:grid-cols-3 gap-8">
               {[
-                { g: "Class 12 Science", t: "Board + JEE/NEET Elite", i: Microscope, c: "Science" },
-                { g: "Class 12 Commerce", t: "Accounts Masterclass", i: Scale, c: "Commerce" },
-                { g: "Class 12 Humanities", t: "UPSC Gateway Prep", i: Globe, c: "Arts" }
+                { g: "Class 12 Science", t: "Board + JEE/NEET Elite", i: ScienceIcon, c: "Science" },
+                { g: "Class 12 Commerce", t: "Accounts & Economics Masterclass", i: Scale, c: "Commerce" },
+                { g: "Class 12 Humanities", t: "UPSC & Law Gateway Prep", i: Globe, c: "Arts" }
               ].map((box, i) => (
                 <Card key={i} className="border-none shadow-2xl p-12 space-y-6 rounded-[3.5rem] text-center bg-muted/20 hover:bg-primary hover:text-white transition-all duration-500 group">
                   <div className="bg-primary w-20 h-20 rounded-3xl flex items-center justify-center mx-auto text-accent shadow-xl group-hover:bg-accent group-hover:text-primary transition-colors"><box.i className="h-10 w-10" /></div>
-                  <h4 className="text-3xl font-extrabold uppercase">{box.g}</h4>
+                  <h4 className="text-3xl font-extrabold uppercase leading-none">{box.g}</h4>
                   <p className="text-xs font-bold uppercase tracking-widest opacity-60">{box.t}</p>
                   <Link href="/admissions" className="block pt-4">
                     <Button className="w-full h-14 bg-accent text-primary font-bold uppercase text-[10px] tracking-widest rounded-xl group-hover:bg-white group-hover:text-primary">Apply for {box.c} Stream</Button>

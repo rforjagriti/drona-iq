@@ -2,8 +2,7 @@
 "use client"
 
 import { Badge } from '@/components/ui/badge';
-import { Brain, Activity, Target, Timer, Zap, BookOpen, Clock, TrendingUp, ShieldCheck, Microscope } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Brain, Activity, Target, Timer, Zap, ShieldCheck, Microscope, LineChart, TrendingUp } from 'lucide-react';
 
 export function NeuroHubSection() {
   const pillars = [
@@ -19,7 +18,7 @@ export function NeuroHubSection() {
          <div className="text-center space-y-6 mb-32 max-w-4xl mx-auto">
             <Badge className="bg-primary text-accent border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Cognitive Engineering</Badge>
             <h2 className="text-4xl md:text-8xl font-extrabold uppercase tracking-tighter leading-none">Neuroscience <br/> <span className="text-accent italic">Of Mastery.</span></h2>
-            <p className="text-xl text-muted-foreground font-light leading-relaxed">Most tuition centers in Dehradun rely on repetition. We rely on brain science. We don't just teach chapters; we optimize neural pathways.</p>
+            <p className="text-xl text-muted-foreground font-light leading-relaxed">"Most tuition centers in Dehradun rely on repetition. We rely on brain science. We don't just teach chapters; we optimize neural pathways."</p>
          </div>
 
          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mb-32">
@@ -34,37 +33,40 @@ export function NeuroHubSection() {
             ))}
          </div>
 
-         {/* ROI & Travel Fatigue Section */}
+         {/* ROI & Travel Fatigue Section - The Math of Success */}
          <div className="bg-primary text-white rounded-[4rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
             <Microscope className="absolute -right-20 -bottom-20 h-96 w-96 text-accent opacity-5" />
             <div className="grid lg:grid-cols-2 gap-20 items-center relative z-10">
                <div className="space-y-8">
                   <Badge className="bg-accent text-primary border-none uppercase font-bold text-[10px]">Efficiency Analytics</Badge>
-                  <h3 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tighter">Zero-Commute <br/> <span className="text-accent">ROI Formula.</span></h3>
-                  <p className="text-xl text-white/60 font-light italic">"A Dehradun student spends 600+ hours yearly in traffic on Sahastradhara Road or Rajpur Road. We convert that fatigue into peak performance."</p>
+                  <h3 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tighter">Zero-Commute <br/> <span className="text-accent italic">ROI Formula.</span></h3>
+                  <p className="text-xl text-white/60 font-light italic">"A Dehradun student spends 600+ hours yearly in traffic on Sahastradhara Road or Rajpur Road. We convert that fatigue into peak performance hours."</p>
                   <div className="grid grid-cols-2 gap-6">
-                     <div className="space-y-1">
-                        <p className="text-3xl font-black text-accent">600h</p>
-                        <p className="text-[10px] uppercase font-bold opacity-40">Yearly Travel Waste</p>
+                     <div className="space-y-1 p-6 bg-white/5 rounded-3xl border border-white/10">
+                        <p className="text-4xl font-black text-accent">600h</p>
+                        <p className="text-[10px] uppercase font-bold opacity-40 tracking-widest">Yearly Travel Waste</p>
                      </div>
-                     <div className="space-y-1">
-                        <p className="text-3xl font-black text-green-400">92%</p>
-                        <p className="text-[10px] uppercase font-bold opacity-40">Retention Increase</p>
+                     <div className="space-y-1 p-6 bg-white/5 rounded-3xl border border-white/10">
+                        <p className="text-4xl font-black text-green-400">92%</p>
+                        <p className="text-[10px] uppercase font-bold opacity-40 tracking-widest">Retention Rate</p>
                      </div>
                   </div>
                </div>
                <div className="grid gap-4">
                   {[
-                    { l: "Travel Fatigue", v: "DESTROYED", i: ShieldCheck },
-                    { l: "Self-Study Time", v: "DOUBLED", i: Zap },
-                    { l: "Peak Focus Energy", v: "PRESERVED", i: Activity }
+                    { l: "Travel Fatigue", v: "Eliminated", i: ShieldCheck, desc: "Peak mental energy preserved for study." },
+                    { l: "Self-Study Time", v: "Doubled", i: Zap, desc: "More hours for practice & recall." },
+                    { l: "Mastery Index", v: "98/100", i: TrendingUp, desc: "Consistent high-performance outcomes." }
                   ].map((p, i) => (
-                    <div key={i} className="flex items-center justify-between p-6 bg-white/5 border border-white/10 rounded-3xl">
+                    <div key={i} className="flex items-center justify-between p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors cursor-default">
                        <div className="flex items-center gap-4">
                           <p.i className="h-6 w-6 text-accent" />
-                          <p className="text-xs font-bold uppercase tracking-widest">{p.l}</p>
+                          <div>
+                            <p className="text-sm font-bold uppercase tracking-widest">{p.l}</p>
+                            <p className="text-[10px] text-white/40 mt-1">{p.desc}</p>
+                          </div>
                        </div>
-                       <p className="text-accent font-black text-xs uppercase">{p.v}</p>
+                       <p className="text-accent font-black text-xs uppercase bg-accent/10 px-3 py-1 rounded-lg">{p.v}</p>
                     </div>
                   ))}
                </div>

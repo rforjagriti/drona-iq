@@ -4,14 +4,14 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Star, ShieldCheck, UserCheck, Award, Zap, Trophy, Medal, Lock, Dna, Coins } from 'lucide-react';
+import { Star, ShieldCheck, UserCheck, Award, Zap, Trophy, Medal, Lock, Dna, Coins, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
 
 export function SocialProofSection() {
   const tutors = [
-    { name: "Dr. Shalini P.", exp: "12y Exp", sub: "Physics Specialist", img: "https://picsum.photos/seed/t1/200/200" },
-    { name: "Maj. Rahul S.", exp: "15y Exp", sub: "NDA Foundation", img: "https://picsum.photos/seed/t2/200/200" },
-    { name: "Er. Amit Negi", exp: "8y Exp", sub: "Calculus Expert", img: "https://picsum.photos/seed/t3/200/200" }
+    { name: "Dr. Shalini P.", exp: "12y Exp", sub: "Physics Specialist (ex-IIT)", img: "https://picsum.photos/seed/t1/200/200" },
+    { name: "Maj. Rahul S.", exp: "15y Exp", sub: "NDA Foundation Mentor", img: "https://picsum.photos/seed/t2/200/200" },
+    { name: "Er. Amit Negi", exp: "8y Exp", sub: "Calculus & Algebra Expert", img: "https://picsum.photos/seed/t3/200/200" }
   ];
 
   return (
@@ -21,12 +21,12 @@ export function SocialProofSection() {
          <div className="text-center space-y-6 mb-24 max-w-4xl mx-auto">
             <Badge className="bg-primary text-accent border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Quality Assurance</Badge>
             <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase tracking-tighter">Dehradun's Elite <br/> <span className="text-accent italic">Mentor Pool.</span></h2>
-            <p className="text-xl text-muted-foreground font-light leading-relaxed">Only 5% of applicants pass our 4-stage screening process. We hire academics, we build mentors.</p>
+            <p className="text-xl text-muted-foreground font-light leading-relaxed italic">"Only 5% of applicants pass our 4-stage screening process (Subject, Pedagogy, Tech, Background). We hire academics, we build mentors."</p>
          </div>
 
          <div className="grid md:grid-cols-3 gap-8 mb-48">
             {tutors.map((t, i) => (
-              <Card key={i} className="border-none shadow-2xl rounded-[3rem] p-10 bg-white group hover:bg-primary transition-all duration-700">
+              <Card key={i} className="border-none shadow-2xl rounded-[3rem] p-10 bg-white group hover:bg-primary hover:scale-105 transition-all duration-700">
                  <div className="relative w-24 h-24 mx-auto mb-6">
                     <img src={t.img} className="rounded-full w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt={t.name} />
                     <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-1 rounded-full shadow-lg border-4 border-white"><ShieldCheck className="h-4 w-4" /></div>
@@ -34,7 +34,14 @@ export function SocialProofSection() {
                  <div className="text-center space-y-2">
                     <h4 className="text-xl font-extrabold uppercase text-primary group-hover:text-white transition-colors">{t.name}</h4>
                     <p className="text-xs font-bold text-accent uppercase tracking-widest">{t.sub}</p>
-                    <p className="text-[10px] font-bold text-muted-foreground uppercase group-hover:text-white/40">{t.exp}</p>
+                    <div className="flex items-center justify-center gap-1 text-yellow-500 py-2">
+                        <Star className="fill-current h-3 w-3" />
+                        <Star className="fill-current h-3 w-3" />
+                        <Star className="fill-current h-3 w-3" />
+                        <Star className="fill-current h-3 w-3" />
+                        <Star className="fill-current h-3 w-3" />
+                    </div>
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase group-hover:text-white/40">{t.exp} • 500+ Hours Taught</p>
                  </div>
               </Card>
             ))}
@@ -48,9 +55,9 @@ export function SocialProofSection() {
                   {[
                     { t: "Police Verification", d: "Mandatory Aadhaar-Police background link for every home tutor.", i: Lock },
                     { t: "Psychometric Testing", d: "Evaluating temperament and teaching ethics before hiring.", i: BrainCircuit },
-                    { t: "Safe-Home Loop", d: "Instant parent feedback system after every session.", i: UserCheck }
+                    { t: "Safe-Home Loop", d: "Instant parent feedback system after every session via Success OS.", i: UserCheck }
                   ].map((p, i) => (
-                    <div key={i} className="flex gap-6 items-start">
+                    <div key={i} className="flex gap-6 items-start p-6 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow">
                        <div className="bg-primary/5 p-4 rounded-2xl text-primary"><p.i className="h-6 w-6" /></div>
                        <div>
                           <p className="font-bold text-primary uppercase text-sm">{p.t}</p>
@@ -64,8 +71,8 @@ export function SocialProofSection() {
                <ShieldCheck className="h-64 w-64 text-white/5 absolute -right-10 -bottom-10" />
                <Badge className="bg-accent text-primary border-none font-black uppercase text-[10px]">Priority Security</Badge>
                <h4 className="text-3xl font-extrabold uppercase">100% Peace of Mind for Parents.</h4>
-               <p className="text-white/60 font-light italic leading-relaxed">"We understand your fear about safety in home tuition. That's why we don't just verify documents, we verify character."</p>
-               <Button className="bg-accent text-primary font-black uppercase text-[10px] h-14 px-8 rounded-xl shadow-xl">Read Security Whitepaper</Button>
+               <p className="text-white/60 font-light italic leading-relaxed">"We understand your fear about safety in home tuition. That's why we don't just verify documents, we verify character. Every session is logged, every tutor is monitored."</p>
+               <Button className="bg-accent text-primary font-black uppercase text-[10px] h-14 px-8 rounded-xl shadow-xl hover:scale-105 transition-all">Read Security Whitepaper</Button>
             </div>
          </div>
 
@@ -73,14 +80,14 @@ export function SocialProofSection() {
          <div className="bg-white rounded-[4rem] p-12 md:p-20 shadow-2xl border border-primary/5">
             <div className="text-center space-y-6 mb-16">
                <Badge className="bg-muted text-primary border-none uppercase font-bold text-[10px]">Scholar Leaderboard</Badge>
-               <h3 className="text-4xl font-extrabold uppercase text-primary">Gamified <span className="text-accent italic">Success.</span></h3>
-               <p className="text-muted-foreground">Students earn XP for homework, test scores, and discipline.</p>
+               <h3 className="text-4xl font-extrabold uppercase text-primary tracking-tighter leading-none">Gamified <br/> <span className="text-accent italic">Success.</span></h3>
+               <p className="text-muted-foreground italic">"Students earn XP for homework submission, test scores, and disciplinary consistency. Rewarding the grind."</p>
             </div>
             <div className="max-w-2xl mx-auto space-y-4">
                {[
-                 { name: "Scholar #2091", lv: "Lvl 42", xp: "12,400 XP", c: "text-accent" },
-                 { name: "Scholar #4822", lv: "Lvl 38", xp: "9,800 XP", c: "text-primary" },
-                 { name: "Scholar #1104", lv: "Lvl 35", xp: "8,200 XP", c: "text-primary" }
+                 { name: "Scholar #2091", lv: "Lvl 42 Elite", xp: "12,400 XP", c: "text-accent" },
+                 { name: "Scholar #4822", lv: "Lvl 38 Pro", xp: "9,800 XP", c: "text-primary" },
+                 { name: "Scholar #1104", lv: "Lvl 35 Pro", xp: "8,200 XP", c: "text-primary" }
                ].map((s, i) => (
                  <div key={i} className="flex items-center justify-between p-6 bg-muted/30 rounded-3xl group hover:bg-primary hover:text-white transition-all cursor-default">
                     <div className="flex items-center gap-6">
@@ -94,10 +101,13 @@ export function SocialProofSection() {
                  </div>
                ))}
             </div>
+            <div className="mt-12 text-center">
+                <Link href="/student">
+                    <Button variant="link" className="text-primary font-bold uppercase tracking-widest text-xs">View Full Leaderboard <Zap className="h-4 w-4 ml-2 text-accent" /></Button>
+                </Link>
+            </div>
          </div>
       </div>
     </section>
   );
 }
-
-import { BrainCircuit } from 'lucide-react';
