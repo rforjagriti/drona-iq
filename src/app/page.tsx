@@ -80,7 +80,11 @@ import {
   Brain,
   Wind,
   PhoneCall,
-  Upload
+  Upload,
+  Plus,
+  Calendar,
+  ClipboardList,
+  Sprout
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -188,7 +192,6 @@ export default function HomePage() {
                     height={1600}
                     className="rounded-[4rem] object-cover h-[750px] w-full grayscale group-hover:grayscale-0 transition-all duration-[2000ms]"
                     priority
-                    data-ai-hint="elite student"
                   />
                   <div className="absolute bottom-12 left-12 right-12 glass p-8 rounded-[3rem] border-white/20 shadow-2xl backdrop-blur-3xl animate-in slide-in-from-bottom-20 duration-1000 delay-500">
                     <div className="flex items-center gap-6">
@@ -209,86 +212,167 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PARENT TRUST ZONE */}
-      <section className="py-24 md:py-32 bg-white relative">
+      {/* 2. PARENT TRUST ZONE */}
+      <section className="py-24 md:py-48 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-4 mb-20">
-            <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px] px-4">The Trust Factor</Badge>
-            <h2 className="text-4xl md:text-6xl font-extrabold text-primary uppercase">Why 5000+ Parents Trust Us</h2>
-            <p className="text-xl text-muted-foreground font-light">We don't just provide tuition; we provide academic security and growth visibility.</p>
+          <div className="max-w-4xl mx-auto text-center space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-primary text-white border-none uppercase font-bold tracking-[0.4em] text-[10px] px-6 py-2 rounded-full shadow-lg">The Trust Protocol</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Why 5000+ Dehradun <br/> <span className="text-accent italic">Families Trust Us</span></h2>
+            <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">We don't just provide tuition; we provide absolute academic security and transparent growth visibility.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-12 lg:gap-20">
             {[
-              { t: "Verified Tutors", d: "A rigorous 5-tier screening process for every educator.", i: UserCheck },
-              { t: "Live Dashboard", d: "Real-time tracking of attendance, tasks, and test results.", i: LayoutDashboard },
-              { t: "Curriculum Alignment", d: "CBSE, ICSE, and Competitive patterns mapped perfectly.", i: Flag }
+              { t: "Verified Tutors", d: "A rigorous 5-tier screening process for every educator including background checks.", i: UserCheck, c: "text-blue-500" },
+              { t: "Live Dashboard", d: "Real-time tracking of attendance, homework, and test results via Parent OS.", i: LayoutDashboard, c: "text-accent" },
+              { t: "Curriculum Synergy", d: "CBSE, ICSE, and Competitive patterns mapped perfectly with school progress.", i: Flag, c: "text-green-500" }
             ].map((feat, i) => (
-              <div key={i} className="text-center space-y-6 group">
-                <div className="bg-muted p-8 w-fit rounded-3xl mx-auto group-hover:bg-primary group-hover:text-white transition-all">
-                  <feat.i className="h-12 w-12" />
+              <div key={i} className="text-center space-y-10 group animate-in fade-in slide-in-from-bottom-10 duration-700" style={{ animationDelay: `${i * 200}ms` }}>
+                <div className="bg-muted/50 p-12 w-fit rounded-[3rem] mx-auto group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl group-hover:shadow-2xl group-hover:-translate-y-4">
+                  <feat.i className={`h-16 w-16 ${feat.c} group-hover:text-accent transition-colors`} />
                 </div>
-                <h3 className="text-2xl font-bold uppercase text-primary">{feat.t}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feat.d}</p>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-extrabold uppercase text-primary tracking-tight">{feat.t}</h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed font-light px-4">{feat.d}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* STUDENT SUCCESS METRICS */}
-      <section className="py-24 bg-primary text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 text-center">
+      {/* 3. STUDENT SUCCESS METRICS */}
+      <section className="py-32 md:py-48 bg-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-accent opacity-5 pointer-events-none"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-4 gap-12 lg:gap-24 text-center">
             {[
-              { v: "92%", l: "Average Mark Improvement", i: TrendingUp },
-              { v: "24/7", l: "Academic AI Support", i: BrainCircuit },
-              { v: "10k+", l: "Doubt Resolutions Monthly", i: MessageSquare },
-              { v: "500+", l: "Top Board Percentiles", i: Trophy }
+              { v: "92%", l: "Avg. Grade Growth", i: TrendingUp },
+              { v: "24/7", l: "AI Support Hub", i: BrainCircuit },
+              { v: "10k+", l: "Doubts Solved / Mo", i: MessageSquare },
+              { v: "500+", l: "Elite Board Scores", i: Trophy }
             ].map((stat, i) => (
-              <div key={i} className="space-y-2">
-                <div className="bg-white/5 p-4 w-fit rounded-2xl mx-auto mb-4">
-                  <stat.i className="h-8 w-8 text-accent" />
+              <div key={i} className="space-y-6 group cursor-default">
+                <div className="bg-white/5 p-6 w-fit rounded-[2rem] mx-auto mb-6 group-hover:bg-accent transition-all duration-500">
+                  <stat.i className="h-10 w-10 text-accent group-hover:text-primary" />
                 </div>
-                <p className="text-5xl font-extrabold font-headline text-white tracking-tighter">{stat.v}</p>
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{stat.l}</p>
+                <p className="text-6xl md:text-8xl font-extrabold font-headline text-white tracking-tighter leading-none">{stat.v}</p>
+                <p className="text-xs md:text-sm font-bold text-white/40 uppercase tracking-[0.4em] pt-2">{stat.l}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 1: FIND THE PERFECT TUTOR */}
-      <section className="py-24 bg-muted/20">
+      {/* 4. WHY DRONA IQ EXISTS */}
+      <section className="py-24 md:py-48 bg-muted/20 relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-20">
-            <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Elite Matching Engine</Badge>
-            <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Find the <span className="text-accent italic">Perfect Tutor</span></h2>
-            <p className="text-xl text-muted-foreground font-light">Tailored Home Mentorship for every grade and goal in Dehradun.</p>
+          <div className="grid lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
+            <div className="space-y-12">
+              <div className="space-y-6">
+                <Badge className="bg-accent text-primary border-none uppercase font-extrabold tracking-[0.3em] text-[10px] px-6 py-2">The Mission</Badge>
+                <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-[0.9] tracking-tighter">Why We <br/> <span className="text-accent italic">Started.</span></h2>
+              </div>
+              <div className="space-y-10 text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
+                <p className="border-l-4 border-accent pl-8 py-2 italic bg-white shadow-sm rounded-r-2xl">
+                  "Most coaching centers are factories. They teach chapters, not children. They focus on averages, not potential."
+                </p>
+                <p>
+                  Drona IQ was founded in Dehradun to solve one critical problem: The lack of **individual tracking** and **emotional mentorship** in school education.
+                </p>
+                <p>
+                  Every child has a unique learning pace. By combining military-grade discipline from DrDA with modern AI diagnostics, we ensure no student is left behind.
+                </p>
+              </div>
+              <div className="flex pt-6">
+                <Link href="/about">
+                  <Button className="h-20 px-12 bg-primary text-white font-bold uppercase tracking-widest rounded-2xl shadow-xl hover:scale-105 transition-all">Learn Our Full Story</Button>
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-accent rounded-[6rem] rotate-3 opacity-20 -z-10"></div>
+              <Image 
+                src="https://picsum.photos/seed/drona_found/1200/1200" 
+                width={1200} 
+                height={1200} 
+                alt="Drona IQ Mission" 
+                className="rounded-[5rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute -bottom-10 -right-10 glass p-10 rounded-[3rem] shadow-2xl max-w-xs border-white/20">
+                <p className="text-4xl font-extrabold text-primary tracking-tighter mb-2">99.2%</p>
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Parent Satisfaction Index</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. LETTER TO PARENTS */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <Card className="border-none shadow-[0_50px_100px_rgba(11,19,43,0.1)] rounded-[4rem] overflow-hidden bg-[#fafafa]">
+            <CardContent className="p-16 md:p-32 space-y-16">
+              <div className="flex justify-between items-center border-b pb-12 border-primary/5">
+                <div className="space-y-1">
+                  <p className="text-[10px] font-bold uppercase text-accent tracking-[0.4em]">Official Statement</p>
+                  <h3 className="text-3xl font-extrabold font-headline uppercase text-primary tracking-tight">A Letter to Parents</h3>
+                </div>
+                <Quote className="h-12 w-12 text-primary opacity-20" />
+              </div>
+              <div className="space-y-10 text-xl md:text-2xl text-primary/80 font-light leading-relaxed">
+                <p>Dear Parent,</p>
+                <p>We know your struggle. You want the best for your child, but the current education system feels like a maze. You worry about their **concentration**, their **discipline**, and their **future** in a competitive world.</p>
+                <p>At Drona IQ, we don't just see a student ID; we see a legacy. We are not a tuition center. We are an **Ecosystem of Success**. We provide the mentorship your child needs to build not just great marks, but a great character.</p>
+                <p>Trust us to be the bridge between their potential and their career.</p>
+                <div className="pt-10 flex flex-col gap-2">
+                  <p className="font-bold text-primary text-2xl uppercase">Drona IQ Core Team</p>
+                  <p className="text-accent font-bold uppercase tracking-widest text-xs">Architecting Futures in Dehradun</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* 6. PROGRAMMES BY CLASS */}
+      <section className="py-24 md:py-48 bg-[#f8f9fa] overflow-hidden">
+        <div className="container mx-auto px-4">
+           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Academic Universe</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Programmes <br/> <span className="text-accent italic">By Class</span></h2>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">From foundation builders to career architects—tailored pathways for every grade.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { c: "Class 1–5", s: "All Primary Subjects", e: "5+ Years", b: "Foundation Building", id: "t1" },
-              { c: "Class 6–8", s: "Math, Sci, Eng, SST", e: "7+ Years", b: "Conceptual Clarity", id: "t2" },
-              { c: "Class 9–10", s: "Boards Intensive", e: "10+ Years", b: "95%+ Score Target", id: "t3" },
-              { c: "Class 11 Sci", s: "Phy, Chem, Math/Bio", e: "8+ Years", b: "JEE/NEET Prep", id: "t4" },
-              { c: "Class 11 Com", s: "Accounts, Eco, BST", e: "6+ Years", b: "CA Foundation", id: "t5" }
+              { id: 'c5', c: "Class 5–8", s: "Math, Sci, Eng, SST", goal: "Elite secondary foundation.", desc: "Focusing on conceptual clarity and developing a love for problem solving." },
+              { id: 'c9', c: "Class 9", s: "Advanced Board Prep", goal: "95%+ Board Readiness.", desc: "Transitioning to the high-stakes board pattern with rigorous testing." },
+              { id: 'c10', c: "Class 10", s: "Boards Intensive", goal: "School Topper Merit.", desc: "Maximum scoring strategy and psychological exam-readiness training." },
+              { id: 'c11s', c: "Class 11 Science", s: "Phy, Chem, Math/Bio", goal: "Competitive Exam Baseline.", desc: "Bridging the massive gap between Class 10 and 11 Science depth." },
+              { id: 'c11c', c: "Class 11 Commerce", s: "Accounts, Eco, BST", goal: "Professional Stream Mastery.", desc: "Analytical accounts mastery and business philosophy development." },
+              { id: 'c12', c: "Class 12 Boards", s: "Full Career Prep", goal: "Apex University Entry.", desc: "The final push for absolute academic excellence and college admissions." }
             ].map((item, i) => (
-              <Card key={i} className="border-none shadow-xl rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 bg-white">
-                <div className="relative h-48 bg-muted">
-                  <Image src={`https://picsum.photos/seed/dronatutor_${item.id}/600/400`} fill alt={item.c} className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4"><Badge className="bg-accent text-primary border-none text-[8px] font-bold uppercase">{item.c}</Badge></div>
+              <Card key={i} className="border-none shadow-2xl rounded-[4rem] overflow-hidden group hover:-translate-y-4 transition-all duration-700 bg-white">
+                <div className="relative h-80 bg-muted overflow-hidden">
+                  <Image src={`https://picsum.photos/seed/prog_${item.id}/1200/800`} fill alt={item.c} className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+                  <div className="absolute bottom-10 left-10"><Badge className="bg-accent text-primary border-none text-[10px] font-bold uppercase tracking-widest px-4 py-2">{item.c}</Badge></div>
                 </div>
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="text-xl font-bold text-primary uppercase">{item.c} Tutor</h4>
-                  <div className="space-y-2 text-xs font-bold text-muted-foreground uppercase tracking-tight">
-                    <p className="flex items-center gap-2"><BookOpen className="h-3 w-3 text-accent" /> {item.s}</p>
-                    <p className="flex items-center gap-2"><Clock className="h-3 w-3 text-accent" /> {item.e} Exp.</p>
+                <CardContent className="p-12 space-y-8">
+                  <div className="space-y-4">
+                    <h4 className="text-3xl font-extrabold text-primary uppercase tracking-tight">{item.c} Excellence</h4>
+                    <p className="text-lg text-muted-foreground font-light leading-relaxed">{item.desc}</p>
                   </div>
-                  <p className="text-[10px] bg-primary/5 p-2 rounded-lg text-primary font-bold italic">"{item.b}"</p>
-                  <Link href="/admissions" className="block pt-2">
-                    <Button className="w-full h-11 bg-primary text-white group-hover:bg-accent group-hover:text-primary transition-colors uppercase font-bold text-[10px] tracking-widest rounded-xl">Book Free Demo</Button>
+                  <div className="space-y-4 border-t border-primary/5 pt-8">
+                    <div className="flex items-center gap-4 text-sm font-bold text-primary uppercase tracking-wider">
+                      <Zap className="h-5 w-5 text-accent" /> {item.s}
+                    </div>
+                    <div className="flex items-center gap-4 text-sm font-bold text-primary uppercase tracking-wider">
+                      <CheckCircle2 className="h-5 w-5 text-green-500" /> {item.goal}
+                    </div>
+                  </div>
+                  <Link href="/admissions" className="block pt-4">
+                    <Button className="w-full h-16 bg-primary text-white group-hover:bg-accent group-hover:text-primary transition-colors uppercase font-bold text-xs tracking-widest rounded-2xl shadow-xl">Explore Programme</Button>
                   </Link>
                 </CardContent>
               </Card>
@@ -297,306 +381,185 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2: AREAS WE SERVE */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
-            <div className="space-y-6 max-w-2xl">
-              <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Hyper-Local Network</Badge>
-              <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Verified Tutors <br/> in <span className="text-accent italic">Your Area</span></h2>
-            </div>
-            <p className="text-xl text-muted-foreground font-light max-w-md">Our network covers 98% of Dehradun, ensuring a verified mentor is never more than 15 minutes away.</p>
+      {/* 7. PARENTS COMMAND CENTER */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">OS PREVIEW</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Parents' <br/> <span className="text-accent italic">Command Center.</span></h2>
+            <p className="text-xl text-muted-foreground font-light">Zero blind spots. Total visibility into your child's academic heartbeat.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              "Sahastradhara Road", "IT Park", "Rajpur Road", "Jakhan", "Ballupur"
-            ].map((loc, i) => (
-              <Card key={i} className="border-none shadow-lg rounded-2xl p-6 hover:bg-primary hover:text-white transition-all duration-500 group cursor-pointer border border-primary/5">
-                <MapPin className="h-8 w-8 text-accent mb-4 group-hover:scale-110 transition-transform" />
-                <h4 className="text-lg font-bold font-headline uppercase leading-tight mb-2">{loc}</h4>
-                <p className="text-[10px] uppercase font-bold text-muted-foreground group-hover:text-white/60 tracking-widest">24+ Local Tutors</p>
-                <div className="mt-4 pt-4 border-t group-hover:border-white/10 flex items-center justify-between">
-                  <span className="text-[8px] font-bold uppercase tracking-widest">Fast Matching</span>
-                  <ArrowUpRight className="h-4 w-4 text-accent" />
+          <div className="relative group">
+            <div className="absolute -inset-10 bg-accent/10 rounded-[6rem] blur-[80px] opacity-40 -z-10 group-hover:opacity-60 transition-opacity"></div>
+            <Card className="border-none shadow-2xl rounded-[5rem] overflow-hidden bg-white border border-primary/5">
+              <div className="grid lg:grid-cols-3">
+                <div className="lg:col-span-2 relative h-[500px] md:h-[700px] bg-muted/20">
+                   <Image src="https://picsum.photos/seed/drona_dash_v2/1600/1200" fill alt="Dashboard UI" className="object-cover" />
+                   <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent"></div>
                 </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: HOW IT WORKS */}
-      <section className="py-24 bg-primary text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-24 opacity-5 pointer-events-none"><Milestone className="h-[400px] w-[400px]" /></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-             <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Success Protocol</Badge>
-             <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">Your Journey to <br/> <span className="text-accent italic">Excellence</span></h2>
-          </div>
-
-          <div className="grid md:grid-cols-6 gap-8 relative">
-            {[
-              { s: "Step 1", t: "Submit Inquiry", d: "Enter child's details.", i: MessageSquare },
-              { s: "Step 2", t: "Counsellor Call", d: "Strategic discussion.", i: PhoneCall },
-              { s: "Step 3", t: "Assessment", d: "Identify gap areas.", i: BrainCircuit },
-              { s: "Step 4", t: "Tutor Matching", d: "Pedagogy alignment.", i: ScanSearch },
-              { s: "Step 5", t: "Free Demo", d: "Zero-risk session.", i: Play },
-              { s: "Step 6", t: "Learning Starts", d: "OS based tracking.", i: Rocket }
-            ].map((step, i) => (
-              <div key={i} className="relative space-y-6 text-center group">
-                <div className="bg-white/10 backdrop-blur-md p-6 rounded-full w-20 h-20 mx-auto flex items-center justify-center border border-white/20 group-hover:bg-accent group-hover:text-primary transition-all shadow-2xl relative z-10">
-                   <step.i className="h-8 w-8" />
-                </div>
-                <div className="space-y-2">
-                  <p className="text-accent font-bold uppercase tracking-widest text-[10px]">{step.s}</p>
-                  <h4 className="text-lg font-extrabold font-headline uppercase leading-tight">{step.t}</h4>
-                  <p className="text-xs text-white/40 font-light">{step.d}</p>
+                <div className="p-12 md:p-20 space-y-12 bg-[#fafafa]">
+                   <div className="space-y-10">
+                     {[
+                       { t: "Attendance Logs", d: "Track daily presence with 100% accuracy.", i: Calendar },
+                       { t: "Weekly Marks", d: "Visual charts for every subject quiz.", i: BarChart3 },
+                       { t: "Teacher Remarks", d: "Direct qualitative feedback from mentors.", i: MessageSquare },
+                       { t: "AI Goal Tracking", d: "Real-time updates on syllabus completion.", i: Target }
+                     ].map((item, i) => (
+                       <div key={i} className="flex gap-8 items-start group/item">
+                         <div className="bg-white p-5 rounded-2xl text-accent shadow-sm group-hover/item:bg-primary group-hover/item:text-accent transition-colors"><item.i className="h-6 w-6" /></div>
+                         <div className="space-y-1">
+                           <h4 className="text-xl font-extrabold text-primary uppercase tracking-tight">{item.t}</h4>
+                           <p className="text-muted-foreground text-sm font-light leading-relaxed">{item.d}</p>
+                         </div>
+                       </div>
+                     ))}
+                   </div>
+                   <Link href="/parent-dashboard">
+                     <Button className="w-full h-16 bg-primary text-white font-bold uppercase text-[10px] tracking-[0.3em] rounded-2xl shadow-xl">Launch Live Dashboard</Button>
+                   </Link>
                 </div>
               </div>
-            ))}
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: MEET OUR EXPERT TUTORS */}
-      <section className="py-24 bg-muted/20">
+      {/* 8. BEYOND MARKS: BUILDING BETTER HUMAN BEINGS */}
+      <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Verified Faculty</Badge>
-            <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase tracking-tighter">Dehradun's <span className="text-accent italic">Elite Educators</span></h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[1, 2, 3, 4].map((id) => (
-              <Card key={id} className="border-none shadow-2xl rounded-[3rem] overflow-hidden group bg-white">
-                <div className="relative h-64 bg-muted overflow-hidden">
-                  <Image src={`https://picsum.photos/seed/dronafaculty_${id}/600/800`} fill alt="Tutor" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-4 right-4"><Badge className="bg-green-500 text-white border-none px-3 py-1 flex items-center gap-1 shadow-xl"><ShieldCheck className="h-3 w-3" /> DIQ Verified</Badge></div>
-                </div>
-                <CardContent className="p-8 space-y-6">
-                  <div className="space-y-1">
-                    <h4 className="text-2xl font-bold text-primary uppercase">Expert Mentor #{id}</h4>
-                    <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">M.Sc Physics • B.Ed</p>
-                  </div>
-                  <Button variant="outline" className="w-full border-primary/10 text-primary hover:bg-primary hover:text-white uppercase font-bold text-[10px] tracking-widest h-12 rounded-2xl">Book Demo Session</Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 10: FAQ */}
-      <section className="py-24 bg-muted/20 overflow-hidden relative">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Knowledge Hub</Badge>
-            <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase tracking-tighter">Everything You <span className="text-accent italic">Need to Know</span></h2>
-          </div>
-
-          <Accordion type="single" collapsible className="space-y-4">
-             {[
-               { q: "What are home tuition fees in Dehradun?", a: "Drona IQ offers personalized fee structures based on the tutor's experience level, class, and subjects. Visit our Om Tower Hub for a detailed quote." },
-               { q: "Is a free demo class available?", a: "Yes. Every student is entitled to one 100% free demo class with a verified subject specialist." },
-               { q: "Can I change the tutor if not satisfied?", a: "Absolutely. We offer a 'No-Questions-Asked' tutor replacement policy within 48 hours." },
-               { q: "Are female tutors available for home sessions?", a: "Yes, we have a large network of verified female subject specialists for all areas in Dehradun." }
-             ].map((faq, i) => (
-               <AccordionItem key={i} value={`faq-${i}`} className="bg-white border shadow-sm rounded-[2rem] px-10 overflow-hidden">
-                 <AccordionTrigger className="text-xl font-bold font-headline text-primary uppercase text-left hover:no-underline py-10">{faq.q}</AccordionTrigger>
-                 <AccordionContent className="text-lg text-muted-foreground font-light leading-relaxed pb-12">{faq.a}</AccordionContent>
-               </AccordionItem>
-             ))}
-          </Accordion>
-        </div>
-      </section>
-
-      {/* SECTION 14: OUR COMMITMENT (FOUNDER) */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-32 items-center">
-            <div className="space-y-16">
-               <div className="space-y-6 text-left">
-                  <Badge className="bg-primary/5 text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">A Note from the Founder</Badge>
-                  <h2 className="text-4xl md:text-[9rem] font-extrabold text-primary uppercase leading-[0.85] tracking-tighter">Our <br/> <span className="text-accent italic underline decoration-accent/20 underline-offset-8">Commitment</span></h2>
-               </div>
-               <div className="space-y-12 text-xl md:text-3xl text-muted-foreground font-light leading-relaxed italic">
-                  <p>"We believe that every child in Dehradun deserves more than just a tuition teacher. They deserve a mentor and a success system."</p>
-               </div>
-            </div>
-            <div className="relative group">
-               <div className="absolute inset-0 bg-primary rounded-[6rem] rotate-6 group-hover:rotate-0 transition-transform duration-1000 -z-10"></div>
-               <Card className="p-16 md:p-32 bg-white text-primary rounded-[6rem] shadow-2xl border-none space-y-12 text-center relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none group-hover:scale-110 transition-transform"><Quote className="h-64 w-64 text-primary" /></div>
-                  <h3 className="text-4xl md:text-6xl font-extrabold font-headline uppercase leading-none relative z-10">Trust is <br/> <span className="text-accent italic">Architected</span></h3>
-               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DEFENCE ADVANTAGE SECTION */}
-      <section className="py-24 bg-primary text-white overflow-hidden relative">
-        <div className="container mx-auto px-4 text-center space-y-16">
-          <div className="space-y-6">
-            <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">DrDA Legacy</Badge>
-            <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">The Defence <br/> <span className="text-accent italic">Advantage</span></h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              { t: "Officer Mindset", d: "Instilling leadership and courage." },
-              { t: "Elite Discipline", d: "Military-grade academic scheduling." },
-              { t: "Character Building", d: "Developing integrity and patriotism." }
-            ].map((item, i) => (
-              <Card key={i} className="bg-white/5 border-white/10 p-10 rounded-[3rem] text-center space-y-6 hover:bg-white/10 transition-all">
-                <Shield className="h-12 w-12 text-accent mx-auto" />
-                <h4 className="text-2xl font-bold font-headline uppercase">{item.t}</h4>
-                <p className="text-white/60">{item.d}</p>
-              </Card>
-            ))}
-          </div>
-          <Link href="https://droneshwardefenceacademy.com" target="_blank">
-            <Button className="h-16 px-12 bg-accent text-primary font-bold uppercase tracking-widest rounded-2xl">Visit Official Academy Website</Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* NEW SECTION 15: BEYOND MARKS */}
-      <section id="beyond-marks" className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Holistic Transformation</Badge>
-            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Beyond Marks: <br/> <span className="text-accent italic underline decoration-accent/20 underline-offset-8">Building Humans</span></h2>
-            <p className="text-xl text-muted-foreground font-light">Drona IQ is not only an academic platform. We develop responsible, confident and disciplined students for life.</p>
+          <div className="max-w-4xl mx-auto text-center space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-[0.4em] text-[10px] px-6 py-2">The DIQ DNA</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">Beyond Marks: <br/> <span className="text-accent italic">Building Humans.</span></h2>
+            <p className="text-xl text-white/60 font-light">We focus on 10 critical life-pillars that determine long-term success beyond school exams.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {[
-              { t: "Character Building", i: Shield, d: "Ethics and integrity at the core." },
-              { t: "Discipline & Responsibility", i: ListChecks, d: "Taking ownership of tasks." },
-              { t: "Leadership Development", i: Trophy, d: "Leading by example." },
-              { t: "Confidence Building", i: Sunrise, d: "Self-belief and public speaking." },
-              { t: "Communication Skills", i: MessageSquare, d: "Articulating thoughts clearly." },
-              { t: "Digital Discipline", i: Monitor, d: "Responsible screen time usage." },
-              { t: "Respect for All", i: Heart, d: "Respecting parents and teachers." },
-              { t: "Time Management", i: Clock, d: "Mastering the 24-hour cycle." },
-              { t: "Goal Setting", i: Target, d: "Visioning the 5-year future." },
-              { t: "Positive Mindset", i: Smile, d: "Resilience in face of failure." }
+              { t: "Character Building", i: Shield, d: "Ethics and integrity at the core of learning." },
+              { t: "Discipline", i: ListChecks, d: "Military-grade academic scheduling." },
+              { t: "Leadership", i: Trophy, d: "Developing officer-like decision making." },
+              { t: "Confidence", i: Sunrise, d: "Building self-belief through mastery." },
+              { t: "Communication", i: MessageSquare, d: "Articulating complex thoughts clearly." },
+              { t: "Digital Discipline", i: Monitor, d: "Responsible and focused screen usage." },
+              { t: "Respect", i: Heart, d: "Valuing teachers, parents, and society." },
+              { t: "Time Management", i: Clock, d: "Mastering the 24-hour cycle efficiently." },
+              { t: "Goal Setting", i: Target, d: "Visioning the 5-year future roadmap." },
+              { t: "Positive Mindset", i: Smile, d: "Resilience in the face of challenges." }
             ].map((card, i) => (
-              <Card key={i} className="border-none shadow-xl rounded-[2.5rem] p-8 space-y-6 bg-muted/20 hover:bg-primary hover:text-white transition-all duration-500 group">
-                <div className="bg-primary/5 p-4 w-fit rounded-2xl group-hover:bg-white/10 transition-colors"><card.i className="h-8 w-8 text-primary group-hover:text-accent" /></div>
-                <h4 className="text-xl font-bold font-headline uppercase leading-tight">{card.t}</h4>
-                <p className="text-xs text-muted-foreground group-hover:text-white/60">{card.d}</p>
+              <Card key={i} className="border-none shadow-2xl rounded-[3rem] p-10 space-y-8 bg-white/5 hover:bg-accent transition-all duration-700 group cursor-default text-white">
+                <div className="bg-white/10 p-6 w-fit rounded-3xl group-hover:bg-white group-hover:text-primary transition-colors">
+                  <card.i className="h-10 w-10 text-accent group-hover:text-primary" />
+                </div>
+                <div className="space-y-4">
+                  <h4 className="text-2xl font-bold font-headline uppercase leading-tight">{card.t}</h4>
+                  <p className="text-sm text-white/50 group-hover:text-primary/70 leading-relaxed">{card.d}</p>
+                </div>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* NEW SECTION 16: LIFE SKILLS */}
-      <section id="life-skills" className="py-24 bg-muted/20 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Future Readiness</Badge>
-            <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase tracking-tighter">Life Skills <span className="text-accent italic">Programme</span></h2>
+      {/* 9. LEARNING JOURNEY TIMELINE */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Success Blueprint</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Learning <br/> <span className="text-accent italic">Journey.</span></h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {[
-              { t: "Public Speaking", i: Mic },
-              { t: "Presentation", i: Play },
-              { t: "Interview Skills", i: Users },
-              { t: "Critical Thinking", i: Brain },
-              { t: "Problem Solving", i: Zap },
-              { t: "Teamwork", i: Users },
-              { t: "Decision Making", i: Scale },
-              { t: "Emotional Intelligence", i: Heart },
-              { t: "Financial Awareness", i: Calculator },
-              { t: "Digital Awareness", i: Globe }
-            ].map((skill, i) => (
-              <div key={i} className="text-center space-y-4 group">
-                <div className="bg-white p-10 rounded-full shadow-2xl mx-auto w-fit group-hover:bg-accent transition-colors duration-500">
-                  <skill.i className="h-10 w-10 text-primary group-hover:text-white" />
+
+          <div className="relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-primary/10 hidden md:block"></div>
+            <div className="space-y-32 relative">
+              {[
+                { s: "Foundation Stage", c: "Class 5–8", d: "Building core cognitive strength, reading habits, and basic mathematical logic.", i: Sprout, pos: "left" },
+                { s: "Excellence Stage", c: "Class 9–10", d: "Board pattern orientation, rigorous concept testing, and secondary mastery.", i: Rocket, pos: "right" },
+                { s: "Preparation Stage", c: "Class 11–12", d: "Career-specific depth, competitive exam tracking, and specialization.", i: Target, pos: "left" },
+                { s: "Achievement Stage", c: "Competitive Exams", d: "Final push for NDA, JEE, NEET, CUET with rank-focused analytics.", i: Trophy, pos: "right" }
+              ].map((step, i) => (
+                <div key={i} className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 ${step.pos === 'right' ? 'md:flex-row-reverse' : ''}`}>
+                  <div className="flex-1 space-y-6 text-center md:text-left">
+                    <Badge variant="outline" className="text-accent border-accent/20 px-4 py-1 text-[10px] font-bold uppercase tracking-widest">{step.s}</Badge>
+                    <h4 className="text-4xl md:text-6xl font-extrabold text-primary uppercase tracking-tighter">{step.c}</h4>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed max-w-md mx-auto md:mx-0">{step.d}</p>
+                  </div>
+                  <div className="relative z-10">
+                    <div className="h-24 w-24 rounded-full bg-primary flex items-center justify-center shadow-2xl border-4 border-white">
+                      <step.i className="h-10 w-10 text-accent" />
+                    </div>
+                  </div>
+                  <div className="flex-1 hidden md:block"></div>
                 </div>
-                <p className="font-bold uppercase text-[10px] tracking-widest text-primary">{skill.t}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* NEW SECTION 17: STUDENT VALUES */}
-      <section id="student-values" className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-            <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Our Foundation</Badge>
-            <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase tracking-tighter">Our Student <span className="text-accent italic">Values</span></h2>
+      {/* 10. LOCAL SEO & FAQ */}
+      <section className="py-24 md:py-48 bg-muted/30 overflow-hidden">
+        <div className="container mx-auto px-4 max-w-5xl">
+           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Knowledge Hub</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Everything You <br/> <span className="text-accent italic">Need to Know.</span></h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
+
+          <Accordion type="single" collapsible className="space-y-6">
+            <p className="text-[10px] font-bold text-accent uppercase tracking-[0.4em] mb-4">Admissions & Fees</p>
             {[
-              "Integrity", "Honesty", "Respect", "Discipline", "Patriotism", "Leadership", "Kindness", "Responsibility", "Hard Work", "Self Belief"
-            ].map((val, i) => (
-              <div key={i} className="px-10 py-6 bg-primary text-white rounded-[2rem] font-headline font-extrabold uppercase tracking-[0.2em] text-sm md:text-xl shadow-2xl hover:bg-accent transition-colors cursor-default">
-                {val}
-              </div>
+              { q: "How do I enroll my child in Drona IQ?", a: "Enrollment starts with a strategic counselor call followed by an AI Academic Health Check. Visit our Admissions page to begin." },
+              { q: "What is the fee structure for Class 10 Boards?", a: "Fees are personalized based on the depth of support required. Contact our Rajpur Road hub for a detailed quote." },
+              { q: "Do you offer scholarship tests?", a: "Yes, we conduct the Drona Merit Scholarship Test every Sunday. Top performers get up to 50% fee waivers." },
+              { q: "Is there a trial period for new students?", a: "We offer one 100% free demo class with our verified subject specialists before any formal enrollment." },
+              { q: "Can I pay fees in installments?", a: "Yes, we offer flexible monthly and quarterly payment cycles for parent convenience." }
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`ad-faq-${i}`} className="bg-white border shadow-sm rounded-[2rem] px-10 overflow-hidden">
+                <AccordionTrigger className="text-lg md:text-xl font-extrabold font-headline text-primary uppercase text-left hover:no-underline py-10">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-lg text-muted-foreground font-light leading-relaxed pb-12">{faq.a}</AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
-        </div>
-      </section>
 
-      {/* NEW SECTION 18: SOCIAL RESPONSIBILITY */}
-      <section id="humanity" className="py-24 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-accent/5 pointer-events-none"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
-            <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Humanity First</Badge>
-            <h2 className="text-4xl md:text-7xl font-extrabold uppercase tracking-tighter leading-none">Social <br/> <span className="text-accent italic">Responsibility</span></h2>
-          </div>
-          <div className="grid md:grid-cols-4 gap-12">
+            <p className="text-[10px] font-bold text-accent uppercase tracking-[0.4em] mb-4 mt-12">Home Tuition & Safety</p>
             {[
-              { t: "Helping Others", i: HandHeart },
-              { t: "Community Service", i: Globe },
-              { t: "National Pride", i: Flag },
-              { t: "Responsible Citizenship", i: ShieldCheck }
-            ].map((item, i) => (
-              <div key={i} className="space-y-4 text-center">
-                <item.i className="h-12 w-12 text-accent mx-auto" />
-                <h4 className="text-xl font-bold font-headline uppercase">{item.t}</h4>
-              </div>
+              { q: "How are your home tutors verified?", a: "Every tutor undergoes a 5-tier screening: ID verification, academic testing, background check, psychometric analysis, and demo approval." },
+              { q: "Are female tutors available for all areas in Dehradun?", a: "Yes, we have a large network of verified female subject specialists covering Sahastradhara Road, Jakhan, and beyond." },
+              { q: "What if the tutor is not a good fit for my child?", a: "We offer a 'No-Questions-Asked' tutor replacement policy within 48 hours to ensure compatibility." },
+              { q: "Does Drona IQ monitor home tuition sessions?", a: "Yes, our academic coordinators track progress via the Student OS and conduct regular parent-teacher reviews." },
+              { q: "Which areas in Dehradun do you cover?", a: "We serve 98% of Dehradun including Rajpur Road, Ballupur, Prem Nagar, IT Park, and Clement Town." }
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`ht-faq-${i}`} className="bg-white border shadow-sm rounded-[2rem] px-10 overflow-hidden">
+                <AccordionTrigger className="text-lg md:text-xl font-extrabold font-headline text-primary uppercase text-left hover:no-underline py-10">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-lg text-muted-foreground font-light leading-relaxed pb-12">{faq.a}</AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
 
-      {/* NEW SECTION 19: MESSAGE TO PARENTS */}
-      <section id="parents-message" className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-             <Card className="border-none shadow-[0_50px_100px_rgba(11,19,43,0.1)] rounded-[4rem] overflow-hidden bg-muted/20">
-               <div className="p-16 md:p-32 grid lg:grid-cols-2 gap-24 items-center">
-                  <div className="space-y-12">
-                    <div className="space-y-6">
-                      <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">To Dehradun Parents</Badge>
-                      <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-[0.9] tracking-tighter">Preparing for <br/> <span className="text-accent italic underline decoration-accent/20 underline-offset-8">Life, Not Exams.</span></h2>
-                    </div>
-                    <div className="space-y-8 text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
-                      <p>"Ye sirf tuition nahi hai, ye aapke bachche ke future ka complete ecosystem hai."</p>
-                      <p>We focus on building character, confidence, and discipline alongside academics. Our mission is to transform students into leaders of tomorrow.</p>
-                    </div>
-                    <Link href="/admissions">
-                      <Button className="h-20 px-12 bg-primary text-white font-bold uppercase tracking-widest rounded-2xl shadow-2xl">Start the Journey Today</Button>
-                    </Link>
-                  </div>
-                  <div className="relative group">
-                    <div className="absolute -inset-20 bg-accent/20 rounded-full blur-[150px] opacity-30 animate-pulse"></div>
-                    <Image src="https://picsum.photos/seed/dronaparents/1200/1200" width={1200} height={1200} alt="Parent Connection" className="rounded-[4rem] shadow-2xl relative z-10 grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" data-ai-hint="happy parent child" />
-                  </div>
-               </div>
-             </Card>
-          </div>
+      {/* 11. FINAL ADMISSION CTA */}
+      <section className="py-32 bg-white text-primary text-center relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-6xl">
+           <div className="bg-[#f8f9fa] p-16 md:p-32 rounded-[5rem] shadow-2xl border border-primary/5 space-y-16">
+              <div className="space-y-6">
+                <Badge className="bg-primary text-white border-none uppercase font-bold tracking-[0.4em] text-[10px] px-6 py-2">Success Starts Here</Badge>
+                <h2 className="text-5xl md:text-8xl font-extrabold uppercase tracking-tighter leading-none">Ready To Transform <br/> <span className="text-accent italic">Your Results?</span></h2>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+                <Link href="/admissions">
+                  <Button className="h-24 px-16 bg-primary text-white font-headline text-xl rounded-[2rem] shadow-2xl uppercase tracking-widest font-extrabold hover:scale-105 transition-all">Enroll Now <ArrowRight className="ml-3 h-6 w-6 text-accent" /></Button>
+                </Link>
+                <Link href="tel:+917878553385">
+                  <Button variant="outline" className="h-24 px-16 border-primary/20 text-primary font-headline text-xl rounded-[2rem] shadow-xl uppercase tracking-widest font-extrabold hover:bg-muted/50 transition-all flex items-center gap-3">
+                    <Phone className="h-6 w-6 text-accent" /> Talk To Counselor
+                  </Button>
+                </Link>
+              </div>
+           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* FOOTER (MEGA) */}
       <footer className="py-32 md:py-64 bg-[#05070a] border-t border-white/5 text-white/40 overflow-hidden relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-24">
@@ -611,25 +574,48 @@ export default function HomePage() {
                 </div>
               </Link>
               <p className="text-2xl leading-relaxed font-light max-w-sm">Dehradun's premier Student Success Ecosystem. Combining military discipline with neural diagnostics.</p>
+              <div className="flex gap-6">
+                <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-all cursor-pointer"><Youtube className="h-6 w-6" /></div>
+                <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-all cursor-pointer"><MessageCircle className="h-6 w-6" /></div>
+                <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-all cursor-pointer"><Target className="h-6 w-6" /></div>
+              </div>
             </div>
             <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-24">
               <div className="space-y-12 text-left">
                  <h4 className="font-bold text-white uppercase tracking-[0.4em] text-[12px] border-b border-accent/20 w-fit pb-4">Academic OS</h4>
                  <ul className="space-y-6 text-sm md:text-lg font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors cursor-pointer">
-                   <li><Link href="/student-dashboard">Scholar Hub</Link></li>
+                   <li><Link href="/student">Scholar Hub</Link></li>
                    <li><Link href="/parent-dashboard">Parent Monitor</Link></li>
                    <li><Link href="/academic-health-check">AI Diagnostics</Link></li>
+                   <li><Link href="/career-guidance">Dream Roadmap</Link></li>
                  </ul>
               </div>
+              <div className="space-y-12 text-left">
+                 <h4 className="font-bold text-white uppercase tracking-[0.4em] text-[12px] border-b border-accent/20 w-fit pb-4">Local SEO</h4>
+                 <ul className="space-y-6 text-sm md:text-lg font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors cursor-pointer">
+                   <li><Link href="/tuition-in/rajpur-road">Rajpur Road</Link></li>
+                   <li><Link href="/tuition-in/jakhan">Jakhan Hub</Link></li>
+                   <li><Link href="/tuition-in/ballupur">Ballupur Area</Link></li>
+                   <li><Link href="/tuition-in/it-park">IT Park Hub</Link></li>
+                 </ul>
+              </div>
+              <div className="space-y-12 text-left">
+                 <h4 className="font-bold text-white uppercase tracking-[0.4em] text-[12px] border-b border-accent/20 w-fit pb-4">Admissions</h4>
+                 <ul className="space-y-6 text-sm md:text-lg font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors cursor-pointer">
+                   <li><Link href="/admissions">Apply Online</Link></li>
+                   <li><Link href="/results">Success Wall</Link></li>
+                   <li><Link href="/results">Results Log</Link></li>
+                   <li><Link href="/contact">Contact Hub</Link></li>
+                 </ul>
+              </div>
+              <div className="space-y-12 text-left">
+                 <h4 className="font-bold text-white uppercase tracking-[0.4em] text-[12px] border-b border-accent/20 w-fit pb-4">Contact</h4>
+                 <div className="space-y-8">
+                    <p className="text-sm md:text-lg font-bold uppercase leading-relaxed">+91 78785 53385<br/>+91 63990 00440</p>
+                    <p className="text-xs md:text-sm font-bold uppercase leading-relaxed text-white/30 tracking-widest">3rd Floor, Om Tower, Sahastradhara Road, Dehradun</p>
+                 </div>
+              </div>
             </div>
-          </div>
-          <div className="pt-32 md:pt-64 text-center space-y-12 border-t border-white/5 mt-32 md:mt-64">
-             <div className="flex flex-col md:flex-row justify-center gap-12 items-center">
-                <p className="text-[12px] md:text-[14px] font-bold uppercase tracking-[0.6em] text-white/20">© 2024 Drona IQ Student Success OS</p>
-                <div className="flex gap-10 grayscale opacity-20">
-                   <div className="font-headline font-extrabold text-white text-xl uppercase tracking-tighter">DRDA Legacy</div>
-                </div>
-             </div>
           </div>
         </div>
       </footer>
@@ -657,43 +643,3 @@ export default function HomePage() {
   );
 }
 
-function Settings(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  )
-}
-
-function FlaskConical(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M10 2v8L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45L14 10V2" />
-      <path d="M8.5 2h7" />
-      <path d="M7 16h10" />
-    </svg>
-  )
-}
