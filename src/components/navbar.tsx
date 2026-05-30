@@ -17,7 +17,9 @@ import {
   ListChecks, 
   Phone, 
   MapPin, 
-  Clock 
+  Clock,
+  ShieldAlert,
+  UserCheck
 } from 'lucide-react';
 import { useState } from 'react';
 import { useUser, useAuth } from '@/firebase';
@@ -27,7 +29,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
@@ -53,7 +55,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* 1. TOP CONTACT STRIP (Managed separately from Nav) */}
+      {/* 1. TOP CONTACT STRIP */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-4 md:gap-8 overflow-hidden">
@@ -89,17 +91,44 @@ export function Navbar() {
             
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
-                Dashboards <ChevronDown className="h-3 w-3 text-accent" />
+                Ecosystem Portals <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
+              <DropdownMenuContent align="end" className="w-72 p-3 rounded-2xl border-none shadow-2xl bg-white">
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/student" className="flex items-center gap-3">
-                    <User className="h-4 w-4 text-primary" /> <span>Student Hub</span>
+                    <div className="bg-primary/5 p-2 rounded-lg text-primary"><User className="h-4 w-4" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xs uppercase">Student Hub</span>
+                      <span className="text-[8px] text-muted-foreground">Gamified Learning & XP</span>
+                    </div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/parent-dashboard" className="flex items-center gap-3">
-                    <Users className="h-4 w-4 text-accent" /> <span>Parent Portal</span>
+                    <div className="bg-accent/10 p-2 rounded-lg text-accent"><Users className="h-4 w-4" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xs uppercase">Parent Portal</span>
+                      <span className="text-[8px] text-muted-foreground">Live Progress Tracking</span>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="my-2" />
+                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                  <Link href="/tutor/dashboard" className="flex items-center gap-3">
+                    <div className="bg-blue-50 p-2 rounded-lg text-blue-600"><UserCheck className="h-4 w-4" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xs uppercase text-blue-700">Educator Portal</span>
+                      <span className="text-[8px] text-muted-foreground">Manage Marks & Mentorship</span>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 bg-red-50/50">
+                  <Link href="/admin" className="flex items-center gap-3">
+                    <div className="bg-red-100 p-2 rounded-lg text-red-600"><ShieldAlert className="h-4 w-4" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xs uppercase text-red-700">Admin Command</span>
+                      <span className="text-[8px] text-muted-foreground">Leads & System Controls</span>
+                    </div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -112,12 +141,12 @@ export function Navbar() {
               <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/revision-generator" className="flex items-center gap-3">
-                    <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs">AI Revision Pack</span>
+                    <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">AI Revision Pack</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/career-guidance" className="flex items-center gap-3">
-                    <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs">Career Predictor</span>
+                    <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Career Predictor</span>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -162,6 +191,9 @@ export function Navbar() {
              <Link href="/academic-health-check" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>AI Health Check</Link>
              <Link href="/home-tuition" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Home Tuition</Link>
              <Link href="/student" className="block p-4 bg-primary/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Scholar Hub</Link>
+             <Link href="/parent-dashboard" className="block p-4 bg-accent/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Parent Portal</Link>
+             <Link href="/tutor/dashboard" className="block p-4 bg-blue-50 rounded-2xl font-bold uppercase text-xs text-blue-700" onClick={() => setIsOpen(false)}>Educator Portal</Link>
+             <Link href="/admin" className="block p-4 bg-red-50 rounded-2xl font-bold uppercase text-xs text-red-700" onClick={() => setIsOpen(false)}>Admin Command</Link>
           </div>
         )}
       </nav>
