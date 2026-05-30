@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState } from 'react';
@@ -95,7 +94,7 @@ export default function AcademicHealthCheck() {
       <main className="container mx-auto px-4 py-12 max-w-5xl">
         <div className="text-center mb-16 space-y-4">
           <Badge className="bg-accent text-white border-none px-4 py-1 uppercase tracking-widest text-[10px] font-bold">Proprietary AI Engine</Badge>
-          <h1 className="text-4xl md:text-6xl font-extrabold font-headline text-primary">Academic Health Check</h1>
+          <h1 className="text-4xl md:text-6xl font-extrabold font-headline text-primary">Scholar Success Audit</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
             Drona IQ's AI analysis identifies learning gaps with 99.4% precision. Get your child's personalized improvement blueprint in seconds.
           </p>
@@ -222,7 +221,7 @@ export default function AcademicHealthCheck() {
                   {loading ? (
                     <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Analyzing...</>
                   ) : (
-                    <>Run AI Diagnostic <BrainCircuit className="ml-2 h-5 w-5" /></>
+                    <>Run AI Audit <BrainCircuit className="ml-2 h-5 w-5" /></>
                   )}
                 </Button>
               </CardFooter>
@@ -232,19 +231,18 @@ export default function AcademicHealthCheck() {
 
         {step === 3 && result && (
           <div className="space-y-12 animate-in fade-in slide-in-from-bottom duration-700">
-            {/* ... result view remains same ... */}
             <Card className="border-4 border-accent shadow-2xl bg-white overflow-hidden">
               <div className="navy-gradient p-12 text-white relative">
                 <div className="absolute top-0 right-0 p-8 opacity-20"><BrainCircuit className="h-32 w-32" /></div>
                 <div className="flex flex-col md:row justify-between items-start md:items-center gap-8 relative z-10">
                   <div className="space-y-2">
-                    <h2 className="text-4xl font-extrabold font-headline uppercase tracking-tighter">Academic Health Report</h2>
+                    <h2 className="text-4xl font-extrabold font-headline uppercase tracking-tighter">Success Audit Report</h2>
                     <p className="text-accent font-bold tracking-[0.2em] text-sm">GENERATED FOR: {formData.studentName.toUpperCase()}</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl flex items-center gap-4">
                     <div className="h-12 w-12 rounded-full bg-accent flex items-center justify-center text-white"><Star className="fill-current" /></div>
                     <div>
-                      <p className="text-xs font-bold uppercase text-white/60">Report Status</p>
+                      <p className="text-xs font-bold uppercase text-white/60">Audit Status</p>
                       <p className="text-lg font-bold font-headline">Validated by DIQ Core</p>
                     </div>
                   </div>
@@ -298,12 +296,12 @@ export default function AcademicHealthCheck() {
                 </div>
                 <div className="flex flex-col sm:row gap-4 w-full max-w-2xl">
                   <Button className="flex-1 py-7 h-auto font-headline uppercase tracking-widest font-bold">Schedule Free Consultation</Button>
-                  <Button variant="outline" className="flex-1 py-7 h-auto font-headline uppercase tracking-widest font-bold border-primary text-primary">Download Detailed PDF</Button>
+                  <Button variant="outline" className="flex-1 py-7 h-auto font-headline uppercase tracking-widest font-bold border-primary text-primary">Download Detailed Audit PDF</Button>
                 </div>
               </CardFooter>
             </Card>
             <div className="text-center">
-              <Button variant="ghost" onClick={() => {setResult(null); setStep(1);}} className="text-muted-foreground">Run Another Checkup</Button>
+              <Button variant="ghost" onClick={() => {setResult(null); setStep(1);}} className="text-muted-foreground">Run Another Audit</Button>
             </div>
           </div>
         )}

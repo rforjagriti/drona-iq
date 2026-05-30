@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Button } from '@/components/ui/button';
@@ -42,7 +41,7 @@ export function HeroSection() {
               </Link>
               <Link href="/academic-health-check">
                 <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-headline text-lg px-8 py-7 h-auto uppercase tracking-[0.2em] font-extrabold rounded-2xl backdrop-blur-xl group">
-                  AI Health Check <Sparkles className="ml-3 h-5 w-5 text-accent group-hover:rotate-12 transition-transform" />
+                  Run Success Audit <Sparkles className="ml-3 h-5 w-5 text-accent group-hover:rotate-12 transition-transform" />
                 </Button>
               </Link>
             </div>
