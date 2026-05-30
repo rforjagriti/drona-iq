@@ -2,10 +2,10 @@
 
 /**
  * Valid Firebase Configuration for Drona IQ
- * Verified with user-provided production credentials.
+ * Updated with user-provided API key.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyCln4rghaCCp-mqXtyL6WS8SIYVpT9YYnM",
+  apiKey: "AIzaSyCBVZxh4t9S9n9TAg4jFQPvnZWrPPNk0jg",
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",
