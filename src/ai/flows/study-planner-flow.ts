@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview AI Study Planner that generates personalized schedules.
+ * @fileOverview AI Study Planner (DEMO MODE).
  */
 
 import { ai } from '@/ai/genkit';
@@ -27,19 +27,20 @@ const StudyPlannerOutputSchema = z.object({
 export type StudyPlannerInput = z.infer<typeof StudyPlannerInputSchema>;
 export type StudyPlannerOutput = z.infer<typeof StudyPlannerOutputSchema>;
 
-const studyPlannerPrompt = ai.definePrompt({
-  name: 'studyPlannerPrompt',
-  input: { schema: StudyPlannerInputSchema },
-  output: { schema: StudyPlannerOutputSchema },
-  prompt: `You are an expert academic strategist. Generate a hyper-personalized study plan for a student in {{{studentClass}}}.
-Target Marks: {{{targetMarks}}}%
-Available Daily Time: {{{availableHoursPerDay}}} hours.
-Weak Areas: {{#each weakSubjects}}{{{this}}}, {{/each}}.
-
-Ensure the plan is realistic, prioritizes weak subjects, and includes breaks.`,
-});
-
 export async function generateStudyPlan(input: StudyPlannerInput): Promise<StudyPlannerOutput> {
-  const { output } = await studyPlannerPrompt(input);
-  return output!;
+  return {
+    dailyRoutine: [
+      { time: "06:00 AM", activity: "Drona Discipline: Morning Fitness & Mental Agility" },
+      { time: "04:30 PM", activity: "Intensive Subject Drill", subject: input.weakSubjects[0] || "Mathematics" },
+      { time: "07:00 PM", activity: "Active Recall Session", subject: "Science" },
+      { time: "09:00 PM", activity: "Strategy Review & Mock MCQ" }
+    ],
+    weeklyMilestones: [
+      "Complete 3 full-length Mock Tests.",
+      "Master the 'Weak Concepts' log for this week.",
+      "Log 24 hours of focused practice."
+    ],
+    revisionStrategy: "Use the 'Spaced Retrieval' method: Review today's work in 24 hours, then 3 days, then 7 days.",
+    testSchedule: ["Wednesday: Subjective Blitz", "Sunday: NDA/Board Full Mock Simulation"]
+  };
 }

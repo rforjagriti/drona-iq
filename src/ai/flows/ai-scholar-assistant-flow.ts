@@ -1,54 +1,23 @@
 'use server';
 /**
- * @fileOverview An AI Study Assistant that provides instant, curriculum-specific guidance.
- *
- * - askScholarAssistant - A function that handles academic questions.
- * - AIScholarAssistantInput - The input type for the askScholarAssistant function.
- * - AIScholarAssistantOutput - The return type for the askScholarAssistant function.
+ * @fileOverview An AI Study Assistant (DEMO MODE).
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const AIScholarAssistantInputSchema = z.object({
-  question: z.string().describe('The academic question from the student.'),
+  question: z.string(),
 });
-export type AIScholarAssistantInput = z.infer<
-  typeof AIScholarAssistantInputSchema
->;
+export type AIScholarAssistantInput = z.infer<typeof AIScholarAssistantInputSchema>;
 
 const AIScholarAssistantOutputSchema = z.object({
-  answer: z.string().describe('The academic guidance and support provided by the AI.'),
+  answer: z.string(),
 });
-export type AIScholarAssistantOutput = z.infer<
-  typeof AIScholarAssistantOutputSchema
->;
+export type AIScholarAssistantOutput = z.infer<typeof AIScholarAssistantOutputSchema>;
 
-export async function askScholarAssistant(
-  input: AIScholarAssistantInput
-): Promise<AIScholarAssistantOutput> {
-  return aiScholarAssistantFlow(input);
+export async function askScholarAssistant(input: AIScholarAssistantInput): Promise<AIScholarAssistantOutput> {
+  return {
+    answer: "Demo Assistant Response: That's a great question! In Drona IQ's philosophy, we approach this concept by first breaking down the fundamental logic. For example, if you're asking about Newton's Laws, remember that consistency in 'Force' is like discipline in your study routine. Would you like a step-by-step numerical breakdown?"
+  };
 }
-
-const scholarAssistantPrompt = ai.definePrompt({
-  name: 'scholarAssistantPrompt',
-  input: {schema: AIScholarAssistantInputSchema},
-  output: {schema: AIScholarAssistantOutputSchema},
-  prompt: `You are an AI Study Assistant acting as a 24/7 academic mentor for students.
-
-Your goal is to provide instant, contextual, and curriculum-specific guidance and support for the student's academic questions. Be helpful, clear, and encouraging.
-
-Student Question: {{{question}}}`,
-});
-
-const aiScholarAssistantFlow = ai.defineFlow(
-  {
-    name: 'aiScholarAssistantFlow',
-    inputSchema: AIScholarAssistantInputSchema,
-    outputSchema: AIScholarAssistantOutputSchema,
-  },
-  async input => {
-    const {output} = await scholarAssistantPrompt(input);
-    return output!;
-  }
-);

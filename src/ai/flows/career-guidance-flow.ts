@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview AI Career Guidance agent.
+ * @fileOverview AI Career Guidance agent (DEMO MODE).
  */
 
 import { ai } from '@/ai/genkit';
@@ -25,17 +25,14 @@ const CareerGuidanceOutputSchema = z.object({
 export type CareerGuidanceInput = z.infer<typeof CareerGuidanceInputSchema>;
 export type CareerGuidanceOutput = z.infer<typeof CareerGuidanceOutputSchema>;
 
-const careerPrompt = ai.definePrompt({
-  name: 'careerGuidancePrompt',
-  input: { schema: CareerGuidanceInputSchema },
-  output: { schema: CareerGuidanceOutputSchema },
-  prompt: `You are an AI Career Counselor for Indian students.
-Student Info: Class {{{currentClass}}}, Interests: {{#each interests}}{{{this}}}, {{/each}}, Strengths: {{#each academicStrengths}}{{{this}}}, {{/each}}.
-
-Provide a professional career roadmap, suggesting streams (Science, Commerce, etc.), exams (JEE, NEET, CLAT, NDA, UPSC), and preparation timelines.`,
-});
-
 export async function getCareerGuidance(input: CareerGuidanceInput): Promise<CareerGuidanceOutput> {
-  const { output } = await careerPrompt(input);
-  return output!;
+  return {
+    recommendedStreams: ["Science (PCM)", "Commerce with Math"],
+    careerRoadmap: "Demo Roadmap: Based on your analytical strengths, you are ideally suited for an Engineering or Defense pathway. Start by building a solid foundation in Physics and Logical Reasoning.",
+    requiredEntranceExams: [
+      { examName: "NDA (National Defence Academy)", idealPrepStartTime: "Class 11 Beginning" },
+      { examName: "JEE Mains", idealPrepStartTime: "Class 10 Mid-term" }
+    ],
+    skillsToDevelop: ["Analytical Thinking", "Strategic Planning", "Physical Fitness Drills"]
+  };
 }

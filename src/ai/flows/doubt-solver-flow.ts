@@ -1,39 +1,35 @@
 'use server';
 /**
- * @fileOverview AI Doubt Solver for students.
+ * @fileOverview AI Doubt Solver (DEMO MODE).
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
 const DoubtSolverInputSchema = z.object({
-  question: z.string().describe('The academic doubt or question.'),
-  subject: z.string().optional().describe('The subject of the doubt.'),
-  grade: z.string().optional().describe('The grade/class of the student.'),
+  question: z.string(),
+  subject: z.string().optional(),
+  grade: z.string().optional(),
 });
 
 const DoubtSolverOutputSchema = z.object({
-  explanation: z.string().describe('A detailed explanation of the concept.'),
-  stepByStep: z.array(z.string()).describe('Step-by-step solution if applicable.'),
-  relatedConcepts: z.array(z.string()).describe('Topics to review for better understanding.'),
+  explanation: z.string(),
+  stepByStep: z.array(z.string()),
+  relatedConcepts: z.array(z.string()),
 });
 
 export type DoubtSolverInput = z.infer<typeof DoubtSolverInputSchema>;
 export type DoubtSolverOutput = z.infer<typeof DoubtSolverOutputSchema>;
 
-const doubtPrompt = ai.definePrompt({
-  name: 'doubtSolverPrompt',
-  input: { schema: DoubtSolverInputSchema },
-  output: { schema: DoubtSolverOutputSchema },
-  prompt: `You are an expert tutor for Indian school students (CBSE/ICSE).
-Subject: {{{subject}}}
-Grade: {{{grade}}}
-Question: {{{question}}}
-
-Provide a clear, encouraging, and highly detailed explanation. If it's a mathematical or logical problem, provide a step-by-step solution.`,
-});
-
 export async function solveDoubt(input: DoubtSolverInput): Promise<DoubtSolverOutput> {
-  const { output } = await doubtPrompt(input);
-  return output!;
+  return {
+    explanation: "Demo Solution: This concept is fundamental to your syllabus. Here is a logical breakdown of how to solve this problem effectively.",
+    stepByStep: [
+      "Identify the given variables and target outcome.",
+      "Apply the Drona IQ 'First Principles' formula.",
+      "Calculate the final result and verify with units.",
+      "Check for common pitfalls in board marking schemes."
+    ],
+    relatedConcepts: ["Basic Algebraic Manipulation", "Concept of Net Force", "Unit Conversion Patterns"]
+  };
 }
