@@ -19,7 +19,8 @@ import {
   MapPin, 
   Clock,
   ShieldAlert,
-  UserCheck
+  UserCheck,
+  BookOpen
 } from 'lucide-react';
 import { useState } from 'react';
 import { useUser, useAuth } from '@/firebase';
@@ -86,6 +87,7 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Success Audit</Link>
+            <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Classes</Link>
             <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition</Link>
             <Link href="/results" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Success Log</Link>
             
@@ -189,6 +191,7 @@ export function Navbar() {
         {isOpen && (
           <div className="lg:hidden absolute top-20 inset-x-0 h-screen bg-white z-[90] p-6 space-y-8 animate-in slide-in-from-top duration-300 overflow-y-auto pb-40">
              <Link href="/academic-health-check" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Success Audit</Link>
+             <Link href="/classes" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Running Classes</Link>
              <Link href="/home-tuition" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Home Tuition</Link>
              <Link href="/student" className="block p-4 bg-primary/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Scholar Hub</Link>
              <Link href="/parent-dashboard" className="block p-4 bg-accent/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Parent Portal</Link>

@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "UserProfile": {
@@ -30,6 +31,21 @@
         "status": { "type": "string", "enum": ["active", "suspended", "graduated"] }
       }
     },
+    "Class": {
+      "title": "Running Class",
+      "description": "Information about currently active or upcoming batches.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "grade": { "type": "string" },
+        "subject": { "type": "string" },
+        "type": { "type": "string", "enum": ["center", "online", "home_tuition"] },
+        "timing": { "type": "string" },
+        "status": { "type": "string", "enum": ["enrolling", "full", "upcoming"] },
+        "mentor": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
     "Lead": {
       "title": "Lead",
       "description": "CRM inquiry for admission or home tuition.",
@@ -46,43 +62,6 @@
         "createdAt": { "type": "string" },
         "source": { "type": "string" }
       }
-    },
-    "HealthCheck": {
-      "title": "Health Check",
-      "description": "Stored AI Diagnostic reports for students.",
-      "type": "object",
-      "properties": {
-        "studentName": { "type": "string" },
-        "gradeLevel": { "type": "string" },
-        "subject": { "type": "string" },
-        "score": { "type": "number" },
-        "totalScore": { "type": "number" },
-        "reportSummary": { "type": "string" },
-        "createdAt": { "type": "string" },
-        "phone": { "type": "string" }
-      }
-    },
-    "Attendance": {
-      "title": "Attendance Record",
-      "type": "object",
-      "properties": {
-        "studentId": { "type": "string" },
-        "date": { "type": "string" },
-        "status": { "type": "string", "enum": ["present", "absent", "late"] },
-        "subject": { "type": "string" }
-      }
-    },
-    "TestResult": {
-      "title": "Test Result",
-      "type": "object",
-      "properties": {
-        "studentId": { "type": "string" },
-        "testDate": { "type": "string" },
-        "subject": { "type": "string" },
-        "score": { "type": "number" },
-        "maxScore": { "type": "number" },
-        "rank": { "type": "number" }
-      }
     }
   },
   "auth": {
@@ -97,21 +76,13 @@
       "schema": "StudentProfile",
       "description": "In-depth academic records."
     },
+    "/classes/{classId}": {
+      "schema": "Class",
+      "description": "Directory of active and upcoming batches."
+    },
     "/leads/{leadId}": {
       "schema": "Lead",
       "description": "Unified CRM pipeline for admissions and tuition."
-    },
-    "/health_checks/{checkId}": {
-      "schema": "HealthCheck",
-      "description": "Captured diagnostic data for lead nurturing."
-    },
-    "/attendance/{attendanceId}": {
-      "schema": "Attendance",
-      "description": "Daily attendance logs."
-    },
-    "/test_results/{resultId}": {
-      "schema": "TestResult",
-      "description": "Scholar exam results."
     }
   }
 }
