@@ -25,17 +25,17 @@ const CareerGuidanceOutputSchema = z.object({
 export type CareerGuidanceInput = z.infer<typeof CareerGuidanceInputSchema>;
 export type CareerGuidanceOutput = z.infer<typeof CareerGuidanceOutputSchema>;
 
-export async function getCareerGuidance(input: CareerGuidanceInput): Promise<CareerGuidanceOutput> {
-  const prompt = ai.definePrompt({
-    name: 'careerGuidancePrompt',
-    input: { schema: CareerGuidanceInputSchema },
-    output: { schema: CareerGuidanceOutputSchema },
-    prompt: `You are an AI Career Counselor for Indian students.
-    Student Info: Class {{{currentClass}}}, Interests: {{#each interests}}{{{this}}}, {{/each}}, Strengths: {{#each academicStrengths}}{{{this}}}, {{/each}}.
-    
-    Provide a professional career roadmap, suggesting streams (Science, Commerce, etc.), exams (JEE, NEET, CLAT, NDA, UPSC), and preparation timelines.`,
-  });
+const careerPrompt = ai.definePrompt({
+  name: 'careerGuidancePrompt',
+  input: { schema: CareerGuidanceInputSchema },
+  output: { schema: CareerGuidanceOutputSchema },
+  prompt: `You are an AI Career Counselor for Indian students.
+Student Info: Class {{{currentClass}}}, Interests: {{#each interests}}{{{this}}}, {{/each}}, Strengths: {{#each academicStrengths}}{{{this}}}, {{/each}}.
 
-  const { output } = await prompt(input);
+Provide a professional career roadmap, suggesting streams (Science, Commerce, etc.), exams (JEE, NEET, CLAT, NDA, UPSC), and preparation timelines.`,
+});
+
+export async function getCareerGuidance(input: CareerGuidanceInput): Promise<CareerGuidanceOutput> {
+  const { output } = await careerPrompt(input);
   return output!;
 }

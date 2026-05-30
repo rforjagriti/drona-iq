@@ -21,19 +21,19 @@ const DoubtSolverOutputSchema = z.object({
 export type DoubtSolverInput = z.infer<typeof DoubtSolverInputSchema>;
 export type DoubtSolverOutput = z.infer<typeof DoubtSolverOutputSchema>;
 
-export async function solveDoubt(input: DoubtSolverInput): Promise<DoubtSolverOutput> {
-  const prompt = ai.definePrompt({
-    name: 'doubtSolverPrompt',
-    input: { schema: DoubtSolverInputSchema },
-    output: { schema: DoubtSolverOutputSchema },
-    prompt: `You are an expert tutor for Indian school students (CBSE/ICSE).
-    Subject: {{{subject}}}
-    Grade: {{{grade}}}
-    Question: {{{question}}}
-    
-    Provide a clear, encouraging, and highly detailed explanation. If it's a mathematical or logical problem, provide a step-by-step solution.`,
-  });
+const doubtPrompt = ai.definePrompt({
+  name: 'doubtSolverPrompt',
+  input: { schema: DoubtSolverInputSchema },
+  output: { schema: DoubtSolverOutputSchema },
+  prompt: `You are an expert tutor for Indian school students (CBSE/ICSE).
+Subject: {{{subject}}}
+Grade: {{{grade}}}
+Question: {{{question}}}
 
-  const { output } = await prompt(input);
+Provide a clear, encouraging, and highly detailed explanation. If it's a mathematical or logical problem, provide a step-by-step solution.`,
+});
+
+export async function solveDoubt(input: DoubtSolverInput): Promise<DoubtSolverOutput> {
+  const { output } = await doubtPrompt(input);
   return output!;
 }

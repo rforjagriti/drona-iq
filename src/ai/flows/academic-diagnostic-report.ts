@@ -46,25 +46,36 @@ const AcademicDiagnosticReportOutputSchema = z.object({
 });
 export type AcademicDiagnosticReportOutput = z.infer<typeof AcademicDiagnosticReportOutputSchema>;
 
-export async function academicDiagnosticReport(input: AcademicDiagnosticReportInput): Promise<AcademicDiagnosticReportOutput> {
-  return academicDiagnosticReportFlow(input);
-}
-
-const prompt = ai.definePrompt({
+const diagnosticPrompt = ai.definePrompt({
   name: 'academicDiagnosticReportPrompt',
   input: { schema: AcademicDiagnosticReportInputSchema },
   output: { schema: AcademicDiagnosticReportOutputSchema },
-  prompt: `You are an expert academic diagnostician and educational consultant. Your task is to analyze a student's assessment performance and generate a personalized report.\n\nStudent Name: {{{studentName}}}\nGrade Level: {{{gradeLevel}}}\n\nAssessment Results:\n{{#each assessmentData}}\n- Subject: {{this.subject}}\n  Score: {{this.score}} / {{this.totalScore}}\n  {{#if this.weakAreas}}Weak Areas: {{#each this.weakAreas}}- {{this}}{{/each}}{{/if}}\n  {{#if this.strengths}}Strengths: {{#each this.strengths}}- {{this}}{{/each}}{{/if}}\n{{/each}}\n\n{{#if additionalContext}}\nAdditional Context/Parent Concerns: {{{additionalContext}}}\n{{/if}}\n\nBased on the provided information, generate a structured report that includes:\n1.  A comprehensive 'reportSummary' of the student's overall academic performance.\n2.  A list of specific 'learningGaps', detailing the subject, a description of the gap, and recommended focus areas.\n3.  A 'tailoredStudyPlanRecommendations' with actionable steps for each subject, along with their priority (High, Medium, Low).\n\nEnsure the output is in the specified JSON format.\n`,
+  prompt: `You are an expert academic diagnostician and educational consultant. Your task is to analyze a student's assessment performance and generate a personalized report.
+
+Student Name: {{{studentName}}}
+Grade Level: {{{gradeLevel}}}
+
+Assessment Results:
+{{#each assessmentData}}
+- Subject: {{this.subject}}
+  Score: {{this.score}} / {{this.totalScore}}
+  {{#if this.weakAreas}}Weak Areas: {{#each this.weakAreas}}- {{this}}{{/each}}{{/if}}
+  {{#if this.strengths}}Strengths: {{#each this.strengths}}- {{this}}{{/each}}{{/if}}
+{{/each}}
+
+{{#if additionalContext}}
+Additional Context/Parent Concerns: {{{additionalContext}}}
+{{/if}}
+
+Based on the provided information, generate a structured report that includes:
+1. A comprehensive 'reportSummary' of the student's overall academic performance.
+2. A list of specific 'learningGaps', detailing the subject, a description of the gap, and recommended focus areas.
+3. A 'studyPlanRecommendations' with actionable steps for each subject, along with their priority (High, Medium, Low).
+
+Ensure the output is in the specified JSON format.`,
 });
 
-const academicDiagnosticReportFlow = ai.defineFlow(
-  {
-    name: 'academicDiagnosticReportFlow',
-    inputSchema: AcademicDiagnosticReportInputSchema,
-    outputSchema: AcademicDiagnosticReportOutputSchema,
-  },
-  async (input) => {
-    const { output } = await prompt(input);
-    return output!;
-  }
-);
+export async function academicDiagnosticReport(input: AcademicDiagnosticReportInput): Promise<AcademicDiagnosticReportOutput> {
+  const { output } = await diagnosticPrompt(input);
+  return output!;
+}

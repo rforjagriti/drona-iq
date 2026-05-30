@@ -27,19 +27,19 @@ const StudyPlannerOutputSchema = z.object({
 export type StudyPlannerInput = z.infer<typeof StudyPlannerInputSchema>;
 export type StudyPlannerOutput = z.infer<typeof StudyPlannerOutputSchema>;
 
-export async function generateStudyPlan(input: StudyPlannerInput): Promise<StudyPlannerOutput> {
-  const prompt = ai.definePrompt({
-    name: 'studyPlannerPrompt',
-    input: { schema: StudyPlannerInputSchema },
-    output: { schema: StudyPlannerOutputSchema },
-    prompt: `You are an expert academic strategist. Generate a hyper-personalized study plan for a student in {{{studentClass}}}.
-    Target Marks: {{{targetMarks}}}%
-    Available Daily Time: {{{availableHoursPerDay}}} hours.
-    Weak Areas: {{#each weakSubjects}}{{{this}}}, {{/each}}.
-    
-    Ensure the plan is realistic, prioritizes weak subjects, and includes breaks.`,
-  });
+const studyPlannerPrompt = ai.definePrompt({
+  name: 'studyPlannerPrompt',
+  input: { schema: StudyPlannerInputSchema },
+  output: { schema: StudyPlannerOutputSchema },
+  prompt: `You are an expert academic strategist. Generate a hyper-personalized study plan for a student in {{{studentClass}}}.
+Target Marks: {{{targetMarks}}}%
+Available Daily Time: {{{availableHoursPerDay}}} hours.
+Weak Areas: {{#each weakSubjects}}{{{this}}}, {{/each}}.
 
-  const { output } = await prompt(input);
+Ensure the plan is realistic, prioritizes weak subjects, and includes breaks.`,
+});
+
+export async function generateStudyPlan(input: StudyPlannerInput): Promise<StudyPlannerOutput> {
+  const { output } = await studyPlannerPrompt(input);
   return output!;
 }
