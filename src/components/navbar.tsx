@@ -151,6 +151,12 @@ export function Navbar() {
                     <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Career Predictor</span>
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuSeparator className="my-2" />
+                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                  <Link href="/blog" className="flex items-center gap-3">
+                    <BookOpen className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Journal</span>
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
