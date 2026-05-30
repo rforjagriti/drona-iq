@@ -102,7 +102,12 @@ import {
   ShieldAlert,
   Dna,
   Lock,
-  Medal
+  Medal,
+  Cpu,
+  Layers,
+  Network,
+  Component,
+  Atom
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -349,7 +354,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW: THE SUCCESS PATHFINDER (INTERACTIVE WIZARD) */}
+      {/* 2. THE SUCCESS PATHFINDER (INTERACTIVE WIZARD) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -403,7 +408,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW: SCHOLAR XP LEADERBOARD (GAMIFICATION PREVIEW) */}
+      {/* 3. SCHOLAR XP LEADERBOARD (GAMIFICATION PREVIEW) */}
       <section className="py-24 md:py-48 bg-[#05070a] text-white overflow-hidden relative">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="text-center space-y-6 mb-24">
@@ -472,7 +477,60 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW: SUBJECT-WISE SPECIALISTS HUB (MASSIVE GRID) */}
+      {/* 4. GOD-LEVEL SECTION: THE NEUROSCIENCE OF MASTERY */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-12">
+                 <div className="space-y-6">
+                    <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">Cognitive Core</Badge>
+                    <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Neuroscience <br/> <span className="text-accent italic">Of Mastery.</span></h2>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed">We don't just 'teach'. We engineer neural pathways using evidence-based cognitive science protocols.</p>
+                 </div>
+                 <div className="grid gap-6">
+                    {[
+                      { t: "Spaced Repetition", d: "Automated review cycles that stop the 'Forgetting Curve'.", i: History },
+                      { t: "Active Recall", d: "Cognitive testing that strengthens synaptic connections.", i: Brain },
+                      { t: "Neural Gap Analysis", d: "AI detection of conceptual voids in long-term memory.", i: Dna },
+                      { t: "Focused Flow States", d: "Optimizing the pre-frontal cortex for deep concentration.", i: Zap }
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-6 p-6 rounded-2xl bg-muted/30 border border-primary/5 group hover:bg-primary hover:text-white transition-all">
+                         <div className="bg-white p-3 rounded-xl shadow-sm group-hover:bg-accent transition-colors"><item.i className="h-5 w-5 text-primary group-hover:text-white" /></div>
+                         <div className="space-y-1">
+                            <p className="font-bold text-xs uppercase tracking-widest">{item.t}</p>
+                            <p className="text-[10px] opacity-60 font-bold uppercase">{item.d}</p>
+                         </div>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+              <div className="relative">
+                 <div className="absolute -inset-10 bg-accent/20 rounded-full blur-[100px] opacity-30"></div>
+                 <Card className="bg-primary text-white p-12 rounded-[4rem] shadow-2xl space-y-10 relative overflow-hidden">
+                    <Atom className="absolute top-0 right-0 p-8 h-64 w-64 opacity-5 rotate-12" />
+                    <h4 className="text-3xl font-extrabold uppercase leading-tight tracking-tight text-accent">The Success <br/> Engineering Machine.</h4>
+                    <div className="space-y-6">
+                       {[
+                         "Pre-Assessment (Baseline Detection)",
+                         "Synaptic Loading (Direct Instruction)",
+                         "Cognitive Stress Testing (Adaptive Quiz)",
+                         "Long-term Storage (Spaced Review)",
+                         "Mastery Validation (State Benchmarking)"
+                       ].map((item, i) => (
+                         <div key={i} className="flex gap-4 items-center border-b border-white/10 pb-4 last:border-0">
+                            <div className="h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center shrink-0 text-[10px] font-bold text-accent">{i+1}</div>
+                            <p className="text-sm font-light text-white/70">{item}</p>
+                         </div>
+                       ))}
+                    </div>
+                    <Button className="w-full h-16 bg-accent text-primary font-bold uppercase text-xs tracking-widest rounded-xl hover:scale-105 transition-all">Download Neural Whitepaper</Button>
+                 </Card>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      {/* 5. SUBJECT-WISE SPECIALISTS HUB (MASSIVE GRID) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="text-center space-y-6 mb-24">
@@ -511,7 +569,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. LETTER TO PARENTS & STUDENTS */}
+      {/* 6. LETTER TO PARENTS & STUDENTS */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl space-y-32">
           <Card className="border-none shadow-[0_50px_100px_rgba(11,19,43,0.1)] rounded-[4rem] overflow-hidden bg-[#fafafa]">
@@ -560,7 +618,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. PARENT PSYCHOLOGY: WANTS VS FEARS */}
+      {/* 7. PARENT PSYCHOLOGY: WANTS VS FEARS */}
       <section className="py-24 md:py-48 bg-muted/20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-6 mb-24 md:mb-32">
@@ -609,7 +667,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GOD-LEVEL SECTION: THE COMPETITIVE MATRIX (SEO & TRUST) */}
+      {/* 8. THE COMPETITIVE MATRIX (SEO & TRUST) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-6xl">
           <div className="text-center space-y-6 mb-20">
@@ -654,7 +712,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GOD-LEVEL SECTION: THE TOP 1% VERIFIED TUTORS (HOME TUITION) */}
+      {/* 9. THE TOP 1% VERIFIED TUTORS (HOME TUITION) */}
       <section className="py-24 md:py-48 bg-[#fafafa] overflow-hidden relative border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-24">
@@ -694,7 +752,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW: THE "SAFETY FIRST" 10-POINT PROTOCOL */}
+      {/* 10. THE "SAFETY FIRST" 10-POINT PROTOCOL */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -727,7 +785,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GOD-LEVEL SECTION: INTERACTIVE ACADEMIC DIAGNOSTIC HUB (LEAD MAGNET) */}
+      {/* 11. INTERACTIVE ACADEMIC DIAGNOSTIC HUB (LEAD MAGNET) */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative">
         <div className="absolute inset-0 z-0 opacity-5 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000')]"></div>
         <div className="container mx-auto px-4 max-w-5xl relative z-10 text-center space-y-16">
@@ -758,7 +816,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. GOD-LEVEL TECHNOLOGY SUITE */}
+      {/* 12. GOD-LEVEL TECHNOLOGY SUITE */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center space-y-12 mb-32">
@@ -833,7 +891,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW: VALUE ENGINEERING (FEE TRANSPARENCY & ROI) */}
+      {/* 13. VALUE ENGINEERING (FEE TRANSPARENCY & ROI) */}
       <section className="py-24 md:py-48 bg-[#fafafa] overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -883,7 +941,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. PROGRAMMES BY CLASS (THE CLASS UNIVERSE) */}
+      {/* 14. PROGRAMMES BY CLASS (THE CLASS UNIVERSE) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
@@ -965,7 +1023,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* LOCAL LEARNING HUBS SEO SECTION */}
+      {/* 15. LOCAL LEARNING HUBS SEO SECTION */}
       <section className="py-24 md:py-48 bg-muted/10 overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
@@ -999,7 +1057,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. D.R.O.N.A™ METHOD & ECOSYSTEM MAP */}
+      {/* 16. D.R.O.N.A™ METHOD & ECOSYSTEM MAP */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center space-y-12 mb-32">
@@ -1063,7 +1121,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BEYOND MARKS: BUILDING BETTER HUMAN BEINGS */}
+      {/* 17. BEYOND MARKS: BUILDING BETTER HUMAN BEINGS */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
@@ -1097,7 +1155,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* LIFE SKILLS PROGRAMME */}
+      {/* 18. LIFE SKILLS PROGRAMME */}
       <section className="py-24 md:py-48 bg-muted/20 overflow-hidden relative">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -1131,7 +1189,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* OUR STUDENT VALUES (VALUE WALL) */}
+      {/* 19. OUR STUDENT VALUES (VALUE WALL) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center space-y-6 mb-24">
@@ -1150,7 +1208,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SOCIAL RESPONSIBILITY & HUMANITY */}
+      {/* 20. SOCIAL RESPONSIBILITY & HUMANITY */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -1184,7 +1242,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* A MESSAGE TO PARENTS (EMOTIONAL CLOSING) */}
+      {/* 21. A MESSAGE TO PARENTS (EMOTIONAL CLOSING) */}
       <section className="py-24 md:py-48 bg-[#fafafa] overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-12">
            <div className="space-y-4">
@@ -1204,7 +1262,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. POWERED BY DRONESHWAR DEFENCE ACADEMY */}
+      {/* 22. POWERED BY DRONESHWAR DEFENCE ACADEMY */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="absolute inset-0 bg-accent opacity-5 pointer-events-none"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -1249,7 +1307,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. STUDENT DREAM WALL (CAREER VISUALIZER) */}
+      {/* 23. STUDENT DREAM WALL (CAREER VISUALIZER) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
@@ -1282,7 +1340,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11. FUTURE VISION 2030 ROADMAP */}
+      {/* 24. THE "DEHRADUN 360" NEIGHBORHOOD SEO HUB */}
+      <section className="py-24 md:py-48 bg-muted/20 overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
+              <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">Territorial Hubs</Badge>
+              <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Dehradun 360° <br/> <span className="text-accent italic">Local Presence.</span></h2>
+              <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Providing premium coaching and verified home tutors in every lane of the valley.</p>
+           </div>
+           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              {[
+                "Rajpur Road", "Sahastradhara Road", "Jakhan", "Canal Road", "Old Rajpur", "Dalanwala", 
+                "Vasant Vihar", "Indira Nagar", "Balliwala", "Ballupur", "Prem Nagar", "Clement Town", 
+                "Patel Nagar", "GMS Road", "Chakrata Road", "Kaulagarh", "Kishan Nagar", "Nehru Colony", 
+                "Dharampur", "Ajabpur", "Mothorowala", "Race Course", "Clock Tower Area", "Doan Area",
+                "Subhash Nagar", "ISBT Area", "Shimla Bypass", "Turner Road", "Selaqui", "Vikas Nagar"
+              ].map((area, i) => (
+                <Link href={`/tuition-in/${area.toLowerCase().replace(' ', '-')}`} key={i}>
+                   <div className="p-4 rounded-xl bg-white border border-primary/5 hover:border-accent hover:text-accent transition-all text-center group">
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-primary/40 group-hover:text-accent">Tuition in</p>
+                      <p className="text-xs font-extrabold uppercase mt-1">{area}</p>
+                   </div>
+                </Link>
+              ))}
+           </div>
+        </div>
+      </section>
+
+      {/* 25. FUTURE VISION 2030 ROADMAP */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center space-y-6 mb-32">
@@ -1309,7 +1394,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MASSIVE FAQ FORTRESS FOR SEO */}
+      {/* 26. MASSIVE FAQ FORTRESS FOR SEO */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center space-y-6 mb-16">
@@ -1327,7 +1412,11 @@ export default function HomePage() {
               { q: "Are female home tutors available for school students?", a: "Yes, Drona IQ has a large pool of verified and highly qualified female educators available for home tuition across all grades." },
               { q: "How does Drona IQ track student performance?", a: "We use our proprietary 'Success Operating System' that logs daily tasks, weekly tests, and identifies learning risks using neural analytics." },
               { q: "Can I get tuition for NDA foundation and Class 10 boards together?", a: "Absolutely. Our 'Gateway' program for Class 9 and 10 specifically integrates NDA/JEE/NEET foundation with CBSE/ICSE board preparation." },
-              { q: "Is Drona IQ affiliated with Droneshwar Defence Academy?", a: "Yes, Drona IQ is the academic sibling of Droneshwar Defence Academy (DrDA), the top defense academy in North India, ensuring a high-discipline environment." }
+              { q: "Is Drona IQ affiliated with Droneshwar Defence Academy?", a: "Yes, Drona IQ is the academic sibling of Droneshwar Defence Academy (DrDA), the top defense academy in North India, ensuring a high-discipline environment." },
+              { q: "Do you offer scholarship tests for admissions?", a: "Yes, we conduct periodic merit-based scholarship tests. Top performers can get up to 50% discount on tuition fees." },
+              { q: "How do we get reports about our child's progress?", a: "Parents get a dedicated mobile dashboard with real-time logs of attendance, test scores, and AI-driven growth analytics." },
+              { q: "What subjects are covered in the Home Tuition network?", a: "We cover all major subjects: Mathematics, Physics, Chemistry, Biology, English, Accounts, Economics, and Computer Science." },
+              { q: "How are tutors verified at Drona IQ?", a: "Every tutor undergoes a 5-step verification process: ID verification, police background check, subject expertise test, teaching demo, and psychometric evaluation." }
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-[#fafafa] border rounded-2xl px-8 shadow-sm">
                 <AccordionTrigger className="text-lg font-bold text-primary uppercase text-left hover:no-underline py-8">{faq.q}</AccordionTrigger>
@@ -1338,7 +1427,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EXPLORE ALL PROGRAMMES (MEGA NAVIGATION HUB) */}
+      {/* 27. EXPLORE ALL PROGRAMMES (MEGA NAVIGATION HUB) */}
       <section className="py-24 md:py-48 bg-muted/10 overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="grid lg:grid-cols-4 gap-16">
