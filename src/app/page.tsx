@@ -110,6 +110,129 @@ import { Progress } from '@/components/ui/progress';
 export default function HomePage() {
   const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id);
 
+  const classes = [
+    { 
+      id: 'c5', 
+      grade: "Class 5", 
+      title: "The Curiosity Hub", 
+      desc: "Building the cognitive baseline for young minds. We transform rote learning into logic-first thinking.",
+      subjects: ["English Literature", "Mental Mathematics", "General Science", "Logic & IQ"],
+      outcomes: ["Critical Thinking", "Expression", "Numerical Speed"],
+      image: "https://picsum.photos/seed/drona_c5/800/1000",
+      roadmap: "Foundation Stage I"
+    },
+    { 
+      id: 'c6', 
+      grade: "Class 6", 
+      title: "The Logic Foundation", 
+      desc: "Transitioning to complex problem solving. We introduce structured methodology for core subjects.",
+      subjects: ["Advanced Grammar", "Concept Maths", "Physics/Chem Basics", "Logical Reasoning"],
+      outcomes: ["Methodical Learning", "Analytical Skills", "Scientific Temper"],
+      image: "https://picsum.photos/seed/drona_c6/800/1000",
+      roadmap: "Foundation Stage II"
+    },
+    { 
+      id: 'c7', 
+      grade: "Class 7", 
+      title: "The Analytical Core", 
+      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with intensive tracking.",
+      subjects: ["Verbal Reasoning", "Algebra Mastery", "Experimental Science", "Social Logic"],
+      outcomes: ["Conceptual Clarity", "Research Aptitude", "Confidence"],
+      image: "https://picsum.photos/seed/drona_c7/800/1000",
+      roadmap: "Foundation Stage III"
+    },
+    { 
+      id: 'c8', 
+      grade: "Class 8", 
+      title: "The Board Readiness Stage", 
+      desc: "The most critical foundation year. Mapping Class 8 concepts directly to 10th and 12th competitive needs.",
+      subjects: ["Geometry Mastery", "Bio-Chemistry Core", "English Proficiency", "Mental Aptitude"],
+      outcomes: ["Secondary Readiness", "Concept Syncing", "Result Orientation"],
+      image: "https://picsum.photos/seed/drona_c8/800/1000",
+      roadmap: "Pre-Secondary Success"
+    },
+    { 
+      id: 'c9', 
+      grade: "Class 9", 
+      title: "The Competitive Gateway", 
+      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence.",
+      subjects: ["Numerical Physics", "Mathematical Logic", "Competitive IQ", "English Communications"],
+      outcomes: ["Exam Temperament", "Time Management", "Depth Analysis"],
+      image: "https://picsum.photos/seed/drona_c9/800/1000",
+      roadmap: "Gateway Stage"
+    },
+    { 
+      id: 'c10', 
+      grade: "Class 10", 
+      title: "The Board Excellence Protocol", 
+      desc: "Maximum focus on 95%+ Board results and competitive baseline building for Dehradun's toppers.",
+      subjects: ["10th Boards Full Sync", "PYQ Analysis", "Sample Paper Drills", "Stress Management"],
+      outcomes: ["Board Merit", "Target Clarity", "Discipline"],
+      image: "https://picsum.photos/seed/drona_c10/800/1000",
+      roadmap: "Excellence Stage"
+    },
+    { 
+      id: 'c11s', 
+      grade: "Class 11 Science", 
+      title: "The Engineering & Medical Blueprint", 
+      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum.",
+      subjects: ["Advanced Physics", "Organic Chemistry", "Calculus/Bio", "Entrance Mock Tests"],
+      outcomes: ["Competitive Rank", "Concept Mastery", "Pressure Handling"],
+      image: "https://picsum.photos/seed/drona_c11s/800/1000",
+      roadmap: "Career Launchpad I"
+    },
+    { 
+      id: 'c11c', 
+      grade: "Class 11 Commerce", 
+      title: "The Financial Architect Program", 
+      desc: "Building foundations for CA, CS, and top global business schools.",
+      subjects: ["Accountancy Logic", "Economics Depth", "Business Strategy", "Maths/Stats"],
+      outcomes: ["Professional Clarity", "Economic Insight", "Strategic Thinking"],
+      image: "https://picsum.photos/seed/drona_c11c/800/1000",
+      roadmap: "Professional Path I"
+    },
+    { 
+      id: 'c11h', 
+      grade: "Class 11 Humanities", 
+      title: "The Civil Service Foundation", 
+      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences.",
+      subjects: ["History Analysis", "Political Dynamics", "Psychology Basics", "English Honors"],
+      outcomes: ["Critical Reasoning", "Social Insight", "Communication"],
+      image: "https://picsum.photos/seed/drona_c11h/800/1000",
+      roadmap: "Leadership Path I"
+    },
+    { 
+      id: 'c12s', 
+      grade: "Class 12 Science", 
+      title: "The Apex Career Launchpad", 
+      desc: "Final push for Board merit and National Level entrance exams.",
+      subjects: ["12th Science Board Sync", "JEE/NEET Crash Course", "NDA Final Drill", "Mocks"],
+      outcomes: ["Career Entry", "Board Topper Status", "Peak Performance"],
+      image: "https://picsum.photos/seed/drona_c12s/800/1000",
+      roadmap: "Apex Launchpad"
+    },
+    { 
+      id: 'c12c', 
+      grade: "Class 12 Commerce", 
+      title: "The Professional Mastery Program", 
+      desc: "Final Board preparation and entrance training for professional degrees.",
+      subjects: ["12th Commerce Board Sync", "CUET Prep", "CA Foundation Drills", "Applied Eco"],
+      outcomes: ["University Merit", "Professional Base", "Industry Logic"],
+      image: "https://picsum.photos/seed/drona_c12c/800/1000",
+      roadmap: "Career Mastery"
+    },
+    { 
+      id: 'c12h', 
+      grade: "Class 12 Humanities", 
+      title: "The Global Leadership Track", 
+      desc: "Top university admissions and civil services orientation.",
+      subjects: ["12th Humanities Board Sync", "UPSC Baseline", "CUET Intensive", "Liberal Arts"],
+      outcomes: ["Merit Admissions", "Leadership Prep", "Global Perspective"],
+      image: "https://picsum.photos/seed/drona_c12h/800/1000",
+      roadmap: "Global Future"
+    }
+  ];
+
   return (
     <div className="flex min-h-screen flex-col bg-white selection:bg-accent selection:text-white overflow-x-hidden">
       
@@ -226,7 +349,6 @@ export default function HomePage() {
       {/* 2. LETTER TO PARENTS & STUDENTS */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl space-y-32">
-          {/* Letter to Parents */}
           <Card className="border-none shadow-[0_50px_100px_rgba(11,19,43,0.1)] rounded-[4rem] overflow-hidden bg-[#fafafa]">
             <CardContent className="p-16 md:p-32 space-y-16">
               <div className="flex justify-between items-center border-b pb-12 border-primary/5">
@@ -249,7 +371,6 @@ export default function HomePage() {
             </CardContent>
           </Card>
 
-          {/* Letter to Students */}
           <Card className="border-none shadow-2xl rounded-[4rem] overflow-hidden bg-primary text-white">
             <CardContent className="p-16 md:p-32 space-y-16">
               <div className="flex justify-between items-center border-b pb-12 border-white/5">
@@ -284,7 +405,6 @@ export default function HomePage() {
           </div>
           
           <div className="grid lg:grid-cols-2 gap-20 mb-32">
-            {/* What Parents Fear */}
             <div className="space-y-8 bg-red-50/30 p-12 rounded-[3rem] border border-red-100">
                <h3 className="text-3xl font-extrabold text-red-900 uppercase flex items-center gap-3"><AlertTriangle className="h-8 w-8" /> What Parents Fear</h3>
                <div className="space-y-6">
@@ -303,7 +423,6 @@ export default function HomePage() {
                </div>
             </div>
 
-            {/* What Drona IQ Delivers */}
             <div className="space-y-8 bg-green-50/30 p-12 rounded-[3rem] border border-green-100">
                <h3 className="text-3xl font-extrabold text-green-900 uppercase flex items-center gap-3"><Heart className="h-8 w-8" /> What Every Parent Wants</h3>
                <div className="space-y-6">
@@ -400,57 +519,72 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. PROGRAMMES BY CLASS (MASSIVE CLASS UNIVERSE) */}
+      {/* 5. PROGRAMMES BY CLASS (THE CLASS UNIVERSE) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
             <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Class Universe</Badge>
             <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Academic Pathways <br/> <span className="text-accent italic">By Grade</span></h2>
-            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">From foundation builders to career architects—tailored pathways for every grade level.</p>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Every child is unique. Our pathways are engineered to match their grade-level rigor and future aspirations.</p>
           </div>
 
           <div className="space-y-48">
-            {[
-              { id: 'c58', c: "Class 5 - 8", stage: "Foundation Stage", desc: "Building the cognitive baseline. At this stage, we focus on developing a logic-first mindset and elimination of rote learning habits.", goals: ["Logical Reasoning", "Language Mastery", "Scientific Curiosity"], outcome: "Bridge to Secondary Success" },
-              { id: 'c910', c: "Class 9 - 10", stage: "Board Excellence", desc: "The transition to competitive excellence. We prepare students for state-level board scores while introducing JEE/NEET/NDA baseline concepts.", goals: ["95%+ Board Strategy", "Foundation for NDA/JEE", "Intensive Testing"], outcome: "State Topper Merit" },
-              { id: 'c1112s', c: "Class 11 - 12 Science", stage: "Career Preparation", desc: "For the future doctors, engineers, and defense officers. A rigorous curriculum mapped with competitive exam patterns.", goals: ["Physics/Chem/Math Deep Dive", "Mock Exam Mastery", "Time Optimization"], outcome: "Apex Competitive Rank" },
-              { id: 'c1112c', c: "Class 11 - 12 Commerce", stage: "Professional Preparation", desc: "Mastering the world of finance and professional logic. Preparing for top universities and professional courses.", goals: ["Accountancy Logic", "Business Strategic Thinking", "Economics Depth"], outcome: "Top University Entry" }
-            ].map((item, i) => (
-              <div key={i} className={`flex flex-col lg:flex-row gap-20 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+            {classes.map((item, i) => (
+              <div key={item.id} className={`flex flex-col lg:flex-row gap-20 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
                 <div className="flex-1 space-y-12">
                    <div className="space-y-6">
                       <div className="flex items-center gap-3">
-                         <Badge className="bg-accent text-primary border-none uppercase text-[10px] font-bold px-4 py-1.5">{item.stage}</Badge>
+                         <Badge className="bg-accent text-primary border-none uppercase text-[10px] font-bold px-4 py-1.5">{item.grade}</Badge>
                          <span className="text-primary/20 font-extrabold text-5xl">0{i+1}</span>
                       </div>
-                      <h3 className="text-4xl md:text-6xl font-extrabold text-primary uppercase leading-tight tracking-tighter">{item.c} Journey</h3>
+                      <h3 className="text-4xl md:text-6xl font-extrabold text-primary uppercase leading-tight tracking-tighter">{item.title}</h3>
                    </div>
                    <p className="text-2xl text-muted-foreground font-light leading-relaxed">{item.desc}</p>
+                   
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-                      <div className="space-y-4">
-                         <h4 className="font-bold text-primary uppercase text-xs tracking-widest flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-green-500" /> Learning Goals</h4>
-                         <ul className="space-y-3">
-                            {item.goals.map((g, j) => <li key={j} className="text-muted-foreground text-sm font-medium border-l-2 border-primary/10 pl-4">{g}</li>)}
-                         </ul>
+                      <div className="space-y-6">
+                         <div className="space-y-4">
+                            <h4 className="font-bold text-primary uppercase text-xs tracking-widest flex items-center gap-2"><BookOpen className="h-4 w-4 text-accent" /> Subjects Covered</h4>
+                            <div className="flex flex-wrap gap-2">
+                               {item.subjects.map((s, j) => <Badge key={j} variant="outline" className="text-[10px] font-bold uppercase">{s}</Badge>)}
+                            </div>
+                         </div>
+                         <div className="space-y-4">
+                            <h4 className="font-bold text-primary uppercase text-xs tracking-widest flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-green-500" /> Learning Outcomes</h4>
+                            <ul className="space-y-2">
+                               {item.outcomes.map((o, j) => <li key={j} className="text-muted-foreground text-sm font-medium border-l-2 border-primary/10 pl-4">{o}</li>)}
+                            </ul>
+                         </div>
                       </div>
-                      <div className="bg-primary text-white p-8 rounded-[2rem] space-y-4 relative overflow-hidden">
+                      <div className="bg-primary text-white p-8 rounded-[2rem] space-y-4 relative overflow-hidden flex flex-col justify-center">
                          <Trophy className="absolute right-[-20px] bottom-[-20px] h-24 w-24 opacity-10" />
-                         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">Expected Outcome</p>
-                         <p className="text-xl font-bold font-headline leading-tight">{item.outcome}</p>
+                         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">Strategic Roadmap</p>
+                         <p className="text-xl font-bold font-headline leading-tight">{item.roadmap}</p>
+                         <div className="pt-4 space-y-3">
+                            <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-white/60"><Zap className="h-3 w-3 text-accent" /> AI Tracking Enabled</div>
+                            <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-white/60"><FileText className="h-3 w-3 text-accent" /> Weekly Parent Reports</div>
+                            <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-white/60"><Target className="h-3 w-3 text-accent" /> Custom Study Material</div>
+                         </div>
                       </div>
                    </div>
-                   <div className="flex gap-4">
-                      <Link href="/admissions">
-                         <Button className="h-16 px-10 bg-primary text-white font-bold uppercase text-[10px] tracking-widest rounded-xl shadow-xl hover:scale-105 transition-all">Enroll Programme</Button>
+                   
+                   <div className="flex flex-col sm:flex-row gap-4">
+                      <Link href="/admissions" className="flex-1">
+                         <Button className="w-full h-16 bg-primary text-white font-bold uppercase text-[10px] tracking-widest rounded-xl shadow-xl hover:scale-105 transition-all">Enroll in {item.grade}</Button>
                       </Link>
-                      <Link href="/academic-health-check">
-                         <Button variant="outline" className="h-16 px-10 border-primary text-primary font-bold uppercase text-[10px] tracking-widest rounded-xl hover:bg-primary/5 transition-all">View Full Syllabus</Button>
+                      <Link href="/academic-health-check" className="flex-1">
+                         <Button variant="outline" className="w-full h-16 border-primary text-primary font-bold uppercase text-[10px] tracking-widest rounded-xl hover:bg-primary/5 transition-all">Download Syllabus</Button>
                       </Link>
                    </div>
                 </div>
-                <div className="flex-1 relative group">
+                <div className="flex-1 relative group w-full">
                    <div className="absolute -inset-10 bg-primary/5 rounded-[4rem] group-hover:bg-accent/10 transition-colors duration-1000"></div>
-                   <Image src={`https://picsum.photos/seed/prog_${item.id}/800/1000`} width={800} height={1000} alt={item.c} className="rounded-[3rem] shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-[2000ms] relative z-10" />
+                   <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] shadow-2xl z-10">
+                      <Image src={item.image} fill alt={item.grade} className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-12">
+                         <p className="text-white text-sm italic font-light">"Preparing for the future challenges of {item.grade} with Drona IQ's precision mentorship."</p>
+                      </div>
+                   </div>
                    <div className="absolute bottom-10 left-10 right-10 glass p-8 rounded-3xl z-20 shadow-2xl border-white/20 translate-y-10 group-hover:translate-y-0 transition-transform duration-700">
                       <div className="flex items-center gap-6">
                          <div className="h-12 w-12 rounded-full bg-accent flex items-center justify-center text-primary font-bold">92%</div>
@@ -468,7 +602,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. D.R.O.N.A™ METHOD & ECOSYSTEM MAP */}
-      <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative">
+      <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center space-y-12 mb-32">
             <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">The <span className="text-accent">D.R.O.N.A™</span> Method</h2>
@@ -541,7 +675,6 @@ export default function HomePage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-20">
-            {/* Parent Dashboard Preview */}
             <Card className="border-none shadow-2xl rounded-[4rem] overflow-hidden bg-white">
               <div className="bg-primary p-12 text-white flex justify-between items-center">
                  <div className="space-y-2">
@@ -563,7 +696,6 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            {/* AI Health Check Preview */}
             <Card className="border-none shadow-2xl rounded-[4rem] overflow-hidden bg-white border-t-4 border-accent">
               <div className="navy-gradient p-12 text-white flex justify-between items-center">
                  <div className="space-y-2">
@@ -696,7 +828,7 @@ export default function HomePage() {
       </section>
 
       {/* 10. LOCAL SEO & FAQ FORTRESS */}
-      <section className="py-24 md:py-48 bg-muted/20 overflow-hidden">
+      <section className="py-24 md:py-48 bg-muted/20 overflow-hidden border-t border-white/5">
         <div className="container mx-auto px-4 max-w-7xl">
            <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
             <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Local Authority</Badge>
