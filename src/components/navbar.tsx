@@ -57,8 +57,8 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* Top Contact Strip */}
-      <div className="bg-primary text-white py-2.5 px-4 hidden md:block border-b border-white/5 backdrop-blur-md">
+      {/* Top Contact Strip - Integrated to prevent overlap */}
+      <div className="bg-primary text-white py-2 px-4 hidden md:block border-b border-white/5 backdrop-blur-md">
         <div className="container mx-auto flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-8">
             <span className="flex items-center gap-2"><MapPin className="h-3 w-3 text-accent" /> Om Tower, Sahastradhara Road, Dehradun</span>

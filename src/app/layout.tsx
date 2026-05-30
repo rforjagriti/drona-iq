@@ -2,7 +2,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { MessageCircle, Phone } from 'lucide-react';
+import { MessageCircle, Phone, ChevronUp } from 'lucide-react';
 import Link from 'next/link';
 import { FirebaseClientProvider } from '@/firebase';
 import { ScrollToTop } from '@/components/scroll-to-top';
@@ -24,7 +24,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-        {/* Structured Data for SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -59,8 +58,8 @@ export default function RootLayout({
         <FirebaseClientProvider>
           {children}
           
-          {/* Global Floating CTAs */}
-          <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+          {/* Global Floating CTAs - Masterpiece Trio */}
+          <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-[999]">
             <ScrollToTop />
             <Link 
               href="https://wa.me/917878553385" 
