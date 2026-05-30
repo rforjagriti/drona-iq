@@ -536,7 +536,7 @@ export default function HomePage() {
            <div className="text-center space-y-6 mb-24">
               <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">Academic Directory</Badge>
               <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Subject-Wise <br/> <span className="text-accent italic">Authority.</span></h2>
-              <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">We don't provide generalists. We provide specialists for 20+ academic domains in Dehradun.</p>
+              <p className="text-xl text-muted-foreground font-light max-2xl mx-auto">We don't provide generalists. We provide specialists for 20+ academic domains in Dehradun.</p>
            </div>
 
            <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
@@ -1575,23 +1575,4 @@ export default function HomePage() {
 
     </div>
   );
-}
-
-function MoonIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-    </svg>
-  )
 }
