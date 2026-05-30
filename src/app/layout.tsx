@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
-  title: 'Drona IQ | Smarter Learning. Stronger Future.',
-  description: 'Dehradun’s Smart Student Success Ecosystem. Combining offline coaching, home tuition, and AI-driven academic tracking.',
-  keywords: 'Drona IQ, Best Tuition Dehradun, AI Study Planner, NDA Foundation Dehradun, Home Tuition Network Dehradun',
+  title: 'Drona IQ | Best Tuition & Home Tuition in Dehradun | Student Success OS',
+  description: 'Drona IQ is Dehradun’s #1 Smart Student Success Ecosystem. We provide premium offline coaching and verified home tuition for CBSE, ICSE, Class 5-12, and NDA Foundation. Combining military discipline with AI-driven academic tracking.',
+  keywords: 'Best Tuition in Dehradun, Home Tuition in Dehradun, Tuition Center Sahastradhara Road, Home Tutor near me, NDA Foundation Coaching Dehradun, CBSE Tuition Dehradun, ICSE Tuition Dehradun, Maths Home Tutor Dehradun, Science Tuition Dehradun',
 };
 
 export default function RootLayout({
@@ -22,6 +22,36 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "EducationalOrganization",
+              "name": "Drona IQ Academy",
+              "url": "https://dronaiq.com",
+              "logo": "https://dronaiq.com/logo.png",
+              "description": "Dehradun's premier tuition and home tuition ecosystem specializing in CBSE, ICSE and NDA Foundation.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "3rd Floor, Om Tower, Sahastradhara Road, Near IT Park",
+                "addressLocality": "Dehradun",
+                "addressRegion": "Uttarakhand",
+                "postalCode": "248001",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-7878553385",
+                "contactType": "Admissions"
+              },
+              "sameAs": [
+                "https://droneshwardefenceacademy.com"
+              ]
+            })
+          }}
+        />
       </head>
       <body className="font-body antialiased relative selection:bg-accent selection:text-white">
         <FirebaseClientProvider>

@@ -114,7 +114,7 @@ export default function HomePage() {
       id: 'c5', 
       grade: "Class 5", 
       title: "The Curiosity Hub", 
-      desc: "Building the cognitive baseline for young minds. We transform rote learning into logic-first thinking.",
+      desc: "Building the cognitive baseline for young minds in Dehradun. We transform rote learning into logic-first thinking, preparing students for elite schools.",
       subjects: ["English Literature", "Mental Mathematics", "General Science", "Logic & IQ"],
       outcomes: ["Critical Thinking", "Expression", "Numerical Speed"],
       image: "https://picsum.photos/seed/drona_c5/800/1000",
@@ -124,7 +124,7 @@ export default function HomePage() {
       id: 'c6', 
       grade: "Class 6", 
       title: "The Logic Foundation", 
-      desc: "Transitioning to complex problem solving. We introduce structured methodology for core subjects.",
+      desc: "Transitioning to complex problem solving with the best tuition methodology. We introduce structured learning for core subjects in Dehradun.",
       subjects: ["Advanced Grammar", "Concept Maths", "Physics/Chem Basics", "Logical Reasoning"],
       outcomes: ["Methodical Learning", "Analytical Skills", "Scientific Temper"],
       image: "https://picsum.photos/seed/drona_c6/800/1000",
@@ -134,7 +134,7 @@ export default function HomePage() {
       id: 'c7', 
       grade: "Class 7", 
       title: "The Analytical Core", 
-      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with intensive tracking.",
+      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with Dehradun's most intensive tracking system.",
       subjects: ["Verbal Reasoning", "Algebra Mastery", "Experimental Science", "Social Logic"],
       outcomes: ["Conceptual Clarity", "Research Aptitude", "Confidence"],
       image: "https://picsum.photos/seed/drona_c7/800/1000",
@@ -144,7 +144,7 @@ export default function HomePage() {
       id: 'c8', 
       grade: "Class 8", 
       title: "The Board Readiness Stage", 
-      desc: "The most critical foundation year. Mapping Class 8 concepts directly to 10th and 12th competitive needs.",
+      desc: "The most critical foundation year for CBSE/ICSE students. Mapping Class 8 concepts directly to 10th and 12th competitive needs.",
       subjects: ["Geometry Mastery", "Bio-Chemistry Core", "English Proficiency", "Mental Aptitude"],
       outcomes: ["Secondary Readiness", "Concept Syncing", "Result Orientation"],
       image: "https://picsum.photos/seed/drona_c8/800/1000",
@@ -154,7 +154,7 @@ export default function HomePage() {
       id: 'c9', 
       grade: "Class 9", 
       title: "The Competitive Gateway", 
-      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence.",
+      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence with the top home tuition network.",
       subjects: ["Numerical Physics", "Mathematical Logic", "Competitive IQ", "English Communications"],
       outcomes: ["Exam Temperament", "Time Management", "Depth Analysis"],
       image: "https://picsum.photos/seed/drona_c9/800/1000",
@@ -164,7 +164,7 @@ export default function HomePage() {
       id: 'c10', 
       grade: "Class 10", 
       title: "The Board Excellence Protocol", 
-      desc: "Maximum focus on 95%+ Board results and competitive baseline building for Dehradun's toppers.",
+      desc: "Maximum focus on 95%+ Board results and competitive baseline building for Dehradun's toppers in CBSE and ICSE.",
       subjects: ["10th Boards Full Sync", "PYQ Analysis", "Sample Paper Drills", "Stress Management"],
       outcomes: ["Board Merit", "Target Clarity", "Discipline"],
       image: "https://picsum.photos/seed/drona_c10/800/1000",
@@ -174,7 +174,7 @@ export default function HomePage() {
       id: 'c11s', 
       grade: "Class 11 Science", 
       title: "The Engineering & Medical Blueprint", 
-      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum.",
+      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum with expert home tutors.",
       subjects: ["Advanced Physics", "Organic Chemistry", "Calculus/Bio", "Entrance Mock Tests"],
       outcomes: ["Competitive Rank", "Concept Mastery", "Pressure Handling"],
       image: "https://picsum.photos/seed/drona_c11s/800/1000",
@@ -184,7 +184,7 @@ export default function HomePage() {
       id: 'c11c', 
       grade: "Class 11 Commerce", 
       title: "The Financial Architect Program", 
-      desc: "Building foundations for CA, CS, and top global business schools.",
+      desc: "Building foundations for CA, CS, and top global business schools for students across Dehradun.",
       subjects: ["Accountancy Logic", "Economics Depth", "Business Strategy", "Maths/Stats"],
       outcomes: ["Professional Clarity", "Economic Insight", "Strategic Thinking"],
       image: "https://picsum.photos/seed/drona_c11c/800/1000",
@@ -194,7 +194,7 @@ export default function HomePage() {
       id: 'c11h', 
       grade: "Class 11 Humanities", 
       title: "The Civil Service Foundation", 
-      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences.",
+      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences and critical reasoning.",
       subjects: ["History Analysis", "Political Dynamics", "Psychology Basics", "English Honors"],
       outcomes: ["Critical Reasoning", "Social Insight", "Communication"],
       image: "https://picsum.photos/seed/drona_c11h/800/1000",
@@ -204,7 +204,7 @@ export default function HomePage() {
       id: 'c12s', 
       grade: "Class 12 Science", 
       title: "The Apex Career Launchpad", 
-      desc: "Final push for Board merit and National Level entrance exams.",
+      desc: "Final push for Board merit and National Level entrance exams with Dehradun's highest-rated science faculty.",
       subjects: ["12th Science Board Sync", "JEE/NEET Crash Course", "NDA Final Drill", "Mocks"],
       outcomes: ["Career Entry", "Board Topper Status", "Peak Performance"],
       image: "https://picsum.photos/seed/drona_c12s/800/1000",
@@ -214,7 +214,7 @@ export default function HomePage() {
       id: 'c12c', 
       grade: "Class 12 Commerce", 
       title: "The Professional Mastery Program", 
-      desc: "Final Board preparation and entrance training for professional degrees.",
+      desc: "Final Board preparation and entrance training for professional degrees with verified expert accounts tutors.",
       subjects: ["12th Commerce Board Sync", "CUET Prep", "CA Foundation Drills", "Applied Eco"],
       outcomes: ["University Merit", "Professional Base", "Industry Logic"],
       image: "https://picsum.photos/seed/drona_c12c/800/1000",
@@ -224,7 +224,7 @@ export default function HomePage() {
       id: 'c12h', 
       grade: "Class 12 Humanities", 
       title: "The Global Leadership Track", 
-      desc: "Top university admissions and civil services orientation.",
+      desc: "Top university admissions and civil services orientation for future leaders of Uttarakhand.",
       subjects: ["12th Humanities Board Sync", "UPSC Baseline", "CUET Intensive", "Liberal Arts"],
       outcomes: ["Merit Admissions", "Leadership Prep", "Global Perspective"],
       image: "https://picsum.photos/seed/drona_c12h/800/1000",
@@ -341,8 +341,8 @@ export default function HomePage() {
               </div>
               <div className="space-y-10 text-xl md:text-2xl text-primary/80 font-light leading-relaxed">
                 <p>Dear Parent,</p>
-                <p>We know your struggle. You want the best for your child, but the current education system feels like a maze. You worry about their **concentration**, their **discipline**, and their **future** in a competitive world.</p>
-                <p>At Drona IQ, we don't just see a student ID; we see a legacy. We are not a tuition center. We are an **Ecosystem of Success**. We provide the mentorship your child needs to build not just great marks, but a great character.</p>
+                <p>We know your struggle. You want the **best tuition in Dehradun** for your child, but the current education system feels like a maze. You worry about their **concentration**, their **discipline**, and their **future** in a competitive world.</p>
+                <p>At Drona IQ, we don't just see a student ID; we see a legacy. We are not just a tuition center. We are an **Ecosystem of Success**. We provide the mentorship your child needs to build not just great marks, but a great character.</p>
                 <p>Trust us to be the bridge between their potential and their career.</p>
                 <div className="pt-10 flex flex-col gap-2">
                   <p className="font-bold text-primary text-2xl uppercase">Drona IQ Core Team</p>
@@ -390,11 +390,11 @@ export default function HomePage() {
                <h3 className="text-3xl font-extrabold text-red-900 uppercase flex items-center gap-3"><AlertTriangle className="h-8 w-8" /> What Parents Fear</h3>
                <div className="space-y-6">
                  {[
-                   "Children losing focus in massive coaching 'factories'.",
-                   "Missing fundamental concepts that impact board exams.",
-                   "Digital distractions wasting precious study hours.",
-                   "Lack of discipline and character development.",
-                   "No visibility into daily progress and improvement."
+                   "Children losing focus in massive coaching 'factories' in Dehradun.",
+                   "Missing fundamental concepts that impact CBSE/ICSE board exams.",
+                   "Digital distractions wasting precious study hours at home.",
+                   "Lack of discipline and character development in local tuitions.",
+                   "No visibility into daily progress and improvement metrics."
                  ].map((fear, i) => (
                    <div key={i} className="flex gap-4 items-start group">
                      <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-1"><ZapOff className="h-3 w-3 text-red-600" /></div>
@@ -411,7 +411,7 @@ export default function HomePage() {
                    "Personalized mentorship focused on their child's unique speed.",
                    "Real-time diagnostic reports with 99.4% precision.",
                    "Military-grade discipline and time management habits.",
-                   "Confidence that leads to state-level board scores.",
+                   "Confidence that leads to state-level board scores in Uttarakhand.",
                    "Character building that creates responsible citizens."
                  ].map((want, i) => (
                    <div key={i} className="flex gap-4 items-start group">
@@ -486,7 +486,7 @@ export default function HomePage() {
             {[
               { t: "Success Simulator", d: "Simulate board exam outcomes based on current daily routines and speed.", i: Activity },
               { t: "Success Predictor", d: "AI-driven rank prediction for NDA, JEE, and NEET based on competitive baseline.", i: Trophy },
-              { t: "Peace of Mind Index™", d: "A transparency score for parents to measure their visibility into child growth.", i: Heart }
+              { t: "Peace of Mind Index™", d: "A transparency score for parents in Dehradun to measure their visibility into child growth.", i: Heart }
             ].map((tech, i) => (
               <Card key={i} className="bg-white/5 border-white/10 p-10 rounded-[2.5rem] space-y-6 group hover:bg-white hover:text-primary transition-all duration-700">
                 <div className="bg-accent/10 p-6 w-fit rounded-3xl group-hover:bg-primary group-hover:text-white transition-colors">
@@ -506,7 +506,7 @@ export default function HomePage() {
           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
             <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Class Universe</Badge>
             <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Academic Pathways <br/> <span className="text-accent italic">By Grade</span></h2>
-            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Every child is unique. Our pathways are engineered to match their grade-level rigor and future aspirations.</p>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Providing the **best home tuition in Dehradun** for every grade. Our pathways are engineered to match grade-level rigor and future aspirations.</p>
           </div>
 
           <div className="space-y-48">
@@ -561,9 +561,9 @@ export default function HomePage() {
                 <div className="flex-1 relative group w-full">
                    <div className="absolute -inset-10 bg-primary/5 rounded-[4rem] group-hover:bg-accent/10 transition-colors duration-1000"></div>
                    <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] shadow-2xl z-10">
-                      <Image src={item.image} fill alt={item.grade} className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
+                      <Image src={item.image} fill alt={`${item.grade} tuition in Dehradun`} className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms]" />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-12">
-                         <p className="text-white text-sm italic font-light">"Preparing for the future challenges of {item.grade} with Drona IQ's precision mentorship."</p>
+                         <p className="text-white text-sm italic font-light">"Preparing for the future challenges of {item.grade} with Dehradun's highest-rated science faculty."</p>
                       </div>
                    </div>
                    <div className="absolute bottom-10 left-10 right-10 glass p-8 rounded-3xl z-20 shadow-2xl border-white/20 translate-y-10 group-hover:translate-y-0 transition-transform duration-700">
@@ -577,6 +577,36 @@ export default function HomePage() {
                    </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: LOCAL LEARNING HUBS SEO SECTION */}
+      <section className="py-24 md:py-48 bg-muted/10 overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Local Authority</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Dehradun's Apex <br/> <span className="text-accent italic">Learning Hubs</span></h2>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">We serve 98% of the valley with premium coaching and verified home tutors near you.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { area: "Sahastradhara Road", desc: "Premium tuition hub near Om Tower and IT Park area." },
+              { area: "Rajpur Road", desc: "Elite home tutors for Jakhan, Canal Road, and Old Rajpur." },
+              { area: "Vasant Vihar", desc: "Highly-rated science and maths tutors for students of local schools." },
+              { area: "Dalanwala", desc: "Expert foundation coaching for Welham and St. Joseph's students." },
+              { area: "Prem Nagar", desc: "Strategic learning support for defense personnel children near Cantt." },
+              { area: "Ballupur", desc: "Fast-track board preparation kits for 10th and 12th students." },
+              { area: "Patel Nagar", desc: "Comprehensive home tuition services for commerce and science." },
+              { area: "GMS Road", desc: "Evening mentorship hubs and 24/7 AI diagnostic support." }
+            ].map((loc, i) => (
+              <Card key={i} className="border-none shadow-xl rounded-[2rem] p-8 bg-white hover:bg-primary transition-all duration-500 group cursor-default">
+                <div className="bg-primary/5 p-4 w-fit rounded-2xl group-hover:bg-accent transition-colors mb-4"><MapPin className="h-6 w-6 text-accent group-hover:text-primary" /></div>
+                <h4 className="font-bold text-primary uppercase text-sm group-hover:text-white transition-colors">{loc.area}</h4>
+                <p className="text-xs text-muted-foreground group-hover:text-white/40 leading-relaxed mt-2">{loc.desc}</p>
+              </Card>
             ))}
           </div>
         </div>
@@ -623,8 +653,8 @@ export default function HomePage() {
                 <div className="space-y-32">
                    {[
                      { t: "06:00 AM", task: "Mindfulness & Physical Drill", d: "Military-grade start for peak cognitive focus.", i: Sunrise },
-                     { t: "08:00 AM", task: "Mainstream Schooling", d: "Drona IQ synergy with school curriculum.", i: School },
-                     { t: "04:00 PM", task: "Mentorship Hub", d: "One-on-one conceptual deep dives.", i: Users },
+                     { t: "08:00 AM", task: "Mainstream Schooling", d: "Drona IQ synergy with school curriculum in Dehradun.", i: School },
+                     { t: "04:00 PM", task: "Mentorship Hub", d: "One-on-one conceptual deep dives with subject experts.", i: Users },
                      { t: "07:30 PM", task: "AI Diagnostic Review", d: "Automated analysis of the day's tasks.", i: BrainCircuit },
                      { t: "09:30 PM", task: "Parent Sync & Sleep", d: "Final goal tracking and rest for recovery.", i: MoonIcon }
                    ].map((item, i) => (
@@ -646,123 +676,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. PARENTS' COMMAND CENTER (OS PREVIEW) */}
-      <section className="py-24 md:py-48 bg-[#fafafa] overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
-           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
-            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Operating System</Badge>
-            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Unified <br/> <span className="text-accent italic">Success OS</span></h2>
-            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">The digital interface of your academic growth journey.</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-20">
-            <Card className="border-none shadow-2xl rounded-[4rem] overflow-hidden bg-white">
-              <div className="bg-primary p-12 text-white flex justify-between items-center">
-                 <div className="space-y-2">
-                   <h4 className="text-2xl font-bold uppercase tracking-tight">Parent OS v2.0</h4>
-                   <p className="text-white/40 text-xs font-bold uppercase tracking-[0.2em]">Full Transparency</p>
-                 </div>
-                 <LayoutDashboard className="h-10 w-10 text-accent opacity-50" />
-              </div>
-              <CardContent className="p-12 space-y-8">
-                 <p className="text-lg text-muted-foreground font-light">Monitor attendance, marks, and mentor feedback in real-time. No more guesswork at parent-teacher meetings.</p>
-                 <div className="space-y-4 pt-4">
-                    <div className="flex items-center gap-4 text-primary font-bold uppercase text-xs tracking-widest"><CheckCircle2 className="h-4 w-4 text-green-500" /> Attendance Heartbeat</div>
-                    <div className="flex items-center gap-4 text-primary font-bold uppercase text-xs tracking-widest"><CheckCircle2 className="h-4 w-4 text-green-500" /> Concept Mastery Charts</div>
-                    <div className="flex items-center gap-4 text-primary font-bold uppercase text-xs tracking-widest"><CheckCircle2 className="h-4 w-4 text-green-500" /> Direct Mentor Messenger</div>
-                 </div>
-                 <Link href="/parent-dashboard" className="block pt-6">
-                    <Button variant="outline" className="w-full h-14 border-primary text-primary font-bold uppercase text-[10px] tracking-widest">Launch Parent Hub</Button>
-                 </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-2xl rounded-[4rem] overflow-hidden bg-white border-t-4 border-accent">
-              <div className="navy-gradient p-12 text-white flex justify-between items-center">
-                 <div className="space-y-2">
-                   <h4 className="text-2xl font-bold uppercase tracking-tight">AI Health Check</h4>
-                   <p className="text-accent text-xs font-bold uppercase tracking-[0.2em]">Diagnostic Neural Engine</p>
-                 </div>
-                 <BrainCircuit className="h-10 w-10 text-accent" />
-              </div>
-              <CardContent className="p-12 space-y-8">
-                 <p className="text-lg text-muted-foreground font-light">Get a surgical report on your learning gaps in 60 seconds. Our AI maps every missing concept from Class 5 onwards.</p>
-                 <div className="p-6 bg-accent/5 rounded-3xl border border-accent/20">
-                    <p className="text-xs font-bold uppercase text-accent mb-2">Sample Output:</p>
-                    <p className="text-primary text-sm font-medium leading-relaxed italic">"Risk detected in 'Trigonometry v1.0'. Foundation missing from Grade 8 Chapter 4."</p>
-                 </div>
-                 <Link href="/academic-health-check" className="block pt-6">
-                    <Button className="w-full h-14 bg-accent text-white hover:bg-accent/90 font-bold uppercase text-[10px] tracking-widest shadow-xl">Run Diagnostic Free</Button>
-                 </Link>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. BEYOND MARKS: HUMANITY & LIFE SKILLS */}
-      <section className="py-24 md:py-48 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
-            <Badge className="bg-primary text-white border-none uppercase font-bold tracking-[0.4em] text-[10px] px-6 py-2 rounded-full">The DIQ DNA</Badge>
-            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Beyond Marks: <br/> <span className="text-accent italic">Building Humans.</span></h2>
-            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">We focus on the 10 critical life-pillars that determine long-term success beyond school exams.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-48">
-            {[
-              { t: "Character Building", i: Shield, d: "Ethics and integrity at the core of learning." },
-              { t: "Discipline", i: ListChecks, d: "Military-grade academic scheduling." },
-              { t: "Leadership", i: Trophy, d: "Developing officer-like decision making." },
-              { t: "Confidence", i: Sunrise, d: "Building self-belief through mastery." },
-              { t: "Communication", i: MessageSquare, d: "Articulating complex thoughts clearly." },
-              { t: "Digital Discipline", i: Monitor, d: "Responsible and focused screen usage." },
-              { t: "Respect", i: Heart, d: "Valuing teachers, parents, and society." },
-              { t: "Time Management", i: Clock, d: "Mastering the 24-hour cycle efficiently." },
-              { t: "Goal Setting", i: Target, d: "Visioning the 5-year future roadmap." },
-              { t: "Positive Mindset", i: Smile, d: "Resilience in the face of challenges." }
-            ].map((card, i) => (
-              <Card key={i} className="border-none shadow-2xl rounded-[3rem] p-10 space-y-8 bg-muted/20 hover:bg-primary transition-all duration-700 group cursor-default">
-                <div className="bg-white p-6 w-fit rounded-3xl group-hover:bg-accent group-hover:text-primary transition-colors shadow-sm">
-                  <card.i className="h-10 w-10 text-accent group-hover:text-primary" />
-                </div>
-                <div className="space-y-4">
-                  <h4 className="text-2xl font-bold font-headline uppercase leading-tight text-primary group-hover:text-white transition-colors">{card.t}</h4>
-                  <p className="text-sm text-muted-foreground group-hover:text-white/60 leading-relaxed font-light">{card.d}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          <Card className="border-none bg-accent text-white rounded-[4rem] p-16 md:p-32 overflow-hidden relative">
-             <HandHeart className="absolute -right-20 -bottom-20 h-96 w-96 opacity-10" />
-             <div className="grid lg:grid-cols-2 gap-20 items-center relative z-10">
-                <div className="space-y-12">
-                   <div className="space-y-6">
-                      <h3 className="text-4xl md:text-6xl font-extrabold uppercase leading-none tracking-tighter">Humanity & <br/> <span className="italic">Responsibility</span></h3>
-                      <p className="text-xl md:text-2xl text-white/80 font-light leading-relaxed">We teach students that success is empty without service. Drona IQ scholars are trained to lead with kindness and a "National Pride First" mindset.</p>
-                   </div>
-                   <div className="grid grid-cols-2 gap-6">
-                      {[
-                        "Environmental Care",
-                        "Community Service",
-                        "Helping Peer Growth",
-                        "Supporting Parents",
-                        "Responsible Citizenship",
-                        "National Pride"
-                      ].map((item, i) => (
-                        <div key={i} className="flex gap-3 items-center text-sm font-bold uppercase tracking-widest"><Check className="h-4 w-4" /> {item}</div>
-                      ))}
-                   </div>
-                </div>
-                <div className="relative h-[500px] hidden lg:block">
-                   <Image src="https://picsum.photos/seed/drona_humanity/800/1000" fill alt="Humanity" className="rounded-[3rem] object-cover shadow-2xl" />
-                </div>
-             </div>
-          </Card>
-        </div>
-      </section>
-
       {/* 9. POWERED BY DRONESHWAR DEFENCE ACADEMY */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="absolute inset-0 bg-accent opacity-5 pointer-events-none"></div>
@@ -774,7 +687,7 @@ export default function HomePage() {
                 src="https://picsum.photos/seed/drona_def_premium/1200/1600" 
                 width={1200} 
                 height={1600} 
-                alt="Droneshwar Defence Academy" 
+                alt="Droneshwar Defence Academy Dehradun" 
                 className="rounded-[4rem] shadow-2xl border border-white/10" 
               />
             </div>
@@ -783,12 +696,12 @@ export default function HomePage() {
                  <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Strategic Partner</Badge>
                  <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">Powered By <br/> <span className="text-accent italic">DrDA Legacy.</span></h2>
                </div>
-               <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed">Built on the core values of **Droneshwar Defence Academy**, we bring military-grade character building to mainstream school education.</p>
+               <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed">Built on the core values of **Droneshwar Defence Academy**, we bring military-grade character building to mainstream school education in Dehradun.</p>
                <div className="grid gap-6">
                  {[
                    { t: "Officer Mindset (OLQs)", d: "Instilling the 15 'Officer Like Qualities' in every student.", i: Shield },
                    { t: "Discipline Protocol", d: "A strict 24-hour cycle optimization model for consistent growth.", i: Clock },
-                   { t: "Leadership Labs", d: "Public speaking and decision-making workshops for peak confidence.", i: Mic },
+                   { t: "Leadership Labs", d: "Public speaking workshops for peak confidence in Uttarakhand.", i: Mic },
                    { t: "National Pride", d: "Character development centered on responsible citizenship.", i: Flag }
                  ].map((stat, i) => (
                    <div key={i} className="flex items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -808,61 +721,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. LOCAL SEO & FAQ FORTRESS */}
-      <section className="py-24 md:py-48 bg-muted/20 overflow-hidden border-t border-white/5">
-        <div className="container mx-auto px-4 max-w-7xl">
-           <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
-            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Local Authority</Badge>
-            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Dehradun's Apex <br/> <span className="text-accent italic">Learning Hubs</span></h2>
-            <p className="text-xl text-muted-foreground font-light">Serving 98% of the valley with premium coaching and verified home tutors.</p>
+      {/* MASSIVE FAQ FORTRESS FOR SEO */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center space-y-6 mb-16">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Knowledge Base</Badge>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-primary uppercase leading-none tracking-tighter">Everything You Need To Know <br/> <span className="text-accent italic">About Tuition in Dehradun</span></h2>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-48">
+          
+          <Accordion type="single" collapsible className="space-y-4">
             {[
-              "Sahastradhara Road", "IT Park Hub", "Rajpur Road", "Jakhan Area",
-              "Ballupur Circle", "Prem Nagar", "Clement Town", "Dehradun Cantt",
-              "Patel Nagar", "Nehru Colony", "Vasant Vihar", "Race Course"
-            ].map((area, i) => (
-              <Card key={i} className="border-none shadow-xl rounded-[2rem] p-10 bg-white text-center space-y-4 group hover:bg-primary transition-all duration-500">
-                <div className="bg-primary/5 p-4 w-fit mx-auto rounded-2xl group-hover:bg-accent transition-colors"><MapPin className="h-6 w-6 text-accent group-hover:text-primary" /></div>
-                <h4 className="font-bold text-primary uppercase text-sm tracking-tight group-hover:text-white transition-colors">{area}</h4>
-                <p className="text-[10px] text-muted-foreground group-hover:text-white/40 uppercase font-bold tracking-widest">Local Experts Available</p>
-                <Link href={`/tuition-in/${area.toLowerCase().replace(' ', '-')}`} className="block pt-2">
-                   <Button variant="ghost" className="text-accent font-bold uppercase text-[9px] group-hover:text-white group-hover:bg-white/10">Explore Area</Button>
-                </Link>
-              </Card>
+              { q: "Which is the best tuition in Dehradun for CBSE class 10?", a: "Drona IQ is widely considered the best choice due to our 99.4% accurate AI diagnostics and military-grade discipline from DrDA. We focus on conceptual mastery rather than rote learning." },
+              { q: "How much does home tuition cost in Dehradun?", a: "Home tuition fees in Dehradun vary by grade and subject. At Drona IQ, we provide premium, verified tutors with competitive pricing and a full digital tracking dashboard for parents." },
+              { q: "Do you provide home tutors for Jakhan and Rajpur Road?", a: "Yes, we have a massive network of verified subject experts across Sahastradhara Road, Rajpur Road, Jakhan, Vasant Vihar, and all major localities in Dehradun." },
+              { q: "What are the benefits of home tuition over coaching centers?", a: "Home tuition provides 1-on-1 personalized attention, flexible timing, and a comfortable learning environment. Combined with Drona IQ's AI tracking, it becomes the most powerful learning model." },
+              { q: "How do I book a free demo class for my child?", a: "You can book a free demo by clicking the 'Book Free Demo' button on our homepage or by calling our counselor hub at +91 78785 53385." },
+              { q: "Are female home tutors available for school students?", a: "Yes, Drona IQ has a large pool of verified and highly qualified female educators available for home tuition across all grades." },
+              { q: "How does Drona IQ track student performance?", a: "We use our proprietary 'Success Operating System' that logs daily tasks, weekly tests, and identifies learning risks using neural analytics." },
+              { q: "Can I get tuition for NDA foundation and Class 10 boards together?", a: "Absolutely. Our 'Gateway' program for Class 9 and 10 specifically integrates NDA/JEE/NEET foundation with CBSE/ICSE board preparation." },
+              { q: "Is Drona IQ affiliated with Droneshwar Defence Academy?", a: "Yes, Drona IQ is the academic sibling of Droneshwar Defence Academy (DrDA), the top defense academy in North India, ensuring a high-discipline environment." }
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="bg-[#fafafa] border rounded-2xl px-8 shadow-sm">
+                <AccordionTrigger className="text-lg font-bold text-primary uppercase text-left hover:no-underline py-8">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">{faq.a}</AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
-
-          <div className="max-w-5xl mx-auto">
-             <div className="text-center space-y-6 mb-16">
-                <h3 className="text-3xl font-extrabold uppercase text-primary tracking-tight">Frequently Asked Questions</h3>
-             </div>
-             <Accordion type="single" collapsible className="space-y-4">
-                {[
-                  { q: "How can I monitor my child's daily progress?", a: "You will have full access to the Drona IQ Parent OS Dashboard. Every session, homework submission, and test score is logged in real-time." },
-                  { q: "What makes Drona IQ different from local Dehradun coaching centers?", a: "We combine military-grade discipline from DrDA with proprietary AI diagnostic tools. We track individual mastery, not just group attendance." },
-                  { q: "Is the AI assessment really 99.4% accurate?", a: "Yes, it's based on millions of data points across CBSE and ICSE patterns, ensuring precise gap detection." },
-                  { q: "Can I take both online and offline support?", a: "Our hybrid model is the most popular, combining the discipline of physical mentorship with the 24/7 support of our digital hub." },
-                  { q: "How do you handle character building?", a: "We integrate 15 'Officer Like Qualities' (OLQs) into our mentorship. Students learn discipline, national pride, and responsibility alongside academics." }
-                ].map((faq, i) => (
-                  <AccordionItem key={i} value={`item-${i}`} className="bg-white border rounded-2xl px-8 shadow-sm">
-                    <AccordionTrigger className="text-lg font-bold text-primary uppercase text-left hover:no-underline py-8">{faq.q}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-8">{faq.a}</AccordionContent>
-                  </AccordionItem>
-                ))}
-             </Accordion>
-          </div>
+          </Accordion>
         </div>
       </section>
 
-      {/* 11. FINAL EMOTIONAL MESSAGE & FOOTER */}
+      {/* FINAL EMOTIONAL MESSAGE & FOOTER */}
       <section className="py-32 md:py-64 bg-primary text-white text-center relative overflow-hidden border-t border-white/5">
         <div className="container mx-auto px-4 max-w-5xl relative z-10 space-y-16">
            <Quote className="h-20 w-20 text-accent mx-auto opacity-30" />
            <div className="space-y-10">
              <h2 className="text-4xl md:text-7xl font-extrabold uppercase tracking-tighter leading-none">Your Child's Success Is <br/> <span className="text-accent italic">Our Sole Milestone.</span></h2>
-             <p className="text-xl md:text-3xl text-white/50 font-light leading-relaxed">We don't just teach chapters; we architect careers. We don't just track marks; we build character. Trust the Drona IQ process to transform potential into performance.</p>
+             <p className="text-xl md:text-3xl text-white/50 font-light leading-relaxed">We don't just teach chapters; we architect careers. Trust the Drona IQ process to transform potential into performance for your child in Dehradun.</p>
            </div>
            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
               <Link href="/admissions">
@@ -915,7 +809,6 @@ export default function HomePage() {
                  <ul className="space-y-6 text-sm md:text-lg font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors">
                    <li><Link href="/blog">Success Hub</Link></li>
                    <li><Link href="/results">Wall of Fame</Link></li>
-                   <li><Link href="/why-drona-iq">DIQ Protocol</Link></li>
                    <li><Link href="/contact">Support Center</Link></li>
                  </ul>
               </div>
@@ -933,7 +826,6 @@ export default function HomePage() {
              <div className="flex gap-12">
                 <span>Privacy Protocol</span>
                 <span>Terms of Service</span>
-                <Link href="https://t.me/droneshwardefenceacademy" className="text-accent">@dronaiq_official</Link>
              </div>
           </div>
         </div>
