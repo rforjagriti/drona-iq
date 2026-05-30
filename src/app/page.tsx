@@ -1,4 +1,3 @@
-
 import { Navbar } from '@/components/navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -236,28 +235,10 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-white selection:bg-accent selection:text-white overflow-x-hidden">
       
-      {/* 0. TOP CONTACT STRIP */}
-      <div className="bg-primary text-white py-2.5 px-4 hidden md:block border-b border-white/5 relative z-[110]">
-        <div className="container mx-auto flex justify-between items-center text-[10px] font-bold uppercase tracking-[0.2em]">
-          <div className="flex gap-8">
-            <span className="flex items-center gap-2"><MapPin className="h-3 w-3 text-accent" /> 3rd Floor, Om Tower, Sahastradhara Road, Dehradun</span>
-            <span className="flex items-center gap-2"><Clock className="h-3 w-3 text-accent" /> Mon - Sat: 09:00 AM - 08:00 PM</span>
-          </div>
-          <div className="flex gap-6">
-            <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
-              <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
-            </Link>
-            <Link href="tel:+916399000440" className="hover:text-accent transition-colors flex items-center gap-2">
-              <Phone className="h-3 w-3 text-accent" /> +91 63990 00440
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <Navbar />
       
       {/* 1. CINEMATIC HERO SECTION */}
-      <section className="relative min-h-[110vh] flex items-center pt-24 pb-12 lg:pt-0 lg:pb-0 overflow-hidden bg-[#05070a]">
+      <section className="relative min-h-[110vh] flex items-center pt-32 pb-12 lg:pt-0 lg:pb-0 overflow-hidden bg-[#05070a]">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute top-0 left-1/4 w-[300px] md:w-[1000px] h-[300px] md:h-[1000px] bg-accent/20 rounded-full blur-[100px] md:blur-[180px] -translate-y-1/2 opacity-30 animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-[300px] md:w-[1000px] h-[300px] md:h-[1000px] bg-primary/40 rounded-full blur-[100px] md:blur-[180px] translate-y-1/2 opacity-20"></div>
@@ -782,8 +763,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. DEFENCE ADVANTAGE (DrDA LEGACY) */}
-      <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative">
+      {/* 9. POWERED BY DRONESHWAR DEFENCE ACADEMY */}
+      <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
         <div className="absolute inset-0 bg-accent opacity-5 pointer-events-none"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
@@ -793,22 +774,22 @@ export default function HomePage() {
                 src="https://picsum.photos/seed/drona_def_premium/1200/1600" 
                 width={1200} 
                 height={1600} 
-                alt="Defence Advantage" 
+                alt="Droneshwar Defence Academy" 
                 className="rounded-[4rem] shadow-2xl border border-white/10" 
               />
             </div>
             <div className="space-y-12 order-1 lg:order-2">
                <div className="space-y-6">
-                 <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Powered by DrDA</Badge>
-                 <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">The Defence <br/> <span className="text-accent italic">Advantage.</span></h2>
+                 <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Strategic Partner</Badge>
+                 <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">Powered By <br/> <span className="text-accent italic">DrDA Legacy.</span></h2>
                </div>
-               <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed">Built on the legacy of **Droneshwar Defence Academy**, we bring military-grade character building to school education.</p>
+               <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed">Built on the core values of **Droneshwar Defence Academy**, we bring military-grade character building to mainstream school education.</p>
                <div className="grid gap-6">
                  {[
-                   { t: "Officer Like Qualities (OLQs)", d: "Instilling 15 core leadership traits in every student.", i: Shield },
-                   { t: "Mental Resilience", d: "Pressure management techniques from elite military training.", i: Brain },
-                   { t: "Communication Mastery", d: "Public speaking and group discussion training for SSB & Interviews.", i: Mic },
-                   { t: "Discipline Framework", d: "A strict 24-hour cycle optimization model.", i: Clock }
+                   { t: "Officer Mindset (OLQs)", d: "Instilling the 15 'Officer Like Qualities' in every student.", i: Shield },
+                   { t: "Discipline Protocol", d: "A strict 24-hour cycle optimization model for consistent growth.", i: Clock },
+                   { t: "Leadership Labs", d: "Public speaking and decision-making workshops for peak confidence.", i: Mic },
+                   { t: "National Pride", d: "Character development centered on responsible citizenship.", i: Flag }
                  ].map((stat, i) => (
                    <div key={i} className="flex items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
                      <div className="bg-accent/20 p-4 rounded-2xl"><stat.i className="h-6 w-6 text-accent" /></div>
@@ -820,7 +801,7 @@ export default function HomePage() {
                  ))}
                </div>
                <Link href="https://droneshwardefenceacademy.com" target="_blank" className="block pt-6">
-                 <Button className="h-20 px-12 bg-accent text-primary font-bold uppercase tracking-widest rounded-2xl shadow-2xl hover:scale-105 transition-all">Explore DrDA Legacy</Button>
+                 <Button className="h-20 px-12 bg-accent text-primary font-bold uppercase tracking-widest rounded-2xl shadow-2xl hover:scale-105 transition-all">Visit Official DrDA Site</Button>
                </Link>
             </div>
           </div>
