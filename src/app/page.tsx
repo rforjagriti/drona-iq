@@ -1,3 +1,4 @@
+
 import { Navbar } from '@/components/navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -95,7 +96,8 @@ import {
   BookMarked,
   LightbulbIcon,
   X,
-  PieChart
+  PieChart,
+  Smartphone
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -117,121 +119,133 @@ export default function HomePage() {
       id: 'c5', 
       grade: "Class 5", 
       title: "The Curiosity Hub", 
-      desc: "Building the cognitive baseline for young minds in Dehradun. We transform rote learning into logic-first thinking, preparing students for elite schools.",
+      desc: "Building the cognitive baseline for young minds in Dehradun. We transform rote learning into logic-first thinking, preparing students for elite schools through intensive observation and mental stimulation.",
       subjects: ["English Literature", "Mental Mathematics", "General Science", "Logic & IQ"],
       outcomes: ["Critical Thinking", "Expression", "Numerical Speed"],
       image: "https://picsum.photos/seed/drona_c5/800/1000",
-      roadmap: "Foundation Stage I"
+      roadmap: "Foundation Stage I",
+      longDesc: "At Grade 5, the Drona IQ ecosystem focuses on the transition from 'memorizing' to 'observing.' We understand that the first step to academic excellence is curiosity. Our mentors in Dehradun use interactive smart-class tech to show students the 'Why' behind every math formula and scientific fact. We build a competitive baseline early, so the child feels ahead of the curve."
     },
     { 
       id: 'c6', 
       grade: "Class 6", 
       title: "The Logic Foundation", 
-      desc: "Transitioning to complex problem solving with the best tuition methodology. We introduce structured learning for core subjects in Dehradun.",
+      desc: "Transitioning to complex problem solving with the best tuition methodology. We introduce structured learning for core subjects, focusing on methodical approaches to multi-step logic.",
       subjects: ["Advanced Grammar", "Concept Maths", "Physics/Chem Basics", "Logical Reasoning"],
       outcomes: ["Methodical Learning", "Analytical Skills", "Scientific Temper"],
       image: "https://picsum.photos/seed/drona_c6/800/1000",
-      roadmap: "Foundation Stage II"
+      roadmap: "Foundation Stage II",
+      longDesc: "Class 6 is the entry into secondary level thinking. Drona IQ provides the best home tuition experience by assigning mentors who specialize in child psychology. We focus on the 'Logic Loop'—identifying a problem, dissecting its parts, and synthesizing a solution. This stage is critical for removing 'Math Phobia' and building a love for Physics."
     },
     { 
       id: 'c7', 
       grade: "Class 7", 
       title: "The Analytical Core", 
-      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with Dehradun's most intensive tracking system.",
+      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with Dehradun's most intensive tracking system for middle school scholars.",
       subjects: ["Verbal Reasoning", "Algebra Mastery", "Experimental Science", "Social Logic"],
       outcomes: ["Conceptual Clarity", "Research Aptitude", "Confidence"],
       image: "https://picsum.photos/seed/drona_c7/800/1000",
-      roadmap: "Foundation Stage III"
+      roadmap: "Foundation Stage III",
+      longDesc: "In Grade 7, we push students toward independent research. Using our digital resource hub, students learn to find answers beyond textbooks. Our Dehradun-based tutors focus on Algebra and Experimental Science, ensuring that every 'Middle School' concept is mapped to 'High School' requirements. This prevents future learning gaps."
     },
     { 
       id: 'c8', 
       grade: "Class 8", 
       title: "The Board Readiness Stage", 
-      desc: "The most critical foundation year for CBSE/ICSE students. Mapping Class 8 concepts directly to 10th and 12th competitive needs.",
+      desc: "The most critical foundation year for CBSE/ICSE students. Mapping Class 8 concepts directly to 10th and 12th competitive needs with surgical precision.",
       subjects: ["Geometry Mastery", "Bio-Chemistry Core", "English Proficiency", "Mental Aptitude"],
       outcomes: ["Secondary Readiness", "Concept Syncing", "Result Orientation"],
       image: "https://picsum.photos/seed/drona_c8/800/1000",
-      roadmap: "Pre-Secondary Success"
+      roadmap: "Pre-Secondary Success",
+      longDesc: "Class 8 is often called the 'Gateway to Boards.' Drona IQ treats this year with extreme importance. We introduce Board-pattern mock tests and AI-driven performance tracking. For students in Dehradun, we provide specific kits that align their school curriculum with the national standards required for top-tier competitive exams."
     },
     { 
       id: 'c9', 
       grade: "Class 9", 
       title: "The Competitive Gateway", 
-      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence with the top home tuition network.",
+      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence with the top home tuition network in Uttarakhand.",
       subjects: ["Numerical Physics", "Mathematical Logic", "Competitive IQ", "English Communications"],
       outcomes: ["Exam Temperament", "Time Management", "Depth Analysis"],
       image: "https://picsum.photos/seed/drona_c9/800/1000",
-      roadmap: "Gateway Stage"
+      roadmap: "Gateway Stage",
+      longDesc: "Class 9 is where the competition truly begins. Our 'Gateway' programme introduces advanced numerical physics and competitive reasoning. We start the 2-year Board roadmap here, ensuring that 10th Grade is a breeze. Every student gets a dedicated career counselor session to help them choose their future stream (Science, Commerce, or Humanities)."
     },
     { 
       id: 'c10', 
       grade: "Class 10", 
       title: "The Board Excellence Protocol", 
-      desc: "Maximum focus on 95%+ Board results and competitive baseline building for Dehradun's toppers in CBSE and ICSE.",
+      desc: "Maximum focus on 95%+ Board results and competitive baseline building for Dehradun's toppers in CBSE and ICSE patterns.",
       subjects: ["10th Boards Full Sync", "PYQ Analysis", "Sample Paper Drills", "Stress Management"],
       outcomes: ["Board Merit", "Target Clarity", "Discipline"],
       image: "https://picsum.photos/seed/drona_c10/800/1000",
-      roadmap: "Excellence Stage"
+      roadmap: "Excellence Stage",
+      longDesc: "This is the Year of Performance. Our Class 10 programme is the most intensive in Dehradun. It includes 'Error Analysis' sessions where AI detects exactly which concept a student is failing in during mock tests. We provide 24/7 doubt support to ensure that no question goes unanswered before the Board exams."
     },
     { 
       id: 'c11s', 
       grade: "Class 11 Science", 
       title: "The Engineering & Medical Blueprint", 
-      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum with expert home tutors.",
+      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum with expert home tutors and daily tracking.",
       subjects: ["Advanced Physics", "Organic Chemistry", "Calculus/Bio", "Entrance Mock Tests"],
       outcomes: ["Competitive Rank", "Concept Mastery", "Pressure Handling"],
       image: "https://picsum.photos/seed/drona_c11s/800/1000",
-      roadmap: "Career Launchpad I"
+      roadmap: "Career Launchpad I",
+      longDesc: "Class 11 Science is the biggest jump in academic difficulty. Most students lose confidence here. Drona IQ provides a soft-landing with structured modules that bridge the gap from 10th Grade. We offer Dehradun's highest-rated Science faculty for home tuition, focusing on 'Concept first, problem second.'"
     },
     { 
       id: 'c11c', 
       grade: "Class 11 Commerce", 
       title: "The Financial Architect Program", 
-      desc: "Building foundations for CA, CS, and top global business schools for students across Dehradun.",
+      desc: "Building foundations for CA, CS, and top global business schools for students across Dehradun with industry-expert mentorship.",
       subjects: ["Accountancy Logic", "Economics Depth", "Business Strategy", "Maths/Stats"],
       outcomes: ["Professional Clarity", "Economic Insight", "Strategic Thinking"],
       image: "https://picsum.photos/seed/drona_c11c/800/1000",
-      roadmap: "Professional Path I"
+      roadmap: "Professional Path I",
+      longDesc: "Our Commerce track isn't just about bookkeeping; it's about business intelligence. We teach Accountancy through real-world case studies. Students are prepared for CA Foundation and CUET from Day 1. Our commerce home tutors in Dehradun are verified professionals with years of academic excellence."
     },
     { 
       id: 'c11h', 
       grade: "Class 11 Humanities", 
       title: "The Civil Service Foundation", 
-      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences and critical reasoning.",
+      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences, critical reasoning, and global political dynamics.",
       subjects: ["History Analysis", "Political Dynamics", "Psychology Basics", "English Honors"],
       outcomes: ["Critical Reasoning", "Social Insight", "Communication"],
       image: "https://picsum.photos/seed/drona_c11h/800/1000",
-      roadmap: "Leadership Path I"
+      roadmap: "Leadership Path I",
+      longDesc: "For the future leaders of Dehradun, our Humanities programme offers deep dives into Political Science and Sociology. We focus on writing skills and critical analysis, essential for UPSC and Law entrances (CLAT). We treat Humanities with the same rigor as Science, ensuring state-merit results."
     },
     { 
       id: 'c12s', 
       grade: "Class 12 Science", 
       title: "The Apex Career Launchpad", 
-      desc: "Final push for Board merit and National Level entrance exams with Dehradun's highest-rated science faculty.",
+      desc: "Final push for Board merit and National Level entrance exams with Dehradun's highest-rated science faculty and AI mock simulators.",
       subjects: ["12th Science Board Sync", "JEE/NEET Crash Course", "NDA Final Drill", "Mocks"],
       outcomes: ["Career Entry", "Board Topper Status", "Peak Performance"],
       image: "https://picsum.photos/seed/drona_c12s/800/1000",
-      roadmap: "Apex Launchpad"
+      roadmap: "Apex Launchpad",
+      longDesc: "The final year of school. Our focus is 100% on the Board-Competition synergy. We ensure that school syllabus and competitive prep never clash. Using our AI success predictor, we give students a realistic AIR (All India Rank) prediction every month, helping them stay grounded and motivated."
     },
     { 
       id: 'c12c', 
       grade: "Class 12 Commerce", 
       title: "The Professional Mastery Program", 
-      desc: "Final Board preparation and entrance training for professional degrees with verified expert accounts tutors.",
+      desc: "Final Board preparation and entrance training for professional degrees with verified expert accounts and economics tutors.",
       subjects: ["12th Commerce Board Sync", "CUET Prep", "CA Foundation Drills", "Applied Eco"],
       outcomes: ["University Merit", "Professional Base", "Industry Logic"],
       image: "https://picsum.photos/seed/drona_c12c/800/1000",
-      roadmap: "Career Mastery"
+      roadmap: "Career Mastery",
+      longDesc: "Targeting 98%+ in Boards and top university admissions via CUET. Our commerce specialists in Dehradun provide personalized attention to Accountancy and Economics, ensuring that the student is ready for the professional world while dominating the board exam pattern."
     },
     { 
       id: 'c12h', 
       grade: "Class 12 Humanities", 
       title: "The Global Leadership Track", 
-      desc: "Top university admissions and civil services orientation for future leaders of Uttarakhand.",
+      desc: "Top university admissions and civil services orientation for future leaders, focusing on elite communication and analytical depth.",
       subjects: ["12th Humanities Board Sync", "UPSC Baseline", "CUET Intensive", "Liberal Arts"],
       outcomes: ["Merit Admissions", "Leadership Prep", "Global Perspective"],
       image: "https://picsum.photos/seed/drona_c12h/800/1000",
-      roadmap: "Global Future"
+      roadmap: "Global Future",
+      longDesc: "Finishing the school journey with a clear path toward the Civil Services or Top International Universities. We focus on portfolio building and elite level entrance preparation, ensuring our scholars from Dehradun are recognized at the national level."
     }
   ];
 
@@ -430,7 +444,7 @@ export default function HomePage() {
 
       {/* GOD-LEVEL SECTION: THE COMPETITIVE MATRIX (SEO & TRUST) */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 max-6xl">
           <div className="text-center space-y-6 mb-20">
              <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Comparison Lab</Badge>
              <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Drona IQ vs. <br/> <span className="text-accent italic">Conventional Coaching</span></h2>
@@ -985,6 +999,66 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 10. STUDENT DREAM WALL (CAREER VISUALIZER) */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center max-w-4xl mx-auto space-y-6 mb-24 md:mb-32">
+            <Badge className="bg-primary text-white border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Future Mapping</Badge>
+            <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">The Student <br/> <span className="text-accent italic">Dream Wall.</span></h2>
+            <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">Visualizing the path from Drona IQ scholar to global leader.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { t: "NDA Officer", i: Shield, c: "Defence Excellence" },
+              { t: "Surgeon", i: Stethoscope, c: "Medical Core" },
+              { t: "Software Engineer", i: Laptop, c: "Tech Architecture" },
+              { t: "Chartered Accountant", i: Calculator, c: "Financial Master" },
+              { t: "Civil Servant (IAS)", i: Flag, c: "Public Leadership" },
+              { t: "Space Scientist", i: Orbit, c: "Research Domain" },
+              { t: "Commercial Pilot", i: Plane, c: "Aviation Track" },
+              { t: "Entrepreneur", i: Rocket, c: "Innovation Hub" }
+            ].map((dream, i) => (
+              <Card key={i} className="border-none premium-shadow p-8 rounded-[3rem] bg-[#fafafa] group hover:bg-primary transition-all duration-500 overflow-hidden relative">
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform"><dream.i className="h-24 w-24" /></div>
+                <div className="relative z-10 space-y-4">
+                  <Badge variant="outline" className="text-[8px] font-bold uppercase text-accent border-accent/20">{dream.c}</Badge>
+                  <h4 className="text-2xl font-bold uppercase tracking-tight text-primary group-hover:text-white">{dream.t}</h4>
+                  <button className="text-[10px] font-bold uppercase text-accent group-hover:translate-x-2 transition-transform flex items-center gap-2">Explore Roadmap <ArrowRight className="h-3 w-3" /></button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 11. FUTURE VISION 2030 ROADMAP */}
+      <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative border-t border-white/5">
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="text-center space-y-6 mb-32">
+             <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Strategic Vision</Badge>
+             <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">Vision <span className="text-accent">2030.</span></h2>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-12">
+            {[
+              { y: "2025", t: "AI Integration", d: "Full deployment of Neural Diagnostic Engine across Dehradun.", i: BrainCircuit },
+              { y: "2026", t: "Student App v2", d: "Gamified learning mobile ecosystem with real-time XP syncing.", i: Smartphone },
+              { y: "2028", t: "National Hubs", d: "Expanding the Drona IQ discipline model to 5 new states.", i: Globe },
+              { y: "2030", t: "Metaverse Lab", d: "Immersive 3D conceptual classrooms for advanced physics/bio.", i: Orbit }
+            ].map((vision, i) => (
+              <div key={i} className="space-y-6 group">
+                <p className="text-6xl font-extrabold text-white/10 group-hover:text-accent transition-colors">{vision.y}</p>
+                <div className="space-y-2 border-l-2 border-white/10 pl-6 group-hover:border-accent transition-colors">
+                  <h4 className="text-xl font-bold uppercase tracking-tight">{vision.t}</h4>
+                  <p className="text-sm text-white/40 font-light leading-relaxed">{vision.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* MASSIVE FAQ FORTRESS FOR SEO */}
       <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -1011,6 +1085,52 @@ export default function HomePage() {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+      </section>
+
+      {/* EXPLORE ALL PROGRAMMES (MEGA NAVIGATION HUB) */}
+      <section className="py-24 md:py-48 bg-muted/10 overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="grid lg:grid-cols-4 gap-16">
+              <div className="space-y-8">
+                 <h4 className="text-xs font-bold uppercase tracking-[0.4em] text-primary border-b border-accent/20 pb-4 w-fit">Primary Hubs</h4>
+                 <ul className="space-y-4 text-lg font-bold uppercase tracking-tighter text-primary/60 hover:[&_li]:text-accent transition-colors">
+                    <li><Link href="/academic-health-check">AI Diagnostic</Link></li>
+                    <li><Link href="/home-tuition">Home Tuition</Link></li>
+                    <li><Link href="/student">Student Hub</Link></li>
+                    <li><Link href="/parent-dashboard">Parent OS</Link></li>
+                 </ul>
+              </div>
+              <div className="space-y-8">
+                 <h4 className="text-xs font-bold uppercase tracking-[0.4em] text-primary border-b border-accent/20 pb-4 w-fit">Class Directory</h4>
+                 <ul className="grid grid-cols-2 gap-4 text-xs font-bold uppercase tracking-widest text-primary/40">
+                    <li><Link href="/admissions">Class 5</Link></li>
+                    <li><Link href="/admissions">Class 6</Link></li>
+                    <li><Link href="/admissions">Class 7</Link></li>
+                    <li><Link href="/admissions">Class 8</Link></li>
+                    <li><Link href="/admissions">Class 9</Link></li>
+                    <li><Link href="/admissions">Class 10</Link></li>
+                    <li><Link href="/admissions">Class 11 Sci</Link></li>
+                    <li><Link href="/admissions">Class 12 Sci</Link></li>
+                 </ul>
+              </div>
+              <div className="space-y-8">
+                 <h4 className="text-xs font-bold uppercase tracking-[0.4em] text-primary border-b border-accent/20 pb-4 w-fit">Tech Suite</h4>
+                 <ul className="space-y-4 text-xs font-bold uppercase tracking-widest text-primary/40">
+                    <li>Success Simulator</li>
+                    <li>Risk Detector™</li>
+                    <li>Growth Predictor</li>
+                    <li>Digital Twin Sync</li>
+                 </ul>
+              </div>
+              <div className="space-y-8">
+                 <h4 className="text-xs font-bold uppercase tracking-[0.4em] text-primary border-b border-accent/20 pb-4 w-fit">Global Access</h4>
+                 <div className="space-y-6">
+                    <p className="text-sm font-bold text-primary">Head Hub Om Tower, Dehradun</p>
+                    <Link href="tel:+917878553385"><Button className="w-full h-14 bg-accent text-white font-bold uppercase tracking-widest rounded-xl">Talk to Counselor</Button></Link>
+                 </div>
+              </div>
+           </div>
         </div>
       </section>
 
