@@ -9,11 +9,14 @@ import { DefenceLegacySection } from '@/components/home/defence-legacy';
 import { LocalSeoMatrix } from '@/components/home/local-seo';
 import { SocialProofSection } from '@/components/home/social-proof';
 import { FaqFortress } from '@/components/home/faq-fortress';
-import { CompetitiveMatrix } from '@/components/competitive-matrix';
-import { Quote, GraduationCap, ShieldCheck, UserCheck, Award, Target, ArrowRight } from 'lucide-react';
+import { OLQRadarSection } from '@/components/home/olq-radar';
+import { AdmissionReadiness } from '@/components/home/admission-readiness';
+import { SchoolSyncMatrix } from '@/components/home/school-sync';
+import { LivePulse } from '@/components/home/live-pulse';
+import { ROICalculator } from '@/components/home/roi-calculator';
+import { Quote } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
   return (
@@ -24,28 +27,40 @@ export default function HomePage() {
         {/* 1. CINEMATIC HERO (The Hook) */}
         <HeroSection />
 
-        {/* 2. GENESIS: FOUNDER'S LETTER (The Emotion) */}
+        {/* 2. LIVE PULSE (The "Alive" Factor) */}
+        <LivePulse />
+
+        {/* 3. ADMISSION READINESS (The Lead Magnet) */}
+        <AdmissionReadiness />
+
+        {/* 4. GENESIS: FOUNDER'S LETTER */}
         <GenesisSection />
 
-        {/* 3. TECH SUITE: SIMULATORS & TWINS (The Machine) */}
+        {/* 5. TECH SUITE: SIMULATORS & TWINS */}
         <TechSuiteSection />
 
-        {/* 4. NEUROSCIENCE HUB (The Science) */}
+        {/* 6. OLQ RADAR (The Military Edge) */}
+        <OLQRadarSection />
+
+        {/* 7. NEUROSCIENCE HUB (The Science) */}
         <NeuroHubSection />
 
-        {/* 5. COMPETITIVE MATRIX (The Comparison) */}
-        <CompetitiveMatrix />
+        {/* 8. ROI CALCULATOR (The Money/Time Saver) */}
+        <ROICalculator />
 
-        {/* 6. THE CLASS UNIVERSE: GRADE-WISE MODULES (The Product) */}
+        {/* 9. SCHOOL SYNC (Local Dominance) */}
+        <SchoolSyncMatrix />
+
+        {/* 10. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
         <ClassUniverseSection />
 
-        {/* 7. PSYCHOLOGY HUB: WHY DEHRADUN STUDENTS FAIL (The Fear Solver) */}
+        {/* 11. PSYCHOLOGY HUB */}
         <section className="py-24 bg-muted/20 overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
                <div className="space-y-12">
                   <div className="space-y-6">
-                    <h2 className="text-4xl md:text-6xl font-extrabold text-primary uppercase leading-tight tracking-tighter">Why Most Students <br/> <span className="text-accent">Hit a Plateau.</span></h2>
+                    <h2 className="text-4xl md:text-6xl font-extrabold text-primary uppercase leading-tight tracking-tighter">Why Dehradun Students <br/> <span className="text-accent">Hit a Plateau.</span></h2>
                     <p className="text-lg text-muted-foreground font-light leading-relaxed">
                       We studied 5,000+ students in the valley. The failure isn't lack of potential—it's the "Discipline Gap" and "Tracking Blindness."
                     </p>
@@ -87,16 +102,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 8. DEFENCE LEGACY: DrDA INTEGRATION (The Authority) */}
+        {/* 12. DEFENCE LEGACY: DrDA INTEGRATION */}
         <DefenceLegacySection />
 
-        {/* 9. SOCIAL PROOF & SAFETY (Trust Wall) */}
+        {/* 13. SOCIAL PROOF & SAFETY */}
         <SocialProofSection />
 
-        {/* 10. DEHRADUN 360 LOCALITY GRID (The SEO Power) */}
+        {/* 14. DEHRADUN 360 LOCALITY GRID */}
         <LocalSeoMatrix />
 
-        {/* 11. FAQ FORTRESS (The Objection Handler) */}
+        {/* 15. FAQ FORTRESS */}
         <FaqFortress />
 
         {/* FINAL EMOTIONAL CTA */}
@@ -118,21 +133,13 @@ export default function HomePage() {
       <footer className="py-24 bg-[#05070a] text-white/40 border-t border-white/5">
         <div className="container mx-auto px-4">
            <div className="grid md:grid-cols-4 gap-12 mb-20">
-              <div className="space-y-6">
+              <div className="space-y-6 text-left">
                  <div className="flex items-center space-x-2">
-                    <div className="rounded-xl bg-primary p-2 border border-white/10">
-                      <GraduationCap className="h-6 w-6 text-accent" />
-                    </div>
                     <span className="font-headline text-2xl font-extrabold tracking-tighter text-white uppercase leading-none">DRONA IQ</span>
                  </div>
                  <p className="text-sm leading-relaxed">Dehradun's apex Student Success Ecosystem. Powered by DrDA legacy.</p>
-                 <div className="flex gap-4">
-                   <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-accent transition-colors"><ShieldCheck className="h-5 w-5" /></div>
-                   <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-accent transition-colors"><UserCheck className="h-5 w-5" /></div>
-                   <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-accent transition-colors"><Award className="h-5 w-5" /></div>
-                 </div>
               </div>
-              <div>
+              <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Quick Access</h4>
                  <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors">
                     <li><Link href="/academic-health-check">AI Academic Diagnostic</Link></li>
@@ -141,7 +148,7 @@ export default function HomePage() {
                     <li><Link href="/career-guidance">Success Predictor</Link></li>
                  </ul>
               </div>
-              <div>
+              <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Student Hub</h4>
                  <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors">
                     <li><Link href="/student">My Success Dashboard</Link></li>
@@ -150,17 +157,17 @@ export default function HomePage() {
                     <li><Link href="/contact">Support Hotline</Link></li>
                  </ul>
               </div>
-              <div>
+              <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Connect</h4>
                  <div className="space-y-4 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    <p className="flex items-center gap-2"><Target className="h-3 w-3 text-accent" /> Admissions: +91 78785 53385</p>
-                    <p className="flex items-center gap-2"><Target className="h-3 w-3 text-accent" /> General: +91 63990 00440</p>
-                    <p className="mt-6 text-white/20">Om Tower, Sahastradhara Road<br/>Near IT Park, Dehradun</p>
+                    <p>Admissions: +91 78785 53385</p>
+                    <p>General: +91 63990 00440</p>
+                    <p className="mt-6 text-white/20 uppercase tracking-widest">Om Tower, Sahastradhara Road, Dehradun</p>
                  </div>
               </div>
            </div>
            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] text-center">
-              <p>© 2026 Drona IQ Academy. All Rights Reserved. ISO 9001:2015 Certified.</p>
+              <p>© 2026 Drona IQ Academy. ISO 9001:2015 Certified.</p>
               <div className="flex gap-8">
                  <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
                  <Link href="#" className="hover:text-white transition-colors">Terms</Link>
