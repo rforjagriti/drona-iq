@@ -5,7 +5,7 @@
  * Updated with user-provided API key.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyCBVZxh4t9S9n9TAg4jFQPvnZWrPPNk0jg",
+  apiKey: "AIzaSyBCd4w3FHjEShFzNYVMFF88pWuigiSxlfM",
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",
