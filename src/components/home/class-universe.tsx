@@ -4,7 +4,22 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { BookOpen, Trophy, Target, Rocket, GraduationCap, Calculator, Landmark, Globe, Microscope, Scale, Microscope as ScienceIcon } from 'lucide-react';
+import { 
+  BookOpen, 
+  Trophy, 
+  Target, 
+  Rocket, 
+  GraduationCap, 
+  Calculator, 
+  Landmark, 
+  Globe, 
+  Microscope, 
+  Scale, 
+  Atom,
+  Zap,
+  CheckCircle2,
+  ChevronRight
+} from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -14,43 +29,49 @@ export function ClassUniverseSection() {
       id: 'c5-7', grade: "Classes 5 - 7", title: "The Curiosity Hub", 
       subjects: ["Mental Maths", "Vedic Logic", "Public Speaking", "EVS Mastery"],
       image: "https://picsum.photos/seed/drona_c5/800/1000",
-      roadmap: "Foundation Stage I: Developing logic and speech.",
-      icon: Rocket, desc: "Building the core foundation before secondary schooling begins. We focus on cognitive agility and interest development."
+      roadmap: "Foundation Stage I: Developing logic and speech agility.",
+      icon: Rocket, desc: "Building the core foundation before secondary schooling begins. We focus on cognitive agility and interest development via active recall.",
+      points: ["Vedic Maths Integration", "Confidence Building Modules", "Weekly IQ Assessment"]
     },
     { 
       id: 'c8-9', grade: "Classes 8 - 9", title: "Pre-Secondary Power", 
       subjects: ["Advanced Geometry", "Bio-Chemistry", "Analytical Grammar", "Physics Foundation"],
       image: "https://picsum.photos/seed/drona_c8/800/1000",
       roadmap: "Excellence Stage: Securing top rank in school boards and NTSE prep.",
-      icon: Target, desc: "Bridge program to prepare students for high-intensity board exams and competitive mindset."
+      icon: Target, desc: "Bridge program to prepare students for high-intensity board exams and competitive mindset with 1-on-1 tracking.",
+      points: ["NTSE & Olympiad Path", "Conceptual Depth Mapping", "Zero-Rote Learning"]
     },
     { 
       id: 'c10', grade: "Class 10 Boards", title: "Board Command Center", 
       subjects: ["Full Syllabus Sync", "10 Year PYQ Drills", "Mock Simulation", "Speed Drills"],
       image: "https://picsum.photos/seed/drona_c10/800/1000",
       roadmap: "Goal: 95%+ in Board Exams with AI-driven gap detection.",
-      icon: GraduationCap, desc: "Specialized board prep with focused attention on weak concepts. Our digital twin tracks every single mark."
+      icon: GraduationCap, desc: "Specialized board prep with focused attention on weak concepts. Our digital twin tracks every single mark lost in mocks.",
+      points: ["CBSE/ICSE Pattern Mastery", "Timed Practice Sessions", "Parent Progress Sync"]
     },
     { 
-      id: 'c11s', grade: "Class 11 Science", title: "Engineering & Medical Core", 
+      id: 'c11s', grade: "Class 11-12 Science", title: "JEE & NEET Core", 
       subjects: ["Analytical Physics", "Organic Chem", "Calculus", "Biology Depth"],
       image: "https://picsum.photos/seed/drona_c11s/800/1000",
-      roadmap: "JEE/NEET Synchronized Foundation. School + Entrance mastery.",
-      icon: ScienceIcon, desc: "Intensive science coaching covering state & central boards with high-level conceptual clarity."
+      roadmap: "IIT/NEET Synchronized Foundation. School + Entrance mastery.",
+      icon: Atom, desc: "Intensive science coaching covering state & central boards with high-level conceptual clarity and mock rank indices.",
+      points: ["Entrance Focused Pedagogy", "Numerical Intensive Lab", "Formula Memory Hooks"]
     },
     { 
-      id: 'c11c', grade: "Class 11 Commerce", title: "The Economic Elite", 
+      id: 'c11c', grade: "Class 11-12 Commerce", title: "Economic Elite", 
       subjects: ["Accountancy", "Macro Economics", "Business Studies", "Applied Math"],
       image: "https://picsum.photos/seed/drona_c11c/800/1000",
       roadmap: "Finance Path: CA/CS Foundation and CLAT Readiness.",
-      icon: Calculator, desc: "Building corporate leaders of tomorrow. We teach economics via real-world case studies."
+      icon: Calculator, desc: "Building corporate leaders of tomorrow. We teach economics via real-world case studies and logical accounting.",
+      points: ["CA-Foundation Prep", "Case Study Analysis", "Mock Audit Tests"]
     },
     { 
-      id: 'c11h', grade: "Class 11 Humanities", title: "Visionary Leaders", 
+      id: 'c11h', grade: "Class 11-12 Humanities", title: "Visionary Leaders", 
       subjects: ["Global History", "Political Science", "Psychology", "Geography"],
       image: "https://picsum.photos/seed/drona_c11h/800/1000",
       roadmap: "UPSC Gateway & Law Entrance Readiness. Critical thinking focus.",
-      icon: Landmark, desc: "Deep dive into society, law, and history for elite civil services and humanities aspirants."
+      icon: Landmark, desc: "Deep dive into society, law, and history for elite civil services and humanities aspirants in Dehradun.",
+      points: ["UPSC Foundation", "CLAT Mock Series", "Critical Thinking Labs"]
     }
   ];
 
@@ -76,9 +97,10 @@ export function ClassUniverseSection() {
                     <h3 className="text-4xl md:text-6xl font-extrabold text-primary uppercase leading-tight tracking-tighter">{item.title}</h3>
                     <p className="text-lg text-muted-foreground font-light leading-relaxed">{item.desc}</p>
                  </div>
+                 
                  <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                       <h4 className="font-bold text-primary uppercase text-xs tracking-widest flex items-center gap-2"><BookOpen className="h-4 w-4 text-accent" /> Subjects</h4>
+                       <h4 className="font-bold text-primary uppercase text-xs tracking-widest flex items-center gap-2"><BookOpen className="h-4 w-4 text-accent" /> Expert Focus</h4>
                        <div className="flex flex-wrap gap-2">
                           {item.subjects.map((s, j) => <Badge key={j} variant="outline" className="text-[10px] font-bold uppercase border-primary/20">{s}</Badge>)}
                        </div>
@@ -88,9 +110,20 @@ export function ClassUniverseSection() {
                        <p className="text-sm font-bold text-primary border-l-4 border-accent pl-4 italic">"{item.roadmap}"</p>
                     </div>
                  </div>
+
+                 <div className="bg-muted/30 p-6 rounded-3xl space-y-4 border border-primary/5">
+                    {item.points.map((p, k) => (
+                      <div key={k} className="flex gap-3 items-center text-sm font-bold text-primary">
+                        <CheckCircle2 className="h-4 w-4 text-accent" /> {p}
+                      </div>
+                    ))}
+                 </div>
+
                  <div className="flex gap-4 pt-8">
                     <Link href="/admissions" className="flex-1">
-                       <Button className="w-full h-20 bg-primary text-white font-extrabold uppercase text-[12px] tracking-widest rounded-2xl shadow-2xl hover:scale-105 transition-all">Enroll in {item.grade}</Button>
+                       <Button className="w-full h-20 bg-primary text-white font-extrabold uppercase text-[12px] tracking-widest rounded-2xl shadow-2xl hover:scale-105 transition-all">
+                          Apply for {item.grade} <ChevronRight className="ml-2 h-4 w-4 text-accent" />
+                       </Button>
                     </Link>
                  </div>
               </div>
@@ -102,24 +135,46 @@ export function ClassUniverseSection() {
           ))}
         </div>
 
-        {/* 12th Classes Master Blocks - The Final Frontier */}
-        <div className="mt-48 space-y-12">
-           <h3 className="text-4xl md:text-6xl font-extrabold uppercase text-center text-primary tracking-tighter">Class 12th <span className="text-accent italic">Ultimate Mastery</span></h3>
-           <div className="grid lg:grid-cols-3 gap-8">
-              {[
-                { g: "Class 12 Science", t: "Board + JEE/NEET Elite", i: ScienceIcon, c: "Science" },
-                { g: "Class 12 Commerce", t: "Accounts & Economics Masterclass", i: Scale, c: "Commerce" },
-                { g: "Class 12 Humanities", t: "UPSC & Law Gateway Prep", i: Globe, c: "Arts" }
-              ].map((box, i) => (
-                <Card key={i} className="border-none shadow-2xl p-12 space-y-6 rounded-[3.5rem] text-center bg-muted/20 hover:bg-primary hover:text-white transition-all duration-500 group">
-                  <div className="bg-primary w-20 h-20 rounded-3xl flex items-center justify-center mx-auto text-accent shadow-xl group-hover:bg-accent group-hover:text-primary transition-colors"><box.i className="h-10 w-10" /></div>
-                  <h4 className="text-3xl font-extrabold uppercase leading-none">{box.g}</h4>
-                  <p className="text-xs font-bold uppercase tracking-widest opacity-60">{box.t}</p>
-                  <Link href="/admissions" className="block pt-4">
-                    <Button className="w-full h-14 bg-accent text-primary font-bold uppercase text-[10px] tracking-widest rounded-xl group-hover:bg-white group-hover:text-primary">Apply for {box.c} Stream</Button>
-                  </Link>
-                </Card>
-              ))}
+        {/* NDA Specialized Block - The Elite Frontier */}
+        <div className="mt-48 bg-primary text-white p-12 md:p-20 rounded-[4rem] relative overflow-hidden shadow-2xl">
+           <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+              <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)]"></div>
+           </div>
+           <div className="grid lg:grid-cols-2 gap-20 items-center relative z-10">
+              <div className="space-y-8">
+                 <Badge className="bg-accent text-primary border-none uppercase font-black tracking-widest text-[10px]">Elite Defense Track</Badge>
+                 <h3 className="text-4xl md:text-7xl font-extrabold uppercase tracking-tighter leading-none">NDA Foundation <br/> <span className="text-accent italic">Success Hub.</span></h3>
+                 <p className="text-xl text-white/60 font-light leading-relaxed">
+                    Powered by Droneshwar Defence Academy. We prepare students for NDA while they complete Class 11-12 Boards.
+                 </p>
+                 <div className="grid grid-cols-2 gap-6">
+                    <div className="p-6 bg-white/5 border border-white/10 rounded-3xl">
+                       <Zap className="h-8 w-8 text-accent mb-4" />
+                       <p className="font-bold uppercase text-xs">Officer Faculty</p>
+                       <p className="text-white/40 text-[10px] mt-1">Mentorship by ex-defense personnel.</p>
+                    </div>
+                    <div className="p-6 bg-white/5 border border-white/10 rounded-3xl">
+                       <Target className="h-8 w-8 text-accent mb-4" />
+                       <p className="font-bold uppercase text-xs">GAT & SSB Prep</p>
+                       <p className="text-white/40 text-[10px] mt-1">Holistic preparation for defense entries.</p>
+                    </div>
+                 </div>
+              </div>
+              <div className="space-y-6">
+                 <Card className="bg-white/10 border-white/20 p-10 rounded-[3rem] backdrop-blur-xl">
+                    <h4 className="text-2xl font-bold uppercase mb-6">Course Outcomes:</h4>
+                    <ul className="space-y-4">
+                       {["92% Selection in Mock GAT", "SSB Interview Conditioning", "Discipline & Time Mgmt", "Officer Like Qualities Tracking"].map((txt, i) => (
+                         <li key={i} className="flex gap-4 items-center text-sm font-bold tracking-widest">
+                            <CheckCircle2 className="h-5 w-5 text-accent" /> {txt}
+                         </li>
+                       ))}
+                    </ul>
+                    <Link href="/admissions" className="block mt-10">
+                       <Button className="w-full h-16 bg-accent text-primary font-black uppercase text-[10px] rounded-xl hover:scale-105 transition-all">Join NDA Elite Batch</Button>
+                    </Link>
+                 </Card>
+              </div>
            </div>
         </div>
       </div>

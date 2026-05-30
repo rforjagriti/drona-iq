@@ -4,7 +4,22 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Star, ShieldCheck, UserCheck, Award, Zap, Trophy, Medal, Lock, Dna, Coins, BrainCircuit } from 'lucide-react';
+import { 
+  Star, 
+  ShieldCheck, 
+  UserCheck, 
+  Award, 
+  Zap, 
+  Trophy, 
+  Medal, 
+  Lock, 
+  Dna, 
+  Coins, 
+  BrainCircuit,
+  Heart,
+  Quote,
+  ArrowRight
+} from 'lucide-react';
 import Link from 'next/link';
 
 export function SocialProofSection() {

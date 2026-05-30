@@ -2,14 +2,30 @@
 "use client"
 
 import { Badge } from '@/components/ui/badge';
-import { Brain, Activity, Target, Timer, Zap, ShieldCheck, Microscope, LineChart, TrendingUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { 
+  Brain, 
+  Activity, 
+  Target, 
+  Timer, 
+  Zap, 
+  ShieldCheck, 
+  Microscope, 
+  TrendingUp, 
+  Clock,
+  Dna,
+  Binary,
+  Lightbulb
+} from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 export function NeuroHubSection() {
   const pillars = [
     { t: "Active Recall Hub", d: "Strengthening synaptic connections by testing the brain before the lecture begins.", i: Brain },
-    { t: "Spaced Repetition", d: "Calculated review intervals that stop the natural forgetting curve permanently.", i: Timer },
+    { t: "Neural Gap Analysis", d: "AI-detection of precisely which concept fiber is missing in the student's logic.", i: Activity },
     { t: "Focus State Sync", d: "Optimizing the student's pre-frontal cortex through environment discipline.", i: Target },
-    { t: "Neural Gap Analysis", d: "AI-detection of precisely which concept fiber is missing in the student's logic.", i: Activity }
+    { t: "Spaced Retrieval", d: "Stopping the Forgetting Curve using calculated interval reviews for permanent memory.", i: Timer }
   ];
 
   return (
@@ -71,6 +87,49 @@ export function NeuroHubSection() {
                   ))}
                </div>
             </div>
+         </div>
+
+         {/* Memory Palace & Visual Hooks Block */}
+         <div className="mt-32 grid lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-12">
+               <div className="space-y-4">
+                  <h3 className="text-3xl md:text-5xl font-extrabold uppercase text-primary tracking-tight">The "Memory Palace" <br/> <span className="text-accent italic">Architecture.</span></h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                     We use 3D visualization techniques to hook complex subjects like Organic Chemistry and Calculus formulas into the brain's spatial memory.
+                  </p>
+               </div>
+               <div className="space-y-6">
+                  {[
+                    { t: "Visual MNEMONICS", d: "Associating equations with real-world shapes.", i: Binary },
+                    { t: "Locus Method", d: "Placing facts in a virtual digital classroom.", i: Microscope },
+                    { t: "Flashcard Drills", d: "AI-timed reminders to trigger long-term storage.", i: Lightbulb }
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-6 items-start">
+                       <div className="bg-primary/5 p-4 rounded-2xl text-accent"><item.i className="h-6 w-6" /></div>
+                       <div>
+                          <p className="font-bold text-primary uppercase text-sm">{item.t}</p>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{item.d}</p>
+                       </div>
+                    </div>
+                  ))}
+               </div>
+            </div>
+            <Card className="border-none shadow-2xl bg-muted/30 p-12 rounded-[4rem] text-center space-y-8 relative overflow-hidden">
+               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)] opacity-10"></div>
+               <div className="relative z-10 space-y-6">
+                  <Dna className="h-16 w-16 text-primary mx-auto animate-bounce" />
+                  <h4 className="text-2xl font-bold uppercase text-primary">Your Success OS is Active.</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                     Join the elite hub where science meets results. Every Drona IQ student goes through this 5-stage neural mapping protocol.
+                  </p>
+                  <Badge variant="outline" className="border-accent text-accent font-bold uppercase px-4 py-1">Neural Sync v7.4 Active</Badge>
+                  <div className="pt-4">
+                     <Link href="/academic-health-check">
+                        <Button className="h-14 px-10 bg-primary text-white font-black uppercase text-[10px] rounded-xl shadow-xl hover:scale-105 transition-all">Start AI Diagnostic</Button>
+                     </Link>
+                  </div>
+               </div>
+            </Card>
          </div>
       </div>
     </section>
