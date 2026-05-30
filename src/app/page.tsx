@@ -97,7 +97,12 @@ import {
   LightbulbIcon,
   X,
   PieChart,
-  Smartphone
+  Smartphone,
+  Coins,
+  ShieldAlert,
+  Dna,
+  Lock,
+  Medal
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -119,133 +124,133 @@ export default function HomePage() {
       id: 'c5', 
       grade: "Class 5", 
       title: "The Curiosity Hub", 
-      desc: "Building the cognitive baseline for young minds in Dehradun. We transform rote learning into logic-first thinking, preparing students for elite schools through intensive observation and mental stimulation.",
+      desc: "Building the cognitive baseline for young minds in Dehradun. We transform rote learning into logic-first thinking.",
       subjects: ["English Literature", "Mental Mathematics", "General Science", "Logic & IQ"],
       outcomes: ["Critical Thinking", "Expression", "Numerical Speed"],
       image: "https://picsum.photos/seed/drona_c5/800/1000",
       roadmap: "Foundation Stage I",
-      longDesc: "At Grade 5, the Drona IQ ecosystem focuses on the transition from 'memorizing' to 'observing.' We understand that the first step to academic excellence is curiosity. Our mentors in Dehradun use interactive smart-class tech to show students the 'Why' behind every math formula and scientific fact. We build a competitive baseline early, so the child feels ahead of the curve."
+      longDesc: "At Grade 5, the Drona IQ ecosystem focuses on the transition from 'memorizing' to 'observing.' Our mentors use interactive smart-class tech to show students the 'Why' behind every math formula."
     },
     { 
       id: 'c6', 
       grade: "Class 6", 
       title: "The Logic Foundation", 
-      desc: "Transitioning to complex problem solving with the best tuition methodology. We introduce structured learning for core subjects, focusing on methodical approaches to multi-step logic.",
+      desc: "Transitioning to complex problem solving with the best tuition methodology. We focus on structured logic.",
       subjects: ["Advanced Grammar", "Concept Maths", "Physics/Chem Basics", "Logical Reasoning"],
       outcomes: ["Methodical Learning", "Analytical Skills", "Scientific Temper"],
       image: "https://picsum.photos/seed/drona_c6/800/1000",
       roadmap: "Foundation Stage II",
-      longDesc: "Class 6 is the entry into secondary level thinking. Drona IQ provides the best home tuition experience by assigning mentors who specialize in child psychology. We focus on the 'Logic Loop'—identifying a problem, dissecting its parts, and synthesizing a solution. This stage is critical for removing 'Math Phobia' and building a love for Physics."
+      longDesc: "Class 6 is the entry into secondary level thinking. Drona IQ focus on the 'Logic Loop'—identifying a problem, dissecting its parts, and synthesizing a solution."
     },
     { 
       id: 'c7', 
       grade: "Class 7", 
       title: "The Analytical Core", 
-      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with Dehradun's most intensive tracking system for middle school scholars.",
+      desc: "Deepening subject conceptualization. Preparing for high-school level rigor with Dehradun's most intensive tracking.",
       subjects: ["Verbal Reasoning", "Algebra Mastery", "Experimental Science", "Social Logic"],
       outcomes: ["Conceptual Clarity", "Research Aptitude", "Confidence"],
       image: "https://picsum.photos/seed/drona_c7/800/1000",
       roadmap: "Foundation Stage III",
-      longDesc: "In Grade 7, we push students toward independent research. Using our digital resource hub, students learn to find answers beyond textbooks. Our Dehradun-based tutors focus on Algebra and Experimental Science, ensuring that every 'Middle School' concept is mapped to 'High School' requirements. This prevents future learning gaps."
+      longDesc: "In Grade 7, we push students toward independent research. Our tutors ensure every concept is mapped to High School requirements."
     },
     { 
       id: 'c8', 
       grade: "Class 8", 
       title: "The Board Readiness Stage", 
-      desc: "The most critical foundation year for CBSE/ICSE students. Mapping Class 8 concepts directly to 10th and 12th competitive needs with surgical precision.",
+      desc: "The most critical foundation year for CBSE/ICSE students. Mapping concepts to 10th and 12th needs.",
       subjects: ["Geometry Mastery", "Bio-Chemistry Core", "English Proficiency", "Mental Aptitude"],
       outcomes: ["Secondary Readiness", "Concept Syncing", "Result Orientation"],
       image: "https://picsum.photos/seed/drona_c8/800/1000",
       roadmap: "Pre-Secondary Success",
-      longDesc: "Class 8 is often called the 'Gateway to Boards.' Drona IQ treats this year with extreme importance. We introduce Board-pattern mock tests and AI-driven performance tracking. For students in Dehradun, we provide specific kits that align their school curriculum with the national standards required for top-tier competitive exams."
+      longDesc: "Class 8 is the 'Gateway to Boards.' We introduce Board-pattern mock tests and AI-driven performance tracking early."
     },
     { 
       id: 'c9', 
       grade: "Class 9", 
       title: "The Competitive Gateway", 
-      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence with the top home tuition network in Uttarakhand.",
+      desc: "Introducing JEE, NEET, and NDA foundations. Preparing for the transition to Board excellence.",
       subjects: ["Numerical Physics", "Mathematical Logic", "Competitive IQ", "English Communications"],
       outcomes: ["Exam Temperament", "Time Management", "Depth Analysis"],
       image: "https://picsum.photos/seed/drona_c9/800/1000",
       roadmap: "Gateway Stage",
-      longDesc: "Class 9 is where the competition truly begins. Our 'Gateway' programme introduces advanced numerical physics and competitive reasoning. We start the 2-year Board roadmap here, ensuring that 10th Grade is a breeze. Every student gets a dedicated career counselor session to help them choose their future stream (Science, Commerce, or Humanities)."
+      longDesc: "Class 9 is where the competition truly begins. We start the 2-year Board roadmap here, ensuring 10th Grade is a breeze."
     },
     { 
       id: 'c10', 
       grade: "Class 10", 
       title: "The Board Excellence Protocol", 
-      desc: "Maximum focus on 95%+ Board results and competitive baseline building for Dehradun's toppers in CBSE and ICSE patterns.",
+      desc: "Maximum focus on 95%+ Board results and competitive baseline building for toppers.",
       subjects: ["10th Boards Full Sync", "PYQ Analysis", "Sample Paper Drills", "Stress Management"],
       outcomes: ["Board Merit", "Target Clarity", "Discipline"],
       image: "https://picsum.photos/seed/drona_c10/800/1000",
       roadmap: "Excellence Stage",
-      longDesc: "This is the Year of Performance. Our Class 10 programme is the most intensive in Dehradun. It includes 'Error Analysis' sessions where AI detects exactly which concept a student is failing in during mock tests. We provide 24/7 doubt support to ensure that no question goes unanswered before the Board exams."
+      longDesc: "This is the Year of Performance. Our Class 10 programme uses AI to detect exactly which concept a student is failing in."
     },
     { 
       id: 'c11s', 
       grade: "Class 11 Science", 
       title: "The Engineering & Medical Blueprint", 
-      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum with expert home tutors and daily tracking.",
+      desc: "Rigorous preparation for JEE/NEET/NDA while mastering the 11th Science curriculum.",
       subjects: ["Advanced Physics", "Organic Chemistry", "Calculus/Bio", "Entrance Mock Tests"],
       outcomes: ["Competitive Rank", "Concept Mastery", "Pressure Handling"],
       image: "https://picsum.photos/seed/drona_c11s/800/1000",
       roadmap: "Career Launchpad I",
-      longDesc: "Class 11 Science is the biggest jump in academic difficulty. Most students lose confidence here. Drona IQ provides a soft-landing with structured modules that bridge the gap from 10th Grade. We offer Dehradun's highest-rated Science faculty for home tuition, focusing on 'Concept first, problem second.'"
+      longDesc: "Class 11 Science is the biggest jump. Drona IQ provides structured modules that bridge the gap from 10th Grade."
     },
     { 
       id: 'c11c', 
       grade: "Class 11 Commerce", 
       title: "The Financial Architect Program", 
-      desc: "Building foundations for CA, CS, and top global business schools for students across Dehradun with industry-expert mentorship.",
+      desc: "Building foundations for CA, CS, and top global business schools with industry-expert mentorship.",
       subjects: ["Accountancy Logic", "Economics Depth", "Business Strategy", "Maths/Stats"],
       outcomes: ["Professional Clarity", "Economic Insight", "Strategic Thinking"],
       image: "https://picsum.photos/seed/drona_c11c/800/1000",
       roadmap: "Professional Path I",
-      longDesc: "Our Commerce track isn't just about bookkeeping; it's about business intelligence. We teach Accountancy through real-world case studies. Students are prepared for CA Foundation and CUET from Day 1. Our commerce home tutors in Dehradun are verified professionals with years of academic excellence."
+      longDesc: "Our Commerce track isn't just about bookkeeping; it's about business intelligence and CA foundation prep."
     },
     { 
       id: 'c11h', 
       grade: "Class 11 Humanities", 
       title: "The Civil Service Foundation", 
-      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences, critical reasoning, and global political dynamics.",
+      desc: "Preparing for CUET and UPSC basics with a deep focus on social sciences and critical reasoning.",
       subjects: ["History Analysis", "Political Dynamics", "Psychology Basics", "English Honors"],
       outcomes: ["Critical Reasoning", "Social Insight", "Communication"],
       image: "https://picsum.photos/seed/drona_c11h/800/1000",
       roadmap: "Leadership Path I",
-      longDesc: "For the future leaders of Dehradun, our Humanities programme offers deep dives into Political Science and Sociology. We focus on writing skills and critical analysis, essential for UPSC and Law entrances (CLAT). We treat Humanities with the same rigor as Science, ensuring state-merit results."
+      longDesc: "For the future leaders, our Humanities programme offers deep dives into Political Science and Law entrances."
     },
     { 
       id: 'c12s', 
       grade: "Class 12 Science", 
       title: "The Apex Career Launchpad", 
-      desc: "Final push for Board merit and National Level entrance exams with Dehradun's highest-rated science faculty and AI mock simulators.",
+      desc: "Final push for Board merit and National Level entrance exams with AI mock simulators.",
       subjects: ["12th Science Board Sync", "JEE/NEET Crash Course", "NDA Final Drill", "Mocks"],
       outcomes: ["Career Entry", "Board Topper Status", "Peak Performance"],
       image: "https://picsum.photos/seed/drona_c12s/800/1000",
       roadmap: "Apex Launchpad",
-      longDesc: "The final year of school. Our focus is 100% on the Board-Competition synergy. We ensure that school syllabus and competitive prep never clash. Using our AI success predictor, we give students a realistic AIR (All India Rank) prediction every month, helping them stay grounded and motivated."
+      longDesc: "The final year. Our focus is 100% on the Board-Competition synergy using our AI success predictor."
     },
     { 
       id: 'c12c', 
       grade: "Class 12 Commerce", 
       title: "The Professional Mastery Program", 
-      desc: "Final Board preparation and entrance training for professional degrees with verified expert accounts and economics tutors.",
+      desc: "Final Board preparation and entrance training for professional degrees with verified experts.",
       subjects: ["12th Commerce Board Sync", "CUET Prep", "CA Foundation Drills", "Applied Eco"],
       outcomes: ["University Merit", "Professional Base", "Industry Logic"],
       image: "https://picsum.photos/seed/drona_c12c/800/1000",
       roadmap: "Career Mastery",
-      longDesc: "Targeting 98%+ in Boards and top university admissions via CUET. Our commerce specialists in Dehradun provide personalized attention to Accountancy and Economics, ensuring that the student is ready for the professional world while dominating the board exam pattern."
+      longDesc: "Targeting 98%+ in Boards and top university admissions via CUET and Accountancy specialization."
     },
     { 
       id: 'c12h', 
       grade: "Class 12 Humanities", 
       title: "The Global Leadership Track", 
-      desc: "Top university admissions and civil services orientation for future leaders, focusing on elite communication and analytical depth.",
+      desc: "Top university admissions and civil services orientation for future leaders.",
       subjects: ["12th Humanities Board Sync", "UPSC Baseline", "CUET Intensive", "Liberal Arts"],
       outcomes: ["Merit Admissions", "Leadership Prep", "Global Perspective"],
       image: "https://picsum.photos/seed/drona_c12h/800/1000",
       roadmap: "Global Future",
-      longDesc: "Finishing the school journey with a clear path toward the Civil Services or Top International Universities. We focus on portfolio building and elite level entrance preparation, ensuring our scholars from Dehradun are recognized at the national level."
+      longDesc: "Finishing the journey with a clear path toward Civil Services or Top International Universities."
     }
   ];
 
@@ -341,6 +346,168 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* NEW: THE SUCCESS PATHFINDER (INTERACTIVE WIZARD) */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-12">
+                 <div className="space-y-6">
+                    <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Wizard v1.0</Badge>
+                    <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Success <br/> <span className="text-accent italic">Pathfinder.</span></h2>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed">Don't guess your child's future. Use our AI-driven wizard to see their personalized learning roadmap in 30 seconds.</p>
+                 </div>
+                 <div className="space-y-8">
+                    <div className="p-8 rounded-[2rem] bg-muted/30 border border-primary/5 space-y-6">
+                       <p className="text-xs font-bold uppercase tracking-widest text-primary/40">Step 1: Select Grade</p>
+                       <div className="flex flex-wrap gap-3">
+                          {["Class 5-8", "Class 9-10", "Class 11-12", "Competitive"].map((g, i) => (
+                             <button key={i} className="px-6 py-3 rounded-full border border-primary/10 font-bold text-xs uppercase hover:bg-primary hover:text-white transition-all">{g}</button>
+                          ))}
+                       </div>
+                       <p className="text-xs font-bold uppercase tracking-widest text-primary/40 pt-4">Step 2: Select Goal</p>
+                       <div className="flex flex-wrap gap-3">
+                          {["Board Topper", "NDA / Defence", "JEE / NEET", "Personality Dev"].map((g, i) => (
+                             <button key={i} className="px-6 py-3 rounded-full border border-primary/10 font-bold text-xs uppercase hover:bg-accent hover:text-white transition-all">{g}</button>
+                          ))}
+                       </div>
+                    </div>
+                    <Button className="w-full h-16 bg-primary text-white font-bold uppercase tracking-widest text-xs rounded-xl shadow-xl">Generate My Custom Roadmap <Sparkles className="ml-2 h-4 w-4 text-accent" /></Button>
+                 </div>
+              </div>
+              <div className="relative">
+                 <div className="absolute -inset-10 bg-primary/5 rounded-[4rem] blur-[50px] opacity-30"></div>
+                 <Card className="border-none shadow-2xl p-10 rounded-[3rem] bg-white relative z-10 space-y-8 overflow-hidden">
+                    <div className="absolute top-0 right-0 p-8 opacity-5"><Milestone className="h-48 w-48" /></div>
+                    <h4 className="text-2xl font-bold uppercase text-primary border-b pb-6">Personalized Sample</h4>
+                    <div className="space-y-6">
+                       {[
+                         { l: "Year 1", t: "Foundation Mastery", d: "Closing 100% of past learning gaps." },
+                         { l: "Year 2", t: "Competitive Baseline", d: "Introduction to national level testing." },
+                         { l: "Year 3", t: "Apex Performance", d: "Targeting state-level board merit." }
+                       ].map((step, i) => (
+                         <div key={i} className="flex gap-6 group">
+                            <div className="h-10 w-10 rounded-xl bg-accent text-primary flex items-center justify-center font-bold text-xs shrink-0">{i+1}</div>
+                            <div className="space-y-1">
+                               <p className="font-bold text-primary uppercase text-sm">{step.t}</p>
+                               <p className="text-xs text-muted-foreground font-light">{step.d}</p>
+                            </div>
+                         </div>
+                       ))}
+                    </div>
+                 </Card>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      {/* NEW: SCHOLAR XP LEADERBOARD (GAMIFICATION PREVIEW) */}
+      <section className="py-24 md:py-48 bg-[#05070a] text-white overflow-hidden relative">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="text-center space-y-6 mb-24">
+              <Badge className="bg-accent text-primary border-none uppercase font-bold tracking-widest text-[10px]">Scholar Matrix</Badge>
+              <h2 className="text-4xl md:text-8xl font-extrabold uppercase leading-none tracking-tighter">Live Scholar <br/> <span className="text-accent italic">Leaderboard.</span></h2>
+              <p className="text-xl text-white/40 font-light max-w-2xl mx-auto">See how our scholars are leveling up in real-time across Dehradun. Every task completed adds XP.</p>
+           </div>
+
+           <div className="grid lg:grid-cols-3 gap-12">
+              <Card className="bg-white/5 border-white/10 p-10 rounded-[3rem] space-y-8">
+                 <div className="flex justify-between items-center">
+                    <h4 className="text-xl font-bold uppercase text-accent">Top Elite</h4>
+                    <Trophy className="h-6 w-6 text-accent" />
+                 </div>
+                 <div className="space-y-6">
+                    {[
+                      { n: "A.S.", l: "Lvl 42", xp: "12,400", g: "Class 10" },
+                      { n: "R.V.", l: "Lvl 38", xp: "11,200", g: "Class 12" },
+                      { n: "M.N.", l: "Lvl 35", xp: "10,800", g: "Class 8" }
+                    ].map((s, i) => (
+                      <div key={i} className="flex items-center justify-between group">
+                         <div className="flex items-center gap-4">
+                            <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-accent">{i+1}</div>
+                            <div>
+                               <p className="font-bold">{s.n}</p>
+                               <p className="text-[10px] text-white/30 uppercase font-bold">{s.g}</p>
+                            </div>
+                         </div>
+                         <div className="text-right">
+                            <p className="text-sm font-bold text-accent">{s.l}</p>
+                            <p className="text-[10px] text-white/30 uppercase font-bold">{s.xp} XP</p>
+                         </div>
+                      </div>
+                    ))}
+                 </div>
+              </Card>
+
+              <div className="lg:col-span-2 space-y-12">
+                 <div className="grid grid-cols-2 gap-8">
+                    {[
+                      { l: "Global XP Logged", v: "1.2M+", i: Zap },
+                      { l: "Levels Unlocked", v: "4,500", i: Medal },
+                      { l: "Avg. Streak", v: "14 Days", i: Flame },
+                      { l: "Active Mentors", v: "500+", i: Users }
+                    ].map((stat, i) => (
+                      <div key={i} className="space-y-2 border-l-2 border-white/10 pl-6 hover:border-accent transition-colors">
+                         <p className="text-[10px] font-bold uppercase text-white/30 tracking-widest flex items-center gap-2">
+                           <stat.i className="h-3 w-3 text-accent" /> {stat.l}
+                         </p>
+                         <p className="text-4xl font-extrabold font-headline">{stat.v}</p>
+                      </div>
+                    ))}
+                 </div>
+                 <Card className="bg-accent text-primary p-10 rounded-[3rem] relative overflow-hidden group">
+                    <BrainCircuit className="absolute right-[-20px] bottom-[-20px] h-48 w-48 opacity-10 group-hover:rotate-12 transition-transform duration-[2000ms]" />
+                    <div className="space-y-6 relative z-10">
+                       <h4 className="text-3xl font-extrabold uppercase leading-none tracking-tight">Gamified <br/> Learning OS.</h4>
+                       <p className="text-lg font-light leading-relaxed">Our platform transforms study hours into an RPG-style growth journey. Students don't 'study'—they 'quest' for knowledge.</p>
+                       <Link href="/student" className="block pt-4">
+                          <Button className="bg-primary text-white font-bold uppercase text-[10px] tracking-widest px-8 h-12 rounded-xl">Join The Hub</Button>
+                       </Link>
+                    </div>
+                 </Card>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      {/* NEW: SUBJECT-WISE SPECIALISTS HUB (MASSIVE GRID) */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="text-center space-y-6 mb-24">
+              <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">Academic Directory</Badge>
+              <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Subject-Wise <br/> <span className="text-accent italic">Authority.</span></h2>
+              <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">We don't provide generalists. We provide specialists for 20+ academic domains in Dehradun.</p>
+           </div>
+
+           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+              {[
+                { s: "Mathematics", i: Calculator, c: "Calculus & Algebra" },
+                { s: "Physics", i: Zap, c: "Mechanics & Optics" },
+                { s: "Chemistry", i: Microscope, c: "Organic & Physical" },
+                { s: "Biology", i: Dna, c: "Botany & Zoology" },
+                { s: "English", i: MessageSquare, c: "Grammar & Literature" },
+                { s: "Accounts", i: Coins, c: "Financial Reporting" },
+                { s: "Economics", i: TrendingUp, c: "Macro & Micro" },
+                { s: "Comp Science", i: Code, c: "Java & Python" },
+                { s: "Reasoning", i: Brain, c: "Logical & Verbal" },
+                { s: "Social Science", i: Globe, c: "Civics & History" }
+              ].map((sub, i) => (
+                <Card key={i} className="border-none shadow-sm p-8 rounded-[2rem] bg-muted/20 hover:bg-primary group transition-all duration-500 cursor-default">
+                   <div className="bg-white p-4 rounded-2xl w-fit mb-6 shadow-sm group-hover:bg-accent transition-colors">
+                      <sub.i className="h-6 w-6 text-primary group-hover:text-white" />
+                   </div>
+                   <h4 className="text-sm font-bold uppercase tracking-tight text-primary group-hover:text-white mb-1">{sub.s}</h4>
+                   <p className="text-[10px] text-muted-foreground group-hover:text-white/40 leading-relaxed font-bold">{sub.c}</p>
+                </Card>
+              ))}
+           </div>
+           <div className="text-center pt-20">
+              <Link href="/contact">
+                 <Button variant="outline" className="border-primary text-primary font-bold uppercase tracking-widest text-[10px] h-14 px-12 rounded-xl">Don't See Your Subject? Request Here</Button>
+              </Link>
+           </div>
         </div>
       </section>
 
@@ -527,6 +694,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* NEW: THE "SAFETY FIRST" 10-POINT PROTOCOL */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="relative order-2 lg:order-1">
+                 <div className="absolute -inset-10 bg-accent/20 rounded-full blur-[100px] opacity-30"></div>
+                 <Image src="https://picsum.photos/seed/drona_safety/1200/1200" width={1200} height={1200} alt="Student Safety Drona IQ" className="rounded-[4rem] shadow-2xl relative z-10 border border-primary/5" />
+              </div>
+              <div className="space-y-12 order-1 lg:order-2">
+                 <div className="space-y-6">
+                    <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">Home Trust</Badge>
+                    <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Safety First <br/> <span className="text-accent italic">Protocol.</span></h2>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed">Your home is a sanctuary. We ensure every tutor who enters meets our rigorous 10-point safety and ethics criteria.</p>
+                 </div>
+                 <div className="grid gap-4">
+                    {[
+                      { l: "Full Identity & Govt ID Verification", i: Fingerprint },
+                      { l: "Mandatory Police Background Clearance", i: ShieldCheck },
+                      { l: "Female-Only Tutors for Girls (Upon Request)", i: Heart },
+                      { l: "Continuous Ethics & Pedagogy Training", i: BookMarked },
+                      { l: "Monthly Digital Safety Check-ins with Parents", i: Smartphone }
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-6 p-6 rounded-2xl bg-muted/30 border border-primary/5 group hover:bg-primary hover:text-white transition-all">
+                         <div className="bg-white p-3 rounded-xl shadow-sm group-hover:bg-accent transition-colors"><item.i className="h-5 w-5 text-primary group-hover:text-white" /></div>
+                         <p className="font-bold text-xs uppercase tracking-widest">{item.l}</p>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+           </div>
+        </div>
+      </section>
+
       {/* GOD-LEVEL SECTION: INTERACTIVE ACADEMIC DIAGNOSTIC HUB (LEAD MAGNET) */}
       <section className="py-24 md:py-48 bg-primary text-white overflow-hidden relative">
         <div className="absolute inset-0 z-0 opacity-5 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000')]"></div>
@@ -630,6 +830,56 @@ export default function HomePage() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* NEW: VALUE ENGINEERING (FEE TRANSPARENCY & ROI) */}
+      <section className="py-24 md:py-48 bg-[#fafafa] overflow-hidden border-t border-primary/5">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-12">
+                 <div className="space-y-6">
+                    <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">ROI Report</Badge>
+                    <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase leading-none tracking-tighter">Value <br/> <span className="text-accent italic">Engineering.</span></h2>
+                    <p className="text-xl text-muted-foreground font-light leading-relaxed">Education is an investment. We show you the literal return on your child's time and your hard-earned money.</p>
+                 </div>
+                 <div className="grid grid-cols-2 gap-8">
+                    {[
+                      { l: "Time Saved/Week", v: "12h", d: "Zero commute home-tuition model.", i: Timer },
+                      { l: "Syllabus Efficiency", v: "40%+", d: "AI-optimized task prioritization.", i: Zap },
+                      { l: "Success Probability", v: "96%", d: "Historical data-backed tracking.", i: TrendingUp },
+                      { l: "Parent Satisfaction", v: "4.9/5", d: "Verified local Dehradun reviews.", i: Smile }
+                    ].map((item, i) => (
+                      <div key={i} className="space-y-2">
+                         <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-primary/40"><item.i className="h-3 w-3 text-accent" /> {item.l}</div>
+                         <p className="text-4xl font-extrabold text-primary">{item.v}</p>
+                         <p className="text-[10px] text-muted-foreground font-light leading-tight">{item.d}</p>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+              <div className="bg-primary text-white p-12 rounded-[4rem] shadow-2xl space-y-10 relative overflow-hidden">
+                 <Coins className="absolute top-0 right-0 p-8 h-48 w-48 opacity-5 rotate-12" />
+                 <h4 className="text-3xl font-extrabold uppercase leading-tight tracking-tight">Transparent <br/> Value Breakdown.</h4>
+                 <div className="space-y-6">
+                    {[
+                      "Premium verified tutor at your doorstep.",
+                      "24/7 AI-mentor & doubt-solver access.",
+                      "Weekly diagnostic reports & risk alerts.",
+                      "Military-grade discipline kits from DrDA.",
+                      "Direct hotline to Hub Counselor."
+                    ].map((item, i) => (
+                      <div key={i} className="flex gap-4 items-center border-b border-white/10 pb-4 last:border-0">
+                         <div className="h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center shrink-0"><Check className="h-3 w-3 text-accent" /></div>
+                         <p className="text-sm font-light text-white/70">{item}</p>
+                      </div>
+                    ))}
+                 </div>
+                 <Link href="/contact" className="block pt-6">
+                    <Button className="w-full h-16 bg-accent text-primary font-bold uppercase text-xs tracking-widest rounded-xl hover:scale-105 transition-all">Get Detailed Fee Structure</Button>
+                 </Link>
+              </div>
+           </div>
         </div>
       </section>
 
@@ -789,11 +1039,11 @@ export default function HomePage() {
                 <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/5 hidden md:block"></div>
                 <div className="space-y-32">
                    {[
-                     { t: "06:00 AM", task: "Mindfulness & Physical Drill", d: "Military-grade start for peak cognitive focus.", i: Sunrise },
-                     { t: "08:00 AM", task: "Mainstream Schooling", d: "Drona IQ synergy with school curriculum in Dehradun.", i: School },
-                     { t: "04:00 PM", task: "Mentorship Hub", d: "One-on-one conceptual deep dives with subject experts.", i: Users },
+                     { t: "06:00 AM", task: "Mindfulness & Physical Drill", d: "Peak focus military-grade start.", i: Sunrise },
+                     { t: "08:00 AM", task: "Mainstream Schooling", d: "Drona IQ synergy with school curriculum.", i: School },
+                     { t: "04:00 PM", task: "Mentorship Hub", d: "One-on-one conceptual deep dives.", i: Users },
                      { t: "07:30 PM", task: "AI Diagnostic Review", d: "Automated analysis of the day's tasks.", i: BrainCircuit },
-                     { t: "09:30 PM", task: "Parent Sync & Sleep", d: "Final goal tracking and rest for recovery.", i: MoonIcon }
+                     { t: "09:30 PM", task: "Parent Sync & Sleep", d: "Final goal tracking and rest.", i: ShieldAlert }
                    ].map((item, i) => (
                      <div key={i} className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
                         <div className={`flex-1 text-center md:text-left space-y-4 ${i % 2 !== 0 ? 'md:text-right' : ''}`}>
