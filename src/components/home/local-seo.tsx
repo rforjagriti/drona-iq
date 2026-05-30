@@ -4,7 +4,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight, Target } from 'lucide-react';
 
 export function LocalSeoMatrix() {
   const areas = [
@@ -25,14 +25,14 @@ export function LocalSeoMatrix() {
             </p>
          </div>
          
-         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 text-left">
             {areas.map((area, i) => (
               <Link href={`/tuition-in/${area.toLowerCase().replace(/\s+/g, '-')}`} key={i}>
-                 <div className="p-8 rounded-[2rem] bg-white border border-primary/5 hover:border-accent hover:shadow-2xl transition-all text-center group relative overflow-hidden">
+                 <div className="p-8 rounded-[2rem] bg-white border border-primary/5 hover:border-accent hover:shadow-2xl transition-all group relative overflow-hidden h-full">
                     <MapPin className="h-10 w-10 text-accent/10 absolute -right-2 -bottom-2 group-hover:scale-150 transition-transform" />
                     <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover:text-accent">Tuition in</p>
                     <p className="text-sm font-extrabold uppercase mt-2 text-primary">{area}</p>
-                    <div className="mt-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="mt-4 flex items-center justify-start opacity-0 group-hover:opacity-100 transition-opacity">
                       <ArrowRight className="h-4 w-4 text-accent" />
                     </div>
                  </div>

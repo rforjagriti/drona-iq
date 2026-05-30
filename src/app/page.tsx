@@ -3,15 +3,17 @@ import { Navbar } from '@/components/navbar';
 import { HeroSection } from '@/components/home/hero';
 import { GenesisSection } from '@/components/home/genesis';
 import { TechSuiteSection } from '@/components/home/tech-suite';
+import { NeuroHubSection } from '@/components/home/neuro-hub';
 import { ClassUniverseSection } from '@/components/home/class-universe';
 import { DefenceLegacySection } from '@/components/home/defence-legacy';
 import { LocalSeoMatrix } from '@/components/home/local-seo';
+import { SocialProofSection } from '@/components/home/social-proof';
 import { FaqFortress } from '@/components/home/faq-fortress';
-import { Quote, GraduationCap, Brain, Timer, ShieldCheck, Target, Zap, UserCheck, Activity, Award } from 'lucide-react';
+import { CompetitiveMatrix } from '@/components/competitive-matrix';
+import { Quote } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CompetitiveMatrix } from '@/components/competitive-matrix';
 
 export default function HomePage() {
   return (
@@ -28,41 +30,14 @@ export default function HomePage() {
         {/* 3. TECH SUITE: SIMULATORS & TWINS (The Machine) */}
         <TechSuiteSection />
 
-        {/* 4. COMPETITIVE MATRIX (The Comparison) */}
+        {/* 4. NEUROSCIENCE HUB (The Science) */}
+        <NeuroHubSection />
+
+        {/* 5. COMPETITIVE MATRIX (The Comparison) */}
         <CompetitiveMatrix />
 
-        {/* 5. THE CLASS UNIVERSE: GRADE-WISE MINI LANDING PAGES (The Product) */}
+        {/* 6. THE CLASS UNIVERSE: GRADE-WISE MODULES (The Product) */}
         <ClassUniverseSection />
-
-        {/* 6. NEUROSCIENCE HUB (The Science) */}
-        <section className="py-24 md:py-48 bg-[#05070a] text-white">
-          <div className="container mx-auto px-4 max-w-7xl text-center space-y-24">
-            <div className="space-y-6">
-              <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">Cognitive Engineering</Badge>
-              <h2 className="text-4xl md:text-8xl font-extrabold uppercase tracking-tighter leading-none">Neuroscience <br/> <span className="text-accent italic">Of Mastery.</span></h2>
-              <p className="text-xl text-white/40 max-w-3xl mx-auto font-light leading-relaxed">
-                Most tuition centers in Dehradun rely on repetition. We rely on brain science. We don't just teach chapters; we optimize neural pathways.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-              {[
-                { t: "Active Recall", d: "Strengthening synaptic connections by testing before teaching.", i: Brain },
-                { t: "Neural Gap Analysis", d: "AI detection of exactly which concept fiber is missing in the brain.", i: Target },
-                { t: "Focus State Sync", d: "Optimizing concentration through environmental discipline.", i: Timer },
-                { t: "Spaced Retrieval", d: "Stopping the Forgetting Curve using calculated interval reviews.", i: Activity }
-              ].map((item, i) => (
-                <div key={i} className="p-10 bg-white/5 border border-white/10 rounded-[3rem] space-y-6 hover:bg-white hover:text-primary transition-all duration-700 group">
-                  <div className="bg-accent/20 p-4 w-fit rounded-2xl group-hover:bg-accent group-hover:text-white transition-colors">
-                    <item.i className="h-8 w-8" />
-                  </div>
-                  <h4 className="text-2xl font-bold uppercase text-accent group-hover:text-primary transition-colors">{item.t}</h4>
-                  <p className="text-sm text-white/40 group-hover:text-muted-foreground transition-colors font-light leading-relaxed">{item.d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* 7. PSYCHOLOGY HUB: WHY DEHRADUN STUDENTS FAIL (The Fear Solver) */}
         <section className="py-24 bg-muted/20 overflow-hidden">
@@ -115,10 +90,13 @@ export default function HomePage() {
         {/* 8. DEFENCE LEGACY: DrDA INTEGRATION (The Authority) */}
         <DefenceLegacySection />
 
-        {/* 9. DEHRADUN 360 LOCALITY GRID (The SEO Power) */}
+        {/* 9. SOCIAL PROOF & SAFETY (Trust Wall) */}
+        <SocialProofSection />
+
+        {/* 10. DEHRADUN 360 LOCALITY GRID (The SEO Power) */}
         <LocalSeoMatrix />
 
-        {/* 10. FAQ FORTRESS (The Objection Handler) */}
+        {/* 11. FAQ FORTRESS (The Objection Handler) */}
         <FaqFortress />
 
         {/* FINAL EMOTIONAL CTA */}
@@ -193,3 +171,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+import { GraduationCap, ShieldCheck, UserCheck, Award, Target } from 'lucide-react';
