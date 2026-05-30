@@ -57,14 +57,14 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* Top Contact Strip - Integrated to prevent overlap */}
-      <div className="bg-primary text-white py-2 px-4 hidden md:block border-b border-white/5 backdrop-blur-md">
-        <div className="container mx-auto flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em]">
-          <div className="flex gap-8">
-            <span className="flex items-center gap-2"><MapPin className="h-3 w-3 text-accent" /> Om Tower, Sahastradhara Road, Dehradun</span>
-            <span className="flex items-center gap-2"><Clock className="h-3 w-3 text-accent" /> Mon - Sat: 09:00 AM - 08:00 PM</span>
+      {/* Top Contact Strip */}
+      <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
+        <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
+          <div className="flex gap-4 md:gap-8 overflow-hidden">
+            <span className="flex items-center gap-2 whitespace-nowrap"><MapPin className="h-3 w-3 text-accent shrink-0" /> Om Tower, Dehradun</span>
+            <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> Mon - Sat: 09:00 AM - 08:00 PM</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 shrink-0">
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
               <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
             </Link>
@@ -73,8 +73,8 @@ export function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <nav className="glass border-b border-white/10 shadow-xl relative z-[101]">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <nav className="glass border-b border-white/10 shadow-xl relative z-[101] h-20 flex items-center">
+        <div className="container mx-auto flex items-center justify-between px-4">
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="rounded-xl bg-primary p-2 shadow-lg group-hover:scale-110 transition-transform border border-white/10">
               <GraduationCap className="h-6 w-6 text-accent" />
