@@ -10,14 +10,11 @@ import {
   ChevronDown, 
   BrainCircuit, 
   Users, 
-  ShieldCheck, 
-  LayoutDashboard, 
   User, 
   Sparkles, 
   LogIn, 
   LogOut, 
   ListChecks, 
-  Target, 
   Phone, 
   MapPin, 
   Clock 
@@ -30,7 +27,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -57,7 +53,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* Top Contact Strip */}
+      {/* 1. TOP CONTACT STRIP (Managed separately from Nav) */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-4 md:gap-8 overflow-hidden">
@@ -72,7 +68,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* 2. MAIN NAV BAR */}
       <nav className="glass border-b border-white/10 shadow-xl relative z-[101] h-20 flex items-center">
         <div className="container mx-auto flex items-center justify-between px-4">
           <Link href="/" className="flex items-center space-x-2 group">
@@ -96,23 +92,14 @@ export function Navbar() {
                 Dashboards <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest mb-2 px-2">Unified Portals</DropdownMenuLabel>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 hover:bg-muted/50">
+                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/student" className="flex items-center gap-3">
-                    <div className="bg-primary/5 p-2 rounded-lg"><User className="h-4 w-4 text-primary" /></div>
-                    <div>
-                      <p className="font-bold text-xs text-primary">Student Hub</p>
-                      <p className="text-[9px] text-muted-foreground">Daily tasks & XP engine</p>
-                    </div>
+                    <User className="h-4 w-4 text-primary" /> <span>Student Hub</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 hover:bg-muted/50">
+                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/parent-dashboard" className="flex items-center gap-3">
-                    <div className="bg-accent/10 p-2 rounded-lg"><Users className="h-4 w-4 text-accent" /></div>
-                    <div>
-                      <p className="font-bold text-xs text-primary">Parent Portal</p>
-                      <p className="text-[9px] text-muted-foreground">Analytics & growth charts</p>
-                    </div>
+                    <Users className="h-4 w-4 text-accent" /> <span>Parent Portal</span>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -123,7 +110,6 @@ export function Navbar() {
                 AI Intelligence <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest mb-2 px-2">Reasoning Core</DropdownMenuLabel>
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/revision-generator" className="flex items-center gap-3">
                     <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs">AI Revision Pack</span>
@@ -148,18 +134,16 @@ export function Navbar() {
             ) : (
               <DropdownMenu>
                 <DropdownMenuTrigger className="outline-none">
-                  <div className="flex items-center gap-3 pr-2 pl-2 py-1.5 rounded-full border bg-muted/30 hover:bg-muted/50 transition-colors shadow-sm">
-                    <Avatar className="h-9 w-9 border-2 border-white shadow-md">
-                      <AvatarImage src={user.photoURL || ''} />
-                      <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
-                    </Avatar>
-                  </div>
+                  <Avatar className="h-9 w-9 border-2 border-white shadow-md">
+                    <AvatarImage src={user.photoURL || ''} />
+                    <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
+                  </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
                   <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
                     <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs hover:bg-red-50">
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
                     <LogOut className="h-4 w-4" /> Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -175,25 +159,9 @@ export function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden absolute top-20 inset-x-0 h-screen bg-white z-[90] p-6 space-y-8 animate-in slide-in-from-top duration-300 overflow-y-auto pb-40">
-            <div className="grid grid-cols-2 gap-4">
-              <Link href="/academic-health-check" className="flex flex-col items-center justify-center p-6 bg-muted/50 rounded-[2rem] text-center" onClick={() => setIsOpen(false)}>
-                <BrainCircuit className="h-8 w-8 text-accent mb-2" />
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-primary">AI Health</span>
-              </Link>
-              <Link href="/home-tuition" className="flex flex-col items-center justify-center p-6 bg-muted/50 rounded-[2rem] text-center" onClick={() => setIsOpen(false)}>
-                <Users className="h-8 w-8 text-primary mb-2" />
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-primary">Home Tuition</span>
-              </Link>
-            </div>
-            
-            <div className="space-y-4">
-              <Link href="/student" className="flex items-center gap-4 p-5 bg-primary/5 rounded-2xl font-bold text-sm" onClick={() => setIsOpen(false)}>
-                <User className="h-5 w-5 text-primary" /> Scholar Hub
-              </Link>
-              <Link href="/results" className="flex items-center gap-4 p-5 bg-muted rounded-2xl font-bold text-sm" onClick={() => setIsOpen(false)}>
-                <Target className="h-5 w-5 text-muted-foreground" /> Success Log
-              </Link>
-            </div>
+             <Link href="/academic-health-check" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>AI Health Check</Link>
+             <Link href="/home-tuition" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Home Tuition</Link>
+             <Link href="/student" className="block p-4 bg-primary/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Scholar Hub</Link>
           </div>
         )}
       </nav>
