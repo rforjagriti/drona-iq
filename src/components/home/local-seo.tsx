@@ -4,16 +4,15 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { MapPin, ArrowRight, Target, ShieldCheck, Star, Users } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { MapPin, ArrowRight, Target, ShieldCheck, Users } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 export function LocalSeoMatrix() {
   const areas = [
     "Rajpur Road", "Sahastradhara Road", "Jakhan", "Canal Road", "Old Rajpur", "Dalanwala", 
     "Vasant Vihar", "Indira Nagar", "Balliwala", "Ballupur", "Prem Nagar", "Clement Town", 
     "Patel Nagar", "GMS Road", "Chakrata Road", "Kaulagarh", "Kishan Nagar", "Nehru Colony",
-    "Race Course", "Vikas Nagar", "Selaqui", "Doon IT Park", "Aman Vihar", "Nanda Ki Chowki",
-    "Majra", "Niranjanpur", "Turner Road", "Harrawala", "Shimla Bypass"
+    "Race Course", "Vikas Nagar", "Selaqui", "Doon IT Park", "Aman Vihar", "Majra"
   ];
 
   return (
@@ -42,35 +41,17 @@ export function LocalSeoMatrix() {
             ))}
          </div>
 
-         {/* Local Trust Grid */}
-         <div className="grid md:grid-cols-3 gap-8 text-left mt-32">
-            {[
-              { icon: ShieldCheck, title: "Verified Hubs", desc: "Every sector in Dehradun is covered by our background-checked tutor network." },
-              { icon: Users, title: "School Specifics", desc: "We map curricula for Brightlands, St. Joseph's, Welham, and other local elites." },
-              { icon: Target, title: "Center Support", desc: "Our main hub at Om Tower, Sahastradhara Road acts as a 24/7 support desk." }
-            ].map((item, i) => (
-               <Card key={i} className="border-none shadow-xl rounded-[2.5rem] bg-white p-10 group hover:bg-primary transition-all duration-500">
-                  <div className="bg-primary/5 p-4 rounded-2xl w-fit mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
-                     <item.icon className="h-8 w-8 text-primary group-hover:text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold uppercase text-primary group-hover:text-white mb-2">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground group-hover:text-white/40 font-light leading-relaxed">{item.desc}</p>
-               </Card>
-            ))}
-         </div>
-
          <div className="bg-primary text-white p-12 md:p-20 rounded-[4rem] shadow-2xl relative overflow-hidden text-left grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 relative z-10">
                <h3 className="text-4xl font-extrabold font-headline uppercase leading-tight tracking-tighter">Your Locality <br/> Is Our Hub.</h3>
                <p className="text-white/60 font-light leading-relaxed">
-                 Don't waste your child's peak focus hours in traffic. We bring the elite mentorship of Rajpur Road directly to your doorstep in Jakhan or Vikas Nagar.
+                 Don't waste your child's peak focus hours in traffic. We bring elite mentorship directly to your doorstep.
                </p>
                <Link href="/home-tuition">
                  <Button className="h-16 bg-accent text-primary font-bold uppercase text-[10px] tracking-widest rounded-xl px-12 hover:scale-105 transition-all">Find a Tutor Near Me</Button>
                </Link>
             </div>
             <div className="hidden lg:block relative h-full min-h-[300px]">
-               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)] opacity-20"></div>
                <div className="grid grid-cols-2 gap-4">
                   {[
                     { l: "Tutor Proximity", v: "15 Mins" },

@@ -14,9 +14,10 @@ import { AdmissionReadiness } from '@/components/home/admission-readiness';
 import { SchoolSyncMatrix } from '@/components/home/school-sync';
 import { LivePulse } from '@/components/home/live-pulse';
 import { ROICalculator } from '@/components/home/roi-calculator';
-import { Quote } from 'lucide-react';
+import { Quote, Zap, ArrowRight, Star, TrendingUp, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
   return (
@@ -33,19 +34,19 @@ export default function HomePage() {
         {/* 3. ADMISSION READINESS (The Lead Magnet) */}
         <AdmissionReadiness />
 
-        {/* 4. GENESIS: FOUNDER'S LETTER */}
+        {/* 4. GENESIS: FOUNDER'S LETTER (Emotional Trust) */}
         <GenesisSection />
 
-        {/* 5. TECH SUITE: SIMULATORS & TWINS */}
+        {/* 5. TECH SUITE: SIMULATORS & TWINS (The Innovation) */}
         <TechSuiteSection />
 
         {/* 6. OLQ RADAR (The Military Edge) */}
         <OLQRadarSection />
 
-        {/* 7. NEUROSCIENCE HUB (The Science) */}
+        {/* 7. NEUROSCIENCE HUB (The Scientific Logic) */}
         <NeuroHubSection />
 
-        {/* 8. ROI CALCULATOR (The Money/Time Saver) */}
+        {/* 8. ROI CALCULATOR (The Mathematical Proof) */}
         <ROICalculator />
 
         {/* 9. SCHOOL SYNC (Local Dominance) */}
@@ -54,8 +55,8 @@ export default function HomePage() {
         {/* 10. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
         <ClassUniverseSection />
 
-        {/* 11. PSYCHOLOGY HUB */}
-        <section className="py-24 bg-muted/20 overflow-hidden">
+        {/* 11. PSYCHOLOGY HUB: WHY WE WIN */}
+        <section className="py-24 bg-muted/20 overflow-hidden border-y border-primary/5">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
                <div className="space-y-12">
@@ -135,9 +136,17 @@ export default function HomePage() {
            <div className="grid md:grid-cols-4 gap-12 mb-20">
               <div className="space-y-6 text-left">
                  <div className="flex items-center space-x-2">
+                    <div className="rounded-xl bg-primary p-2 border border-white/10">
+                       <Zap className="h-6 w-6 text-accent" />
+                    </div>
                     <span className="font-headline text-2xl font-extrabold tracking-tighter text-white uppercase leading-none">DRONA IQ</span>
                  </div>
                  <p className="text-sm leading-relaxed">Dehradun's apex Student Success Ecosystem. Powered by DrDA legacy.</p>
+                 <div className="flex gap-4">
+                    <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-accent transition-colors"><ShieldCheck className="h-5 w-5" /></div>
+                    <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-accent transition-colors"><Star className="h-5 w-5" /></div>
+                    <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-accent transition-colors"><TrendingUp className="h-5 w-5" /></div>
+                 </div>
               </div>
               <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Quick Access</h4>
@@ -160,14 +169,14 @@ export default function HomePage() {
               <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Connect</h4>
                  <div className="space-y-4 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    <p>Admissions: +91 78785 53385</p>
-                    <p>General: +91 63990 00440</p>
-                    <p className="mt-6 text-white/20 uppercase tracking-widest">Om Tower, Sahastradhara Road, Dehradun</p>
+                    <p className="flex items-center gap-2"><Zap className="h-3 w-3 text-accent" /> Admissions: +91 78785 53385</p>
+                    <p className="flex items-center gap-2"><Zap className="h-3 w-3 text-accent" /> General: +91 63990 00440</p>
+                    <p className="mt-6 text-white/20">Om Tower, Sahastradhara Road<br/>Near IT Park, Dehradun</p>
                  </div>
               </div>
            </div>
            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] text-center">
-              <p>© 2026 Drona IQ Academy. ISO 9001:2015 Certified.</p>
+              <p>© 2026 Drona IQ Academy. All Rights Reserved. ISO 9001:2015 Certified.</p>
               <div className="flex gap-8">
                  <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
                  <Link href="#" className="hover:text-white transition-colors">Terms</Link>
