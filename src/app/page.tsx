@@ -7,13 +7,16 @@ import { NeuroHubSection } from '@/components/home/neuro-hub';
 import { ClassUniverseSection } from '@/components/home/class-universe';
 import { DefenceLegacySection } from '@/components/home/defence-legacy';
 import { LocalSeoMatrix } from '@/components/home/local-seo';
-import { SocialProofSection } from '@/components/home/social-proof';
 import { FaqFortress } from '@/components/home/faq-fortress';
 import { OLQRadarSection } from '@/components/home/olq-radar';
 import { AdmissionReadiness } from '@/components/home/admission-readiness';
 import { SchoolSyncMatrix } from '@/components/home/school-sync';
 import { LivePulse } from '@/components/home/live-pulse';
 import { ROICalculator } from '@/components/home/roi-calculator';
+import { FacultySection } from '@/components/home/faculty';
+import { SuccessHallSection } from '@/components/home/success-hall';
+import { VideoHubSection } from '@/components/home/video-hub';
+import { GalleryLabSection } from '@/components/home/gallery-lab';
 import { Quote, Zap, ArrowRight, Star, TrendingUp, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -21,7 +24,7 @@ import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white selection:bg-accent selection:text-white overflow-x-hidden">
+    <div className="flex min-h-screen flex-col bg-white selection:bg-accent selection:text-white overflow-x-hidden font-body">
       <Navbar />
       
       <main>
@@ -37,25 +40,37 @@ export default function HomePage() {
         {/* 4. GENESIS: FOUNDER'S LETTER (Emotional Trust) */}
         <GenesisSection />
 
-        {/* 5. TECH SUITE: SIMULATORS & TWINS (The Innovation) */}
+        {/* 5. SUCCESS HALL: TESTIMONIALS & RESULTS (Social Proof) */}
+        <SuccessHallSection />
+
+        {/* 6. TECH SUITE: SIMULATORS & TWINS (The Innovation) */}
         <TechSuiteSection />
 
-        {/* 6. OLQ RADAR (The Military Edge) */}
+        {/* 7. FACULTY WALL: INTELLECTUAL CAPITAL (Authority) */}
+        <FacultySection />
+
+        {/* 8. VIDEO HUB: YOUTUBE & CINEMATICS (Engagement) */}
+        <VideoHubSection />
+
+        {/* 9. GALLERY: SUCCESS LAB (Visual Proof) */}
+        <GalleryLabSection />
+
+        {/* 10. OLQ RADAR (The Military Edge) */}
         <OLQRadarSection />
 
-        {/* 7. NEUROSCIENCE HUB (The Scientific Logic) */}
+        {/* 11. NEUROSCIENCE HUB (The Scientific Logic) */}
         <NeuroHubSection />
 
-        {/* 8. ROI CALCULATOR (The Mathematical Proof) */}
+        {/* 12. ROI CALCULATOR (The Mathematical Proof) */}
         <ROICalculator />
 
-        {/* 9. SCHOOL SYNC (Local Dominance) */}
+        {/* 13. SCHOOL SYNC (Local Dominance) */}
         <SchoolSyncMatrix />
 
-        {/* 10. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
+        {/* 14. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
         <ClassUniverseSection />
 
-        {/* 11. PSYCHOLOGY HUB: WHY WE WIN */}
+        {/* 15. PSYCHOLOGY HUB: WHY WE WIN */}
         <section className="py-24 bg-muted/20 overflow-hidden border-y border-primary/5">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -103,16 +118,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 12. DEFENCE LEGACY: DrDA INTEGRATION */}
+        {/* 16. DEFENCE LEGACY: DrDA INTEGRATION */}
         <DefenceLegacySection />
 
-        {/* 13. SOCIAL PROOF & SAFETY */}
-        <SocialProofSection />
-
-        {/* 14. DEHRADUN 360 LOCALITY GRID */}
+        {/* 17. DEHRADUN 360 LOCALITY GRID */}
         <LocalSeoMatrix />
 
-        {/* 15. FAQ FORTRESS */}
+        {/* 18. FAQ FORTRESS */}
         <FaqFortress />
 
         {/* FINAL EMOTIONAL CTA */}
