@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -17,7 +18,6 @@ import {
   LogOut, 
   ListChecks, 
   Target, 
-  MessageCircle, 
   Phone, 
   MapPin, 
   Clock 
@@ -57,7 +57,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* Top Contact Strip - Now part of the flex-col header to prevent overlap */}
+      {/* Top Contact Strip */}
       <div className="bg-primary text-white py-2.5 px-4 hidden md:block border-b border-white/5 backdrop-blur-md">
         <div className="container mx-auto flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-8">
@@ -68,15 +68,12 @@ export function Navbar() {
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
               <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
             </Link>
-            <Link href="tel:+916399000440" className="hover:text-accent transition-colors flex items-center gap-2">
-              <Phone className="h-3 w-3 text-accent" /> +91 63990 00440
-            </Link>
           </div>
         </div>
       </div>
 
       {/* Main Navbar */}
-      <nav className="glass border-b border-white/10 shadow-xl">
+      <nav className="glass border-b border-white/10 shadow-xl relative z-[101]">
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="rounded-xl bg-primary p-2 shadow-lg group-hover:scale-110 transition-transform border border-white/10">
@@ -98,7 +95,7 @@ export function Navbar() {
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
                 Dashboards <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none premium-shadow bg-white animate-in zoom-in-95">
+              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
                 <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest mb-2 px-2">Unified Portals</DropdownMenuLabel>
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 hover:bg-muted/50">
                   <Link href="/student" className="flex items-center gap-3">
@@ -118,25 +115,6 @@ export function Navbar() {
                     </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="my-2" />
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 hover:bg-muted/50">
-                  <Link href="/tutor-portal" className="flex items-center gap-3">
-                    <div className="bg-green-50 p-2 rounded-lg"><ShieldCheck className="h-4 w-4 text-green-600" /></div>
-                    <div>
-                      <p className="font-bold text-xs text-primary">Educator Hub</p>
-                      <p className="text-[9px] text-muted-foreground">Expert registration & verify</p>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 hover:bg-muted/50">
-                  <Link href="/admin" className="flex items-center gap-3">
-                    <div className="bg-primary/10 p-2 rounded-lg"><LayoutDashboard className="h-4 w-4 text-primary" /></div>
-                    <div>
-                      <p className="font-bold text-xs text-primary">Admin OS</p>
-                      <p className="text-[9px] text-muted-foreground">Lead CRM & Management</p>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -144,16 +122,11 @@ export function Navbar() {
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
                 AI Intelligence <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none premium-shadow bg-white animate-in zoom-in-95">
+              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
                 <DropdownMenuLabel className="text-[9px] font-bold uppercase text-muted-foreground tracking-widest mb-2 px-2">Reasoning Core</DropdownMenuLabel>
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
                   <Link href="/revision-generator" className="flex items-center gap-3">
                     <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs">AI Revision Pack</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/ai-study-planner" className="flex items-center gap-3">
-                    <Target className="h-4 w-4 text-accent" /> <span className="font-bold text-xs">Neural Study Planner</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
@@ -176,28 +149,18 @@ export function Navbar() {
               <DropdownMenu>
                 <DropdownMenuTrigger className="outline-none">
                   <div className="flex items-center gap-3 pr-2 pl-2 py-1.5 rounded-full border bg-muted/30 hover:bg-muted/50 transition-colors shadow-sm">
-                    <div className="hidden md:block text-right">
-                      <p className="text-[10px] font-bold text-primary leading-none uppercase">{user.displayName?.split(' ')[0]}</p>
-                      <p className="text-[8px] text-accent font-extrabold tracking-tighter">DIQ SCHOLAR</p>
-                    </div>
                     <Avatar className="h-9 w-9 border-2 border-white shadow-md">
                       <AvatarImage src={user.photoURL || ''} />
                       <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
                     </Avatar>
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none premium-shadow bg-white">
-                  <DropdownMenuLabel className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2">{user.email}</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="mb-2" />
+                <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
                   <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
                     <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
-                    <Link href="/parent-dashboard" className="flex items-center gap-2 font-bold text-xs"><Users className="h-4 w-4 text-accent" /> Parent Portal</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator className="my-2" />
                   <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs hover:bg-red-50">
-                    <LogOut className="h-4 w-4" /> Logout from OS
+                    <LogOut className="h-4 w-4" /> Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -224,23 +187,11 @@ export function Navbar() {
             </div>
             
             <div className="space-y-4">
-              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] px-4">Navigation</p>
               <Link href="/student" className="flex items-center gap-4 p-5 bg-primary/5 rounded-2xl font-bold text-sm" onClick={() => setIsOpen(false)}>
                 <User className="h-5 w-5 text-primary" /> Scholar Hub
               </Link>
-              <Link href="/parent-dashboard" className="flex items-center gap-4 p-5 bg-accent/5 rounded-2xl font-bold text-sm" onClick={() => setIsOpen(false)}>
-                <Users className="h-5 w-5 text-accent" /> Parent Portal
-              </Link>
               <Link href="/results" className="flex items-center gap-4 p-5 bg-muted rounded-2xl font-bold text-sm" onClick={() => setIsOpen(false)}>
                 <Target className="h-5 w-5 text-muted-foreground" /> Success Log
-              </Link>
-            </div>
-
-            <div className="pt-8 border-t">
-              <Link href="tel:+917878553385">
-                 <Button className="w-full h-16 rounded-2xl text-lg font-headline uppercase font-extrabold tracking-widest shadow-xl">
-                   <MessageCircle className="mr-2 h-5 w-5 text-accent" /> Contact Counseling
-                 </Button>
               </Link>
             </div>
           </div>
