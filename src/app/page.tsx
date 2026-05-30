@@ -65,7 +65,8 @@ import {
   FileText,
   ListChecks,
   HandHeart,
-  BookMarked
+  BookMarked,
+  Home
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -77,7 +78,6 @@ import {
   AccordionTrigger 
 } from '@/components/ui/accordion';
 import { Progress } from '@/components/ui/progress';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function HomePage() {
   const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id);
@@ -325,7 +325,9 @@ export default function HomePage() {
                           ))}
                        </div>
                     </div>
-                    <Button className="w-full h-16 bg-primary text-white font-bold uppercase tracking-widest text-xs rounded-xl shadow-xl">Generate My Custom Roadmap <Sparkles className="ml-2 h-4 w-4 text-accent" /></Button>
+                    <Link href="/academic-health-check">
+                      <Button className="w-full h-16 bg-primary text-white font-bold uppercase tracking-widest text-xs rounded-xl shadow-xl">Generate My Custom Roadmap <Sparkles className="ml-2 h-4 w-4 text-accent" /></Button>
+                    </Link>
                  </div>
               </div>
               <div className="relative">
@@ -473,7 +475,9 @@ export default function HomePage() {
                           </div>
                        </div>
                     </div>
-                    <Button className="w-full h-16 bg-accent text-primary font-bold uppercase text-xs tracking-widest rounded-xl hover:scale-105 transition-all">Run My Success Simulation</Button>
+                    <Link href="/academic-health-check">
+                      <Button className="w-full h-16 bg-accent text-primary font-bold uppercase text-xs tracking-widest rounded-xl hover:scale-105 transition-all">Run My Success Simulation</Button>
+                    </Link>
                  </Card>
               </div>
            </div>
@@ -504,6 +508,11 @@ export default function HomePage() {
                    <p className="text-sm opacity-40 group-hover:opacity-100 font-light leading-relaxed">{item.d}</p>
                 </Card>
               ))}
+           </div>
+           <div className="text-center pt-24">
+             <Link href="/admissions">
+              <Button size="lg" className="bg-accent text-primary font-bold uppercase text-xs tracking-widest h-16 px-12 rounded-xl">Join the Laboratory of Learning</Button>
+             </Link>
            </div>
         </div>
       </section>
@@ -537,7 +546,9 @@ export default function HomePage() {
                       </div>
                     ))}
                  </div>
-                 <Button className="h-16 px-12 bg-primary text-white font-bold uppercase text-[10px] tracking-widest rounded-xl shadow-xl">See The Full OLQ Roadmap</Button>
+                 <Link href="/admissions">
+                  <Button className="h-16 px-12 bg-primary text-white font-bold uppercase text-[10px] tracking-widest rounded-xl shadow-xl">See The Full OLQ Roadmap</Button>
+                 </Link>
               </div>
            </div>
         </div>
@@ -568,6 +579,11 @@ export default function HomePage() {
                  <p className="text-6xl font-extrabold text-green-500">24%</p>
                  <p className="text-[10px] text-muted-foreground font-bold uppercase">Average performance increase due to zero travel fatigue.</p>
               </Card>
+           </div>
+           <div className="pt-12">
+             <Link href="/home-tuition">
+              <Button className="h-16 px-16 bg-primary text-white font-bold uppercase text-xs tracking-widest rounded-xl">Reclaim Your Child's Time</Button>
+             </Link>
            </div>
         </div>
       </section>
@@ -630,7 +646,7 @@ export default function HomePage() {
 
       {/* 9. DEHRADUN 360 LOCALITY GRID (MASSive SEO Power) */}
       <section className="py-24 md:py-48 bg-muted/20 overflow-hidden border-t border-primary/5">
-        <div className="container mx-auto px-4 max-w-7xl text-center space-y-16">
+        <div className="container mx-auto px-4 max-7xl text-center space-y-16">
            <div className="space-y-6">
               <Badge className="bg-primary text-white border-none uppercase font-bold tracking-widest text-[10px]">Local Authority</Badge>
               <h2 className="text-4xl md:text-8xl font-extrabold text-primary uppercase leading-none tracking-tighter">Dehradun 360° <br/> <span className="text-accent italic">Dominance.</span></h2>
@@ -748,17 +764,6 @@ export default function HomePage() {
            </div>
         </div>
       </footer>
-
-      {/* STICKY CTA */}
-      <div className="fixed bottom-10 right-10 flex flex-col gap-4 z-[120]">
-        <Link href="https://wa.me/917878553385" target="_blank">
-          <div className="bg-green-500 text-white p-5 rounded-full shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:scale-110 transition-transform animate-bounce">
-            <Smartphone className="h-8 w-8" />
-          </div>
-        </Link>
-      </div>
-
     </div>
   );
 }
-
