@@ -2,15 +2,60 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { MessageCircle, Phone, ChevronUp } from 'lucide-react';
+import { MessageCircle, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { FirebaseClientProvider } from '@/firebase';
 import { ScrollToTop } from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
-  title: 'Drona IQ | Best Tuition & Home Tuition in Dehradun | Student Success OS',
-  description: 'Drona IQ is Dehradun’s #1 Smart Student Success Ecosystem. We provide premium offline coaching and verified home tuition for CBSE, ICSE, Class 5-12, and NDA Foundation. Combining military discipline with AI-driven academic tracking.',
-  keywords: 'Best Tuition in Dehradun, Home Tuition in Dehradun, Tuition Center Sahastradhara Road, Home Tutor near me, NDA Foundation Coaching Dehradun, CBSE Tuition Dehradun, ICSE Tuition Dehradun, Maths Home Tutor Dehradun, Science Tuition Dehradun',
+  metadataBase: new URL('https://dronaiq.com'),
+  title: {
+    default: 'Drona IQ | Dehradun’s #1 Tuition & Home Tuition Hub',
+    template: '%s | Drona IQ Dehradun'
+  },
+  description: 'Drona IQ is Dehradun’s premier Student Success Ecosystem. Expert offline coaching & verified home tuition for CBSE, ICSE, and NDA Foundation. Military discipline meets AI analytics.',
+  keywords: ['Best Tuition in Dehradun', 'Home Tuition in Dehradun', 'Tuition Center Sahastradhara Road', 'NDA Foundation Coaching Dehradun', 'CBSE Tuition Dehradun', 'Maths Home Tutor Dehradun', 'Droneshwar Defence Academy'],
+  authors: [{ name: 'Drona IQ Team' }],
+  creator: 'Drona IQ Academy',
+  publisher: 'Drona IQ Academy',
+  formatDetection: {
+    email: false,
+    address: true,
+    telephone: true,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://dronaiq.com',
+    siteName: 'Drona IQ Academy',
+    title: 'Drona IQ | Student Success OS Dehradun',
+    description: 'Transforming potential into performance with Dehradun’s most advanced tuition network.',
+    images: [
+      {
+        url: '/images/hero-student.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Drona IQ Excellence',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Drona IQ | Smarter Learning Dehradun',
+    description: 'Verified Home Tutors & Elite Coaching Hub in Dehradun.',
+    images: ['/images/hero-student.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -48,7 +93,9 @@ export default function RootLayout({
                 "contactType": "Admissions"
               },
               "sameAs": [
-                "https://droneshwardefenceacademy.com"
+                "https://droneshwardefenceacademy.com",
+                "https://facebook.com/dronaiq",
+                "https://instagram.com/dronaiq"
               ]
             })
           }}
@@ -58,7 +105,6 @@ export default function RootLayout({
         <FirebaseClientProvider>
           {children}
           
-          {/* Global Floating CTAs - Masterpiece Trio */}
           <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-[999]">
             <ScrollToTop />
             <Link 

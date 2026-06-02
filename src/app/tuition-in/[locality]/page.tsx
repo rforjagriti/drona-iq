@@ -1,3 +1,4 @@
+
 "use client"
 
 import { use } from 'react';
@@ -24,7 +25,7 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
             Best Tuition Classes <br/> in <span className="text-accent italic">{formattedLocality}</span>
           </h1>
           <p className="text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed">
-            Drona IQ offers premium home tuition and elite coaching for CBSE, ICSE, and NDA Prep specifically for students residing near {formattedLocality}, Dehradun.
+            Looking for expert coaching near {formattedLocality}? Drona IQ offers premium home tuition and elite coaching for CBSE, ICSE, and NDA Prep specifically for students in this area.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <Link href="/academic-health-check">
@@ -41,15 +42,15 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
         {/* Why this locality? */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <h2 className="text-4xl font-extrabold font-headline text-primary uppercase">Elite Education <br/> at Your Doorstep</h2>
+            <h2 className="text-4xl font-extrabold font-headline text-primary uppercase">Elite Education <br/> in {formattedLocality}</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We understand that students in {formattedLocality} face unique challenges, from commute times to school-specific curriculum needs. Our network of 500+ verified tutors ensures you get a subject expert who lives nearby.
+              Students in {formattedLocality} now have access to Dehradun's most advanced learning system. We bring subject matter experts who understand the local school requirements (like Brightlands, SJA, etc.) right to your doorstep or our nearby hub.
             </p>
             <ul className="space-y-4">
               {[
-                "Home Tutors within 15 mins of your location",
-                "Curriculum mapping for local schools (Brightlands, St. Joseph's, etc.)",
-                "Regular center-visits for doubt clearing at Rajpur Road",
+                `Top-rated Home Tutors in ${formattedLocality}`,
+                "Curriculum mapping for local Dehradun schools",
+                "Regular center-visits for doubt clearing at Sahastradhara Road",
                 "AI-monitored growth tracking for parents"
               ].map((item, i) => (
                 <li key={i} className="flex gap-3 items-center font-bold text-primary">
@@ -63,7 +64,7 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
               <MapPin className="h-16 w-16 text-accent mx-auto" />
               <h3 className="text-2xl font-bold font-headline text-primary uppercase">Need a Tutor in {formattedLocality}?</h3>
               <p className="text-muted-foreground">Get a customized study plan and a verified tutor recommendation within 2 hours.</p>
-              <Link href="tel:+919999900000" className="block">
+              <Link href="tel:+917878553385" className="block">
                 <Button className="w-full h-16 bg-primary text-white font-headline uppercase tracking-widest text-lg font-bold rounded-xl shadow-xl">
                   <Phone className="mr-2 h-5 w-5" /> Call Local Counselor
                 </Button>
@@ -75,9 +76,9 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
         {/* Localized SEO Content */}
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { icon: GraduationCap, title: "CBSE/ICSE Boards", desc: "Expert foundation building for Class 5-10 and intensive coaching for Class 11-12 Boards." },
-            { icon: BrainCircuit, title: "NDA/JEE Prep", desc: "Specialized competitive exam tracking for students in the Dehradun defense hub." },
-            { icon: Star, title: "Personalized Support", desc: "One-on-one sessions tailored to the student's pace and learning gaps." }
+            { icon: GraduationCap, title: `CBSE/ICSE in ${formattedLocality}`, desc: "Expert foundation building for Class 5-10 and intensive coaching for Class 11-12 Boards with local school sync." },
+            { icon: BrainCircuit, title: "NDA/JEE Prep Hub", desc: "Specialized competitive exam tracking for students in the Dehradun defense hub area." },
+            { icon: Star, title: "1-on-1 Local Support", desc: `Personalized sessions in ${formattedLocality} tailored to your child's specific learning gaps.` }
           ].map((item, i) => (
             <Card key={i} className="border-none shadow-lg p-10 text-center space-y-4 rounded-3xl bg-white">
               <div className="bg-muted/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-primary"><item.icon className="h-8 w-8" /></div>
