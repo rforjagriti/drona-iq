@@ -21,12 +21,13 @@ import {
   ArrowRight
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function SocialProofSection() {
   const tutors = [
-    { name: "Dr. Shalini P.", exp: "12y Exp", sub: "Physics Specialist (ex-IIT)", img: "https://picsum.photos/seed/t1/200/200" },
-    { name: "Maj. Rahul S.", exp: "15y Exp", sub: "NDA Foundation Mentor", img: "https://picsum.photos/seed/t2/200/200" },
-    { name: "Er. Amit Negi", exp: "8y Exp", sub: "Calculus & Algebra Expert", img: "https://picsum.photos/seed/t3/200/200" }
+    { name: "Dr. Shalini P.", exp: "12y Exp", sub: "Physics Specialist (ex-IIT)", img: "/images/faculty-4.jpg" },
+    { name: "Maj. Rahul S.", exp: "15y Exp", sub: "NDA Foundation Mentor", img: "/images/faculty-2.jpg" },
+    { name: "Er. Amit Negi", exp: "8y Exp", sub: "Calculus & Algebra Expert", img: "/images/faculty-3.jpg" }
   ];
 
   return (
@@ -43,8 +44,10 @@ export function SocialProofSection() {
             {tutors.map((t, i) => (
               <Card key={i} className="border-none shadow-2xl rounded-[3rem] p-10 bg-white group hover:bg-primary hover:scale-105 transition-all duration-700">
                  <div className="relative w-24 h-24 mx-auto mb-6">
-                    <img src={t.img} className="rounded-full w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt={t.name} />
-                    <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-1 rounded-full shadow-lg border-4 border-white"><ShieldCheck className="h-4 w-4" /></div>
+                    <div className="rounded-full w-full h-full overflow-hidden relative">
+                      <Image src={t.img} fill className="object-cover grayscale group-hover:grayscale-0 transition-all" alt={t.name} />
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-1 rounded-full shadow-lg border-4 border-white z-10"><ShieldCheck className="h-4 w-4" /></div>
                  </div>
                  <div className="text-center space-y-2">
                     <h4 className="text-xl font-extrabold uppercase text-primary group-hover:text-white transition-colors">{t.name}</h4>

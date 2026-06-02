@@ -72,6 +72,36 @@
       "description": "Smart class view",
       "imageUrl": "/images/gallery-1.jpg",
       "imageHint": "high tech classroom"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Focused student",
+      "imageUrl": "/images/gallery-2.jpg",
+      "imageHint": "focused student"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Teacher explaining",
+      "imageUrl": "/images/gallery-3.jpg",
+      "imageHint": "teacher explaining"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Student in uniform",
+      "imageUrl": "/images/gallery-4.jpg",
+      "imageHint": "student uniform"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Campus exterior",
+      "imageUrl": "/images/gallery-5.jpg",
+      "imageHint": "campus exterior"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Group study",
+      "imageUrl": "/images/gallery-6.jpg",
+      "imageHint": "group study"
     }
   ]
 }

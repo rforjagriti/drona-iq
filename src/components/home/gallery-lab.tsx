@@ -6,12 +6,12 @@ import Image from 'next/image';
 
 export function GalleryLabSection() {
   const images = [
-    { id: "1", span: "lg:col-span-2 lg:row-span-2", hint: "high tech classroom" },
-    { id: "2", span: "col-span-1", hint: "focused student portrait" },
-    { id: "3", span: "col-span-1", hint: "teacher explaining physics" },
-    { id: "4", span: "lg:col-span-1 lg:row-span-2", hint: "student in uniform" },
-    { id: "5", span: "col-span-1", hint: "modern campus exterior" },
-    { id: "6", span: "col-span-1", hint: "group study session" }
+    { id: "1", path: "/images/gallery-1.jpg", span: "lg:col-span-2 lg:row-span-2", hint: "high tech classroom" },
+    { id: "2", path: "/images/gallery-2.jpg", span: "col-span-1", hint: "focused student portrait" },
+    { id: "3", path: "/images/gallery-3.jpg", span: "col-span-1", hint: "teacher explaining physics" },
+    { id: "4", path: "/images/gallery-4.jpg", span: "lg:col-span-1 lg:row-span-2", hint: "student in uniform" },
+    { id: "5", path: "/images/gallery-5.jpg", span: "col-span-1", hint: "modern campus exterior" },
+    { id: "6", path: "/images/gallery-6.jpg", span: "col-span-1", hint: "group study session" }
   ];
 
   return (
@@ -32,7 +32,7 @@ export function GalleryLabSection() {
               className={`relative rounded-[3rem] overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-700 bg-muted ${img.span}`}
             >
               <Image 
-                src={`https://picsum.photos/seed/drona_gal_${i+10}/800/800`}
+                src={img.path}
                 fill
                 alt={`Drona IQ Gallery ${i+1}`}
                 className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"

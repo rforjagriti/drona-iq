@@ -57,7 +57,7 @@ export function VideoHubSection() {
                 </div>
               </div>
               <img 
-                src="https://picsum.photos/seed/drona_video_main/1200/800" 
+                src="/images/video-thumb.jpg" 
                 className="w-full h-full object-cover grayscale opacity-60"
                 alt="Main Video"
               />

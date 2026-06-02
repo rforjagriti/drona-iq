@@ -19,7 +19,7 @@ export function AdmissionReadiness() {
 
   return (
     <section className="py-24 bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000')] opacity-5 mix-blend-overlay"></div>
+      <div className="absolute inset-0 bg-[url('/images/hero-student.jpg')] opacity-5 mix-blend-overlay bg-cover bg-center"></div>
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-accent text-primary border-none px-4 py-1 uppercase font-bold tracking-widest text-[10px]">Lead Discovery v2.0</Badge>

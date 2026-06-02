@@ -14,7 +14,7 @@ export function SuccessHallSection() {
       jump: "from 74%",
       exam: "CBSE Class 10",
       school: "Brightlands Dehradun",
-      img: "https://picsum.photos/seed/drona_student_1/400/400"
+      img: "/images/student-1.jpg"
     },
     {
       student: "Aryan Rawat",
@@ -22,7 +22,7 @@ export function SuccessHallSection() {
       jump: "NDA Qualifier",
       exam: "NDA Foundation",
       school: "SJA Dehradun",
-      img: "https://picsum.photos/seed/drona_student_2/400/400"
+      img: "/images/student-2.jpg"
     },
     {
       student: "Sanya Gupta",
@@ -30,7 +30,7 @@ export function SuccessHallSection() {
       jump: "Physics Topper",
       exam: "JEE Mains Core",
       school: "The Doon School",
-      img: "https://picsum.photos/seed/drona_student_3/400/400"
+      img: "/images/student-3.jpg"
     }
   ];
 

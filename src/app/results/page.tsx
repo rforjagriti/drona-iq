@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -16,9 +17,9 @@ export default function ResultsPage() {
   ];
 
   const successStories = [
-    { student: "Ishita Negi", improvement: "74% to 98%", exam: "CBSE Class 10", image: "https://picsum.photos/seed/res1/400/300" },
-    { student: "Aryan Rawat", improvement: "AIR 412", exam: "NDA Foundation", image: "https://picsum.photos/seed/res2/400/300" },
-    { student: "Sanya Gupta", improvement: "99.2 Percentile", exam: "JEE Mains (Physics)", image: "https://picsum.photos/seed/res3/400/300" },
+    { student: "Ishita Negi", improvement: "74% to 98%", exam: "CBSE Class 10", image: "/images/student-1.jpg" },
+    { student: "Aryan Rawat", improvement: "AIR 412", exam: "NDA Foundation", image: "/images/student-2.jpg" },
+    { student: "Sanya Gupta", improvement: "99.2 Percentile", exam: "JEE Mains (Physics)", image: "/images/student-3.jpg" },
   ];
 
   return (
@@ -27,7 +28,7 @@ export default function ResultsPage() {
       
       {/* Hero Header */}
       <section className="bg-primary text-white py-24 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000')] bg-cover"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/campus-main.jpg')] bg-cover"></div>
         <div className="container mx-auto px-4 relative z-10 space-y-6">
           <Badge className="bg-accent text-white border-none px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-bold">Proven Outcomes</Badge>
           <h1 className="text-5xl md:text-7xl font-extrabold font-headline leading-tight">Numbers That <br/> Speak for <span className="text-accent italic">Themselves</span></h1>
