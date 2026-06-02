@@ -1,19 +1,48 @@
+
 "use client"
 
 import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight, User as UserIcon } from 'lucide-react';
+import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight, User as UserIcon, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useUser, useFirestore, useDoc } from '@/firebase';
-import { doc } from 'firebase/firestore';
+import { useUser, useFirestore, useDoc, useAuth } from '@/firebase';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useMemo } from 'react';
 
 export default function StudentPortal() {
   const { user, loading: authLoading } = useUser();
+  const auth = useAuth();
   const firestore = useFirestore();
+
+  const handleLogin = async () => {
+    if (!auth || !firestore) return;
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const loggedUser = result.user;
+
+      const userRef = doc(firestore, 'users', loggedUser.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          uid: loggedUser.uid,
+          email: loggedUser.email,
+          displayName: loggedUser.displayName,
+          photoURL: loggedUser.photoURL,
+          role: 'student',
+          createdAt: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        });
+      }
+    } catch (error) {
+      console.error("Auth Error:", error);
+    }
+  };
 
   const studentRef = useMemo(() => {
     if (!firestore || !user?.uid) return null;
@@ -33,7 +62,7 @@ export default function StudentPortal() {
       <div className="min-h-screen flex items-center justify-center bg-muted/10">
         <div className="flex flex-col items-center gap-4">
           <BrainCircuit className="h-12 w-12 text-primary animate-pulse" />
-          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Initializing Learning Hub...</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Initializing Learning Hub v7.4...</p>
         </div>
       </div>
     );
@@ -44,16 +73,21 @@ export default function StudentPortal() {
       <div className="min-h-screen flex flex-col bg-muted/10">
         <Navbar />
         <main className="flex-1 flex items-center justify-center p-4">
-          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12">
-            <CardContent className="space-y-6">
-              <div className="bg-primary/5 h-20 w-20 rounded-full flex items-center justify-center mx-auto">
-                <UserIcon className="h-10 w-10 text-primary" />
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-8 opacity-5"><BrainCircuit className="h-32 w-32" /></div>
+            <CardContent className="space-y-8 relative z-10">
+              <div className="bg-primary/5 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto shadow-inner">
+                <UserIcon className="h-12 w-12 text-primary" />
               </div>
-              <h2 className="text-3xl font-extrabold font-headline text-primary">Portal Restricted</h2>
-              <p className="text-muted-foreground">
-                Please login to access your personalized Student Hub, XP tracking, and AI mentors.
-              </p>
-              <Button onClick={() => window.location.reload()} className="w-full font-headline bg-accent text-white hover:bg-accent/90">Sign In with Google</Button>
+              <div className="space-y-2">
+                <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Portal Locked</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  Please log in with your Google account to access your personalized Success OS dashboard, XP tracking, and AI mentors.
+                </p>
+              </div>
+              <Button onClick={handleLogin} className="w-full font-headline bg-accent text-white hover:bg-accent/90 py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
+                <LogIn className="mr-2 h-5 w-5" /> Sign In with Google
+              </Button>
             </CardContent>
           </Card>
         </main>
@@ -74,7 +108,7 @@ export default function StudentPortal() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="space-y-4 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <Badge className="bg-accent text-white border-none uppercase text-[10px] font-bold px-3">Elite Tier</Badge>
+                <Badge className="bg-accent text-white border-none uppercase text-[10px] font-bold px-3 py-1">Elite Tier</Badge>
                 <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Level {studentData?.level || 1} Scholar</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold font-headline uppercase tracking-tighter">Welcome, {user?.displayName?.split(' ')[0] || 'Scholar'}!</h1>
@@ -100,7 +134,7 @@ export default function StudentPortal() {
           <div className="lg:col-span-2 space-y-8">
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               {stats.map((stat, i) => (
-                <Card key={i} className="border-none shadow-xl overflow-hidden hover:scale-[1.02] transition-transform cursor-default bg-white">
+                <Card key={i} className="border-none shadow-xl overflow-hidden hover:scale-[1.02] transition-transform cursor-default bg-white rounded-[2rem]">
                   <CardContent className="p-6 flex flex-col items-center text-center gap-2">
                     <div className="bg-muted p-4 rounded-2xl"><stat.icon className={`h-8 w-8 ${stat.color}`} /></div>
                     <div>
@@ -112,7 +146,7 @@ export default function StudentPortal() {
               ))}
             </div>
 
-            <Card className="border-none shadow-2xl overflow-hidden bg-white">
+            <Card className="border-none shadow-2xl overflow-hidden bg-white rounded-[2.5rem]">
               <CardHeader className="border-b bg-muted/30 py-6 px-8 flex flex-row items-center justify-between">
                 <div className="space-y-1">
                   <CardTitle className="text-xl font-headline flex items-center gap-2 text-primary uppercase tracking-tight">
@@ -147,7 +181,7 @@ export default function StudentPortal() {
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-2xl bg-primary text-white overflow-hidden relative group">
+            <Card className="border-none shadow-2xl bg-primary text-white overflow-hidden relative group rounded-[2.5rem]">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
                 <MessageCircleQuestion className="h-32 w-32" />
               </div>
@@ -164,7 +198,7 @@ export default function StudentPortal() {
           </div>
 
           <div className="space-y-8">
-            <Card className="border-none shadow-xl bg-accent text-white overflow-hidden">
+            <Card className="border-none shadow-xl bg-accent text-white overflow-hidden rounded-[2rem]">
               <CardContent className="p-8 space-y-4">
                 <div className="flex justify-between items-start">
                   <h3 className="text-2xl font-bold font-headline uppercase">{studentData?.targetExam || "NDA 2026"} Target</h3>
@@ -184,7 +218,7 @@ export default function StudentPortal() {
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-xl bg-white">
+            <Card className="border-none shadow-xl bg-white rounded-[2rem]">
               <CardHeader className="pb-2">
                 <CardTitle className="text-[10px] uppercase font-bold text-primary tracking-widest flex items-center gap-2">
                   <Star className="h-4 w-4 text-accent fill-current" /> Recent Achievements
@@ -206,20 +240,20 @@ export default function StudentPortal() {
 
             <div className="grid grid-cols-2 gap-4">
               <Link href="/revision-generator" className="block">
-                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group">
+                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group rounded-2xl">
                   <ListChecks className="h-6 w-6 mx-auto mb-2 text-primary group-hover:text-accent transition-colors" />
                   <p className="text-[10px] font-bold uppercase tracking-tight">Revision</p>
                 </Card>
               </Link>
               <Link href="/academic-health-check" className="block">
-                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group">
+                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group rounded-2xl">
                   <BrainCircuit className="h-6 w-6 mx-auto mb-2 text-primary group-hover:text-accent transition-colors" />
                   <p className="text-[10px] font-bold uppercase tracking-tight">Health Check</p>
                 </Card>
               </Link>
             </div>
 
-            <Card className="border-none shadow-sm p-6 text-center space-y-2 bg-primary/5">
+            <Card className="border-none shadow-sm p-6 text-center space-y-2 bg-primary/5 rounded-2xl">
               <p className="text-[10px] font-bold uppercase text-muted-foreground">Support Hotline</p>
               <p className="text-sm font-bold text-primary">+91 99999 00000</p>
               <p className="text-[10px] text-muted-foreground">Direct access to your Counselor at Rajpur Road.</p>

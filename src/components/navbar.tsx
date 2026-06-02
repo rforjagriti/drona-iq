@@ -23,8 +23,9 @@ import {
   BookOpen
 } from 'lucide-react';
 import { useState } from 'react';
-import { useUser, useAuth } from '@/firebase';
+import { useUser, useAuth, useFirestore } from '@/firebase';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,12 +39,30 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, loading } = useUser();
   const auth = useAuth();
+  const db = useFirestore();
 
   const handleLogin = async () => {
-    if (!auth) return;
+    if (!auth || !db) return;
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const loggedUser = result.user;
+
+      // Sync User Profile to Firestore
+      const userRef = doc(db, 'users', loggedUser.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          uid: loggedUser.uid,
+          email: loggedUser.email,
+          displayName: loggedUser.displayName,
+          photoURL: loggedUser.photoURL,
+          role: 'student', // Default role
+          createdAt: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        });
+      }
     } catch (error) {
       console.error("Auth Error:", error);
     }
