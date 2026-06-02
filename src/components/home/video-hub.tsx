@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Youtube, Play, Zap, BrainCircuit, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function VideoHubSection() {
   const videos = [
@@ -57,7 +58,7 @@ export function VideoHubSection() {
                 </div>
               </div>
               <img 
-                src="/images/video-thumb.jpg" 
+                src={getPlaceholderById('video-thumbnail')} 
                 className="w-full h-full object-cover grayscale opacity-60"
                 alt="Main Video"
               />

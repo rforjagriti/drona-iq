@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Star, ArrowUpRight, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
+import { getPlaceholderById, getHintById } from '@/lib/placeholder-images';
 
 export function SuccessHallSection() {
   const stories = [
@@ -14,7 +15,7 @@ export function SuccessHallSection() {
       jump: "from 74%",
       exam: "CBSE Class 10",
       school: "Brightlands Dehradun",
-      img: "/images/student-1.jpg"
+      id: "student-1"
     },
     {
       student: "Aryan Rawat",
@@ -22,7 +23,7 @@ export function SuccessHallSection() {
       jump: "NDA Qualifier",
       exam: "NDA Foundation",
       school: "SJA Dehradun",
-      img: "/images/student-2.jpg"
+      id: "student-2"
     },
     {
       student: "Sanya Gupta",
@@ -30,7 +31,7 @@ export function SuccessHallSection() {
       jump: "Physics Topper",
       exam: "JEE Mains Core",
       school: "The Doon School",
-      img: "/images/student-3.jpg"
+      id: "student-3"
     }
   ];
 
@@ -52,11 +53,11 @@ export function SuccessHallSection() {
             <Card key={i} className="border-none shadow-2xl rounded-[4rem] overflow-hidden bg-white group hover:scale-[1.02] transition-all duration-700">
               <div className="relative aspect-square overflow-hidden">
                 <Image 
-                  src={story.img} 
+                  src={getPlaceholderById(story.id)} 
                   fill 
                   alt={story.student} 
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-                  data-ai-hint="smiling student topper"
+                  data-ai-hint={getHintById(story.id)}
                 />
                 <div className="absolute top-8 right-8 bg-accent text-white h-16 w-16 rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-white rotate-12 group-hover:rotate-0 transition-transform">
                   <span className="text-[10px] font-black leading-none uppercase">Score</span>

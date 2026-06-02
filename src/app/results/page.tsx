@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Star, GraduationCap, Trophy, Quote, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getPlaceholderById, getHintById } from '@/lib/placeholder-images';
 
 export default function ResultsPage() {
   const testimonials = [
@@ -17,9 +18,9 @@ export default function ResultsPage() {
   ];
 
   const successStories = [
-    { student: "Ishita Negi", improvement: "74% to 98%", exam: "CBSE Class 10", image: "/images/student-1.jpg" },
-    { student: "Aryan Rawat", improvement: "AIR 412", exam: "NDA Foundation", image: "/images/student-2.jpg" },
-    { student: "Sanya Gupta", improvement: "99.2 Percentile", exam: "JEE Mains (Physics)", image: "/images/student-3.jpg" },
+    { student: "Ishita Negi", improvement: "74% to 98%", exam: "CBSE Class 10", id: "student-1" },
+    { student: "Aryan Rawat", improvement: "AIR 412", exam: "NDA Foundation", id: "student-2" },
+    { student: "Sanya Gupta", improvement: "99.2 Percentile", exam: "JEE Mains (Physics)", id: "student-3" },
   ];
 
   return (
@@ -60,7 +61,13 @@ export default function ResultsPage() {
             {successStories.map((story, i) => (
               <Card key={i} className="border-none shadow-xl overflow-hidden group">
                 <div className="relative h-64">
-                  <Image src={story.image} alt={story.student} fill className="object-cover group-hover:scale-105 transition-transform duration-500" data-ai-hint="student photo" />
+                  <Image 
+                    src={getPlaceholderById(story.id)} 
+                    alt={story.student} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                    data-ai-hint={getHintById(story.id)} 
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white space-y-1">
                     <p className="text-2xl font-bold font-headline">{story.student}</p>
@@ -107,7 +114,7 @@ export default function ResultsPage() {
         </section>
 
         <section className="py-24 text-center space-y-8">
-          <h2 className="text-4xl font-headline font-extrabold text-primary">Your Success Story Starts Here</h2>
+          <h2 className="text-4xl font-headline font-extrabold text-primary">Your Success story Starts Here</h2>
           <Link href="/academic-health-check">
             <Button className="px-12 py-8 h-auto text-xl font-headline bg-accent hover:bg-accent/90 text-white shadow-2xl rounded-full uppercase tracking-widest font-bold">Get Free AI Assessment <ArrowRight className="ml-2 h-6 w-6" /></Button>
           </Link>
