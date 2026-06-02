@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -17,7 +18,8 @@ import {
   MapPin, 
   Clock,
   Wifi,
-  UserCheck
+  UserCheck,
+  AlertCircle
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -32,10 +34,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
   
   const { user, loading: authLoading } = useUser();
   const auth = useAuth();
@@ -48,6 +52,7 @@ export function Navbar() {
   const handleLogin = async () => {
     if (!auth || !db) return;
     
+    setAuthError(null);
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
@@ -73,12 +78,23 @@ export function Navbar() {
         description: `Logged in as ${loggedUser.displayName}.`,
       });
     } catch (error: any) {
-      console.error("Auth Error:", error);
-      toast({
-        variant: "destructive",
-        title: "Authentication Failed",
-        description: error.message || "Please check your Firebase configuration or internet connection.",
-      });
+      console.error("Auth Error:", error.code, error.message);
+      
+      if (error.code === 'auth/unauthorized-domain') {
+        const domain = typeof window !== 'undefined' ? window.location.hostname : 'your domain';
+        setAuthError(domain);
+        toast({
+          variant: "destructive",
+          title: "Domain Not Authorized",
+          description: "Please add this domain to Firebase Console settings.",
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Authentication Failed",
+          description: error.message || "Please check your connection.",
+        });
+      }
     }
   };
 
@@ -92,15 +108,32 @@ export function Navbar() {
     });
   };
 
-  // Avoid hydration mismatch by rendering a skeleton or placeholder
   if (!mounted) return (
     <header className="fixed top-0 z-[100] w-full flex flex-col h-28 bg-primary">
-       {/* SSR Placeholder */}
     </header>
   );
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
+      {/* Domain Error Instruction Bar */}
+      {authError && (
+        <div className="bg-blue-600 text-white p-4 text-center text-xs animate-in slide-in-from-top">
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="flex items-center gap-2">
+              <AlertCircle className="h-4 w-4" />
+              <span className="font-bold">CRITICAL:</span> Domain <strong>{authError}</strong> is not authorized.
+            </div>
+            <Link 
+              href={`https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings`}
+              target="_blank"
+              className="bg-white text-blue-700 px-4 py-1.5 rounded-full font-black uppercase tracking-widest hover:bg-blue-50 transition-colors"
+            >
+              Fix in Firebase Console
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
