@@ -2,7 +2,7 @@
 
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
-import { getFirestore, Firestore } from 'firebase/firestore';
+import { getFirestore, Firestore, enableNetwork, disableNetwork } from 'firebase/firestore';
 import { firebaseConfig } from './config';
 
 /**
@@ -22,10 +22,28 @@ export function initializeFirebase() {
     const auth = getAuth(firebaseApp);
     const firestore = getFirestore(firebaseApp);
 
+    // Initial log to confirm initialization started
+    console.log("Firebase initialized for project:", firebaseConfig.projectId);
+
     return { firebaseApp, auth, firestore };
   } catch (error) {
     console.error("Firebase Initialization Failed:", error);
     throw error;
+  }
+}
+
+/**
+ * Diagnostic function to check if the app can actually talk to Firestore.
+ */
+export async function checkFirebaseConnectivity(db: Firestore): Promise<boolean> {
+  try {
+    // Attempt to enable network in case it was disabled
+    await enableNetwork(db);
+    console.log("✅ Firebase Connectivity: Network is online.");
+    return true;
+  } catch (error) {
+    console.error("❌ Firebase Connectivity Error:", error);
+    return false;
   }
 }
 

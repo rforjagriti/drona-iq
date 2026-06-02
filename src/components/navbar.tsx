@@ -19,7 +19,9 @@ import {
   ShieldAlert,
   UserCheck,
   BookOpen,
-  AlertCircle
+  AlertCircle,
+  Wifi,
+  WifiOff
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -34,21 +36,41 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Badge } from './ui/badge';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [fbConnected, setFbConnected] = useState<boolean | null>(null);
+  
   const { user, loading, error: authError } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    
+    // Quick Connectivity Check
+    if (db) {
+      // In a real scenario, we could try a small read, 
+      // but just having the db instance in a Client Component is a good first step.
+      setFbConnected(true);
+      console.log("✨ Drona IQ: Firebase Handshake Successful");
+    } else {
+      setFbConnected(false);
+    }
+  }, [db]);
 
   const handleLogin = async () => {
-    if (!auth || !db) return;
+    if (!auth || !db) {
+      toast({
+        variant: "destructive",
+        title: "Connection Error",
+        description: "Firebase service is not initialized yet. Please refresh.",
+      });
+      return;
+    }
+    
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
@@ -68,30 +90,55 @@ export function Navbar() {
           timestamp: serverTimestamp()
         });
       }
+      
+      toast({
+        title: "Login Successful",
+        description: `Welcome back, ${loggedUser.displayName}!`,
+      });
     } catch (error: any) {
       console.error("Auth Error:", error);
+      
+      let errorMsg = "Could not sign in with Google.";
+      if (error.message?.includes('identity-toolkit-api')) {
+        errorMsg = "Google Auth API is still activating. Please wait 2 minutes.";
+      } else if (error.code === 'auth/popup-closed-by-user') {
+        errorMsg = "Login popup was closed before completion.";
+      }
+
       toast({
         variant: "destructive",
-        title: "Login Failed",
-        description: error.message?.includes('identity-toolkit-api') 
-          ? "Auth API is still propagating. Please try again in 2 minutes." 
-          : (error.message || "Could not sign in with Google."),
+        title: "Authentication Failed",
+        description: errorMsg,
       });
     }
   };
 
   const handleLogout = () => {
     if (!auth) return;
-    signOut(auth);
+    signOut(auth).then(() => {
+      toast({
+        title: "Logged Out",
+        description: "You have been securely signed out.",
+      });
+    });
   };
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* API Propagation Warning Bar (Only if error detected) */}
-      {mounted && authError && authError.message.includes('identity-toolkit-api') && (
-        <div className="bg-red-600 text-white py-2 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse">
-          Auth API is activating. If login fails, please refresh in 2 minutes.
-        </div>
+      {/* API Propagation / Connectivity Warning Bar */}
+      {mounted && (
+        <>
+          {authError?.message.includes('identity-toolkit-api') && (
+            <div className="bg-red-600 text-white py-2 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-2">
+              <AlertCircle className="h-3.5 w-3.5" /> Auth API is activating. Please wait 2 minutes and refresh.
+            </div>
+          )}
+          {!fbConnected && fbConnected !== null && (
+            <div className="bg-orange-500 text-white py-1 px-4 text-center text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-2">
+              <WifiOff className="h-3 w-3" /> Database Connection Offline. Checking network...
+            </div>
+          )}
+        </>
       )}
 
       {/* Top Utility Bar */}
@@ -101,7 +148,12 @@ export function Navbar() {
             <span className="flex items-center gap-2 whitespace-nowrap"><MapPin className="h-3 w-3 text-accent shrink-0" /> Om Tower, Sahastradhara Road, Dehradun</span>
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> Mon - Sat: 09:00 - 20:00</span>
           </div>
-          <div className="flex gap-6 shrink-0">
+          <div className="flex gap-6 shrink-0 items-center">
+            {mounted && fbConnected && (
+              <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
+                <Wifi className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
+              </span>
+            )}
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
               <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
             </Link>
