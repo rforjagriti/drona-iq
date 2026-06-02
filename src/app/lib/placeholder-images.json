@@ -1,105 +1,106 @@
+
 {
   "placeholderImages": [
     {
       "id": "hero-student",
-      "description": "Main banner student image (High quality, cinematic)",
-      "imageUrl": "/images/hero-student.jpg",
+      "description": "Main banner student image",
+      "imageUrl": "https://picsum.photos/seed/drona_hero/1200/1600",
       "imageHint": "cinematic student"
     },
     {
       "id": "founder-photo",
       "description": "Founder Dr. Vikram Singh portrait",
-      "imageUrl": "/images/founder.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_founder/800/1000",
       "imageHint": "founder portrait"
     },
     {
       "id": "campus-main",
       "description": "Drona IQ Dehradun Campus Exterior",
-      "imageUrl": "/images/campus-main.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_campus/1200/800",
       "imageHint": "modern building"
     },
     {
       "id": "faculty-1",
       "description": "Dr. Vikram Singh - Mentor",
-      "imageUrl": "/images/faculty-1.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_f1/800/1000",
       "imageHint": "teacher one"
     },
     {
       "id": "faculty-2",
       "description": "Maj. Gen. Aditya Rawat - Mentor",
-      "imageUrl": "/images/faculty-2.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_f2/800/1000",
       "imageHint": "teacher two"
     },
     {
       "id": "faculty-3",
       "description": "Er. Amit Negi - Mentor",
-      "imageUrl": "/images/faculty-3.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_f3/800/1000",
       "imageHint": "teacher three"
     },
     {
       "id": "faculty-4",
       "description": "Mrs. Shalini Bisht - Mentor",
-      "imageUrl": "/images/faculty-4.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_f4/800/1000",
       "imageHint": "teacher four"
     },
     {
       "id": "student-1",
       "description": "Topper Student - Ishita Negi",
-      "imageUrl": "/images/student-1.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_s1/800/1000",
       "imageHint": "happy student"
     },
     {
       "id": "student-2",
       "description": "Topper Student - Aryan Rawat",
-      "imageUrl": "/images/student-2.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_s2/800/1000",
       "imageHint": "successful student"
     },
     {
       "id": "student-3",
       "description": "Topper Student - Sanya Gupta",
-      "imageUrl": "/images/student-3.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_s3/800/1000",
       "imageHint": "intelligent student"
     },
     {
       "id": "video-thumbnail",
       "description": "Explainer Video Thumbnail",
-      "imageUrl": "/images/video-thumb.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_video/1280/720",
       "imageHint": "video preview"
     },
     {
       "id": "gallery-1",
       "description": "Smart Classroom View",
-      "imageUrl": "/images/gallery-1.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_g1/1200/800",
       "imageHint": "classroom view"
     },
     {
       "id": "gallery-2",
       "description": "Students in Library",
-      "imageUrl": "/images/gallery-2.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_g2/800/600",
       "imageHint": "students focus"
     },
     {
       "id": "gallery-3",
       "description": "Computer Lab Infrastructure",
-      "imageUrl": "/images/gallery-3.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_g3/800/600",
       "imageHint": "computer lab"
     },
     {
       "id": "gallery-4",
       "description": "Reception & Counseling Area",
-      "imageUrl": "/images/gallery-4.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_g4/1200/800",
       "imageHint": "modern interior"
     },
     {
       "id": "gallery-5",
       "description": "Achievement Result Board",
-      "imageUrl": "/images/gallery-5.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_g5/800/600",
       "imageHint": "results board"
     },
     {
       "id": "gallery-6",
       "description": "Parent Teacher Meeting",
-      "imageUrl": "/images/gallery-6.jpg",
+      "imageUrl": "https://picsum.photos/seed/drona_g6/800/600",
       "imageHint": "office counseling"
     }
   ]

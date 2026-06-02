@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -16,12 +17,12 @@ import {
   Phone, 
   MapPin, 
   Clock,
-  ShieldAlert,
-  UserCheck,
-  BookOpen,
   Wifi,
   ShieldCheck,
-  Search
+  BookOpen,
+  UserCheck,
+  AlertCircle,
+  Settings
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -42,13 +43,15 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   
-  const { user, loading } = useUser();
+  const { user, loading, error } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const isIdentityApiError = error?.message?.includes('identity-toolkit-api') || error?.message?.includes('identitytoolkit');
 
   const handleLogin = async () => {
     if (!auth || !db) return;
@@ -81,8 +84,10 @@ export function Navbar() {
       console.error("Auth Error:", error);
       toast({
         variant: "destructive",
-        title: "Authentication Failed",
-        description: "Please check your network or try again.",
+        title: "Login Error",
+        description: error.message.includes('identitytoolkit') 
+          ? "Firebase Identity API is not enabled yet. See instructions at top of page."
+          : "Authentication failed. Please try again.",
       });
     }
   };
@@ -98,21 +103,35 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 z-[100] w-full flex flex-col">
+    <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
+      {/* Identity API Error Diagnostic Bar */}
+      {mounted && isIdentityApiError && (
+        <div className="bg-blue-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-3">
+          <AlertCircle className="h-4 w-4 animate-bounce" /> 
+          <span>Action Required: Enable Identity Toolkit for Project 377002196734</span>
+          <Link 
+            href="https://console.developers.google.com/apis/api/identitytoolkit.googleapis.com/overview?project=377002196734" 
+            target="_blank" 
+            className="underline bg-white/20 px-3 py-1 rounded-md flex items-center gap-2 hover:bg-white/30 transition-all"
+          >
+            Click to Enable API <Settings className="h-3 w-3" />
+          </Link>
+        </div>
+      )}
+
       {/* Top Utility Bar */}
-      <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
+      <div className="bg-primary text-white py-2 px-4 border-b border-white/5 relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-4 md:gap-8 overflow-hidden">
             <span className="flex items-center gap-2 whitespace-nowrap"><MapPin className="h-3 w-3 text-accent shrink-0" /> Sahastradhara Road, Dehradun</span>
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {/* Stable element to prevent hydration shift */}
-            <div className={cn("flex items-center transition-opacity duration-300", mounted && db ? "opacity-100" : "opacity-0")}>
+            {mounted && db && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
                 <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
               </span>
-            </div>
+            )}
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
               <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
             </Link>
@@ -121,7 +140,7 @@ export function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="glass border-b border-white/10 shadow-xl relative z-[101] h-20 flex items-center">
+      <nav className="glass border-b border-white/10 relative z-[101] h-20 flex items-center">
         <div className="container mx-auto flex items-center justify-between px-4">
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="rounded-xl bg-primary p-2 shadow-lg group-hover:scale-110 transition-transform border border-white/10">
@@ -133,71 +152,76 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Menu - These remain stable for SSR */}
+          {/* Nav Links */}
           <div className="hidden lg:flex items-center space-x-8">
             <Link href="/why-drona-iq" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Why DIQ?</Link>
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Audit</Link>
             <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Batches</Link>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
-                Portals <ChevronDown className="h-3 w-3 text-accent" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-72 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/student" className="flex items-center gap-3">
-                    <div className="bg-primary/5 p-2 rounded-lg text-primary"><User className="h-4 w-4" /></div>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase">Student Hub</span>
-                      <span className="text-[8px] text-muted-foreground">Gamified XP & Mentorship</span>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/parent-dashboard" className="flex items-center gap-3">
-                    <div className="bg-accent/10 p-2 rounded-lg text-accent"><Users className="h-4 w-4" /></div>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase">Parent Portal</span>
-                      <span className="text-[8px] text-muted-foreground">Live Progress Monitor</span>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="my-2" />
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/tutor/dashboard" className="flex items-center gap-3">
-                    <div className="bg-blue-50 p-2 rounded-lg text-blue-600"><UserCheck className="h-4 w-4" /></div>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase text-blue-700">Educator Portal</span>
-                      <span className="text-[8px] text-muted-foreground">Manage Faculty Tasks</span>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Stable Dropdowns - Rendering after mounted to avoid ID mismatch */}
+            {mounted && (
+              <>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
+                    Portals <ChevronDown className="h-3 w-3 text-accent" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-72 p-3 rounded-2xl border-none shadow-2xl bg-white">
+                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                      <Link href="/student" className="flex items-center gap-3">
+                        <div className="bg-primary/5 p-2 rounded-lg text-primary"><User className="h-4 w-4" /></div>
+                        <div className="flex flex-col">
+                          <span className="font-bold text-xs uppercase">Student Hub</span>
+                          <span className="text-[8px] text-muted-foreground">Gamified XP & Mentorship</span>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                      <Link href="/parent-dashboard" className="flex items-center gap-3">
+                        <div className="bg-accent/10 p-2 rounded-lg text-accent"><Users className="h-4 w-4" /></div>
+                        <div className="flex flex-col">
+                          <span className="font-bold text-xs uppercase">Parent Portal</span>
+                          <span className="text-[8px] text-muted-foreground">Live Progress Monitor</span>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="my-2" />
+                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                      <Link href="/tutor/dashboard" className="flex items-center gap-3">
+                        <div className="bg-blue-50 p-2 rounded-lg text-blue-600"><UserCheck className="h-4 w-4" /></div>
+                        <div className="flex flex-col">
+                          <span className="font-bold text-xs uppercase text-blue-700">Educator Portal</span>
+                          <span className="text-[8px] text-muted-foreground">Manage Faculty Tasks</span>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
-                AI Tools <ChevronDown className="h-3 w-3 text-accent" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/revision-generator" className="flex items-center gap-3">
-                    <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">AI Revision Pack</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/career-guidance" className="flex items-center gap-3">
-                    <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Predictor</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="my-2" />
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/blog" className="flex items-center gap-3">
-                    <BookOpen className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Journal</span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
+                    AI Tools <ChevronDown className="h-3 w-3 text-accent" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
+                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                      <Link href="/revision-generator" className="flex items-center gap-3">
+                        <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">AI Revision Pack</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                      <Link href="/career-guidance" className="flex items-center gap-3">
+                        <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Predictor</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="my-2" />
+                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
+                      <Link href="/blog" className="flex items-center gap-3">
+                        <BookOpen className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Journal</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            )}
           </div>
 
           {/* Auth Section - Refactored for Hydration Safety */}

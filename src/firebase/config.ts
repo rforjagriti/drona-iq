@@ -3,10 +3,10 @@
 
 /**
  * Drona IQ - Unified Firebase Configuration
- * Note: Project number 380315187121 is used for Messaging and ID sync.
- * API Key restrictions must include "Identity Toolkit API".
+ * API Key for Project: 377002196734
  */
 export const firebaseConfig = {
+  // IMPORTANT: If you are manual connecting, replace these with keys from your Firebase Console
   apiKey: "AIzaSyBCd4w3FHjEShFzNYVMFF88pWuigiSxlfM",
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
