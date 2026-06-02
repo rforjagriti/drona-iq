@@ -2,10 +2,10 @@
 
 /**
  * Drona IQ - Unified Firebase Configuration
- * Updated with the user-provided API Key: AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM
+ * Updated with the latest user-provided API Key.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM",
+  apiKey: "AQ.Ab8RN6LoJ0GBrLZDTps0jGFwrmrHxnhhJJMUYHA2pN9S8J4ODQ",
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",

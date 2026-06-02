@@ -17,12 +17,8 @@ import {
   MapPin, 
   Clock,
   Wifi,
-  ShieldCheck,
-  BookOpen,
   UserCheck,
-  AlertCircle,
-  Settings,
-  ExternalLink
+  ChevronRight
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -37,13 +33,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   
-  const { user, loading, error } = useUser();
+  const { user, loading } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
@@ -83,7 +78,7 @@ export function Navbar() {
       toast({
         variant: "destructive",
         title: "Login Error",
-        description: error.message || "Authentication failed.",
+        description: error.message || "Authentication failed. Check API Key restrictions.",
       });
     }
   };
@@ -100,27 +95,6 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* Dynamic API Guide Bar - Helps the user find the toolkit buttons */}
-      {mounted && (
-        <div className="bg-blue-600 text-white py-2 px-4 text-center text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-4">
-          <span className="flex items-center gap-1.5"><Settings className="h-3 w-3" /> Console Setup:</span>
-          <Link 
-            href="https://console.cloud.google.com/apis/library/identitytoolkit.googleapis.com?project=dronaiq" 
-            target="_blank" 
-            className="hover:underline flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded"
-          >
-            1. Enable Toolkit <ExternalLink className="h-2.5 w-2.5" />
-          </Link>
-          <Link 
-            href="https://console.cloud.google.com/apis/credentials?project=dronaiq" 
-            target="_blank" 
-            className="hover:underline flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded"
-          >
-            2. API Key Limits <ExternalLink className="h-2.5 w-2.5" />
-          </Link>
-        </div>
-      )}
-
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -160,7 +134,6 @@ export function Navbar() {
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Audit</Link>
             <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Batches</Link>
             
-            {/* Stable Dropdowns */}
             {mounted && (
               <>
                 <DropdownMenu>
