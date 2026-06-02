@@ -6,8 +6,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/student/', '/parent-dashboard/', '/tutor/dashboard/'],
+      disallow: ['/admin/', '/student/', '/parent-dashboard/', '/tutor/dashboard/', '/assistant/'],
     },
     sitemap: 'https://dronaiq.com/sitemap.xml',
+    host: 'https://dronaiq.com',
   }
 }

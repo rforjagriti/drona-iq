@@ -26,7 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/results',
     '/about',
     '/contact',
-    '/why-drona-iq',
     '/academic-health-check',
     '/career-guidance',
     '/revision-generator',

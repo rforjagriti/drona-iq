@@ -1,12 +1,10 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { MessageCircle, Phone } from 'lucide-react';
-import Link from 'next/link';
 import { FirebaseClientProvider } from '@/firebase';
-import { ScrollToTop } from '@/components/scroll-to-top';
+import { FloatingActions } from '@/components/floating-actions';
 
+// ENTERPRISE SEO CONFIGURATION
 export const metadata: Metadata = {
   metadataBase: new URL('https://dronaiq.com'),
   title: {
@@ -18,6 +16,14 @@ export const metadata: Metadata = {
   authors: [{ name: 'Drona IQ Team' }],
   creator: 'Drona IQ Academy',
   publisher: 'Drona IQ Academy',
+  alternates: {
+    canonical: '/',
+  },
+  verification: {
+    google: 'google-site-verification-placeholder',
+    yandex: 'yandex-verification-placeholder',
+    me: 'me-verification-placeholder',
+  },
   formatDetection: {
     email: false,
     address: true,
@@ -32,7 +38,7 @@ export const metadata: Metadata = {
     description: 'Transforming potential into performance with Dehradun’s most advanced tuition network.',
     images: [
       {
-        url: '/images/hero-student.jpg',
+        url: '/images/og-main.jpg',
         width: 1200,
         height: 630,
         alt: 'Drona IQ Excellence',
@@ -43,7 +49,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Drona IQ | Smarter Learning Dehradun',
     description: 'Verified Home Tutors & Elite Coaching Hub in Dehradun.',
-    images: ['/images/hero-student.jpg'],
+    images: ['/images/og-main.jpg'],
+    creator: '@dronaiq',
   },
   robots: {
     index: true,
@@ -63,67 +70,106 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // SCHEMA MARKUP DATA
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Drona IQ Academy",
+    "url": "https://dronaiq.com",
+    "logo": "https://dronaiq.com/logo.png",
+    "sameAs": [
+      "https://droneshwardefenceacademy.com",
+      "https://facebook.com/dronaiq",
+      "https://instagram.com/dronaiq",
+      "https://linkedin.com/company/dronaiq"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3rd Floor, Om Tower, Sahastradhara Road, Near IT Park",
+      "addressLocality": "Dehradun",
+      "addressRegion": "Uttarakhand",
+      "postalCode": "248001",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-7878553385",
+      "contactType": "Admissions",
+      "areaServed": "IN",
+      "availableLanguage": ["en", "hi"]
+    }
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Drona IQ Dehradun Hub",
+    "image": "https://dronaiq.com/images/campus-main.jpg",
+    "telePhone": "+917878553385",
+    "priceRange": "$$",
+    "address": organizationSchema.address,
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "30.3444",
+      "longitude": "78.0772"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    }
+  };
+
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+        
+        {/* GLOBAL SCHEMA SCRIPTS */}
         <script
           type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+
+        {/* GOOGLE ANALYTICS (GA4) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GA_MEASUREMENT_ID_PLACEHOLDER"></script>
+        <script
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
-              "name": "Drona IQ Academy",
-              "url": "https://dronaiq.com",
-              "logo": "https://dronaiq.com/logo.png",
-              "description": "Dehradun's premier tuition and home tuition ecosystem specializing in CBSE, ICSE and NDA Foundation.",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "3rd Floor, Om Tower, Sahastradhara Road, Near IT Park",
-                "addressLocality": "Dehradun",
-                "addressRegion": "Uttarakhand",
-                "postalCode": "248001",
-                "addressCountry": "IN"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+91-7878553385",
-                "contactType": "Admissions"
-              },
-              "sameAs": [
-                "https://droneshwardefenceacademy.com",
-                "https://facebook.com/dronaiq",
-                "https://instagram.com/dronaiq"
-              ]
-            })
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-GA_MEASUREMENT_ID_PLACEHOLDER', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+
+        {/* MICROSOFT CLARITY (HEATMAPS) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "CLARITY_ID_PLACEHOLDER");
+            `,
           }}
         />
       </head>
       <body className="font-body antialiased relative selection:bg-accent selection:text-white">
         <FirebaseClientProvider>
           {children}
-          
-          <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-[999]">
-            <ScrollToTop />
-            <Link 
-              href="https://wa.me/917878553385" 
-              target="_blank"
-              className="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform animate-bounce flex items-center justify-center w-14 h-14"
-              title="WhatsApp for Quick Demo"
-            >
-              <MessageCircle className="h-7 w-7" />
-            </Link>
-            <Link 
-              href="tel:+917878553385" 
-              className="bg-primary text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center w-14 h-14 border-2 border-accent/20"
-              title="Call Academic Counselor"
-            >
-              <Phone className="h-7 w-7 text-accent" />
-            </Link>
-          </div>
-
+          <FloatingActions />
           <Toaster />
         </FirebaseClientProvider>
       </body>
