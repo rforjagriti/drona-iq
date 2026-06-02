@@ -1,15 +1,11 @@
 'use client';
 
 /**
- * Drona IQ - Unified Firebase Configuration
- * 
- * IMPORTANT: 
- * 1. Go to Firebase Console -> Project Settings -> General.
- * 2. Copy the "Web API Key" (starts with AIzaSy...).
- * 3. Replace the placeholder below.
+ * Drona IQ - Official Production Firebase Configuration
+ * Updated with user-provided keys for Auth and Firestore.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM", // <-- Update this if it changes in your console
+  apiKey: "AIzaSyBlW-xQrBREbvZlwqPScfIAHk7_PvRqLl0",
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",

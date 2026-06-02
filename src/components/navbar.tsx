@@ -76,8 +76,8 @@ export function Navbar() {
       console.error("Auth Error:", error);
       toast({
         variant: "destructive",
-        title: "Login Error",
-        description: error.message || "Authentication failed.",
+        title: "Authentication Failed",
+        description: error.message || "Please check your Firebase configuration or internet connection.",
       });
     }
   };
@@ -92,7 +92,12 @@ export function Navbar() {
     });
   };
 
-  if (!mounted) return null;
+  // Avoid hydration mismatch by rendering a skeleton or placeholder
+  if (!mounted) return (
+    <header className="fixed top-0 z-[100] w-full flex flex-col h-28 bg-primary">
+       {/* SSR Placeholder */}
+    </header>
+  );
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
@@ -194,7 +199,10 @@ export function Navbar() {
             {authLoading ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
             ) : !user ? (
-              <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">
+              <Button 
+                onClick={handleLogin} 
+                className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all"
+              >
                 <LogIn className="h-3.5 w-3.5 text-accent" /> Login
               </Button>
             ) : (
