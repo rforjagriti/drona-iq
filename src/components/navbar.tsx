@@ -21,7 +21,8 @@ import {
   BookOpen,
   UserCheck,
   AlertCircle,
-  Settings
+  Settings,
+  ExternalLink
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -49,9 +50,6 @@ export function Navbar() {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Detection for Identity Toolkit issues
-  const isApiIssue = error?.message?.includes('identitytoolkit') || error?.message?.includes('blocked');
 
   const handleLogin = async () => {
     if (!auth || !db) return;
@@ -85,7 +83,7 @@ export function Navbar() {
       toast({
         variant: "destructive",
         title: "Login Error",
-        description: "Authentication failed. Please check API settings.",
+        description: error.message || "Authentication failed.",
       });
     }
   };
@@ -102,17 +100,23 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* Dynamic API Guide Bar - Only shows if there's a specific auth error */}
-      {mounted && isApiIssue && (
-        <div className="bg-blue-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-3">
-          <AlertCircle className="h-4 w-4 animate-bounce" /> 
-          <span>Action Required: Enable Identity Toolkit & Check API Key Restrictions</span>
+      {/* Dynamic API Guide Bar - Helps the user find the toolkit buttons */}
+      {mounted && (
+        <div className="bg-blue-600 text-white py-2 px-4 text-center text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-4">
+          <span className="flex items-center gap-1.5"><Settings className="h-3 w-3" /> Console Setup:</span>
           <Link 
-            href="https://console.cloud.google.com/apis/credentials" 
+            href="https://console.cloud.google.com/apis/library/identitytoolkit.googleapis.com?project=dronaiq" 
             target="_blank" 
-            className="underline bg-white/20 px-3 py-1 rounded-md flex items-center gap-2 hover:bg-white/30 transition-all"
+            className="hover:underline flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded"
           >
-            Go to Console <Settings className="h-3 w-3" />
+            1. Enable Toolkit <ExternalLink className="h-2.5 w-2.5" />
+          </Link>
+          <Link 
+            href="https://console.cloud.google.com/apis/credentials?project=dronaiq" 
+            target="_blank" 
+            className="hover:underline flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded"
+          >
+            2. API Key Limits <ExternalLink className="h-2.5 w-2.5" />
           </Link>
         </div>
       )}

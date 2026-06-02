@@ -2,7 +2,7 @@
 
 /**
  * Drona IQ - Unified Firebase Configuration
- * Updated with the user-provided API Key and confirmed Project Number: 380315187121
+ * Updated with the user-provided API Key: AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM
  */
 export const firebaseConfig = {
   apiKey: "AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM",
