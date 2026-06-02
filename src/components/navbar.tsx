@@ -20,7 +20,9 @@ import {
   UserCheck,
   BookOpen,
   Wifi,
-  ShieldCheck
+  ShieldCheck,
+  AlertCircle,
+  Settings
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -40,6 +42,7 @@ import { Badge } from './ui/badge';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isApiBlocked, setIsApiBlocked] = useState(false);
   
   const { user, loading } = useUser();
   const auth = useAuth();
@@ -53,8 +56,8 @@ export function Navbar() {
     if (!auth || !db) {
       toast({
         variant: "destructive",
-        title: "Initializing Services",
-        description: "Connecting to Drona IQ Success OS. Please try again in 5 seconds.",
+        title: "Connecting...",
+        description: "Syncing with Drona IQ Success OS. Try again in 3 seconds.",
       });
       return;
     }
@@ -79,25 +82,28 @@ export function Navbar() {
         });
       }
       
+      setIsApiBlocked(false);
       toast({
-        title: "Access Granted",
-        description: `Welcome back to the hub, ${loggedUser.displayName}!`,
+        title: "Welcome Back",
+        description: `Access granted to ${loggedUser.displayName}.`,
       });
     } catch (error: any) {
-      console.error("Auth Error:", error);
+      console.error("Auth Error:", error.code, error.message);
       
-      let errorMsg = "Could not authenticate. Please check if your Google account is active.";
-      if (error.code === 'auth/popup-closed-by-user') {
-        errorMsg = "Login window was closed. Please try again.";
-      } else if (error.message?.includes('identitytoolkit')) {
-        errorMsg = "System API propagation in progress. Please refresh in 2 minutes.";
+      if (error.message?.includes('requests-to-this-api') || error.message?.includes('blocked')) {
+        setIsApiBlocked(true);
+        toast({
+          variant: "destructive",
+          title: "API Restriction Error",
+          description: "Your API Key is restricting Identity Toolkit. Please add it in GCP Console.",
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Login Failed",
+          description: "Authentication service encountered an issue. Please retry.",
+        });
       }
-
-      toast({
-        variant: "destructive",
-        title: "Authentication Failed",
-        description: errorMsg,
-      });
     }
   };
 
@@ -105,23 +111,34 @@ export function Navbar() {
     if (!auth) return;
     signOut(auth).then(() => {
       toast({
-        title: "Session Terminated",
-        description: "Successfully signed out of the Drona IQ ecosystem.",
+        title: "Logged Out",
+        description: "Session securely terminated.",
       });
     });
   };
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
+      {/* API BLOCKED WARNING */}
+      {mounted && isApiBlocked && (
+        <div className="bg-red-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-3">
+          <AlertCircle className="h-4 w-4" /> 
+          <span>Identity API is Blocked in API Key Settings.</span>
+          <Link href="https://console.cloud.google.com/apis/credentials" target="_blank" className="underline flex items-center gap-1">
+            Fix in GCP Console <Settings className="h-3 w-3" />
+          </Link>
+        </div>
+      )}
+
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-4 md:gap-8 overflow-hidden">
             <span className="flex items-center gap-2 whitespace-nowrap"><MapPin className="h-3 w-3 text-accent shrink-0" /> Sahastradhara Road, Dehradun</span>
-            <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> Mon - Sat: 09:00 - 20:00</span>
+            <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {mounted && db && (
+            {mounted && db && !isApiBlocked && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
                 <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
               </span>
