@@ -1,4 +1,3 @@
-
 "use client"
 
 import { use } from 'react';
@@ -13,7 +12,6 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
   const { locality } = use(params);
   const formattedLocality = locality.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
-  // LOCAL SEO BREADCRUMB SCHEMA
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -27,13 +25,11 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
     <div className="min-h-screen bg-muted/20">
       <Navbar />
       
-      {/* SCHEMA SCRIPT FOR BREADCRUMBS */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Dynamic Hero */}
       <section className="navy-gradient py-24 text-white text-center relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 space-y-6">
           <Badge className="bg-accent text-white border-none px-6 py-2 uppercase tracking-[0.2em] text-[10px] font-bold">Local Hub: {formattedLocality}</Badge>
@@ -55,7 +51,6 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
       </section>
 
       <main className="container mx-auto px-4 py-20 space-y-24">
-        {/* Why this locality? */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="text-4xl font-extrabold font-headline text-primary uppercase">Elite Education <br/> in {formattedLocality}</h2>
@@ -89,7 +84,6 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
           </Card>
         </div>
 
-        {/* Localized Content */}
         <div className="grid md:grid-cols-3 gap-8">
           {[
             { icon: GraduationCap, title: `CBSE/ICSE in ${formattedLocality}`, desc: "Expert foundation building for Class 5-10 and intensive coaching for Class 11-12 Boards with local school sync." },

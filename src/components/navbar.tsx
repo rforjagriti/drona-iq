@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from 'next/link';
@@ -20,7 +19,8 @@ import {
   Clock,
   ShieldAlert,
   UserCheck,
-  BookOpen
+  BookOpen,
+  Info
 } from 'lucide-react';
 import { useState } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -48,7 +48,6 @@ export function Navbar() {
       const result = await signInWithPopup(auth, provider);
       const loggedUser = result.user;
 
-      // Sync User Profile to Firestore
       const userRef = doc(db, 'users', loggedUser.uid);
       const userSnap = await getDoc(userRef);
 
@@ -58,7 +57,7 @@ export function Navbar() {
           email: loggedUser.email,
           displayName: loggedUser.displayName,
           photoURL: loggedUser.photoURL,
-          role: 'student', // Default role
+          role: 'student',
           createdAt: new Date().toISOString(),
           timestamp: serverTimestamp()
         });
@@ -75,7 +74,6 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* 1. TOP CONTACT STRIP */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-4 md:gap-8 overflow-hidden">
@@ -90,7 +88,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* 2. MAIN NAV BAR */}
       <nav className="glass border-b border-white/10 shadow-xl relative z-[101] h-20 flex items-center">
         <div className="container mx-auto flex items-center justify-between px-4">
           <Link href="/" className="flex items-center space-x-2 group">
@@ -103,12 +100,11 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
+            <Link href="/why-drona-iq" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Why DIQ?</Link>
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Success Audit</Link>
             <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Classes</Link>
             <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition</Link>
-            <Link href="/results" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Success Log</Link>
             
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
@@ -212,15 +208,14 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden absolute top-20 inset-x-0 h-screen bg-white z-[90] p-6 space-y-8 animate-in slide-in-from-top duration-300 overflow-y-auto pb-40">
+             <Link href="/why-drona-iq" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Why DIQ?</Link>
              <Link href="/academic-health-check" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Success Audit</Link>
              <Link href="/classes" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Running Classes</Link>
              <Link href="/home-tuition" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Home Tuition</Link>
              <Link href="/student" className="block p-4 bg-primary/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Scholar Hub</Link>
              <Link href="/parent-dashboard" className="block p-4 bg-accent/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Parent Portal</Link>
-             <Link href="/tutor/dashboard" className="block p-4 bg-blue-50 rounded-2xl font-bold uppercase text-xs text-blue-700" onClick={() => setIsOpen(false)}>Educator Portal</Link>
              <Link href="/admin" className="block p-4 bg-red-50 rounded-2xl font-bold uppercase text-xs text-red-700" onClick={() => setIsOpen(false)}>Admin Command</Link>
           </div>
         )}

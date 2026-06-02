@@ -17,6 +17,7 @@ import { FacultySection } from '@/components/home/faculty';
 import { SuccessHallSection } from '@/components/home/success-hall';
 import { VideoHubSection } from '@/components/home/video-hub';
 import { GalleryLabSection } from '@/components/home/gallery-lab';
+import { CompetitiveMatrix } from '@/components/competitive-matrix';
 import { Quote, Zap, ArrowRight, Star, TrendingUp, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -31,49 +32,52 @@ export default function HomePage() {
         {/* 1. CINEMATIC HERO (The Hook) */}
         <HeroSection />
 
-        {/* 2. OLYMPIAD COLLABORATION (New Section) */}
+        {/* 2. OLYMPIAD COLLABORATION */}
         <OlympiadSection />
 
-        {/* 3. LIVE PULSE (The "Alive" Factor) */}
+        {/* 3. LIVE PULSE */}
         <LivePulse />
 
-        {/* 4. ADMISSION READINESS (The Lead Magnet) */}
+        {/* 4. ADMISSION READINESS */}
         <AdmissionReadiness />
 
-        {/* 5. GENESIS: FOUNDER'S LETTER (Emotional Trust) */}
+        {/* 5. GENESIS: FOUNDER'S LETTER */}
         <GenesisSection />
 
-        {/* 6. SUCCESS HALL: TESTIMONIALS & RESULTS (Social Proof) */}
+        {/* 6. COMPETITIVE MATRIX (Strategic Trust) */}
+        <CompetitiveMatrix />
+
+        {/* 7. SUCCESS HALL: RESULTS */}
         <SuccessHallSection />
 
-        {/* 7. TECH SUITE: SIMULATORS & TWINS (The Innovation) */}
+        {/* 8. TECH SUITE: SIMULATORS */}
         <TechSuiteSection />
 
-        {/* 8. FACULTY WALL: INTELLECTUAL CAPITAL (Authority) */}
+        {/* 9. FACULTY WALL */}
         <FacultySection />
 
-        {/* 9. VIDEO HUB: YOUTUBE & CINEMATICS (Engagement) */}
+        {/* 10. VIDEO HUB */}
         <VideoHubSection />
 
-        {/* 10. GALLERY: SUCCESS LAB (Visual Proof) */}
+        {/* 11. GALLERY */}
         <GalleryLabSection />
 
-        {/* 11. OLQ RADAR (The Military Edge) */}
+        {/* 12. OLQ RADAR */}
         <OLQRadarSection />
 
-        {/* 12. NEUROSCIENCE HUB (The Scientific Logic) */}
+        {/* 13. NEUROSCIENCE HUB */}
         <NeuroHubSection />
 
-        {/* 13. ROI CALCULATOR (The Mathematical Proof) */}
+        {/* 14. ROI CALCULATOR */}
         <ROICalculator />
 
-        {/* 14. SCHOOL SYNC (Local Dominance) */}
+        {/* 15. SCHOOL SYNC (Local Dominance) */}
         <SchoolSyncMatrix />
 
-        {/* 15. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
+        {/* 16. THE CLASS UNIVERSE */}
         <ClassUniverseSection />
 
-        {/* 16. PSYCHOLOGY HUB: WHY WE WIN */}
+        {/* 17. PSYCHOLOGY HUB: WHY WE WIN */}
         <section className="py-24 bg-muted/20 overflow-hidden border-y border-primary/5">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -121,13 +125,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 17. DEFENCE LEGACY: DrDA INTEGRATION */}
+        {/* 18. DEFENCE LEGACY */}
         <DefenceLegacySection />
 
-        {/* 18. DEHRADUN 360 LOCALITY GRID */}
+        {/* 19. DEHRADUN 360 LOCALITY GRID */}
         <LocalSeoMatrix />
 
-        {/* 19. FAQ FORTRESS */}
+        {/* 20. FAQ FORTRESS */}
         <FaqFortress />
 
         {/* FINAL EMOTIONAL CTA */}
@@ -166,10 +170,10 @@ export default function HomePage() {
               <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Quick Access</h4>
                  <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors">
+                    <li><Link href="/why-drona-iq">The DIQ Advantage</Link></li>
                     <li><Link href="/academic-health-check">AI Academic Diagnostic</Link></li>
                     <li><Link href="/home-tuition">Verified Home Tuition</Link></li>
                     <li><Link href="/revision-generator">AI Revision Pack</Link></li>
-                    <li><Link href="/career-guidance">Success Predictor</Link></li>
                  </ul>
               </div>
               <div className="text-left">
