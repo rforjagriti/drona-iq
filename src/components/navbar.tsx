@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from 'next/link';
@@ -37,7 +36,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
-import { Badge } from './ui/badge';
+import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -108,11 +107,12 @@ export function Navbar() {
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {mounted && db && (
+            {/* Stable element to prevent hydration shift */}
+            <div className={cn("flex items-center transition-opacity duration-300", mounted && db ? "opacity-100" : "opacity-0")}>
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
                 <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
               </span>
-            )}
+            </div>
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
               <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
             </Link>
@@ -133,7 +133,7 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Menu */}
+          {/* Desktop Menu - These remain stable for SSR */}
           <div className="hidden lg:flex items-center space-x-8">
             <Link href="/why-drona-iq" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Why DIQ?</Link>
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Audit</Link>
@@ -172,15 +172,6 @@ export function Navbar() {
                     </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 bg-red-50/50">
-                  <Link href="/admin" className="flex items-center gap-3">
-                    <div className="bg-red-100 p-2 rounded-lg text-red-600"><ShieldAlert className="h-4 w-4" /></div>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase text-red-700">Admin Command</span>
-                      <span className="text-[8px] text-muted-foreground">Lead CRM & Control</span>
-                    </div>
-                  </Link>
-                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -209,37 +200,31 @@ export function Navbar() {
             </DropdownMenu>
           </div>
 
-          {/* Auth Section */}
-          <div className="flex items-center space-x-4">
-            {!mounted ? (
+          {/* Auth Section - Refactored for Hydration Safety */}
+          <div className="flex items-center space-x-4 min-w-[120px] justify-end">
+            {!mounted || loading ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
+            ) : !user ? (
+              <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">
+                <LogIn className="h-3.5 w-3.5 text-accent" /> Login
+              </Button>
             ) : (
-              <>
-                {loading ? (
-                  <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
-                ) : !user ? (
-                  <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">
-                    <LogIn className="h-3.5 w-3.5 text-accent" /> Login
-                  </Button>
-                ) : (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="outline-none">
-                      <Avatar className="h-9 w-9 border-2 border-accent/20 shadow-md">
-                        <AvatarImage src={user.photoURL || ''} />
-                        <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
-                      </Avatar>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                      <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
-                        <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
-                        <LogOut className="h-4 w-4" /> Logout
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                )}
-              </>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="outline-none">
+                  <Avatar className="h-9 w-9 border-2 border-accent/20 shadow-md">
+                    <AvatarImage src={user.photoURL || ''} />
+                    <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
+                  <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
+                    <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
+                    <LogOut className="h-4 w-4" /> Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             )}
             
             <Button variant="ghost" size="icon" className="lg:hidden rounded-xl h-11 w-11" onClick={() => setIsOpen(!isOpen)}>
@@ -255,7 +240,6 @@ export function Navbar() {
              <Link href="/academic-health-check" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Audit</Link>
              <Link href="/student" className="block p-4 bg-primary/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Scholar Hub</Link>
              <Link href="/parent-dashboard" className="block p-4 bg-accent/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Parent Portal</Link>
-             <Link href="/admin" className="block p-4 bg-red-50 rounded-2xl font-bold uppercase text-xs text-red-700" onClick={() => setIsOpen(false)}>Admin</Link>
           </div>
         )}
       </nav>
