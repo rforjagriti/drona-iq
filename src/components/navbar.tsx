@@ -22,7 +22,7 @@ import {
   BookOpen,
   Info
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
@@ -37,9 +37,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { user, loading } = useUser();
   const auth = useAuth();
   const db = useFirestore();
+
+  // Ensure hydration matches by only rendering dynamic parts after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLogin = async () => {
     if (!auth || !db) return;
@@ -106,6 +112,7 @@ export function Navbar() {
             <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Classes</Link>
             <Link href="/home-tuition" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Home Tuition</Link>
             
+            {/* These dropdowns generate IDs, we keep them static to help matching, but wrap the auth section */}
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
                 Ecosystem Portals <ChevronDown className="h-3 w-3 text-accent" />
@@ -177,29 +184,35 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
-            {loading ? (
+            {!mounted ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
-            ) : !user ? (
-              <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">
-                <LogIn className="h-3.5 w-3.5 text-accent" /> Portal Login
-              </Button>
             ) : (
-              <DropdownMenu>
-                <DropdownMenuTrigger className="outline-none">
-                  <Avatar className="h-9 w-9 border-2 border-white shadow-md">
-                    <AvatarImage src={user.photoURL || ''} />
-                    <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
-                  </Avatar>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                  <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
-                    <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
-                    <LogOut className="h-4 w-4" /> Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <>
+                {loading ? (
+                  <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
+                ) : !user ? (
+                  <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">
+                    <LogIn className="h-3.5 w-3.5 text-accent" /> Portal Login
+                  </Button>
+                ) : (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="outline-none">
+                      <Avatar className="h-9 w-9 border-2 border-white shadow-md">
+                        <AvatarImage src={user.photoURL || ''} />
+                        <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
+                      </Avatar>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
+                      <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
+                        <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
+                        <LogOut className="h-4 w-4" /> Logout
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </>
             )}
             
             <Button variant="ghost" size="icon" className="lg:hidden rounded-xl h-11 w-11" onClick={() => setIsOpen(!isOpen)}>
