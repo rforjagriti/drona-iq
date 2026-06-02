@@ -17,8 +17,7 @@ import {
   MapPin, 
   Clock,
   Wifi,
-  UserCheck,
-  AlertCircle
+  UserCheck
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -37,7 +36,6 @@ import { toast } from '@/hooks/use-toast';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [authError, setAuthError] = useState<string | null>(null);
   
   const { user, loading } = useUser();
   const auth = useAuth();
@@ -49,7 +47,6 @@ export function Navbar() {
 
   const handleLogin = async () => {
     if (!auth || !db) return;
-    setAuthError(null);
     
     const provider = new GoogleAuthProvider();
     try {
@@ -77,13 +74,10 @@ export function Navbar() {
       });
     } catch (error: any) {
       console.error("Auth Error:", error);
-      const msg = error.message || "Authentication failed.";
-      setAuthError(msg);
-      
       toast({
         variant: "destructive",
         title: "Login Error",
-        description: msg,
+        description: error.message || "Authentication failed.",
       });
     }
   };
@@ -98,17 +92,10 @@ export function Navbar() {
     });
   };
 
+  if (!mounted) return null;
+
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* API Key Status Alert */}
-      {mounted && authError && (
-        <div className="bg-red-600 text-white py-2 px-4 text-center text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2">
-          <AlertCircle className="h-3 w-3" />
-          Error: {authError}. Check Firebase "Web API Key" in settings.
-          <Link href="https://console.firebase.google.com/project/dronaiq/settings/general" target="_blank" className="underline ml-2">Open Console</Link>
-        </div>
-      )}
-
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -117,7 +104,7 @@ export function Navbar() {
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {mounted && db && (
+            {db && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
                 <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
               </span>
@@ -205,7 +192,7 @@ export function Navbar() {
 
           {/* Auth Section */}
           <div className="flex items-center space-x-4 min-w-[120px] justify-end">
-            {!mounted || loading ? (
+            {loading ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
             ) : !user ? (
               <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">
