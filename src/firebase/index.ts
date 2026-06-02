@@ -7,7 +7,6 @@ import { firebaseConfig } from './config';
 
 /**
  * Standard Firebase Initialization for Drona IQ.
- * Connects to production services. Handles potential initialization errors gracefully.
  */
 export function initializeFirebase() {
   try {
@@ -22,8 +21,8 @@ export function initializeFirebase() {
     const auth = getAuth(firebaseApp);
     const firestore = getFirestore(firebaseApp);
 
-    // Initial check to ensure connectivity
-    enableNetwork(firestore).catch(() => console.log("Firebase network activation pending..."));
+    // Ensure connectivity
+    enableNetwork(firestore).catch(() => {});
 
     return { firebaseApp, auth, firestore };
   } catch (error) {

@@ -42,7 +42,6 @@ import { Badge } from './ui/badge';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isApiBlocked, setIsApiBlocked] = useState(false);
   
   const { user, loading } = useUser();
   const auth = useAuth();
@@ -53,14 +52,7 @@ export function Navbar() {
   }, []);
 
   const handleLogin = async () => {
-    if (!auth || !db) {
-      toast({
-        variant: "destructive",
-        title: "Connecting...",
-        description: "Syncing with Drona IQ Success OS. Try again in 3 seconds.",
-      });
-      return;
-    }
+    if (!auth || !db) return;
     
     const provider = new GoogleAuthProvider();
     try {
@@ -82,30 +74,17 @@ export function Navbar() {
         });
       }
       
-      setIsApiBlocked(false);
       toast({
         title: "Welcome Back",
-        description: `Access granted to ${loggedUser.displayName}.`,
+        description: `Logged in as ${loggedUser.displayName}.`,
       });
     } catch (error: any) {
-      console.error("Auth Error:", error.code, error.message);
-      
-      if (error.message?.includes('identity-toolkit-api') || 
-          error.message?.includes('are-blocked') ||
-          error.message?.includes('requests-to-this-api')) {
-        setIsApiBlocked(true);
-        toast({
-          variant: "destructive",
-          title: "API Status Error",
-          description: "Identity Toolkit API must be enabled for project 377002196734.",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Login Failed",
-          description: "Authentication service encountered an issue. Please retry.",
-        });
-      }
+      console.error("Auth Error:", error);
+      toast({
+        variant: "destructive",
+        title: "Login Error",
+        description: "Please check if Identity Toolkit API is enabled in GCP.",
+      });
     }
   };
 
@@ -121,17 +100,6 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* API ERROR WARNING BAR */}
-      {mounted && isApiBlocked && (
-        <div className="bg-red-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-3">
-          <AlertCircle className="h-4 w-4" /> 
-          <span>Identity API Error for Project 377002196734. Please ensure it is Enabled &gt; Key Restrictions are Correct.</span>
-          <Link href="https://console.cloud.google.com/apis/library/identitytoolkit.googleapis.com" target="_blank" className="underline flex items-center gap-1">
-            Fix in GCP <Settings className="h-3 w-3" />
-          </Link>
-        </div>
-      )}
-
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -140,7 +108,7 @@ export function Navbar() {
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {mounted && db && !isApiBlocked && (
+            {mounted && db && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
                 <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
               </span>

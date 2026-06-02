@@ -1,14 +1,14 @@
 'use client';
 
 /**
- * Valid Firebase Configuration for Drona IQ.
- * Updated to match the authoritative project number (377002196734) reported by the Firebase Identity API error.
+ * Drona IQ - Firebase Configuration
+ * यहाँ आप अपनी Firebase Console से मिली Config डाल सकते हैं।
  */
 export const firebaseConfig = {
   apiKey: "AIzaSyBCd4w3FHjEShFzNYVMFF88pWuigiSxlfM",
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",
-  messagingSenderId: "377002196734", 
-  appId: "1:377002196734:web:07486f9ab96e12d6f8af90"
+  messagingSenderId: "380315187121", // आपकी Client ID से मिला प्रोजेक्ट नंबर
+  appId: "1:380315187121:web:07486f9ab96e12d6f8af90"
 };
