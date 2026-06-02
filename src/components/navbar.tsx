@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from 'next/link';
@@ -34,7 +33,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -108,6 +106,7 @@ export function Navbar() {
     });
   };
 
+  // Prevent hydration errors by keeping HTML structure consistent
   if (!mounted) return (
     <header className="fixed top-0 z-[100] w-full flex flex-col h-28 bg-primary">
     </header>
