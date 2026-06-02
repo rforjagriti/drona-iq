@@ -21,7 +21,8 @@ import {
   BookOpen,
   AlertCircle,
   Wifi,
-  WifiOff
+  WifiOff,
+  Settings
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -49,13 +50,8 @@ export function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // Quick Connectivity Check
     if (db) {
-      // In a real scenario, we could try a small read, 
-      // but just having the db instance in a Client Component is a good first step.
       setFbConnected(true);
-      console.log("✨ Drona IQ: Firebase Handshake Successful");
     } else {
       setFbConnected(false);
     }
@@ -66,7 +62,7 @@ export function Navbar() {
       toast({
         variant: "destructive",
         title: "Connection Error",
-        description: "Firebase service is not initialized yet. Please refresh.",
+        description: "Firebase service is not initialized. Please check API Key.",
       });
       return;
     }
@@ -96,18 +92,18 @@ export function Navbar() {
         description: `Welcome back, ${loggedUser.displayName}!`,
       });
     } catch (error: any) {
-      console.error("Auth Error:", error);
+      console.error("Auth Error Details:", error);
       
-      let errorMsg = "Could not sign in with Google.";
-      if (error.message?.includes('identity-toolkit-api')) {
-        errorMsg = "Google Auth API is still activating. Please wait 2 minutes.";
-      } else if (error.code === 'auth/popup-closed-by-user') {
-        errorMsg = "Login popup was closed before completion.";
+      let errorMsg = "Sign-in failed.";
+      if (error.message.includes('are-blocked')) {
+        errorMsg = "API Key Restriction: Add 'Identity Toolkit API' to allowed APIs in GCP Console.";
+      } else if (error.message.includes('identity-toolkit-api')) {
+        errorMsg = "API Activation in progress. Please wait 5 minutes.";
       }
 
       toast({
         variant: "destructive",
-        title: "Authentication Failed",
+        title: "Authentication Error",
         description: errorMsg,
       });
     }
@@ -118,40 +114,37 @@ export function Navbar() {
     signOut(auth).then(() => {
       toast({
         title: "Logged Out",
-        description: "You have been securely signed out.",
+        description: "Securely signed out.",
       });
     });
   };
 
+  const isApiBlocked = authError?.message.includes('identity-toolkit-api') || authError?.message.includes('are-blocked');
+
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* API Propagation / Connectivity Warning Bar */}
-      {mounted && (
-        <>
-          {authError?.message.includes('identity-toolkit-api') && (
-            <div className="bg-red-600 text-white py-2 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-2">
-              <AlertCircle className="h-3.5 w-3.5" /> Auth API is activating. Please wait 2 minutes and refresh.
-            </div>
-          )}
-          {!fbConnected && fbConnected !== null && (
-            <div className="bg-orange-500 text-white py-1 px-4 text-center text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-2">
-              <WifiOff className="h-3 w-3" /> Database Connection Offline. Checking network...
-            </div>
-          )}
-        </>
+      {/* Dynamic API Status Warning Bar */}
+      {mounted && isApiBlocked && (
+        <div className="bg-red-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-3">
+          <AlertCircle className="h-4 w-4" /> 
+          <span>Identity API is Blocked/Disabled. Go to GCP Console &gt; Credentials &gt; API Key &gt; Add "Identity Toolkit API".</span>
+          <Link href="https://console.cloud.google.com/apis/credentials" target="_blank" className="underline flex items-center gap-1">
+            Fix Now <Settings className="h-3 w-3" />
+          </Link>
+        </div>
       )}
 
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
           <div className="flex gap-4 md:gap-8 overflow-hidden">
-            <span className="flex items-center gap-2 whitespace-nowrap"><MapPin className="h-3 w-3 text-accent shrink-0" /> Om Tower, Sahastradhara Road, Dehradun</span>
+            <span className="flex items-center gap-2 whitespace-nowrap"><MapPin className="h-3 w-3 text-accent shrink-0" /> Sahastradhara Road, Dehradun</span>
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> Mon - Sat: 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {mounted && fbConnected && (
+            {mounted && fbConnected && !isApiBlocked && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
-                <Wifi className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
+                <item.icon className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
               </span>
             )}
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">

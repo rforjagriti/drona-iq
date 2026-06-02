@@ -6,7 +6,7 @@ import { useAuth } from '../provider';
 
 /**
  * Hook to track the current Firebase user.
- * Improved to explicitly detect Identity Toolkit API issues.
+ * Improved to explicitly detect Identity Toolkit API and API Key restriction issues.
  */
 export function useUser() {
   const auth = useAuth();
@@ -32,11 +32,11 @@ export function useUser() {
         setError(err);
         setLoading(false);
         
-        // Detailed log for Identity Toolkit propagation issues
-        if (err.message.includes('identity-toolkit-api')) {
-          console.warn(
-            "ACTION REQUIRED: Identity Toolkit API propagation in progress. " +
-            "If you enabled it recently, please wait 5 minutes and refresh."
+        // Detection for specific API Blocked or Disabled issues
+        if (err.message.includes('identity-toolkit-api') || err.message.includes('are-blocked')) {
+          console.error(
+            "CRITICAL: Identity Toolkit API is blocked or not enabled. " +
+            "Please check API Key restrictions in Google Cloud Console."
           );
         }
       }
