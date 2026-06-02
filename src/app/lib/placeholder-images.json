@@ -1,107 +1,106 @@
-
 {
   "placeholderImages": [
     {
       "id": "hero-student",
-      "description": "Cinematic shot of a focused student",
+      "description": "Main banner student image",
       "imageUrl": "/images/hero-student.jpg",
       "imageHint": "cinematic student"
     },
     {
+      "id": "founder-photo",
+      "description": "Founder Dr. Vikram Singh",
+      "imageUrl": "/images/founder.jpg",
+      "imageHint": "founder portrait"
+    },
+    {
       "id": "campus-main",
-      "description": "Premium exterior view of Drona IQ Hub",
+      "description": "Drona IQ Dehradun Campus",
       "imageUrl": "/images/campus-main.jpg",
       "imageHint": "modern building"
     },
     {
-      "id": "founder-photo",
-      "description": "Portrait of the Drona IQ Founder",
-      "imageUrl": "/images/founder.jpg",
-      "imageHint": "executive portrait"
-    },
-    {
       "id": "faculty-1",
-      "description": "Dr. Vikram Singh",
+      "description": "Senior Mentor 1",
       "imageUrl": "/images/faculty-1.jpg",
-      "imageHint": "professional teacher"
+      "imageHint": "teacher one"
     },
     {
       "id": "faculty-2",
-      "description": "Maj. Gen. Aditya Rawat",
+      "description": "Senior Mentor 2",
       "imageUrl": "/images/faculty-2.jpg",
-      "imageHint": "military veteran"
+      "imageHint": "teacher two"
     },
     {
       "id": "faculty-3",
-      "description": "Er. Amit Negi",
+      "description": "Senior Mentor 3",
       "imageUrl": "/images/faculty-3.jpg",
-      "imageHint": "math teacher"
+      "imageHint": "teacher three"
     },
     {
       "id": "faculty-4",
-      "description": "Mrs. Shalini Bisht",
+      "description": "Senior Mentor 4",
       "imageUrl": "/images/faculty-4.jpg",
-      "imageHint": "physics teacher"
+      "imageHint": "teacher four"
     },
     {
       "id": "student-1",
-      "description": "Ishita Negi - Topper",
+      "description": "Topper Student 1",
       "imageUrl": "/images/student-1.jpg",
       "imageHint": "happy student"
     },
     {
       "id": "student-2",
-      "description": "Aryan Rawat - NDA Qualifier",
+      "description": "Topper Student 2",
       "imageUrl": "/images/student-2.jpg",
-      "imageHint": "cadet student"
+      "imageHint": "successful student"
     },
     {
       "id": "student-3",
-      "description": "Sanya Gupta - JEE Topper",
+      "description": "Topper Student 3",
       "imageUrl": "/images/student-3.jpg",
       "imageHint": "intelligent student"
     },
     {
       "id": "video-thumbnail",
-      "description": "Main video explainer thumbnail",
+      "description": "Explainer Video Thumbnail",
       "imageUrl": "/images/video-thumb.jpg",
-      "imageHint": "video thumbnail"
+      "imageHint": "video preview"
     },
     {
       "id": "gallery-1",
-      "description": "Smart class view",
+      "description": "Smart Classroom",
       "imageUrl": "/images/gallery-1.jpg",
-      "imageHint": "high tech classroom"
+      "imageHint": "classroom view"
     },
     {
       "id": "gallery-2",
-      "description": "Focused student",
+      "description": "Discipline Drill",
       "imageUrl": "/images/gallery-2.jpg",
-      "imageHint": "focused student"
+      "imageHint": "students focus"
     },
     {
       "id": "gallery-3",
-      "description": "Teacher explaining",
+      "description": "Tech Lab",
       "imageUrl": "/images/gallery-3.jpg",
-      "imageHint": "teacher explaining"
+      "imageHint": "computer lab"
     },
     {
       "id": "gallery-4",
-      "description": "Student in uniform",
+      "description": "Drona IQ Hub Interior",
       "imageUrl": "/images/gallery-4.jpg",
-      "imageHint": "student uniform"
+      "imageHint": "modern interior"
     },
     {
       "id": "gallery-5",
-      "description": "Campus exterior",
+      "description": "Student Success Board",
       "imageUrl": "/images/gallery-5.jpg",
-      "imageHint": "campus exterior"
+      "imageHint": "results board"
     },
     {
       "id": "gallery-6",
-      "description": "Group study",
+      "description": "Parent Counseling",
       "imageUrl": "/images/gallery-6.jpg",
-      "imageHint": "group study"
+      "imageHint": "office counseling"
     }
   ]
 }

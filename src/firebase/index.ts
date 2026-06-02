@@ -1,40 +1,27 @@
-
 'use client';
 
-import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
+import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 import { getFirestore, Firestore } from 'firebase/firestore';
 import { firebaseConfig } from './config';
 
 /**
- * Initializes Firebase services with error handling for blocked APIs.
- * If you see 'auth/requests-to-this-api-identitytoolkit-method...-are-blocked',
- * you must enable the "Identity Toolkit API" in the Google Cloud Console.
+ * Standard Firebase Initialization for Drona IQ.
+ * Ensures only one instance exists and connects directly to production services.
  */
 export function initializeFirebase() {
   let firebaseApp: FirebaseApp;
   
-  try {
-    if (!getApps().length) {
-      firebaseApp = initializeApp(firebaseConfig);
-    } else {
-      firebaseApp = getApps()[0];
-    }
-
-    const auth = getAuth(firebaseApp);
-    const firestore = getFirestore(firebaseApp);
-
-    return { firebaseApp, auth, firestore };
-  } catch (error) {
-    console.error("Firebase Initialization Error:", error);
-    // Return null-safe placeholders or re-throw depending on app needs
-    // For now, we return the initialized (even if restricted) instances to allow standard SDK error flows
-    return {
-      firebaseApp: getApps()[0] || initializeApp(firebaseConfig),
-      auth: getAuth(getApps()[0]),
-      firestore: getFirestore(getApps()[0])
-    };
+  if (!getApps().length) {
+    firebaseApp = initializeApp(firebaseConfig);
+  } else {
+    firebaseApp = getApp();
   }
+
+  const auth = getAuth(firebaseApp);
+  const firestore = getFirestore(firebaseApp);
+
+  return { firebaseApp, auth, firestore };
 }
 
 export * from './provider';
