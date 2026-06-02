@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useRef, useEffect } from 'react';
@@ -6,10 +7,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { askScholarAssistant } from '@/ai/flows/ai-scholar-assistant-flow';
-import { GraduationCap, Send, Bot, User, Loader2, Sparkles, BrainCircuit } from 'lucide-react';
+import { GraduationCap, Send, Bot, User, Loader2, Sparkles, BrainCircuit, LogIn, MessageCircleQuestion } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { useUser, useAuth, useFirestore } from '@/firebase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -17,6 +21,10 @@ type Message = {
 };
 
 export default function AssistantPage() {
+  const { user, loading: authLoading } = useUser();
+  const auth = useAuth();
+  const firestore = useFirestore();
+
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: 'Hello! I am your Drona IQ Academic Mentor. How can I help you with your studies today?' }
@@ -30,8 +38,19 @@ export default function AssistantPage() {
     }
   }, [messages]);
 
+  const handleLogin = async () => {
+    if (!auth || !firestore) return;
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      // Profile sync handled in Navbar/Global logic usually
+    } catch (error) {
+      console.error("Auth Error:", error);
+    }
+  };
+
   const handleSend = async () => {
-    if (!input.trim() || loading) return;
+    if (!input.trim() || loading || !user) return;
 
     const userMsg = input.trim();
     setInput('');
@@ -48,6 +67,40 @@ export default function AssistantPage() {
       setLoading(false);
     }
   };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-muted/10">
+        <BrainCircuit className="h-12 w-12 text-primary animate-pulse" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
+            <CardContent className="space-y-8">
+              <div className="bg-primary/5 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
+                <Bot className="h-12 w-12 text-primary" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">AI Mentor Locked</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  Personalized AI mentorship requires an active scholar profile. Log in to start your 1-on-1 session.
+                </p>
+              </div>
+              <Button onClick={handleLogin} className="w-full font-headline bg-accent text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
+                <LogIn className="mr-2 h-5 w-5" /> Sign In to Chat
+              </Button>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-screen bg-muted/10">

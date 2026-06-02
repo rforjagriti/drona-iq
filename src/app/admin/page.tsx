@@ -5,14 +5,42 @@ import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Users, TrendingUp, PhoneCall, BrainCircuit, GraduationCap, ArrowRight, PieChart, Activity, UserPlus, MapPin, Database } from 'lucide-react';
+import { Users, TrendingUp, PhoneCall, BrainCircuit, GraduationCap, ArrowRight, PieChart, Activity, UserPlus, MapPin, Database, LogIn, ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
-import { useFirestore, useCollection } from '@/firebase';
-import { collection, query, orderBy, limit } from 'firebase/firestore';
+import { useUser, useFirestore, useCollection, useAuth } from '@/firebase';
+import { collection, query, orderBy, limit, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useMemo } from 'react';
 
 export default function AdminDashboard() {
+  const { user, loading: authLoading } = useUser();
+  const auth = useAuth();
   const firestore = useFirestore();
+
+  const handleLogin = async () => {
+    if (!auth || !firestore) return;
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const loggedUser = result.user;
+      const userRef = doc(firestore, 'users', loggedUser.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          uid: loggedUser.uid,
+          email: loggedUser.email,
+          displayName: loggedUser.displayName,
+          photoURL: loggedUser.photoURL,
+          role: 'admin',
+          createdAt: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        });
+      }
+    } catch (error) {
+      console.error("Auth Error:", error);
+    }
+  };
 
   const leadsQuery = useMemo(() => {
     if (!firestore) return null;
@@ -27,6 +55,43 @@ export default function AdminDashboard() {
     { label: "AI Diagnostic Engine", value: "Active", icon: BrainCircuit, color: "text-accent", bg: "bg-accent/10" },
     { label: "Conversion Index", value: "18.4%", icon: TrendingUp, color: "text-green-500", bg: "bg-green-50" },
   ];
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-muted/10">
+        <div className="flex flex-col items-center gap-4">
+          <BrainCircuit className="h-12 w-12 text-primary animate-pulse" />
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Authenticating Command Hub...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
+            <CardContent className="space-y-8">
+              <div className="bg-red-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
+                <ShieldAlert className="h-12 w-12 text-red-600" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Admin Restricted</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  This portal is for Drona IQ management only. Please log in with an authorized account to access central lead data and analytics.
+                </p>
+              </div>
+              <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
+                <LogIn className="mr-2 h-5 w-5 text-accent" /> Admin Login
+              </Button>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-muted/10 pb-20">
@@ -109,7 +174,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 ))}
-                {leadsLoading && <div className="p-20 text-center text-muted-foreground italic flex flex-col items-center gap-4">
+                {(leadsLoading || !recentLeads) && <div className="p-20 text-center text-muted-foreground italic flex flex-col items-center gap-4">
                   <Activity className="animate-spin h-8 w-8 text-primary opacity-20" />
                   Loading Central Records...
                 </div>}
