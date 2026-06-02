@@ -32,17 +32,29 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { toast } from '@/hooks/use-toast';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { user, loading } = useUser();
+  const { user, loading, error: authError } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Show error toast if identity toolkit is disabled
+  useEffect(() => {
+    if (mounted && authError && authError.message.includes('identity-toolkit-api')) {
+      toast({
+        variant: "destructive",
+        title: "Auth Configuration Required",
+        description: "Google Identity Toolkit API is not enabled for this project. Please check the Firebase console.",
+      });
+    }
+  }, [mounted, authError]);
 
   const handleLogin = async () => {
     if (!auth || !db) return;
@@ -65,8 +77,13 @@ export function Navbar() {
           timestamp: serverTimestamp()
         });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Auth Error:", error);
+      toast({
+        variant: "destructive",
+        title: "Login Failed",
+        description: error.message || "Could not sign in with Google.",
+      });
     }
   };
 

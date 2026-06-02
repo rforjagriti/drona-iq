@@ -7,21 +7,26 @@ import { firebaseConfig } from './config';
 
 /**
  * Standard Firebase Initialization for Drona IQ.
- * Ensures only one instance exists and connects directly to production services.
+ * Connects to production services. Handles potential initialization errors gracefully.
  */
 export function initializeFirebase() {
-  let firebaseApp: FirebaseApp;
-  
-  if (!getApps().length) {
-    firebaseApp = initializeApp(firebaseConfig);
-  } else {
-    firebaseApp = getApp();
+  try {
+    let firebaseApp: FirebaseApp;
+    
+    if (!getApps().length) {
+      firebaseApp = initializeApp(firebaseConfig);
+    } else {
+      firebaseApp = getApp();
+    }
+
+    const auth = getAuth(firebaseApp);
+    const firestore = getFirestore(firebaseApp);
+
+    return { firebaseApp, auth, firestore };
+  } catch (error) {
+    console.error("Firebase Initialization Failed:", error);
+    throw error;
   }
-
-  const auth = getAuth(firebaseApp);
-  const firestore = getFirestore(firebaseApp);
-
-  return { firebaseApp, auth, firestore };
 }
 
 export * from './provider';
