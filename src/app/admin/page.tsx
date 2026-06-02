@@ -44,17 +44,30 @@ export default function AdminDashboard() {
 
   const leadsQuery = useMemo(() => {
     if (!firestore) return null;
-    return query(collection(firestore, 'leads'), orderBy('timestamp', 'desc'), limit(10));
+    return query(collection(firestore, 'leads'), orderBy('timestamp', 'desc'));
   }, [firestore]);
 
-  const { data: recentLeads, loading: leadsLoading } = useCollection(leadsQuery);
+  const { data: allLeads, loading: leadsLoading } = useCollection(leadsQuery);
 
-  const stats = [
-    { label: "Active Admissions", value: "142", icon: GraduationCap, color: "text-blue-500", bg: "bg-blue-50" },
-    { label: "New Leads (24h)", value: "08", icon: PhoneCall, color: "text-orange-500", bg: "bg-orange-50" },
-    { label: "AI Diagnostic Engine", value: "Active", icon: BrainCircuit, color: "text-accent", bg: "bg-accent/10" },
-    { label: "Conversion Index", value: "18.4%", icon: TrendingUp, color: "text-green-500", bg: "bg-green-50" },
-  ];
+  const stats = useMemo(() => {
+    if (!allLeads) return [
+      { label: "Active Admissions", value: "0", icon: GraduationCap, color: "text-blue-500", bg: "bg-blue-50" },
+      { label: "New Leads (Total)", value: "0", icon: PhoneCall, color: "text-orange-500", bg: "bg-orange-50" },
+      { label: "AI Diagnostic Engine", value: "Active", icon: BrainCircuit, color: "text-accent", bg: "bg-accent/10" },
+      { label: "Conversion Rate", value: "0%", icon: TrendingUp, color: "text-green-500", bg: "bg-green-50" },
+    ];
+
+    const total = allLeads.length;
+    const converted = allLeads.filter(l => l.status === 'converted').length;
+    const conversionRate = total > 0 ? ((converted / total) * 100).toFixed(1) : 0;
+
+    return [
+      { label: "Total Inquiries", value: total.toString(), icon: PhoneCall, color: "text-orange-500", bg: "bg-orange-50" },
+      { label: "Successful Conversions", value: converted.toString(), icon: GraduationCap, color: "text-blue-500", bg: "bg-blue-50" },
+      { label: "AI Diagnostic Engine", value: "Active", icon: BrainCircuit, color: "text-accent", bg: "bg-accent/10" },
+      { label: "Conversion Index", value: `${conversionRate}%`, icon: TrendingUp, color: "text-green-500", bg: "bg-green-50" },
+    ];
+  }, [allLeads]);
 
   if (authLoading) {
     return (
@@ -106,7 +119,9 @@ export default function AdminDashboard() {
             </p>
           </div>
           <div className="flex gap-4">
-             <Button variant="outline" className="font-headline uppercase text-[10px] font-extrabold rounded-xl h-12 px-6">System Reports</Button>
+             <Link href="/admin/leads">
+               <Button variant="outline" className="font-headline uppercase text-[10px] font-extrabold rounded-xl h-12 px-6">View All Leads</Button>
+             </Link>
              <Button className="bg-primary text-white font-headline uppercase text-[10px] font-extrabold rounded-xl h-12 px-8 shadow-xl hover:shadow-2xl transition-all">+ New Enrolment</Button>
           </div>
         </div>
@@ -132,20 +147,20 @@ export default function AdminDashboard() {
             <CardHeader className="bg-primary text-white p-10">
               <div className="flex justify-between items-center">
                 <div>
-                  <CardTitle className="font-headline text-2xl uppercase tracking-tight">Active Inquiries</CardTitle>
-                  <CardDescription className="text-white/60">Multi-source lead pipeline monitoring.</CardDescription>
+                  <CardTitle className="font-headline text-2xl uppercase tracking-tight">Recent Inquiries</CardTitle>
+                  <CardDescription className="text-white/60">Top 10 leads from the pipeline.</CardDescription>
                 </div>
                 <Link href="/admin/leads">
-                  <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-xl uppercase font-bold text-[10px] px-6">CRM Dashboard</Button>
+                  <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-xl uppercase font-bold text-[10px] px-6">Lead CRM</Button>
                 </Link>
               </div>
             </CardHeader>
             <CardContent className="p-0">
               <div className="divide-y">
-                {recentLeads?.map((lead: any) => (
+                {allLeads?.slice(0, 10).map((lead: any) => (
                   <div key={lead.id} className="p-8 flex items-center justify-between hover:bg-muted/30 transition-colors">
                     <div className="flex items-center gap-6">
-                      <div className="h-14 w-14 rounded-2xl bg-muted flex items-center justify-center font-bold text-primary shadow-inner">
+                      <div className="h-14 w-14 rounded-2xl bg-muted flex items-center justify-center font-bold text-primary shadow-inner uppercase">
                         {lead.parentName?.[0] || 'L'}
                       </div>
                       <div>
@@ -174,10 +189,13 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 ))}
-                {(leadsLoading || !recentLeads) && <div className="p-20 text-center text-muted-foreground italic flex flex-col items-center gap-4">
+                {(leadsLoading || !allLeads) && <div className="p-20 text-center text-muted-foreground italic flex flex-col items-center gap-4">
                   <Activity className="animate-spin h-8 w-8 text-primary opacity-20" />
-                  Loading Central Records...
+                  Loading Live CRM Records...
                 </div>}
+                {allLeads?.length === 0 && !leadsLoading && (
+                   <div className="p-20 text-center text-muted-foreground">No leads found in the database.</div>
+                )}
               </div>
             </CardContent>
           </Card>
