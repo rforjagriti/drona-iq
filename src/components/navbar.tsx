@@ -19,7 +19,8 @@ import {
   ShieldAlert,
   UserCheck,
   BookOpen,
-  Wifi
+  Wifi,
+  ShieldCheck
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -52,8 +53,8 @@ export function Navbar() {
     if (!auth || !db) {
       toast({
         variant: "destructive",
-        title: "Connection Error",
-        description: "Services are initializing. Please try again in a moment.",
+        title: "Initializing Services",
+        description: "Connecting to Drona IQ Success OS. Please try again in 5 seconds.",
       });
       return;
     }
@@ -79,15 +80,23 @@ export function Navbar() {
       }
       
       toast({
-        title: "Success",
-        description: `Welcome to Drona IQ, ${loggedUser.displayName}!`,
+        title: "Access Granted",
+        description: `Welcome back to the hub, ${loggedUser.displayName}!`,
       });
     } catch (error: any) {
       console.error("Auth Error:", error);
+      
+      let errorMsg = "Could not authenticate. Please check if your Google account is active.";
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMsg = "Login window was closed. Please try again.";
+      } else if (error.message?.includes('identitytoolkit')) {
+        errorMsg = "System API propagation in progress. Please refresh in 2 minutes.";
+      }
+
       toast({
         variant: "destructive",
-        title: "Login Failed",
-        description: "Could not authenticate your account. Please try again.",
+        title: "Authentication Failed",
+        description: errorMsg,
       });
     }
   };
@@ -96,8 +105,8 @@ export function Navbar() {
     if (!auth) return;
     signOut(auth).then(() => {
       toast({
-        title: "Logged Out",
-        description: "Securely signed out of the Success OS.",
+        title: "Session Terminated",
+        description: "Successfully signed out of the Drona IQ ecosystem.",
       });
     });
   };
@@ -114,7 +123,7 @@ export function Navbar() {
           <div className="flex gap-6 shrink-0 items-center">
             {mounted && db && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
-                <Wifi className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
+                <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
               </span>
             )}
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
@@ -228,7 +237,7 @@ export function Navbar() {
                 ) : (
                   <DropdownMenu>
                     <DropdownMenuTrigger className="outline-none">
-                      <Avatar className="h-9 w-9 border-2 border-white shadow-md">
+                      <Avatar className="h-9 w-9 border-2 border-accent/20 shadow-md">
                         <AvatarImage src={user.photoURL || ''} />
                         <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
                       </Avatar>
