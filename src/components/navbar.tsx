@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -21,8 +22,7 @@ import {
   BookOpen,
   Wifi,
   ShieldCheck,
-  AlertCircle,
-  Settings
+  Search
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -82,8 +82,8 @@ export function Navbar() {
       console.error("Auth Error:", error);
       toast({
         variant: "destructive",
-        title: "Login Error",
-        description: "Please check if Identity Toolkit API is enabled in GCP.",
+        title: "Authentication Failed",
+        description: "Please check your network or try again.",
       });
     }
   };
@@ -93,7 +93,7 @@ export function Navbar() {
     signOut(auth).then(() => {
       toast({
         title: "Logged Out",
-        description: "Session securely terminated.",
+        description: "Session terminated securely.",
       });
     });
   };

@@ -1,62 +1,63 @@
+
 {
   "placeholderImages": [
     {
       "id": "hero-student",
-      "description": "Main banner student image",
+      "description": "Main banner student image (High quality, cinematic)",
       "imageUrl": "/images/hero-student.jpg",
       "imageHint": "cinematic student"
     },
     {
       "id": "founder-photo",
-      "description": "Founder Dr. Vikram Singh",
+      "description": "Founder Dr. Vikram Singh portrait",
       "imageUrl": "/images/founder.jpg",
       "imageHint": "founder portrait"
     },
     {
       "id": "campus-main",
-      "description": "Drona IQ Dehradun Campus",
+      "description": "Drona IQ Dehradun Campus Exterior",
       "imageUrl": "/images/campus-main.jpg",
       "imageHint": "modern building"
     },
     {
       "id": "faculty-1",
-      "description": "Senior Mentor 1",
+      "description": "Dr. Vikram Singh - Mentor",
       "imageUrl": "/images/faculty-1.jpg",
       "imageHint": "teacher one"
     },
     {
       "id": "faculty-2",
-      "description": "Senior Mentor 2",
+      "description": "Maj. Gen. Aditya Rawat - Mentor",
       "imageUrl": "/images/faculty-2.jpg",
       "imageHint": "teacher two"
     },
     {
       "id": "faculty-3",
-      "description": "Senior Mentor 3",
+      "description": "Er. Amit Negi - Mentor",
       "imageUrl": "/images/faculty-3.jpg",
       "imageHint": "teacher three"
     },
     {
       "id": "faculty-4",
-      "description": "Senior Mentor 4",
+      "description": "Mrs. Shalini Bisht - Mentor",
       "imageUrl": "/images/faculty-4.jpg",
       "imageHint": "teacher four"
     },
     {
       "id": "student-1",
-      "description": "Topper Student 1",
+      "description": "Topper Student - Ishita Negi",
       "imageUrl": "/images/student-1.jpg",
       "imageHint": "happy student"
     },
     {
       "id": "student-2",
-      "description": "Topper Student 2",
+      "description": "Topper Student - Aryan Rawat",
       "imageUrl": "/images/student-2.jpg",
       "imageHint": "successful student"
     },
     {
       "id": "student-3",
-      "description": "Topper Student 3",
+      "description": "Topper Student - Sanya Gupta",
       "imageUrl": "/images/student-3.jpg",
       "imageHint": "intelligent student"
     },
@@ -68,37 +69,37 @@
     },
     {
       "id": "gallery-1",
-      "description": "Smart Classroom",
+      "description": "Smart Classroom View",
       "imageUrl": "/images/gallery-1.jpg",
       "imageHint": "classroom view"
     },
     {
       "id": "gallery-2",
-      "description": "Discipline Drill",
+      "description": "Students in Library",
       "imageUrl": "/images/gallery-2.jpg",
       "imageHint": "students focus"
     },
     {
       "id": "gallery-3",
-      "description": "Tech Lab",
+      "description": "Computer Lab Infrastructure",
       "imageUrl": "/images/gallery-3.jpg",
       "imageHint": "computer lab"
     },
     {
       "id": "gallery-4",
-      "description": "Drona IQ Hub Interior",
+      "description": "Reception & Counseling Area",
       "imageUrl": "/images/gallery-4.jpg",
       "imageHint": "modern interior"
     },
     {
       "id": "gallery-5",
-      "description": "Student Success Board",
+      "description": "Achievement Result Board",
       "imageUrl": "/images/gallery-5.jpg",
       "imageHint": "results board"
     },
     {
       "id": "gallery-6",
-      "description": "Parent Counseling",
+      "description": "Parent Teacher Meeting",
       "imageUrl": "/images/gallery-6.jpg",
       "imageHint": "office counseling"
     }
