@@ -1,6 +1,6 @@
-
 import { Navbar } from '@/components/navbar';
 import { HeroSection } from '@/components/home/hero';
+import { OlympiadSection } from '@/components/home/olympiad-section';
 import { GenesisSection } from '@/components/home/genesis';
 import { TechSuiteSection } from '@/components/home/tech-suite';
 import { NeuroHubSection } from '@/components/home/neuro-hub';
@@ -31,46 +31,49 @@ export default function HomePage() {
         {/* 1. CINEMATIC HERO (The Hook) */}
         <HeroSection />
 
-        {/* 2. LIVE PULSE (The "Alive" Factor) */}
+        {/* 2. OLYMPIAD COLLABORATION (New Section) */}
+        <OlympiadSection />
+
+        {/* 3. LIVE PULSE (The "Alive" Factor) */}
         <LivePulse />
 
-        {/* 3. ADMISSION READINESS (The Lead Magnet) */}
+        {/* 4. ADMISSION READINESS (The Lead Magnet) */}
         <AdmissionReadiness />
 
-        {/* 4. GENESIS: FOUNDER'S LETTER (Emotional Trust) */}
+        {/* 5. GENESIS: FOUNDER'S LETTER (Emotional Trust) */}
         <GenesisSection />
 
-        {/* 5. SUCCESS HALL: TESTIMONIALS & RESULTS (Social Proof) */}
+        {/* 6. SUCCESS HALL: TESTIMONIALS & RESULTS (Social Proof) */}
         <SuccessHallSection />
 
-        {/* 6. TECH SUITE: SIMULATORS & TWINS (The Innovation) */}
+        {/* 7. TECH SUITE: SIMULATORS & TWINS (The Innovation) */}
         <TechSuiteSection />
 
-        {/* 7. FACULTY WALL: INTELLECTUAL CAPITAL (Authority) */}
+        {/* 8. FACULTY WALL: INTELLECTUAL CAPITAL (Authority) */}
         <FacultySection />
 
-        {/* 8. VIDEO HUB: YOUTUBE & CINEMATICS (Engagement) */}
+        {/* 9. VIDEO HUB: YOUTUBE & CINEMATICS (Engagement) */}
         <VideoHubSection />
 
-        {/* 9. GALLERY: SUCCESS LAB (Visual Proof) */}
+        {/* 10. GALLERY: SUCCESS LAB (Visual Proof) */}
         <GalleryLabSection />
 
-        {/* 10. OLQ RADAR (The Military Edge) */}
+        {/* 11. OLQ RADAR (The Military Edge) */}
         <OLQRadarSection />
 
-        {/* 11. NEUROSCIENCE HUB (The Scientific Logic) */}
+        {/* 12. NEUROSCIENCE HUB (The Scientific Logic) */}
         <NeuroHubSection />
 
-        {/* 12. ROI CALCULATOR (The Mathematical Proof) */}
+        {/* 13. ROI CALCULATOR (The Mathematical Proof) */}
         <ROICalculator />
 
-        {/* 13. SCHOOL SYNC (Local Dominance) */}
+        {/* 14. SCHOOL SYNC (Local Dominance) */}
         <SchoolSyncMatrix />
 
-        {/* 14. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
+        {/* 15. THE CLASS UNIVERSE: GRADE-WISE MODULES */}
         <ClassUniverseSection />
 
-        {/* 15. PSYCHOLOGY HUB: WHY WE WIN */}
+        {/* 16. PSYCHOLOGY HUB: WHY WE WIN */}
         <section className="py-24 bg-muted/20 overflow-hidden border-y border-primary/5">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -118,13 +121,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 16. DEFENCE LEGACY: DrDA INTEGRATION */}
+        {/* 17. DEFENCE LEGACY: DrDA INTEGRATION */}
         <DefenceLegacySection />
 
-        {/* 17. DEHRADUN 360 LOCALITY GRID */}
+        {/* 18. DEHRADUN 360 LOCALITY GRID */}
         <LocalSeoMatrix />
 
-        {/* 18. FAQ FORTRESS */}
+        {/* 19. FAQ FORTRESS */}
         <FaqFortress />
 
         {/* FINAL EMOTIONAL CTA */}
