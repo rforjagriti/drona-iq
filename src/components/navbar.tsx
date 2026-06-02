@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from 'next/link';
@@ -51,7 +50,8 @@ export function Navbar() {
     setMounted(true);
   }, []);
 
-  const isIdentityApiError = error?.message?.includes('identity-toolkit-api') || error?.message?.includes('identitytoolkit');
+  // Detection for Identity Toolkit issues
+  const isApiIssue = error?.message?.includes('identitytoolkit') || error?.message?.includes('blocked');
 
   const handleLogin = async () => {
     if (!auth || !db) return;
@@ -85,9 +85,7 @@ export function Navbar() {
       toast({
         variant: "destructive",
         title: "Login Error",
-        description: error.message.includes('identitytoolkit') 
-          ? "Firebase Identity API is not enabled yet. See instructions at top of page."
-          : "Authentication failed. Please try again.",
+        description: "Authentication failed. Please check API settings.",
       });
     }
   };
@@ -104,17 +102,17 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* Identity API Error Diagnostic Bar */}
-      {mounted && isIdentityApiError && (
+      {/* Dynamic API Guide Bar - Only shows if there's a specific auth error */}
+      {mounted && isApiIssue && (
         <div className="bg-blue-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-3">
           <AlertCircle className="h-4 w-4 animate-bounce" /> 
-          <span>Action Required: Enable Identity Toolkit for Project 377002196734</span>
+          <span>Action Required: Enable Identity Toolkit & Check API Key Restrictions</span>
           <Link 
-            href="https://console.developers.google.com/apis/api/identitytoolkit.googleapis.com/overview?project=377002196734" 
+            href="https://console.cloud.google.com/apis/credentials" 
             target="_blank" 
             className="underline bg-white/20 px-3 py-1 rounded-md flex items-center gap-2 hover:bg-white/30 transition-all"
           >
-            Click to Enable API <Settings className="h-3 w-3" />
+            Go to Console <Settings className="h-3 w-3" />
           </Link>
         </div>
       )}
@@ -158,7 +156,7 @@ export function Navbar() {
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Audit</Link>
             <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Batches</Link>
             
-            {/* Stable Dropdowns - Rendering after mounted to avoid ID mismatch */}
+            {/* Stable Dropdowns */}
             {mounted && (
               <>
                 <DropdownMenu>
@@ -212,19 +210,13 @@ export function Navbar() {
                         <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Predictor</span>
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuSeparator className="my-2" />
-                    <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                      <Link href="/blog" className="flex items-center gap-3">
-                        <BookOpen className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Journal</span>
-                      </Link>
-                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </>
             )}
           </div>
 
-          {/* Auth Section - Refactored for Hydration Safety */}
+          {/* Auth Section */}
           <div className="flex items-center space-x-4 min-w-[120px] justify-end">
             {!mounted || loading ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
