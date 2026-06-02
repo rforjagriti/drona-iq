@@ -22,7 +22,8 @@ import {
   AlertCircle,
   Wifi,
   WifiOff,
-  Settings
+  Settings,
+  ExternalLink
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -119,17 +120,26 @@ export function Navbar() {
     });
   };
 
-  const isApiBlocked = authError?.message.includes('identity-toolkit-api') || authError?.message.includes('are-blocked');
+  // Improved error detection for API Restrictions
+  const isApiBlocked = authError?.message?.includes('identity-toolkit-api') || 
+                     authError?.message?.includes('are-blocked') ||
+                     authError?.code === 'auth/internal-error';
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
       {/* Dynamic API Status Warning Bar */}
       {mounted && isApiBlocked && (
-        <div className="bg-red-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-3">
-          <AlertCircle className="h-4 w-4" /> 
-          <span>Identity API is Blocked/Disabled. Go to GCP Console &gt; Credentials &gt; API Key &gt; Add "Identity Toolkit API".</span>
-          <Link href="https://console.cloud.google.com/apis/credentials" target="_blank" className="underline flex items-center gap-1">
-            Fix Now <Settings className="h-3 w-3" />
+        <div className="bg-red-600 text-white py-3 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="h-4 w-4" /> 
+            <span>Identity API is Blocked! Step: GCP Console &gt; API Key &gt; API Restrictions &gt; Add "Identity Toolkit API"</span>
+          </div>
+          <Link 
+            href="https://console.cloud.google.com/apis/credentials" 
+            target="_blank" 
+            className="bg-white text-red-600 px-4 py-1 rounded-full flex items-center gap-1 hover:bg-muted transition-colors"
+          >
+            Fix in Google Console <ExternalLink className="h-3 w-3" />
           </Link>
         </div>
       )}

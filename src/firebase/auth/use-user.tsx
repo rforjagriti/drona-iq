@@ -33,7 +33,9 @@ export function useUser() {
         setLoading(false);
         
         // Detection for specific API Blocked or Disabled issues
-        if (err.message.includes('identity-toolkit-api') || err.message.includes('are-blocked')) {
+        if (err.message.includes('identity-toolkit-api') || 
+            err.message.includes('are-blocked') || 
+            err.code === 'auth/internal-error') {
           console.error(
             "CRITICAL: Identity Toolkit API is blocked or not enabled. " +
             "Please check API Key restrictions in Google Cloud Console."
