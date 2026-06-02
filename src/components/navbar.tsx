@@ -144,7 +144,7 @@ export function Navbar() {
           <div className="flex gap-6 shrink-0 items-center">
             {mounted && fbConnected && !isApiBlocked && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
-                <item.icon className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
+                <Wifi className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
               </span>
             )}
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
