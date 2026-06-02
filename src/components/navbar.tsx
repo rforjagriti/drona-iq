@@ -19,11 +19,7 @@ import {
   ShieldAlert,
   UserCheck,
   BookOpen,
-  AlertCircle,
-  Wifi,
-  WifiOff,
-  Settings,
-  ExternalLink
+  Wifi
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -43,27 +39,21 @@ import { Badge } from './ui/badge';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [fbConnected, setFbConnected] = useState<boolean | null>(null);
   
-  const { user, loading, error: authError } = useUser();
+  const { user, loading } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
   useEffect(() => {
     setMounted(true);
-    if (db) {
-      setFbConnected(true);
-    } else {
-      setFbConnected(false);
-    }
-  }, [db]);
+  }, []);
 
   const handleLogin = async () => {
     if (!auth || !db) {
       toast({
         variant: "destructive",
         title: "Connection Error",
-        description: "Firebase service is not initialized. Please check API Key.",
+        description: "Services are initializing. Please try again in a moment.",
       });
       return;
     }
@@ -89,23 +79,15 @@ export function Navbar() {
       }
       
       toast({
-        title: "Login Successful",
-        description: `Welcome back, ${loggedUser.displayName}!`,
+        title: "Success",
+        description: `Welcome to Drona IQ, ${loggedUser.displayName}!`,
       });
     } catch (error: any) {
-      console.error("Auth Error Details:", error);
-      
-      let errorMsg = "Sign-in failed.";
-      if (error.message.includes('are-blocked')) {
-        errorMsg = "API Key Restriction: Add 'Identity Toolkit API' to allowed APIs in GCP Console.";
-      } else if (error.message.includes('identity-toolkit-api')) {
-        errorMsg = "API Activation in progress. Please wait 5 minutes.";
-      }
-
+      console.error("Auth Error:", error);
       toast({
         variant: "destructive",
-        title: "Authentication Error",
-        description: errorMsg,
+        title: "Login Failed",
+        description: "Could not authenticate your account. Please try again.",
       });
     }
   };
@@ -115,35 +97,13 @@ export function Navbar() {
     signOut(auth).then(() => {
       toast({
         title: "Logged Out",
-        description: "Securely signed out.",
+        description: "Securely signed out of the Success OS.",
       });
     });
   };
 
-  // Improved error detection for API Restrictions
-  const isApiBlocked = authError?.message?.includes('identity-toolkit-api') || 
-                     authError?.message?.includes('are-blocked') ||
-                     authError?.code === 'auth/internal-error';
-
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* Dynamic API Status Warning Bar */}
-      {mounted && isApiBlocked && (
-        <div className="bg-red-600 text-white py-3 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-          <div className="flex items-center gap-2">
-            <AlertCircle className="h-4 w-4" /> 
-            <span>Identity API is Blocked! Step: GCP Console &gt; API Key &gt; API Restrictions &gt; Add "Identity Toolkit API"</span>
-          </div>
-          <Link 
-            href="https://console.cloud.google.com/apis/credentials" 
-            target="_blank" 
-            className="bg-white text-red-600 px-4 py-1 rounded-full flex items-center gap-1 hover:bg-muted transition-colors"
-          >
-            Fix in Google Console <ExternalLink className="h-3 w-3" />
-          </Link>
-        </div>
-      )}
-
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -152,7 +112,7 @@ export function Navbar() {
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> Mon - Sat: 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {mounted && fbConnected && !isApiBlocked && (
+            {mounted && db && (
               <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
                 <Wifi className="h-2.5 w-2.5" /> SECURE LINK ACTIVE
               </span>
