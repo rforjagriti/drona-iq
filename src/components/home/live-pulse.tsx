@@ -8,10 +8,10 @@ export function LivePulse() {
   const [pulse, setPulse] = useState(0);
 
   const updates = [
-    { text: "Scholar #4829 just mastered 'Calculus Basics'", icon: Zap },
-    { text: "Lead #2091 enrolled for 'NDA Foundation' batch", icon: UserCheck },
-    { text: "New Mock Result: Ishita Negi scored 98/100 in Physics", icon: Trophy },
-    { text: "Mentor Maj. Singh assigned to 4 new scholars in Jakhan", icon: Star }
+    { text: "Scholar #4829 from Jakhan just mastered 'Calculus Basics'", icon: Zap },
+    { text: "New Admission: Class 10 Foundation batch enrolled from Rajpur Road", icon: UserCheck },
+    { text: "Mock Result: Ishita Negi (SJA) scored 98/100 in Physics", icon: Trophy },
+    { text: "Mentor Maj. Singh assigned to 4 new scholars in Vasant Vihar", icon: Star }
   ];
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export function LivePulse() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            <span className="text-[8px] font-black text-primary/60">LIVE</span>
+            <span className="text-[8px] font-black text-primary/60">LIVE SYNC</span>
           </div>
         </div>
       </div>

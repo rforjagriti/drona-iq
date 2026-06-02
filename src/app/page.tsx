@@ -1,3 +1,4 @@
+
 import { Navbar } from '@/components/navbar';
 import { HeroSection } from '@/components/home/hero';
 import { OlympiadSection } from '@/components/home/olympiad-section';
@@ -29,13 +30,13 @@ export default function HomePage() {
       <Navbar />
       
       <main>
-        {/* 1. CINEMATIC HERO (The Hook) */}
+        {/* 1. CINEMATIC HERO */}
         <HeroSection />
 
         {/* 2. OLYMPIAD COLLABORATION */}
         <OlympiadSection />
 
-        {/* 3. LIVE PULSE */}
+        {/* 3. LIVE PULSE (Growth Hack) */}
         <LivePulse />
 
         {/* 4. ADMISSION READINESS */}
@@ -44,7 +45,7 @@ export default function HomePage() {
         {/* 5. GENESIS: FOUNDER'S LETTER */}
         <GenesisSection />
 
-        {/* 6. COMPETITIVE MATRIX (Strategic Trust) */}
+        {/* 6. COMPETITIVE MATRIX */}
         <CompetitiveMatrix />
 
         {/* 7. SUCCESS HALL: RESULTS */}
@@ -68,10 +69,10 @@ export default function HomePage() {
         {/* 13. NEUROSCIENCE HUB */}
         <NeuroHubSection />
 
-        {/* 14. ROI CALCULATOR */}
+        {/* 14. ROI CALCULATOR (SEO Move) */}
         <ROICalculator />
 
-        {/* 15. SCHOOL SYNC (Local Dominance) */}
+        {/* 15. SCHOOL SYNC (Local Authority) */}
         <SchoolSyncMatrix />
 
         {/* 16. THE CLASS UNIVERSE */}
@@ -149,7 +150,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* MEGA FOOTER */}
+      {/* FOOTER */}
       <footer className="py-24 bg-[#05070a] text-white/40 border-t border-white/5">
         <div className="container mx-auto px-4">
            <div className="grid md:grid-cols-4 gap-12 mb-20">
@@ -170,10 +171,10 @@ export default function HomePage() {
               <div className="text-left">
                  <h4 className="font-bold text-white uppercase text-xs tracking-widest mb-6 border-b border-white/5 pb-2">Quick Access</h4>
                  <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest hover:[&_li]:text-accent transition-colors">
-                    <li><Link href="/why-drona-iq">The DIQ Advantage</Link></li>
                     <li><Link href="/academic-health-check">AI Academic Diagnostic</Link></li>
                     <li><Link href="/home-tuition">Verified Home Tuition</Link></li>
                     <li><Link href="/revision-generator">AI Revision Pack</Link></li>
+                    <li><Link href="/career-guidance">Success Predictor</Link></li>
                  </ul>
               </div>
               <div className="text-left">

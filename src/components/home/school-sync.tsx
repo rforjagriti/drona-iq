@@ -6,8 +6,8 @@ import { CheckCircle2, Landmark, ShieldCheck, Zap } from 'lucide-react';
 
 export function SchoolSyncMatrix() {
   const schools = [
-    "Brightlands School", "St. Joseph's Academy", "Welham Boys/Girls", "The Doon School",
-    "Convent of Jesus & Mary", "Ann Mary School", "Army Public School", "SJA Dehradun"
+    "Brightlands School", "St. Joseph's Academy (SJA)", "Welham Boys/Girls", "The Doon School",
+    "Convent of Jesus & Mary (CJM)", "Ann Mary School", "Army Public School (APS)", "St. Jude's School"
   ];
 
   return (
@@ -35,9 +35,9 @@ export function SchoolSyncMatrix() {
 
           <div className="grid gap-6">
             {[
-              { t: "Internal Exam Mastery", d: "Chapter-wise mock tests mirroring your school's difficulty level.", i: Zap },
-              { t: "Marking Scheme Analysis", d: "We teach exactly how school teachers award marks for steps.", i: ShieldCheck },
-              { t: "Class Specific Focus", d: "Custom batches for students from the same school for peer growth.", i: CheckCircle2 }
+              { t: "Internal Exam Mastery", d: "Chapter-wise mock tests mirroring your school's specific difficulty level.", i: Zap },
+              { t: "Marking Scheme Analysis", d: "We teach students exactly how school teachers award marks for steps.", i: ShieldCheck },
+              { t: "School Specific Batches", d: "Custom batches for students from the same school for collaborative growth.", i: CheckCircle2 }
             ].map((p, i) => (
               <div key={i} className="p-10 bg-primary text-white rounded-[3rem] shadow-2xl relative overflow-hidden group hover:scale-105 transition-all duration-500">
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
