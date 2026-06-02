@@ -2,7 +2,7 @@
 
 /**
  * Drona IQ - Unified Firebase Configuration
- * Restored the correct Web API Key for Firebase services.
+ * Note: Use the 'Web API Key' from Firebase Project Settings > General.
  */
 export const firebaseConfig = {
   apiKey: "AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM",
