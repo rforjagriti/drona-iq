@@ -3,51 +3,75 @@
   "placeholderImages": [
     {
       "id": "hero-student",
-      "description": "Cinematic shot of a focused student using a tablet in a high-tech modern classroom",
-      "imageUrl": "https://picsum.photos/seed/drona_hero_god/1920/1080",
-      "imageHint": "cinematic student tech"
+      "description": "Cinematic shot of a focused student",
+      "imageUrl": "/images/hero-student.jpg",
+      "imageHint": "cinematic student"
     },
     {
       "id": "campus-main",
-      "description": "Premium exterior view of Drona IQ Hub at Om Tower",
-      "imageUrl": "https://picsum.photos/seed/drona_campus_main/1200/800",
-      "imageHint": "modern academy building"
-    },
-    {
-      "id": "smart-class",
-      "description": "Interactive smart classroom with high-tech displays",
-      "imageUrl": "https://picsum.photos/seed/drona_smart_class/800/600",
-      "imageHint": "high tech classroom"
-    },
-    {
-      "id": "faculty-1",
-      "description": "Professional educator teaching complex physics",
-      "imageUrl": "https://picsum.photos/seed/drona_fac1/400/500",
-      "imageHint": "professional teacher"
+      "description": "Premium exterior view of Drona IQ Hub",
+      "imageUrl": "/images/campus-main.jpg",
+      "imageHint": "modern building"
     },
     {
       "id": "founder-photo",
-      "description": "Inspirational portrait of the Drona IQ Founder",
-      "imageUrl": "https://picsum.photos/seed/drona_founder/800/1000",
+      "description": "Portrait of the Drona IQ Founder",
+      "imageUrl": "/images/founder.jpg",
       "imageHint": "executive portrait"
     },
     {
-      "id": "success-wall-1",
-      "description": "Smiling student with top board exam results",
-      "imageUrl": "https://picsum.photos/seed/drona_sw1/400/400",
+      "id": "faculty-1",
+      "description": "Dr. Vikram Singh",
+      "imageUrl": "/images/faculty-1.jpg",
+      "imageHint": "professional teacher"
+    },
+    {
+      "id": "faculty-2",
+      "description": "Maj. Gen. Aditya Rawat",
+      "imageUrl": "/images/faculty-2.jpg",
+      "imageHint": "military veteran"
+    },
+    {
+      "id": "faculty-3",
+      "description": "Er. Amit Negi",
+      "imageUrl": "/images/faculty-3.jpg",
+      "imageHint": "math teacher"
+    },
+    {
+      "id": "faculty-4",
+      "description": "Mrs. Shalini Bisht",
+      "imageUrl": "/images/faculty-4.jpg",
+      "imageHint": "physics teacher"
+    },
+    {
+      "id": "student-1",
+      "description": "Ishita Negi - Topper",
+      "imageUrl": "/images/student-1.jpg",
       "imageHint": "happy student"
     },
     {
-      "id": "parent-trust",
-      "description": "Emotional shot of a happy parent and child celebrating academic success",
-      "imageUrl": "https://picsum.photos/seed/drona_parent/1200/800",
-      "imageHint": "happy parent child"
+      "id": "student-2",
+      "description": "Aryan Rawat - NDA Qualifier",
+      "imageUrl": "/images/student-2.jpg",
+      "imageHint": "cadet student"
     },
     {
-      "id": "nda-foundation",
-      "description": "Disciplined student in uniform representing the DrDA legacy",
-      "imageUrl": "https://picsum.photos/seed/drona_nda_premium/1200/900",
-      "imageHint": "military cadet"
+      "id": "student-3",
+      "description": "Sanya Gupta - JEE Topper",
+      "imageUrl": "/images/student-3.jpg",
+      "imageHint": "intelligent student"
+    },
+    {
+      "id": "video-thumbnail",
+      "description": "Main video explainer thumbnail",
+      "imageUrl": "/images/video-thumb.jpg",
+      "imageHint": "video thumbnail"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Smart class view",
+      "imageUrl": "/images/gallery-1.jpg",
+      "imageHint": "high tech classroom"
     }
   ]
 }

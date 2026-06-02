@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ShieldCheck, Star, GraduationCap, Linkedin, Youtube } from 'lucide-react';
 import Image from 'next/image';
+import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function FacultySection() {
   const mentors = [
@@ -13,7 +14,7 @@ export function FacultySection() {
       role: "Chief Academic Architect",
       exp: "18+ Years",
       tags: ["IIT-K Alumnus", "OLQ Specialist"],
-      img: "https://picsum.photos/seed/drona_fac_1/400/500",
+      img: getPlaceholderById('faculty-1'),
       desc: "Architect of the DIQ Neural Engine. Specializes in advanced cognitive mapping for board exams."
     },
     {
@@ -21,7 +22,7 @@ export function FacultySection() {
       role: "Defence Strategy Head",
       exp: "30+ Years Service",
       tags: ["NDA Veteran", "Leadership Mentor"],
-      img: "https://picsum.photos/seed/drona_fac_2/400/500",
+      img: getPlaceholderById('faculty-2'),
       desc: "Oversees the military discipline and 15 OLQs tracking system for our elite NDA scholars."
     },
     {
@@ -29,7 +30,7 @@ export function FacultySection() {
       role: "Senior Math Faculty",
       exp: "12+ Years",
       tags: ["Calculus Expert", "CBSE Board Specialist"],
-      img: "https://picsum.photos/seed/drona_fac_3/400/500",
+      img: getPlaceholderById('faculty-3'),
       desc: "Has mentored 500+ students who scored 95%+ in Mathematics across Dehradun schools."
     },
     {
@@ -37,7 +38,7 @@ export function FacultySection() {
       role: "Lead Physics Mentor",
       exp: "10+ Years",
       tags: ["Ex-Allen", "NEET Specialist"],
-      img: "https://picsum.photos/seed/drona_fac_4/400/500",
+      img: getPlaceholderById('faculty-4'),
       desc: "Master of visual physics models. Ensures concept clarity through experimental learning."
     }
   ];

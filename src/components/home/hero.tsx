@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function HeroSection() {
   return (
@@ -51,12 +52,13 @@ export function HeroSection() {
           <div className="lg:col-span-5 relative hidden lg:block">
             <div className="relative glass p-6 rounded-[5rem] shadow-2xl border-white/10 overflow-hidden">
               <Image 
-                src="https://picsum.photos/seed/drona_hero_god/1200/1600"
+                src={getPlaceholderById('hero-student')}
                 alt="Drona IQ Excellence"
                 width={1200}
                 height={1600}
                 className="rounded-[4rem] object-cover h-[700px] w-full grayscale hover:grayscale-0 transition-all duration-700"
                 priority
+                data-ai-hint="cinematic student"
               />
             </div>
           </div>

@@ -1,6 +1,9 @@
 
+"use client"
+
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function GenesisSection() {
   return (
@@ -9,7 +12,14 @@ export function GenesisSection() {
          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
                <div className="absolute -inset-10 bg-accent/10 rounded-full blur-[100px] opacity-30"></div>
-               <Image src="https://picsum.photos/seed/drona_founder/800/1000" width={800} height={1000} alt="Founder Drona IQ" className="rounded-[4rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000" />
+               <Image 
+                 src={getPlaceholderById('founder-photo')} 
+                 width={800} 
+                 height={1000} 
+                 alt="Founder Drona IQ" 
+                 className="rounded-[4rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000" 
+                 data-ai-hint="founder portrait"
+               />
             </div>
             <div className="space-y-12">
                <div className="space-y-6">
