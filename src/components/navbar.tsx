@@ -37,7 +37,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   
-  const { user, loading } = useUser();
+  const { user, loading: authLoading } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
@@ -190,9 +190,8 @@ export function Navbar() {
             </DropdownMenu>
           </div>
 
-          {/* Auth Section */}
           <div className="flex items-center space-x-4 min-w-[120px] justify-end">
-            {loading ? (
+            {authLoading ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
             ) : !user ? (
               <Button onClick={handleLogin} className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all">

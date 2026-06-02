@@ -4,13 +4,12 @@
  * Drona IQ - Unified Firebase Configuration
  * 
  * IMPORTANT: 
- * 1. For Auth/Database: Use the "Web API Key" from Project Settings (starts with AIzaSy...).
- * 2. The key AQ.Ab8... is for Gemini AI (Genkit) and should not be put here for Auth.
+ * 1. Go to Firebase Console -> Project Settings -> General.
+ * 2. Copy the "Web API Key" (starts with AIzaSy...).
+ * 3. Replace the placeholder below.
  */
 export const firebaseConfig = {
-  // Replace this with your actual Web API Key from Firebase Console (Project Settings -> General)
-  // It usually looks like: AIzaSyB...
-  apiKey: "AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM", 
+  apiKey: "AIzaSyCk-UvXG4w3FHjEShFzNYVMFF88pWuigiSxlfM", // <-- Update this if it changes in your console
   authDomain: "dronaiq.firebaseapp.com",
   projectId: "dronaiq",
   storageBucket: "dronaiq.firebasestorage.app",

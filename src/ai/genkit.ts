@@ -3,7 +3,7 @@ import {googleAI} from '@genkit-ai/google-genai';
 
 /**
  * Global Genkit instance configured for Drona IQ.
- * Using your Gemini API Key for server-side AI flows.
+ * Using your dedicated Gemini API Key for server-side AI flows.
  */
 export const ai = genkit({
   plugins: [
