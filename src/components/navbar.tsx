@@ -90,12 +90,14 @@ export function Navbar() {
     } catch (error: any) {
       console.error("Auth Error:", error.code, error.message);
       
-      if (error.message?.includes('requests-to-this-api') || error.message?.includes('blocked')) {
+      if (error.message?.includes('identity-toolkit-api') || 
+          error.message?.includes('are-blocked') ||
+          error.message?.includes('requests-to-this-api')) {
         setIsApiBlocked(true);
         toast({
           variant: "destructive",
-          title: "API Restriction Error",
-          description: "Your API Key is restricting Identity Toolkit. Please add it in GCP Console.",
+          title: "API Status Error",
+          description: "Identity Toolkit API must be enabled for project 377002196734.",
         });
       } else {
         toast({
@@ -119,13 +121,13 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
-      {/* API BLOCKED WARNING */}
+      {/* API ERROR WARNING BAR */}
       {mounted && isApiBlocked && (
         <div className="bg-red-600 text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse flex items-center justify-center gap-3">
           <AlertCircle className="h-4 w-4" /> 
-          <span>Identity API is Blocked in API Key Settings.</span>
-          <Link href="https://console.cloud.google.com/apis/credentials" target="_blank" className="underline flex items-center gap-1">
-            Fix in GCP Console <Settings className="h-3 w-3" />
+          <span>Identity API Error for Project 377002196734. Please ensure it is Enabled &gt; Key Restrictions are Correct.</span>
+          <Link href="https://console.cloud.google.com/apis/library/identitytoolkit.googleapis.com" target="_blank" className="underline flex items-center gap-1">
+            Fix in GCP <Settings className="h-3 w-3" />
           </Link>
         </div>
       )}
