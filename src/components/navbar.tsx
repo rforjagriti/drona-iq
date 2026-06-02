@@ -18,7 +18,8 @@ import {
   Clock,
   ShieldAlert,
   UserCheck,
-  BookOpen
+  BookOpen,
+  AlertCircle
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -33,6 +34,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,17 +46,6 @@ export function Navbar() {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Show error toast if identity toolkit is disabled
-  useEffect(() => {
-    if (mounted && authError && authError.message.includes('identity-toolkit-api')) {
-      toast({
-        variant: "destructive",
-        title: "Auth Configuration Required",
-        description: "Google Identity Toolkit API is not enabled for this project. Please check the Firebase console.",
-      });
-    }
-  }, [mounted, authError]);
 
   const handleLogin = async () => {
     if (!auth || !db) return;
@@ -82,7 +73,9 @@ export function Navbar() {
       toast({
         variant: "destructive",
         title: "Login Failed",
-        description: error.message || "Could not sign in with Google.",
+        description: error.message?.includes('identity-toolkit-api') 
+          ? "Auth API is still propagating. Please try again in 2 minutes." 
+          : (error.message || "Could not sign in with Google."),
       });
     }
   };
@@ -94,6 +87,13 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col">
+      {/* API Propagation Warning Bar (Only if error detected) */}
+      {mounted && authError && authError.message.includes('identity-toolkit-api') && (
+        <div className="bg-red-600 text-white py-2 px-4 text-center text-[10px] font-bold uppercase tracking-widest animate-pulse">
+          Auth API is activating. If login fails, please refresh in 2 minutes.
+        </div>
+      )}
+
       {/* Top Utility Bar */}
       <div className="bg-primary text-white py-2 px-4 border-b border-white/5 backdrop-blur-md relative z-[102]">
         <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">

@@ -6,7 +6,7 @@ import { useAuth } from '../provider';
 
 /**
  * Hook to track the current Firebase user.
- * Includes error handling for project-level API issues (like Identity Toolkit).
+ * Improved to explicitly detect Identity Toolkit API issues.
  */
 export function useUser() {
   const auth = useAuth();
@@ -28,15 +28,15 @@ export function useUser() {
         setError(null);
       },
       (err) => {
-        console.error("Firebase Auth State Change Error:", err.code, err.message);
+        console.error("Firebase Auth Error:", err.code, err.message);
         setError(err);
         setLoading(false);
         
-        // Check for Identity Toolkit error and log a helpful message for the developer
+        // Detailed log for Identity Toolkit propagation issues
         if (err.message.includes('identity-toolkit-api')) {
           console.warn(
-            "CRITICAL: Identity Toolkit API is not enabled for this project. " +
-            "Please visit the link in the error message to enable it."
+            "ACTION REQUIRED: Identity Toolkit API propagation in progress. " +
+            "If you enabled it recently, please wait 5 minutes and refresh."
           );
         }
       }
