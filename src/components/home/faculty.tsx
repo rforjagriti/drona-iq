@@ -81,12 +81,12 @@ export function FacultySection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {mentors.map((mentor, i) => (
             <Card key={i} className="border-none shadow-2xl rounded-[3rem] overflow-hidden group hover:-translate-y-4 transition-all duration-700 bg-white">
-              <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                 <Image 
                   src={mentor.img} 
                   fill 
                   alt={mentor.name} 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                  className="object-cover transition-all duration-1000"
                   data-ai-hint="professional teacher portrait"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />

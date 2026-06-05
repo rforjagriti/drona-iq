@@ -14,15 +14,16 @@ export function GenesisSection() {
          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
                <div className="absolute -inset-10 bg-accent/10 rounded-full blur-[100px] opacity-30"></div>
-               <Image 
-                 src={founderImg} 
-                 width={800} 
-                 height={1000} 
-                 alt="Dr. Amit Negi - Drona IQ Founder" 
-                 className="rounded-[4rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000 object-cover aspect-[4/5]" 
-                 data-ai-hint="founder portrait"
-                 priority
-               />
+               <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-2xl aspect-[4/5]">
+                 <Image 
+                   src={founderImg} 
+                   fill
+                   alt="Dr. Amit Negi - Drona IQ Founder" 
+                   className="object-cover transition-all duration-1000" 
+                   data-ai-hint="founder portrait"
+                   priority
+                 />
+               </div>
             </div>
             <div className="space-y-12">
                <div className="space-y-6">
