@@ -12,11 +12,14 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 
 /**
  * Returns the image URL for a given ID.
- * Directly handles Dr. Amit Negi's photo with a solid fallback.
+ * Directly handles core team photos with rock-solid paths.
  */
 export function getPlaceholderById(id: string): string {
   if (id === 'founder-photo' || id === 'faculty-1') {
     return '/images/amit-negi.webp';
+  }
+  if (id === 'faculty-2') {
+    return '/images/rahul_pratap.webp';
   }
   
   const img = PlaceHolderImages.find(i => i.id === id);

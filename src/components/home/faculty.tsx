@@ -22,7 +22,7 @@ export function FacultySection() {
       role: "Senior Physics Mentor",
       exp: "18+ Years",
       tags: ["Physics Core", "Conceptual Expert"],
-      imageUrl: getPlaceholderById('faculty-2'),
+      imageUrl: "/images/rahul_pratap.webp",
       desc: "Physics veteran with 18 years of experience. Master of conceptual mechanics and competitive exam strategies for Boards and NDA."
     },
     {
@@ -88,7 +88,7 @@ export function FacultySection() {
                   alt={mentor.name} 
                   className="object-cover transition-all duration-1000"
                   data-ai-hint="professional teacher portrait"
-                  unoptimized={mentor.name === "Dr. Amit Negi"}
+                  unoptimized={true}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                 <div className="absolute bottom-6 left-6 right-6 space-y-2">
