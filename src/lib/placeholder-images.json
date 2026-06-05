@@ -3,7 +3,7 @@
     {
       "id": "hero-student",
       "description": "Main banner student image",
-      "imageUrl": "https://picsum.photos/seed/drona_hero/1200/1600",
+      "imageUrl": "/images/drona-iq.webp",
       "imageHint": "cinematic student"
     },
     {

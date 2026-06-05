@@ -1,4 +1,3 @@
-
 import data from './placeholder-images.json';
 
 export type ImagePlaceholder = {
@@ -12,9 +11,12 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 
 /**
  * Returns the image URL for a given ID.
- * Maps IDs to the exact .webp files in public/images/ as per screenshot.
+ * Maps IDs to the exact case-sensitive .webp files in public/images/
  */
 export function getPlaceholderById(id: string): string {
+  if (id === 'hero-student') {
+    return '/images/drona-iq.webp';
+  }
   if (id === 'founder-photo' || id === 'faculty-1') {
     return '/images/Amit-Negi.webp';
   }
@@ -27,7 +29,7 @@ export function getPlaceholderById(id: string): string {
   if (id === 'faculty-5') {
     return '/images/amita-sharma.webp';
   }
-  if (id === 'faculty-6') {
+  if (id === 'faculty-4' || id === 'faculty-6') {
     return '/images/sapna-tiwari.webp';
   }
   if (id === 'faculty-7') {

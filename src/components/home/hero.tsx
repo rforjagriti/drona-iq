@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Button } from '@/components/ui/button';
@@ -52,13 +51,13 @@ export function HeroSection() {
           <div className="lg:col-span-5 relative hidden lg:block">
             <div className="relative glass p-6 rounded-[5rem] shadow-2xl border-white/10 overflow-hidden">
               <Image 
-                src={getPlaceholderById('hero-student')}
+                src="/images/drona-iq.webp"
                 alt="Drona IQ Excellence"
                 width={1200}
                 height={1600}
                 className="rounded-[4rem] object-cover h-[700px] w-full grayscale hover:grayscale-0 transition-all duration-700"
                 priority
-                data-ai-hint="cinematic student"
+                unoptimized
               />
             </div>
           </div>
