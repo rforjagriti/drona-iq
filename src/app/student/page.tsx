@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -82,11 +81,13 @@ export default function StudentPortal() {
               <div className="bg-primary/5 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto shadow-inner">
                 <UserIcon className="h-12 w-12 text-primary" />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Portal Locked</h2>
-                <p className="text-muted-foreground font-light px-6">
-                  Please log in to access your personalized Success OS dashboard and XP tracking.
-                </p>
+                <div className="bg-muted/50 p-4 rounded-xl">
+                  <p className="text-primary font-bold text-sm leading-relaxed">
+                    Please contact Droneshwar Defence Academy at <span className="text-accent">6399000437</span>, they will provide you log in id and password.
+                  </p>
+                </div>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-accent text-white hover:bg-accent/90 py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
                 <LogIn className="mr-2 h-5 w-5" /> Sign In with Google

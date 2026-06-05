@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -81,11 +80,13 @@ export default function ParentDashboard() {
               <div className="bg-accent/10 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
                 <ShieldCheck className="h-12 w-12 text-accent" />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Parent Portal Locked</h2>
-                <p className="text-muted-foreground font-light px-6">
-                  Please sign in to monitor your child's real-time progress, attendance, and academic health reports.
-                </p>
+                <div className="bg-muted/50 p-4 rounded-xl">
+                  <p className="text-primary font-bold text-sm leading-relaxed">
+                    Please contact Droneshwar Defence Academy at <span className="text-accent">6399000437</span>, they will provide you log in id and password.
+                  </p>
+                </div>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-primary text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
                 <LogIn className="mr-2 h-5 w-5 text-accent" /> Sign In to Portal
