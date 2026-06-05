@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from 'next/link';
@@ -129,18 +128,18 @@ export function Navbar() {
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
       {/* Domain Error Instruction Bar - Show when domain is unauthorized */}
       {authErrorDomain && (
-        <div className="bg-blue-700 text-white p-4 text-center animate-in slide-in-from-top duration-500">
+        <div className="bg-blue-700 text-white p-4 text-center animate-in slide-in-from-top duration-500 relative z-[105]">
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
             <div className="flex items-center gap-2 text-sm">
               <AlertCircle className="h-5 w-5 text-accent" />
-              <span className="font-bold uppercase tracking-tight">Login Fix:</span> Add <code className="bg-black/20 px-2 py-1 rounded font-mono text-xs">{authErrorDomain}</code> to Authorized Domains.
+              <span className="font-bold uppercase tracking-tight">Login Fix:</span> Add <code className="bg-black/20 px-2 py-1 rounded font-mono text-xs">{authErrorDomain}</code> to Authorized Domains in Firebase.
             </div>
             <div className="flex gap-2">
               <Button onClick={copyDomain} size="sm" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-9 px-4 text-[9px] font-bold uppercase tracking-widest">
                 <Copy className="h-3 w-3 mr-2" /> Copy Domain
               </Button>
               <Link 
-                href={`https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings`}
+                href="https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings"
                 target="_blank"
               >
                 <Button size="sm" className="bg-accent text-primary hover:bg-accent/90 h-9 px-4 text-[9px] font-black uppercase tracking-widest">

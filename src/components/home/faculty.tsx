@@ -1,9 +1,8 @@
-
 "use client"
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ShieldCheck, Star, GraduationCap, Linkedin, Youtube, BookOpen, Zap, Atom, Beaker } from 'lucide-react';
+import { Linkedin, Youtube } from 'lucide-react';
 import Image from 'next/image';
 import { getPlaceholderById } from '@/lib/placeholder-images';
 
