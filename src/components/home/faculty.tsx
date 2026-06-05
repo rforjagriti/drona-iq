@@ -14,7 +14,7 @@ export function FacultySection() {
       role: "Founder & Chief Academic Architect",
       exp: "7+ Years",
       tags: ["PhD in IR", "UPSC Veteran", "Logic Head"],
-      imageUrl: "/images/amit-negi.webp",
+      imageUrl: "/images/Amit-Negi.webp",
       desc: "PhD in International Relations with extensive UPSC experience. A visionary architect of the Drona IQ curriculum with a profound command over subjects."
     },
     {

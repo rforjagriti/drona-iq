@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 
 export function GenesisSection() {
-  // Direct path for stability
-  const founderImg = "/images/amit-negi.webp";
+  // Direct path matches exact case in public/images/
+  const founderImg = "/images/Amit-Negi.webp";
   
   return (
     <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
@@ -22,7 +22,7 @@ export function GenesisSection() {
                    className="object-cover transition-all duration-1000" 
                    data-ai-hint="founder portrait"
                    priority
-                   unoptimized
+                   unoptimized={true}
                  />
                </div>
             </div>

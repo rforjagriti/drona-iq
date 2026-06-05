@@ -13,10 +13,11 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 /**
  * Returns the image URL for a given ID.
  * Directly handles core team photos with rock-solid paths.
+ * NOTE: Paths are case-sensitive to match the filesystem.
  */
 export function getPlaceholderById(id: string): string {
   if (id === 'founder-photo' || id === 'faculty-1') {
-    return '/images/amit-negi.webp';
+    return '/images/Amit-Negi.webp';
   }
   if (id === 'faculty-2') {
     return '/images/rahul_pratap.webp';
