@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useMemo, useState } from 'react';
@@ -39,8 +40,8 @@ export default function ClassesPage() {
       type: 'center',
       timing: '04:00 PM - 07:00 PM',
       status: 'enrolling',
-      mentor: 'Maj. Gen. Aditya Rawat',
-      description: 'Military-grade discipline with intensive board preparation.'
+      mentor: 'Dr. Amit Negi',
+      description: 'Military-grade discipline with intensive board and IR-logical preparation.'
     },
     {
       id: 'c2',
@@ -50,8 +51,19 @@ export default function ClassesPage() {
       type: 'online',
       timing: '06:30 PM - 08:00 PM',
       status: 'full',
-      mentor: 'Dr. Shalini Bisht',
-      description: 'Digital live sessions focused on conceptual clarity and numericals.'
+      mentor: 'Dr. Rahul Pratap Singh',
+      description: 'Digital live sessions focused on conceptual clarity and mechanics by an 18-year veteran.'
+    },
+    {
+      id: 'c3',
+      title: 'Mathematics Intensive',
+      grade: 'Class 10th',
+      subject: 'Maths',
+      type: 'center',
+      timing: '05:00 PM - 06:30 PM',
+      status: 'enrolling',
+      mentor: 'Er. Lokesh Garg',
+      description: 'Mastering the board patterns with 17+ years of expertise.'
     }
   ];
 
@@ -116,8 +128,8 @@ export default function ClassesPage() {
             <p className="text-xs font-bold text-primary flex items-center gap-2"><Zap className="h-3 w-3 text-accent" /> {item.subject}</p>
           </div>
           <div className="space-y-1">
-            <p className="text-[8px] font-bold uppercase text-muted-foreground">Timing</p>
-            <p className="text-xs font-bold text-primary flex items-center gap-2"><Clock className="h-3 w-3 text-accent" /> {item.timing}</p>
+            <p className="text-[8px] font-bold uppercase text-muted-foreground">Mentor</p>
+            <p className="text-xs font-bold text-primary truncate">{item.mentor}</p>
           </div>
         </div>
       </CardContent>
@@ -147,7 +159,7 @@ export default function ClassesPage() {
             Active <br/> <span className="text-accent italic">Learning Hubs.</span>
           </h1>
           <p className="text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-            Real-time directory of running batches in Dehradun. Find your elite learning path.
+            Real-time directory of running batches in Dehradun. Find your elite learning path guided by the valley's top intellect.
           </p>
           
           <div className="max-w-2xl mx-auto relative mt-12">

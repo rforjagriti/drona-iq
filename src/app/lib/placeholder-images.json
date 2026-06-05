@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -8,33 +9,51 @@
     },
     {
       "id": "founder-photo",
-      "description": "Founder Dr. Vikram Singh portrait",
+      "description": "Founder Dr. Amit Negi portrait",
       "imageUrl": "https://picsum.photos/seed/drona_founder/800/1000",
       "imageHint": "founder portrait"
     },
     {
       "id": "faculty-1",
-      "description": "Dr. Vikram Singh - Mentor",
+      "description": "Dr. Amit Negi - Chief Academic Architect",
       "imageUrl": "https://picsum.photos/seed/drona_f1/800/1000",
       "imageHint": "teacher one"
     },
     {
       "id": "faculty-2",
-      "description": "Maj. Gen. Aditya Rawat - Mentor",
+      "description": "Dr. Rahul Pratap Singh - Physics Mentor",
       "imageUrl": "https://picsum.photos/seed/drona_f2/800/1000",
       "imageHint": "teacher two"
     },
     {
       "id": "faculty-3",
-      "description": "Er. Amit Negi - Mentor",
+      "description": "Er. Lokesh Garg - Mathematics Mentor",
       "imageUrl": "https://picsum.photos/seed/drona_f3/800/1000",
       "imageHint": "teacher three"
     },
     {
       "id": "faculty-4",
-      "description": "Mrs. Shalini Bisht - Mentor",
+      "description": "Mrs. Suruchi Tiwari - Chemistry Mentor",
       "imageUrl": "https://picsum.photos/seed/drona_f4/800/1000",
       "imageHint": "teacher four"
+    },
+    {
+      "id": "faculty-5",
+      "description": "Mrs. Amita Ma'am - English Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f5/800/1000",
+      "imageHint": "teacher female"
+    },
+    {
+      "id": "faculty-6",
+      "description": "Mrs. Sapna Ma'am - Biology Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f6/800/1000",
+      "imageHint": "teacher biology"
+    },
+    {
+      "id": "faculty-7",
+      "description": "Mr. Brijesh Sir - GS Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f7/800/1000",
+      "imageHint": "teacher gs"
     },
     {
       "id": "student-1",

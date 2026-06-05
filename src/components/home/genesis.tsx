@@ -29,10 +29,10 @@ export function GenesisSection() {
                <div className="prose prose-lg text-muted-foreground font-light leading-relaxed space-y-6">
                   <p>"Drona IQ wasn't built to be another tuition center. It was built out of a realization that students in Dehradun are trapped in a system of average expectations."</p>
                   <p>"We saw parents spending lakhs on coaching 'factories' where their child was just a roll number. We saw students losing their confidence because no one identified their specific learning gaps."</p>
-                  <p className="font-bold text-primary">"At Drona IQ, we promise one thing: We will treat your child's success as our only milestone."</p>
+                  <p className="font-bold text-primary">"At Drona IQ, we promise one thing: We will treat your child's success as our only milestone. Our IR-driven logical framework ensures no concept is left behind."</p>
                </div>
                <div className="pt-6">
-                  <p className="font-headline font-extrabold text-primary uppercase tracking-widest text-xl">Dr. Vikram Singh</p>
+                  <p className="font-headline font-extrabold text-primary uppercase tracking-widest text-xl">Dr. Amit Negi</p>
                   <p className="text-accent font-bold text-xs uppercase tracking-widest">Founder & Chief Academic Architect</p>
                </div>
             </div>

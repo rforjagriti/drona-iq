@@ -22,12 +22,13 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function SocialProofSection() {
   const tutors = [
-    { name: "Dr. Shalini P.", exp: "12y Exp", sub: "Physics Specialist (ex-IIT)", img: "/images/faculty-4.jpg" },
-    { name: "Maj. Rahul S.", exp: "15y Exp", sub: "NDA Foundation Mentor", img: "/images/faculty-2.jpg" },
-    { name: "Er. Amit Negi", exp: "8y Exp", sub: "Calculus & Algebra Expert", img: "/images/faculty-3.jpg" }
+    { name: "Dr. Rahul Pratap Singh", exp: "18y Exp", sub: "Physics Veteran", img: getPlaceholderById('faculty-2') },
+    { name: "Er. Lokesh Garg", exp: "17y Exp", sub: "Mathematics Wizard", img: getPlaceholderById('faculty-3') },
+    { name: "Mrs. Suruchi Tiwari", exp: "8y Exp", sub: "Chemistry Expert", img: getPlaceholderById('faculty-4') }
   ];
 
   return (
@@ -59,7 +60,7 @@ export function SocialProofSection() {
                         <Star className="fill-current h-3 w-3" />
                         <Star className="fill-current h-3 w-3" />
                     </div>
-                    <p className="text-[10px] font-bold text-muted-foreground uppercase group-hover:text-white/40">{t.exp} • 500+ Hours Taught</p>
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase group-hover:text-white/40">{t.exp} • 1000+ Hours Taught</p>
                  </div>
               </Card>
             ))}
