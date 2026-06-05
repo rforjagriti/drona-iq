@@ -1,8 +1,9 @@
+
 'use client';
 
 /**
- * Drona IQ - Official Firebase Configuration
- * Using the confirmed working API Key.
+ * Drona IQ - Official Firebase Web Configuration
+ * We use the Web API Key for client-side safety.
  */
 export const firebaseConfig = {
   apiKey: "AIzaSyBlW-xQrBREbvZlwqPScfIAHk7_PvRqLl0",
