@@ -1,4 +1,3 @@
-
 import data from './placeholder-images.json';
 
 export type ImagePlaceholder = {
@@ -15,7 +14,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
  * Maps IDs to the exact case-sensitive files in public/images/
  */
 export function getPlaceholderById(id: string): string {
-  // Direct mapping for reliability
+  // Direct mapping for reliability (Case-Sensitive)
   if (id === 'hero-student') return '/images/drona-iq.webp';
   if (id === 'founder-photo' || id === 'faculty-1') return '/images/Amit-Negi.webp';
   if (id === 'faculty-2') return '/images/rahul_pratap.webp';
@@ -28,6 +27,9 @@ export function getPlaceholderById(id: string): string {
   if (id === 'student-1') return '/images/ishita-negi.png';
   if (id === 'student-2') return '/images/aryan-rawat.png';
   if (id === 'student-3') return '/images/sanya-gupta.png';
+
+  // Academic Programs
+  if (id === 'class-5-7') return '/images/class5-7.png';
   
   const img = PlaceHolderImages.find(i => i.id === id);
   if (img && img.imageUrl) {

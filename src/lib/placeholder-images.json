@@ -8,9 +8,9 @@
     },
     {
       "id": "founder-photo",
-      "description": "Founder Dr. Amit Negi portrait",
+      "description": "Dr. Amit Negi portrait",
       "imageUrl": "/images/Amit-Negi.webp",
-      "imageHint": "founder portrait"
+      "imageHint": "teacher"
     },
     {
       "id": "faculty-1",
@@ -71,6 +71,12 @@
       "description": "Sanya Gupta - Success Story",
       "imageUrl": "/images/sanya-gupta.png",
       "imageHint": "student success"
+    },
+    {
+      "id": "class-5-7",
+      "description": "Classes 5-7 Program Image",
+      "imageUrl": "/images/class5-7.png",
+      "imageHint": "classroom kids"
     }
   ]
 }
