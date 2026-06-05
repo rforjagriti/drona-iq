@@ -18,7 +18,7 @@ export function GenesisSection() {
                  src={founderImg} 
                  width={800} 
                  height={1000} 
-                 alt="Founder Drona IQ" 
+                 alt="Dr. Amit Negi - Drona IQ Founder" 
                  className="rounded-[4rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000 object-cover aspect-[4/5]" 
                  data-ai-hint="founder portrait"
                  priority

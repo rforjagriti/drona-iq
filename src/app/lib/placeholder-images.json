@@ -72,6 +72,78 @@
       "description": "Topper Student - Sanya Gupta",
       "imageUrl": "https://picsum.photos/seed/drona_s3/800/1000",
       "imageHint": "intelligent student"
+    },
+    {
+      "id": "class-5-7",
+      "description": "Class 5-7 Curiosity Hub",
+      "imageUrl": "https://picsum.photos/seed/class57/800/1000",
+      "imageHint": "children studying"
+    },
+    {
+      "id": "class-8-9",
+      "description": "Class 8-9 Excellence Hub",
+      "imageUrl": "https://picsum.photos/seed/class89/800/1000",
+      "imageHint": "teenagers learning"
+    },
+    {
+      "id": "class-10",
+      "description": "Class 10 Board prep",
+      "imageUrl": "https://picsum.photos/seed/class10/800/1000",
+      "imageHint": "student writing"
+    },
+    {
+      "id": "class-11s",
+      "description": "Class 11 Science",
+      "imageUrl": "https://picsum.photos/seed/class11s/800/1000",
+      "imageHint": "science lab"
+    },
+    {
+      "id": "class-11c",
+      "description": "Class 11 Commerce",
+      "imageUrl": "https://picsum.photos/seed/class11c/800/1000",
+      "imageHint": "finance analysis"
+    },
+    {
+      "id": "class-11h",
+      "description": "Class 11 Humanities",
+      "imageUrl": "https://picsum.photos/seed/class11h/800/1000",
+      "imageHint": "history books"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Campus Hub 1",
+      "imageUrl": "https://picsum.photos/seed/g1/1200/800",
+      "imageHint": "modern classroom"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Campus Hub 2",
+      "imageUrl": "https://picsum.photos/seed/g2/600/600",
+      "imageHint": "study area"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Campus Hub 3",
+      "imageUrl": "https://picsum.photos/seed/g3/600/600",
+      "imageHint": "mentorship session"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Campus Hub 4",
+      "imageUrl": "https://picsum.photos/seed/g4/800/1200",
+      "imageHint": "campus corridor"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Campus Hub 5",
+      "imageUrl": "https://picsum.photos/seed/g5/600/600",
+      "imageHint": "student working"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Campus Hub 6",
+      "imageUrl": "https://picsum.photos/seed/g6/600/600",
+      "imageHint": "reception desk"
     }
   ]
 }
