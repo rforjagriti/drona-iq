@@ -12,30 +12,22 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 
 /**
  * Returns the image URL for a given ID.
- * Maps IDs to the exact case-sensitive .webp files in public/images/
+ * Maps IDs to the exact case-sensitive files in public/images/
  */
 export function getPlaceholderById(id: string): string {
-  if (id === 'hero-student') {
-    return '/images/drona-iq.webp';
-  }
-  if (id === 'founder-photo' || id === 'faculty-1') {
-    return '/images/Amit-Negi.webp';
-  }
-  if (id === 'faculty-2') {
-    return '/images/rahul_pratap.webp';
-  }
-  if (id === 'faculty-3') {
-    return '/images/lokesh_garg.webp';
-  }
-  if (id === 'faculty-5') {
-    return '/images/amita-sharma.webp';
-  }
-  if (id === 'faculty-4' || id === 'faculty-6') {
-    return '/images/sapna-tiwari.webp';
-  }
-  if (id === 'faculty-7') {
-    return '/images/brijesh_kumar.webp';
-  }
+  // Direct mapping for reliability
+  if (id === 'hero-student') return '/images/drona-iq.webp';
+  if (id === 'founder-photo' || id === 'faculty-1') return '/images/Amit-Negi.webp';
+  if (id === 'faculty-2') return '/images/rahul_pratap.webp';
+  if (id === 'faculty-3') return '/images/lokesh_garg.webp';
+  if (id === 'faculty-5') return '/images/amita-sharma.webp';
+  if (id === 'faculty-4' || id === 'faculty-6') return '/images/sapna-tiwari.webp';
+  if (id === 'faculty-7') return '/images/brijesh_kumar.webp';
+  
+  // Success Hall Students
+  if (id === 'student-1') return '/images/ishita-negi.png';
+  if (id === 'student-2') return '/images/aryan-rawat.png';
+  if (id === 'student-3') return '/images/sanya-gupta.png';
   
   const img = PlaceHolderImages.find(i => i.id === id);
   if (img && img.imageUrl) {

@@ -3,7 +3,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Trophy, Star, ArrowUpRight, GraduationCap } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import { getPlaceholderById, getHintById } from '@/lib/placeholder-images';
 
@@ -14,7 +14,6 @@ export function SuccessHallSection() {
       score: "98.2%",
       jump: "from 74%",
       exam: "CBSE Class 10",
-      school: "Brightlands Dehradun",
       id: "student-1"
     },
     {
@@ -22,7 +21,6 @@ export function SuccessHallSection() {
       score: "AIR 412",
       jump: "NDA Qualifier",
       exam: "NDA Foundation",
-      school: "SJA Dehradun",
       id: "student-2"
     },
     {
@@ -30,7 +28,6 @@ export function SuccessHallSection() {
       score: "99.4 Percentile",
       jump: "Physics Topper",
       exam: "JEE Mains Core",
-      school: "The Doon School",
       id: "student-3"
     }
   ];
@@ -58,6 +55,7 @@ export function SuccessHallSection() {
                   alt={story.student} 
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                   data-ai-hint={getHintById(story.id)}
+                  unoptimized
                 />
                 <div className="absolute top-8 right-8 bg-accent text-white h-16 w-16 rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-white rotate-12 group-hover:rotate-0 transition-transform">
                   <span className="text-[10px] font-black leading-none uppercase">Score</span>
@@ -68,7 +66,6 @@ export function SuccessHallSection() {
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
                     <h4 className="text-3xl font-extrabold text-primary">{story.student}</h4>
-                    {/* School name removed as requested */}
                   </div>
                   <Badge variant="outline" className="border-primary/20 text-primary font-bold uppercase text-[9px] px-3">{story.exam}</Badge>
                 </div>

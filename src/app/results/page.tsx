@@ -66,7 +66,8 @@ export default function ResultsPage() {
                     alt={story.student} 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-500" 
-                    data-ai-hint={getHintById(story.id)} 
+                    data-ai-hint={getHintById(story.id)}
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white space-y-1">

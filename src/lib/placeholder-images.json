@@ -32,7 +32,7 @@
     },
     {
       "id": "faculty-4",
-      "description": "Mrs. Suruchi Tiwari - Chemistry Mentor",
+      "description": "Miss Sapna Tiwari - Chemistry Mentor",
       "imageUrl": "/images/sapna-tiwari.webp",
       "imageHint": "teacher four"
     },
@@ -44,7 +44,7 @@
     },
     {
       "id": "faculty-6",
-      "description": "Mrs. Sapna Ma'am - Biology Mentor",
+      "description": "Miss Sapna Ma'am - Biology Mentor",
       "imageUrl": "/images/sapna-tiwari.webp",
       "imageHint": "teacher biology"
     },
@@ -53,6 +53,24 @@
       "description": "Mr. Brijesh Sir - GS Mentor",
       "imageUrl": "/images/brijesh_kumar.webp",
       "imageHint": "teacher gs"
+    },
+    {
+      "id": "student-1",
+      "description": "Ishita Negi - Success Story",
+      "imageUrl": "/images/ishita-negi.png",
+      "imageHint": "student success"
+    },
+    {
+      "id": "student-2",
+      "description": "Aryan Rawat - Success Story",
+      "imageUrl": "/images/aryan-rawat.png",
+      "imageHint": "student success"
+    },
+    {
+      "id": "student-3",
+      "description": "Sanya Gupta - Success Story",
+      "imageUrl": "/images/sanya-gupta.png",
+      "imageHint": "student success"
     }
   ]
 }
