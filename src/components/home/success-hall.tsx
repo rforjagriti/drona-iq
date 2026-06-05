@@ -68,7 +68,7 @@ export function SuccessHallSection() {
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
                     <h4 className="text-3xl font-extrabold text-primary">{story.student}</h4>
-                    <p className="text-[10px] font-bold text-accent uppercase tracking-widest">{story.school}</p>
+                    {/* School name removed as requested */}
                   </div>
                   <Badge variant="outline" className="border-primary/20 text-primary font-bold uppercase text-[9px] px-3">{story.exam}</Badge>
                 </div>
