@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Card, CardContent } from '@/components/ui/card';
@@ -14,7 +13,7 @@ export function FacultySection() {
       role: "Founder & Chief Academic Architect",
       exp: "7+ Years",
       tags: ["PhD in IR", "UPSC Veteran", "Logic Head"],
-      img: getPlaceholderById('faculty-1'),
+      id: "faculty-1",
       desc: "PhD in International Relations with extensive UPSC experience. A visionary architect of the Drona IQ curriculum with a profound command over subjects."
     },
     {
@@ -22,7 +21,7 @@ export function FacultySection() {
       role: "Senior Physics Mentor",
       exp: "18+ Years",
       tags: ["Physics Core", "Conceptual Expert"],
-      img: getPlaceholderById('faculty-2'),
+      id: "faculty-2",
       desc: "Physics veteran with 18 years of experience. Master of conceptual mechanics and competitive exam strategies for Boards and NDA."
     },
     {
@@ -30,7 +29,7 @@ export function FacultySection() {
       role: "Lead Math Faculty",
       exp: "17+ Years",
       tags: ["Calculus King", "Academic Strategy"],
-      img: getPlaceholderById('faculty-3'),
+      id: "faculty-3",
       desc: "Mathematics wizard with 17+ years of track record. Specializes in advanced calculus and board-topping techniques across Dehradun."
     },
     {
@@ -38,7 +37,7 @@ export function FacultySection() {
       role: "Chemistry Expert",
       exp: "8+ Years",
       tags: ["Organic Chem Specialist", "Comp. Expert"],
-      img: getPlaceholderById('faculty-4'),
+      id: "faculty-4",
       desc: "Chemistry expert with 8 years of specialization in competitive patterns. Known for simplifying complex organic reactions and molecular logic."
     },
     {
@@ -46,7 +45,7 @@ export function FacultySection() {
       role: "English Proficiency Lead",
       exp: "6+ Years",
       tags: ["Grammar Expert", "Soft Skills"],
-      img: getPlaceholderById('faculty-5'),
+      id: "faculty-5",
       desc: "English proficiency mentor with 6 years experience. Expert in communication skills and grammar logic for Olympiads and Board exams."
     },
     {
@@ -54,7 +53,7 @@ export function FacultySection() {
       role: "Biology Specialist",
       exp: "6+ Years",
       tags: ["Medical Foundation", "Life Sciences"],
-      img: getPlaceholderById('faculty-6'),
+      id: "faculty-6",
       desc: "Biology specialist with 6 years experience. Passionate about medical foundation and life sciences for high-performance scholars."
     },
     {
@@ -62,7 +61,7 @@ export function FacultySection() {
       role: "GS & Social Sciences Lead",
       exp: "10+ Years",
       tags: ["History & Geo", "General Studies"],
-      img: getPlaceholderById('faculty-7'),
+      id: "faculty-7",
       desc: "General Studies (GS) expert. Bringing deep insights into history, geography, and current affairs for holistic competitive growth."
     }
   ];
@@ -83,7 +82,7 @@ export function FacultySection() {
             <Card key={i} className="border-none shadow-2xl rounded-[3rem] overflow-hidden group hover:-translate-y-4 transition-all duration-700 bg-white">
               <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                 <Image 
-                  src={mentor.img} 
+                  src={getPlaceholderById(mentor.id)} 
                   fill 
                   alt={mentor.name} 
                   className="object-cover transition-all duration-1000"
