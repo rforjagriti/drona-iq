@@ -5,7 +5,7 @@ import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight, User as UserIcon, LogIn } from 'lucide-react';
+import { BrainCircuit, Trophy, Target, BookOpen, Star, Zap, Clock, ChevronRight, MessageCircleQuestion, ListChecks, ArrowRight, User as UserIcon, LogIn, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useUser, useFirestore, useDoc, useAuth } from '@/firebase';
@@ -17,6 +17,16 @@ export default function StudentPortal() {
   const { user, loading: authLoading } = useUser();
   const auth = useAuth();
   const firestore = useFirestore();
+
+  const userProfileRef = useMemo(() => (firestore && user) ? doc(firestore, 'users', user.uid) : null, [firestore, user]);
+  const { data: profile, loading: profileLoading } = useDoc(userProfileRef);
+
+  const studentRef = useMemo(() => {
+    if (!firestore || !user?.uid) return null;
+    return doc(firestore, 'students', user.uid);
+  }, [firestore, user?.uid]);
+
+  const { data: studentData, loading: docLoading } = useDoc(studentRef);
 
   const handleLogin = async () => {
     if (!auth || !firestore) return;
@@ -44,25 +54,18 @@ export default function StudentPortal() {
     }
   };
 
-  const studentRef = useMemo(() => {
-    if (!firestore || !user?.uid) return null;
-    return doc(firestore, 'students', user.uid);
-  }, [firestore, user?.uid]);
-
-  const { data: studentData, loading: docLoading } = useDoc(studentRef);
-
   const stats = [
     { label: "Current XP", value: studentData?.xp || "0", icon: Zap, color: "text-yellow-500" },
     { label: "Level", value: studentData?.level || "1", icon: Trophy, color: "text-accent" },
     { label: "Rank", value: "Top 5%", icon: Target, color: "text-blue-500" },
   ];
 
-  if (authLoading) {
+  if (authLoading || profileLoading || docLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-muted/10">
         <div className="flex flex-col items-center gap-4">
           <BrainCircuit className="h-12 w-12 text-primary animate-pulse" />
-          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Initializing Learning Hub v7.4...</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Initializing Learning Hub...</p>
         </div>
       </div>
     );
@@ -82,7 +85,7 @@ export default function StudentPortal() {
               <div className="space-y-2">
                 <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Portal Locked</h2>
                 <p className="text-muted-foreground font-light px-6">
-                  Please log in with your Google account to access your personalized Success OS dashboard, XP tracking, and AI mentors.
+                  Please log in to access your personalized Success OS dashboard and XP tracking.
                 </p>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-accent text-white hover:bg-accent/90 py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
@@ -95,12 +98,38 @@ export default function StudentPortal() {
     );
   }
 
+  // Role Protection: Only students or admins can see this
+  if (profile && profile.role !== 'student' && profile.role !== 'admin') {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
+            <CardContent className="space-y-8">
+              <div className="bg-orange-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
+                <Lock className="h-12 w-12 text-orange-600" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tight">Role Mismatch</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  This portal is for scholars. Your account role is <span className="font-bold text-primary uppercase">{profile.role}</span>.
+                </p>
+              </div>
+              <Link href={`/${profile.role}-dashboard`} className="w-full">
+                <Button className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest">Go to My Dashboard</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-muted/10 pb-20">
       <Navbar />
       
-      {/* Gamified Header */}
-      <div className="navy-gradient py-12 text-white relative overflow-hidden">
+      <div className="navy-gradient py-12 pt-32 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none">
           <BrainCircuit className="h-96 w-96 -mr-20 -mt-20" />
         </div>
@@ -152,7 +181,7 @@ export default function StudentPortal() {
                   <CardTitle className="text-xl font-headline flex items-center gap-2 text-primary uppercase tracking-tight">
                     <Clock className="h-5 w-5 text-accent" /> Daily Learning Path
                   </CardTitle>
-                  <p className="text-xs text-muted-foreground">Complete tasks to unlock {studentData?.targetExam || 'NDA'} strategy milestones.</p>
+                  <p className="text-xs text-muted-foreground">Complete tasks to unlock strategy milestones.</p>
                 </div>
                 <Badge variant="outline" className="border-accent text-accent font-bold">120 XP Reward</Badge>
               </CardHeader>
@@ -187,7 +216,7 @@ export default function StudentPortal() {
               </div>
               <CardContent className="p-10 space-y-4 relative z-10">
                 <h3 className="text-2xl font-bold font-headline uppercase">Stuck on a concept?</h3>
-                <p className="text-white/60 max-w-md">Our neural doubt-solver provides instant step-by-step solutions for CBSE, ICSE, and Competitive patterns.</p>
+                <p className="text-white/60 max-w-md">Our neural doubt-solver provides instant solutions for CBSE, ICSE, and NDA patterns.</p>
                 <div className="flex pt-4">
                   <Link href="/assistant">
                     <Button className="bg-accent text-white hover:bg-accent/90 font-bold uppercase text-xs tracking-widest px-10 h-12 shadow-xl">Launch AI Solver <ChevronRight className="ml-1 h-4 w-4" /></Button>
@@ -211,7 +240,7 @@ export default function StudentPortal() {
                   </div>
                   <Progress value={68} className="h-1.5 bg-white/20" />
                 </div>
-                <p className="text-xs text-white/70 italic leading-relaxed">"Your consistency index is 12% higher than the average Dehradun scholar."</p>
+                <p className="text-xs text-white/70 italic leading-relaxed">"Your consistency index is 12% higher than average."</p>
                 <Link href="/ai-study-planner">
                   <Button variant="outline" className="w-full border-white/40 text-white hover:bg-white/10 font-bold uppercase text-[10px] h-12 mt-4 tracking-widest">Refine Strategy</Button>
                 </Link>
@@ -225,38 +254,18 @@ export default function StudentPortal() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-3">
-                {[
-                  { label: "Math Wizard", color: "bg-blue-50 text-blue-600" },
-                  { label: "7 Day Streak", color: "bg-orange-50 text-orange-600" },
-                  { label: "Night Owl", color: "bg-purple-50 text-purple-600" },
-                  { label: "Doubt Solver", color: "bg-green-50 text-green-600" },
-                ].map((b, i) => (
-                  <Badge key={i} className={`py-2 px-4 rounded-full border-none font-bold text-[9px] uppercase shadow-sm ${b.color}`}>
-                    {b.label}
+                {["Math Wizard", "7 Day Streak", "Night Owl", "Doubt Solver"].map((label, i) => (
+                  <Badge key={i} className="py-2 px-4 rounded-full border-none font-bold text-[9px] uppercase shadow-sm bg-muted text-primary">
+                    {label}
                   </Badge>
                 ))}
               </CardContent>
             </Card>
 
-            <div className="grid grid-cols-2 gap-4">
-              <Link href="/revision-generator" className="block">
-                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group rounded-2xl">
-                  <ListChecks className="h-6 w-6 mx-auto mb-2 text-primary group-hover:text-accent transition-colors" />
-                  <p className="text-[10px] font-bold uppercase tracking-tight">Revision</p>
-                </Card>
-              </Link>
-              <Link href="/academic-health-check" className="block">
-                <Card className="border-none shadow-md hover:bg-muted/50 transition-all p-5 text-center cursor-pointer bg-white group rounded-2xl">
-                  <BrainCircuit className="h-6 w-6 mx-auto mb-2 text-primary group-hover:text-accent transition-colors" />
-                  <p className="text-[10px] font-bold uppercase tracking-tight">Health Check</p>
-                </Card>
-              </Link>
-            </div>
-
             <Card className="border-none shadow-sm p-6 text-center space-y-2 bg-primary/5 rounded-2xl">
               <p className="text-[10px] font-bold uppercase text-muted-foreground">Support Hotline</p>
-              <p className="text-sm font-bold text-primary">+91 99999 00000</p>
-              <p className="text-[10px] text-muted-foreground">Direct access to your Counselor at Rajpur Road.</p>
+              <p className="text-sm font-bold text-primary">+91 78785 53385</p>
+              <p className="text-[10px] text-muted-foreground">Direct access to Sahastradhara Hub.</p>
             </Card>
           </div>
         </div>

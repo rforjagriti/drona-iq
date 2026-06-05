@@ -6,12 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Calendar, TrendingUp, BookOpen, Clock, ShieldCheck, Star, Award, ChevronRight, Bell, User, LayoutDashboard, FileText, Wallet, AlertCircle, Info, BrainCircuit, LogIn } from 'lucide-react';
+import { Calendar, TrendingUp, BookOpen, Clock, ShieldCheck, Star, Award, ChevronRight, Bell, Wallet, BrainCircuit, LogIn, Lock } from 'lucide-react';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
-import { useUser, useAuth, useFirestore } from '@/firebase';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { useUser, useAuth, useFirestore, useDoc } from '@/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { useMemo } from 'react';
+import Link from 'next/link';
 
 const performanceData = [
   { week: 'W1', score: 65 },
@@ -29,6 +31,9 @@ export default function ParentDashboard() {
   const { user, loading: authLoading } = useUser();
   const auth = useAuth();
   const firestore = useFirestore();
+
+  const userProfileRef = useMemo(() => (firestore && user) ? doc(firestore, 'users', user.uid) : null, [firestore, user]);
+  const { data: profile, loading: profileLoading } = useDoc(userProfileRef);
 
   const handleLogin = async () => {
     if (!auth || !firestore) return;
@@ -55,7 +60,7 @@ export default function ParentDashboard() {
     }
   };
 
-  if (authLoading) {
+  if (authLoading || profileLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-muted/10">
         <div className="flex flex-col items-center gap-4">
@@ -92,11 +97,38 @@ export default function ParentDashboard() {
     );
   }
 
+  // Role Protection
+  if (profile && profile.role !== 'parent' && profile.role !== 'admin') {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
+            <CardContent className="space-y-8">
+              <div className="bg-orange-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
+                <Lock className="h-12 w-12 text-orange-600" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tight">Role Mismatch</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  This portal is for parents. Your account role is <span className="font-bold text-primary uppercase">{profile.role}</span>.
+                </p>
+              </div>
+              <Link href={`/${profile.role === 'student' ? 'student' : profile.role + '-dashboard'}`} className="w-full">
+                <Button className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest">Go to My Portal</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-muted/10 pb-20">
       <Navbar />
       
-      <div className="navy-gradient py-12 text-white border-b border-white/5">
+      <div className="navy-gradient py-12 pt-32 text-white border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-3">
@@ -160,10 +192,6 @@ export default function ParentDashboard() {
                 <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 font-bold uppercase text-[10px] h-10 tracking-widest">Billing History</Button>
               </CardContent>
             </Card>
-
-            <Button className="w-full justify-between h-auto py-5 bg-accent hover:bg-accent/90 text-white font-headline uppercase tracking-widest text-[10px] font-bold px-6">
-              Download Report Card <FileText className="h-4 w-4" />
-            </Button>
           </div>
 
           <div className="lg:col-span-3 space-y-8">
@@ -187,7 +215,7 @@ export default function ParentDashboard() {
               <CardHeader className="border-b flex flex-row items-center justify-between py-6">
                 <div>
                   <CardTitle className="font-headline font-bold text-primary uppercase tracking-tight">Academic Growth Engine</CardTitle>
-                  <CardDescription>Real-time concept mastery tracking via AI diagnostics.</CardDescription>
+                  <CardDescription>Concept mastery tracking via AI diagnostics.</CardDescription>
                 </div>
                 <Badge className="bg-green-100 text-green-700 border-none px-4 py-1 uppercase text-[10px] font-bold animate-pulse">Live Sync</Badge>
               </CardHeader>
@@ -211,9 +239,8 @@ export default function ParentDashboard() {
             </Card>
 
             <Card className="border-none shadow-xl overflow-hidden">
-              <CardHeader className="bg-muted/30 border-b flex justify-between items-center flex-row">
+              <CardHeader className="bg-muted/30 border-b">
                 <CardTitle className="text-lg font-headline uppercase tracking-tight">Monthly Insights</CardTitle>
-                <Badge variant="outline"><Info className="h-3 w-3 mr-1" /> AI Generated</Badge>
               </CardHeader>
               <CardContent className="p-8">
                 <div className="space-y-6">
@@ -221,14 +248,7 @@ export default function ParentDashboard() {
                      <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0"><TrendingUp className="h-5 w-5 text-accent" /></div>
                      <div>
                        <p className="font-bold text-primary mb-1">Consistent Progression</p>
-                       <p className="text-sm text-muted-foreground italic">"Your child has shown a 24% improvement in Physics conceptual clarity over the last 30 days. Focus on 'Wave Optics' is recommended next month."</p>
-                     </div>
-                   </div>
-                   <div className="flex gap-4 items-start">
-                     <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0"><BookOpen className="h-5 w-5 text-blue-600" /></div>
-                     <div>
-                       <p className="font-bold text-primary mb-1">Homework Pattern</p>
-                       <p className="text-sm text-muted-foreground italic">"100% submission rate achieved this month. This discipline is contributing significantly to their mock test rankings."</p>
+                       <p className="text-sm text-muted-foreground italic">"Your child has shown a 24% improvement in Physics conceptual clarity over the last 30 days. Focus on 'Wave Optics' is recommended."</p>
                      </div>
                    </div>
                 </div>

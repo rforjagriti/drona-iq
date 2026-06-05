@@ -7,24 +7,22 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useUser, useFirestore, useCollection, useAuth } from '@/firebase';
-import { collection, query, where, orderBy, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { useUser, useFirestore, useCollection, useAuth, useDoc } from '@/firebase';
+import { collection, query, orderBy, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { 
-  Users, 
   Calendar, 
   BookOpen, 
   Clock, 
-  Plus, 
   CheckCircle2, 
   MessageSquare, 
-  LayoutDashboard, 
   TrendingUp,
   Award,
   MoreVertical,
   BrainCircuit,
   LogIn,
-  UserCheck as UserCheckIcon
+  UserCheck as UserCheckIcon,
+  Lock
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -32,11 +30,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Link from 'next/link';
 
 export default function TutorDashboard() {
   const { user, loading: authLoading } = useUser();
   const auth = useAuth();
   const firestore = useFirestore();
+
+  const userProfileRef = useMemo(() => (firestore && user) ? doc(firestore, 'users', user.uid) : null, [firestore, user]);
+  const { data: profile, loading: profileLoading } = useDoc(userProfileRef);
 
   const handleLogin = async () => {
     if (!auth || !firestore) return;
@@ -63,7 +65,6 @@ export default function TutorDashboard() {
     }
   };
 
-  // In a real app, we'd query students assigned to this tutor's ID
   const studentsQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'students'), orderBy('level', 'desc'));
@@ -71,7 +72,7 @@ export default function TutorDashboard() {
 
   const { data: students, loading: studentsLoading } = useCollection(studentsQuery);
 
-  if (authLoading) {
+  if (authLoading || profileLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-muted/10">
         <div className="flex flex-col items-center gap-4">
@@ -95,7 +96,7 @@ export default function TutorDashboard() {
               <div className="space-y-2">
                 <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Faculty Access</h2>
                 <p className="text-muted-foreground font-light px-6">
-                  Please log in to manage your assigned batches, mark student attendance, and update academic reports.
+                  Please log in to manage your assigned batches and update academic reports.
                 </p>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-blue-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
@@ -108,11 +109,38 @@ export default function TutorDashboard() {
     );
   }
 
+  // Role Protection
+  if (profile && profile.role !== 'tutor' && profile.role !== 'admin') {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
+            <CardContent className="space-y-8">
+              <div className="bg-orange-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
+                <Lock className="h-12 w-12 text-orange-600" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tight">Access Denied</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  This portal is for faculty members. Your account role is <span className="font-bold text-primary uppercase">{profile.role}</span>.
+                </p>
+              </div>
+              <Link href="/" className="w-full">
+                <Button variant="outline" className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest">Return Home</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-muted/10 pb-20">
       <Navbar />
       
-      <div className="navy-gradient py-12 text-white border-b border-white/5">
+      <div className="navy-gradient py-12 pt-32 text-white border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-3">
@@ -196,7 +224,6 @@ export default function TutorDashboard() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end" className="w-48 rounded-xl shadow-2xl border-none">
                             <DropdownMenuItem className="cursor-pointer font-bold">Assign Homework</DropdownMenuItem>
-                            <DropdownMenuItem className="cursor-pointer">Submit Progress Report</DropdownMenuItem>
                             <DropdownMenuItem className="cursor-pointer text-blue-600">Message Parent</DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
@@ -204,7 +231,7 @@ export default function TutorDashboard() {
                     </div>
                   ))}
                   {(students?.length === 0 || !students) && (
-                    <div className="p-10 text-center text-muted-foreground italic">No students assigned yet.</div>
+                    <div className="p-10 text-center text-muted-foreground italic">No students assigned.</div>
                   )}
                 </div>
               </Card>
@@ -218,39 +245,13 @@ export default function TutorDashboard() {
                   </CardHeader>
                   <CardContent className="p-6 space-y-4">
                     <div className="bg-white/5 p-4 rounded-xl border border-white/10 italic text-sm text-white/70 leading-relaxed">
-                      "Remember to emphasize numerical practice for the upcoming NDA Mock Test. Use the DIQ Question Bank for Class 10th."
+                      "Remember to emphasize numerical practice for the upcoming NDA Mock Test."
                     </div>
-                    <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 uppercase font-bold text-[10px] h-11">Add New Note</Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-none shadow-xl overflow-hidden">
-                  <CardHeader className="bg-muted/30 border-b">
-                    <CardTitle className="text-sm font-headline uppercase tracking-tight">Center Notice Board</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex gap-3 items-start">
-                      <div className="h-2 w-2 rounded-full bg-accent mt-1.5 shrink-0"></div>
-                      <p className="text-xs text-muted-foreground">Staff meeting at Rajpur Road Hub: Friday, 5:00 PM.</p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <div className="h-2 w-2 rounded-full bg-accent mt-1.5 shrink-0"></div>
-                      <p className="text-xs text-muted-foreground">Monthly faculty training for AI diagnostic tools next Monday.</p>
-                    </div>
+                    <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 uppercase font-bold text-[10px] h-11">Add Note</Button>
                   </CardContent>
                 </Card>
               </div>
             </div>
-          </TabsContent>
-
-          <TabsContent value="students" className="animate-in fade-in duration-500">
-             <div className="text-center py-20 text-muted-foreground italic">Comprehensive student analytics loading...</div>
-          </TabsContent>
-          <TabsContent value="schedule" className="animate-in fade-in duration-500">
-             <div className="text-center py-20 text-muted-foreground italic">Calendar sync engine initializing...</div>
-          </TabsContent>
-          <TabsContent value="earnings" className="animate-in fade-in duration-500">
-             <div className="text-center py-20 text-muted-foreground italic">Billing history processing...</div>
           </TabsContent>
         </Tabs>
       </main>
