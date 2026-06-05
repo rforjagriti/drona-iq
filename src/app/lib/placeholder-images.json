@@ -74,6 +74,42 @@
       "imageHint": "intelligent student"
     },
     {
+      "id": "class-5-7",
+      "description": "Young students in curiosity hub classroom",
+      "imageUrl": "https://picsum.photos/seed/curiosity_hub/800/1000",
+      "imageHint": "young students studying"
+    },
+    {
+      "id": "class-8-9",
+      "description": "Teenagers studying foundation",
+      "imageUrl": "https://picsum.photos/seed/foundation_stage/800/1000",
+      "imageHint": "teenagers studying"
+    },
+    {
+      "id": "class-10",
+      "description": "Board exam preparation class",
+      "imageUrl": "https://picsum.photos/seed/board_prep/800/1000",
+      "imageHint": "students exam"
+    },
+    {
+      "id": "class-11s",
+      "description": "Science students in lab",
+      "imageUrl": "https://picsum.photos/seed/science_lab/800/1000",
+      "imageHint": "science lab"
+    },
+    {
+      "id": "class-11c",
+      "description": "Commerce students discussion",
+      "imageUrl": "https://picsum.photos/seed/commerce_hub/800/1000",
+      "imageHint": "business office"
+    },
+    {
+      "id": "class-11h",
+      "description": "Humanities leaders",
+      "imageUrl": "https://picsum.photos/seed/humanities_hub/800/1000",
+      "imageHint": "history students"
+    },
+    {
       "id": "gallery-1",
       "description": "Smart Classroom View",
       "imageUrl": "https://picsum.photos/seed/drona_g1/1200/800",
