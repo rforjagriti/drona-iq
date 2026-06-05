@@ -6,14 +6,23 @@ import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Search, Loader2, BrainCircuit, Calendar, User, ArrowRight } from 'lucide-react';
-import { useFirestore, useCollection } from '@/firebase';
-import { collection, query, orderBy } from 'firebase/firestore';
+import { Search, Loader2, BrainCircuit, Calendar, User, ArrowRight, ShieldAlert, LogIn } from 'lucide-react';
+import { useFirestore, useCollection, useUser, useAuth, useDoc } from '@/firebase';
+import { collection, query, orderBy, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function AdminHealthChecks() {
+  const { user, loading: authLoading } = useUser();
+  const auth = useAuth();
   const firestore = useFirestore();
   const [filter, setFilter] = useState('');
+
+  // Role check
+  const userProfileRef = useMemo(() => (firestore && user) ? doc(firestore, 'users', user.uid) : null, [firestore, user]);
+  const { data: profile, loading: profileLoading } = useDoc(userProfileRef);
 
   const checksQuery = useMemo(() => {
     if (!firestore) return null;
@@ -21,6 +30,31 @@ export default function AdminHealthChecks() {
   }, [firestore]);
 
   const { data: checks, loading } = useCollection(checksQuery);
+
+  const handleLogin = async () => {
+    if (!auth || !firestore) return;
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const loggedUser = result.user;
+      const userRef = doc(firestore, 'users', loggedUser.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          uid: loggedUser.uid,
+          email: loggedUser.email,
+          displayName: loggedUser.displayName,
+          photoURL: loggedUser.photoURL,
+          role: 'admin',
+          createdAt: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        });
+      }
+    } catch (error) {
+      console.error("Auth Error:", error);
+    }
+  };
 
   const filteredChecks = useMemo(() => {
     if (!checks) return [];
@@ -30,11 +64,51 @@ export default function AdminHealthChecks() {
     );
   }, [checks, filter]);
 
+  if (authLoading || profileLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-muted/10">
+        <BrainCircuit className="h-12 w-12 text-primary animate-pulse" />
+      </div>
+    );
+  }
+
+  if (!user || (profile && profile.role !== 'admin')) {
+    return (
+      <div className="min-h-screen flex flex-col bg-muted/10">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
+            <CardContent className="space-y-8">
+              <div className="bg-red-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
+                <ShieldAlert className="h-12 w-12 text-red-600" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tight">Access Restricted</h2>
+                <p className="text-muted-foreground font-light px-6">
+                  {!user ? "Please login to access diagnostic analytics." : "You do not have administrative permissions."}
+                </p>
+              </div>
+              {!user ? (
+                <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
+                  <LogIn className="mr-2 h-5 w-5" /> Admin Login
+                </Button>
+              ) : (
+                <Link href="/" className="w-full">
+                  <Button variant="outline" className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest">Return Home</Button>
+                </Link>
+              )}
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-muted/10">
       <Navbar />
       
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-12 pt-32">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
           <div>
             <h1 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tighter">Diagnostic Analytics</h1>
