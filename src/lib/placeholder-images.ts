@@ -12,14 +12,13 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 
 /**
  * Returns the image URL for a given ID.
- * If the image isn't found, it returns a high-quality Unsplash fallback.
  */
 export function getPlaceholderById(id: string): string {
   const img = PlaceHolderImages.find(i => i.id === id);
   if (img && img.imageUrl) {
     return img.imageUrl;
   }
-  // Fallback to a high-quality placeholder if the local image is missing
+  // Fallback to a high-quality placeholder if the local image is missing or ID not found
   return `https://picsum.photos/seed/${id}/800/1000`;
 }
 

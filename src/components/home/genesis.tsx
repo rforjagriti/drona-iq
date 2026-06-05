@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function GenesisSection() {
+  const founderImg = getPlaceholderById('founder-photo');
+  
   return (
     <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -13,12 +15,13 @@ export function GenesisSection() {
             <div className="relative">
                <div className="absolute -inset-10 bg-accent/10 rounded-full blur-[100px] opacity-30"></div>
                <Image 
-                 src={getPlaceholderById('founder-photo')} 
+                 src={founderImg} 
                  width={800} 
                  height={1000} 
                  alt="Founder Drona IQ" 
-                 className="rounded-[4rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000" 
+                 className="rounded-[4rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000 object-cover aspect-[4/5]" 
                  data-ai-hint="founder portrait"
+                 priority
                />
             </div>
             <div className="space-y-12">
