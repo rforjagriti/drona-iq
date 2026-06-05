@@ -2,10 +2,9 @@
 
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
-import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function GenesisSection() {
-  // Directly using the local path to ensure it works
+  // Hardcoded direct path to ensure image loads from public/images/amit-negi.webp
   const founderImg = "/images/amit-negi.webp";
   
   return (
@@ -22,6 +21,7 @@ export function GenesisSection() {
                    className="object-cover transition-all duration-1000" 
                    data-ai-hint="founder portrait"
                    priority
+                   unoptimized
                  />
                </div>
             </div>

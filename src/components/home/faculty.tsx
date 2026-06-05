@@ -13,7 +13,7 @@ export function FacultySection() {
       role: "Founder & Chief Academic Architect",
       exp: "7+ Years",
       tags: ["PhD in IR", "UPSC Veteran", "Logic Head"],
-      id: "faculty-1",
+      imageUrl: "/images/amit-negi.webp",
       desc: "PhD in International Relations with extensive UPSC experience. A visionary architect of the Drona IQ curriculum with a profound command over subjects."
     },
     {
@@ -21,7 +21,7 @@ export function FacultySection() {
       role: "Senior Physics Mentor",
       exp: "18+ Years",
       tags: ["Physics Core", "Conceptual Expert"],
-      id: "faculty-2",
+      imageUrl: getPlaceholderById('faculty-2'),
       desc: "Physics veteran with 18 years of experience. Master of conceptual mechanics and competitive exam strategies for Boards and NDA."
     },
     {
@@ -29,7 +29,7 @@ export function FacultySection() {
       role: "Lead Math Faculty",
       exp: "17+ Years",
       tags: ["Calculus King", "Academic Strategy"],
-      id: "faculty-3",
+      imageUrl: getPlaceholderById('faculty-3'),
       desc: "Mathematics wizard with 17+ years of track record. Specializes in advanced calculus and board-topping techniques across Dehradun."
     },
     {
@@ -37,7 +37,7 @@ export function FacultySection() {
       role: "Chemistry Expert",
       exp: "8+ Years",
       tags: ["Organic Chem Specialist", "Comp. Expert"],
-      id: "faculty-4",
+      imageUrl: getPlaceholderById('faculty-4'),
       desc: "Chemistry expert with 8 years of specialization in competitive patterns. Known for simplifying complex organic reactions and molecular logic."
     },
     {
@@ -45,7 +45,7 @@ export function FacultySection() {
       role: "English Proficiency Lead",
       exp: "6+ Years",
       tags: ["Grammar Expert", "Soft Skills"],
-      id: "faculty-5",
+      imageUrl: getPlaceholderById('faculty-5'),
       desc: "English proficiency mentor with 6 years experience. Expert in communication skills and grammar logic for Olympiads and Board exams."
     },
     {
@@ -53,7 +53,7 @@ export function FacultySection() {
       role: "Biology Specialist",
       exp: "6+ Years",
       tags: ["Medical Foundation", "Life Sciences"],
-      id: "faculty-6",
+      imageUrl: getPlaceholderById('faculty-6'),
       desc: "Biology specialist with 6 years experience. Passionate about medical foundation and life sciences for high-performance scholars."
     },
     {
@@ -61,7 +61,7 @@ export function FacultySection() {
       role: "GS & Social Sciences Lead",
       exp: "10+ Years",
       tags: ["History & Geo", "General Studies"],
-      id: "faculty-7",
+      imageUrl: getPlaceholderById('faculty-7'),
       desc: "General Studies (GS) expert. Bringing deep insights into history, geography, and current affairs for holistic competitive growth."
     }
   ];
@@ -82,11 +82,12 @@ export function FacultySection() {
             <Card key={i} className="border-none shadow-2xl rounded-[3rem] overflow-hidden group hover:-translate-y-4 transition-all duration-700 bg-white">
               <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                 <Image 
-                  src={getPlaceholderById(mentor.id)} 
+                  src={mentor.imageUrl} 
                   fill 
                   alt={mentor.name} 
                   className="object-cover transition-all duration-1000"
                   data-ai-hint="professional teacher portrait"
+                  unoptimized={mentor.name === "Dr. Amit Negi"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                 <div className="absolute bottom-6 left-6 right-6 space-y-2">
