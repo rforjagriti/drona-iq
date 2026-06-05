@@ -101,6 +101,12 @@
       "description": "Class 11-12 Commerce Image",
       "imageUrl": "/images/class 12-11.png",
       "imageHint": "commerce student"
+    },
+    {
+      "id": "class-11h",
+      "description": "Class 11-12 Humanities Image",
+      "imageUrl": "/images/class-art.png",
+      "imageHint": "arts student"
     }
   ]
 }

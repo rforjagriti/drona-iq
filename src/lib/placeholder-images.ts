@@ -35,6 +35,7 @@ export function getPlaceholderById(id: string): string {
   if (id === 'class-10') return '/images/class-10.png';
   if (id === 'class-11s') return '/images/class11-12.png';
   if (id === 'class-11c') return '/images/class 12-11.png';
+  if (id === 'class-11h') return '/images/class-art.png';
   
   const img = PlaceHolderImages.find(i => i.id === id);
   if (img && img.imageUrl) {
