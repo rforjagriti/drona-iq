@@ -20,7 +20,10 @@ import {
   UserCheck,
   AlertCircle,
   Copy,
-  ExternalLink
+  ExternalLink,
+  ShieldAlert,
+  LayoutDashboard,
+  BrainCircuit
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -126,7 +129,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* Domain Error Instruction Bar - Show when domain is unauthorized */}
+      {/* Domain Error Instruction Bar */}
       {authErrorDomain && (
         <div className="bg-blue-700 text-white p-4 text-center animate-in slide-in-from-top duration-500 relative z-[105]">
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
@@ -187,55 +190,83 @@ export function Navbar() {
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Audit</Link>
             <Link href="/classes" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Batches</Link>
             
+            {/* PORTALS DROPDOWN */}
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
                 Portals <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-72 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/student" className="flex items-center gap-3">
-                    <div className="bg-primary/5 p-2 rounded-lg text-primary"><User className="h-4 w-4" /></div>
+              <DropdownMenuContent align="end" className="w-80 p-4 rounded-[2rem] border-none shadow-2xl bg-white space-y-1">
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 hover:bg-muted/50">
+                  <Link href="/student" className="flex items-center gap-4">
+                    <div className="bg-primary/5 p-2.5 rounded-xl text-primary"><User className="h-5 w-5" /></div>
                     <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase">Student Hub</span>
-                      <span className="text-[8px] text-muted-foreground">Gamified XP & Mentorship</span>
+                      <span className="font-bold text-sm uppercase">Scholar Hub</span>
+                      <span className="text-[9px] text-muted-foreground font-medium">Gamified XP & AI Mentorship</span>
                     </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/parent-dashboard" className="flex items-center gap-3">
-                    <div className="bg-accent/10 p-2 rounded-lg text-accent"><Users className="h-4 w-4" /></div>
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 hover:bg-muted/50">
+                  <Link href="/parent-dashboard" className="flex items-center gap-4">
+                    <div className="bg-accent/10 p-2.5 rounded-xl text-accent"><Users className="h-5 w-5" /></div>
                     <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase">Parent Portal</span>
-                      <span className="text-[8px] text-muted-foreground">Live Progress Monitor</span>
+                      <span className="font-bold text-sm uppercase">Parent Portal</span>
+                      <span className="text-[9px] text-muted-foreground font-medium">Live Child Progress Tracking</span>
                     </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="my-2" />
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/tutor/dashboard" className="flex items-center gap-3">
-                    <div className="bg-blue-50 p-2 rounded-lg text-blue-600"><UserCheck className="h-4 w-4" /></div>
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 hover:bg-muted/50">
+                  <Link href="/tutor/dashboard" className="flex items-center gap-4">
+                    <div className="bg-blue-50 p-2.5 rounded-xl text-blue-600"><UserCheck className="h-5 w-5" /></div>
                     <div className="flex flex-col">
-                      <span className="font-bold text-xs uppercase text-blue-700">Educator Portal</span>
-                      <span className="text-[8px] text-muted-foreground">Manage Faculty Tasks</span>
+                      <span className="font-bold text-sm uppercase">Educator Hub</span>
+                      <span className="text-[9px] text-muted-foreground font-medium">Faculty Tools & Batches</span>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="my-2 opacity-50" />
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 bg-primary/5 hover:bg-primary/10">
+                  <Link href="/admin" className="flex items-center gap-4">
+                    <div className="bg-primary p-2.5 rounded-xl text-accent"><ShieldAlert className="h-5 w-5" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-black text-sm uppercase text-primary">Admin Command</span>
+                      <span className="text-[9px] text-primary/60 font-bold uppercase tracking-widest">Lead CRM & System OS</span>
                     </div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
+            {/* AI TOOLS DROPDOWN */}
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent outline-none">
-                AI Tools <ChevronDown className="h-3 w-3 text-accent" />
+                AI Engines <ChevronDown className="h-3 w-3 text-accent" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/revision-generator" className="flex items-center gap-3">
-                    <ListChecks className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">AI Revision Pack</span>
+              <DropdownMenuContent align="end" className="w-72 p-4 rounded-[2rem] border-none shadow-2xl bg-white space-y-1">
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 hover:bg-muted/50">
+                  <Link href="/revision-generator" className="flex items-center gap-4">
+                    <div className="bg-accent/10 p-2.5 rounded-xl text-accent"><ListChecks className="h-5 w-5" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-sm uppercase">Revision Pack</span>
+                      <span className="text-[9px] text-muted-foreground font-medium">Neural Topic Synthesis</span>
+                    </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3">
-                  <Link href="/career-guidance" className="flex items-center gap-3">
-                    <Sparkles className="h-4 w-4 text-accent" /> <span className="font-bold text-xs uppercase">Success Predictor</span>
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 hover:bg-muted/50">
+                  <Link href="/career-guidance" className="flex items-center gap-4">
+                    <div className="bg-primary/5 p-2.5 rounded-xl text-primary"><Sparkles className="h-5 w-5" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-sm uppercase">Success Predictor</span>
+                      <span className="text-[9px] text-muted-foreground font-medium">Cognitive Career Mapping</span>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="rounded-2xl cursor-pointer py-4 hover:bg-muted/50">
+                  <Link href="/assistant" className="flex items-center gap-4">
+                    <div className="bg-green-50 p-2.5 rounded-xl text-green-600"><BrainCircuit className="h-5 w-5" /></div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-sm uppercase">Doubt Solver</span>
+                      <span className="text-[9px] text-muted-foreground font-medium">24/7 AI Academic Mentor</span>
+                    </div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -283,8 +314,15 @@ export function Navbar() {
           <div className="lg:hidden absolute top-20 inset-x-0 h-screen bg-white z-[90] p-6 space-y-4 animate-in slide-in-from-top duration-300 overflow-y-auto pb-40">
              <Link href="/why-drona-iq" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Why DIQ?</Link>
              <Link href="/academic-health-check" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Audit</Link>
+             <div className="h-px bg-muted my-2" />
+             <p className="text-[10px] font-black uppercase text-muted-foreground px-4">Portals</p>
              <Link href="/student" className="block p-4 bg-primary/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Scholar Hub</Link>
              <Link href="/parent-dashboard" className="block p-4 bg-accent/5 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Parent Portal</Link>
+             <Link href="/admin" className="block p-4 bg-primary text-white rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Admin Panel</Link>
+             <div className="h-px bg-muted my-2" />
+             <p className="text-[10px] font-black uppercase text-muted-foreground px-4">AI Engines</p>
+             <Link href="/revision-generator" className="block p-4 bg-muted/30 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Revision Pack</Link>
+             <Link href="/assistant" className="block p-4 bg-muted/30 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>AI Tutor</Link>
           </div>
         )}
       </nav>
