@@ -12,8 +12,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 
 /**
  * Returns the image URL for a given ID.
- * Directly handles core team photos with rock-solid paths.
- * NOTE: Paths are case-sensitive to match the filesystem.
+ * Maps IDs to the exact .webp files in public/images/
  */
 export function getPlaceholderById(id: string): string {
   if (id === 'founder-photo' || id === 'faculty-1') {
@@ -21,6 +20,21 @@ export function getPlaceholderById(id: string): string {
   }
   if (id === 'faculty-2') {
     return '/images/rahul_pratap.webp';
+  }
+  if (id === 'faculty-3') {
+    return '/images/Lokesh-Garg.webp';
+  }
+  if (id === 'faculty-4') {
+    return '/images/Suruchi-Tiwari.webp';
+  }
+  if (id === 'faculty-5') {
+    return '/images/Amita.webp';
+  }
+  if (id === 'faculty-6') {
+    return '/images/Sapna.webp';
+  }
+  if (id === 'faculty-7') {
+    return '/images/Brijesh.webp';
   }
   
   const img = PlaceHolderImages.find(i => i.id === id);

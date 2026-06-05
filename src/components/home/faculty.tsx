@@ -5,7 +5,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Linkedin, Youtube } from 'lucide-react';
 import Image from 'next/image';
-import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function FacultySection() {
   const mentors = [
@@ -30,7 +29,7 @@ export function FacultySection() {
       role: "Lead Math Faculty",
       exp: "17+ Years",
       tags: ["Calculus King", "Academic Strategy"],
-      imageUrl: getPlaceholderById('faculty-3'),
+      imageUrl: "/images/Lokesh-Garg.webp",
       desc: "Mathematics wizard with 17+ years of track record. Specializes in advanced calculus and board-topping techniques across Dehradun."
     },
     {
@@ -38,7 +37,7 @@ export function FacultySection() {
       role: "Chemistry Expert",
       exp: "8+ Years",
       tags: ["Organic Chem Specialist", "Comp. Expert"],
-      imageUrl: getPlaceholderById('faculty-4'),
+      imageUrl: "/images/Suruchi-Tiwari.webp",
       desc: "Chemistry expert with 8 years of specialization in competitive patterns. Known for simplifying complex organic reactions and molecular logic."
     },
     {
@@ -46,7 +45,7 @@ export function FacultySection() {
       role: "English Proficiency Lead",
       exp: "6+ Years",
       tags: ["Grammar Expert", "Soft Skills"],
-      imageUrl: getPlaceholderById('faculty-5'),
+      imageUrl: "/images/Amita.webp",
       desc: "English proficiency mentor with 6 years experience. Expert in communication skills and grammar logic for Olympiads and Board exams."
     },
     {
@@ -54,7 +53,7 @@ export function FacultySection() {
       role: "Biology Specialist",
       exp: "6+ Years",
       tags: ["Medical Foundation", "Life Sciences"],
-      imageUrl: getPlaceholderById('faculty-6'),
+      imageUrl: "/images/Sapna.webp",
       desc: "Biology specialist with 6 years experience. Passionate about medical foundation and life sciences for high-performance scholars."
     },
     {
@@ -62,7 +61,7 @@ export function FacultySection() {
       role: "GS & Social Sciences Lead",
       exp: "10+ Years",
       tags: ["History & Geo", "General Studies"],
-      imageUrl: getPlaceholderById('faculty-7'),
+      imageUrl: "/images/Brijesh.webp",
       desc: "General Studies (GS) expert. Bringing deep insights into history, geography, and current affairs for holistic competitive growth."
     }
   ];
