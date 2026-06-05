@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from 'next/link';
@@ -127,7 +126,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* Domain Error Instruction Bar */}
+      {/* Domain Error Instruction Bar - Only shows if auth fails due to unauthorized domain */}
       {authErrorDomain && (
         <div className="bg-blue-700 text-white p-4 text-center animate-in slide-in-from-top duration-500">
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">

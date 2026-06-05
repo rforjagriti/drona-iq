@@ -2,13 +2,13 @@
 
 /**
  * Drona IQ - Official Production Firebase Configuration
- * Updated with user-provided keys for Auth and Firestore.
+ * Using the exact credentials provided by the user.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyBlW-xQrBREbvZlwqPScfIAHk7_PvRqLl0",
-  authDomain: "dronaiq.firebaseapp.com",
+  apiKey: "AIzaSyBCd4w3FHjEShFzNYVMFF88pWuigiSxlfM",
+  authDomain: "doondefenceexam.com",
   projectId: "dronaiq",
-  storageBucket: "dronaiq.firebasestorage.app",
+  storageBucket: "dronaiq.appspot.com",
   messagingSenderId: "380315187121",
   appId: "1:380315187121:web:07486f9ab96e12d6f8af90"
 };
