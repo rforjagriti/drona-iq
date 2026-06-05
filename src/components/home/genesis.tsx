@@ -1,10 +1,11 @@
+
 "use client"
 
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 
 export function GenesisSection() {
-  // Hardcoded direct path to ensure image loads from public/images/amit-negi.webp
+  // Direct path for stability
   const founderImg = "/images/amit-negi.webp";
   
   return (
