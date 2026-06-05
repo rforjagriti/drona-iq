@@ -55,24 +55,6 @@
       "imageHint": "teacher gs"
     },
     {
-      "id": "student-1",
-      "description": "Topper Student - Ishita Negi",
-      "imageUrl": "https://picsum.photos/seed/drona_s1/800/1000",
-      "imageHint": "happy student"
-    },
-    {
-      "id": "student-2",
-      "description": "Topper Student - Aryan Rawat",
-      "imageUrl": "https://picsum.photos/seed/drona_s2/800/1000",
-      "imageHint": "successful student"
-    },
-    {
-      "id": "student-3",
-      "description": "Topper Student - Sanya Gupta",
-      "imageUrl": "https://picsum.photos/seed/drona_s3/800/1000",
-      "imageHint": "intelligent student"
-    },
-    {
       "id": "class-5-7",
       "description": "Young students in curiosity hub classroom",
       "imageUrl": "https://picsum.photos/seed/curiosity_hub/800/1000",
