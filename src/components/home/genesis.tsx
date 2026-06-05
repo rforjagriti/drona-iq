@@ -5,7 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { getPlaceholderById } from '@/lib/placeholder-images';
 
 export function GenesisSection() {
-  const founderImg = getPlaceholderById('founder-photo');
+  // Directly using the local path to ensure it works
+  const founderImg = "/images/amit-negi.webp";
   
   return (
     <section className="py-24 md:py-48 bg-white overflow-hidden border-b border-primary/5">
