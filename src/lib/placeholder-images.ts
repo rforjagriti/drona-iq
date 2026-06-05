@@ -1,3 +1,4 @@
+
 import data from './placeholder-images.json';
 
 export type ImagePlaceholder = {
@@ -30,6 +31,7 @@ export function getPlaceholderById(id: string): string {
 
   // Academic Programs
   if (id === 'class-5-7') return '/images/class5-7.png';
+  if (id === 'class-8-9') return '/images/class8-9.png';
   
   const img = PlaceHolderImages.find(i => i.id === id);
   if (img && img.imageUrl) {

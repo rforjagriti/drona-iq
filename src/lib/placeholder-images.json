@@ -77,6 +77,12 @@
       "description": "Classes 5-7 Program Image",
       "imageUrl": "/images/class5-7.png",
       "imageHint": "classroom kids"
+    },
+    {
+      "id": "class-8-9",
+      "description": "Classes 8-9 Program Image",
+      "imageUrl": "/images/class8-9.png",
+      "imageHint": "student learning"
     }
   ]
 }
