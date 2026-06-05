@@ -1,3 +1,94 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-student",
+      "description": "Main banner student image",
+      "imageUrl": "https://picsum.photos/seed/drona_hero/1200/1600",
+      "imageHint": "cinematic student"
+    },
+    {
+      "id": "founder-photo",
+      "description": "Founder Dr. Vikram Singh portrait",
+      "imageUrl": "https://picsum.photos/seed/drona_founder/800/1000",
+      "imageHint": "founder portrait"
+    },
+    {
+      "id": "faculty-1",
+      "description": "Dr. Vikram Singh - Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f1/800/1000",
+      "imageHint": "teacher one"
+    },
+    {
+      "id": "faculty-2",
+      "description": "Maj. Gen. Aditya Rawat - Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f2/800/1000",
+      "imageHint": "teacher two"
+    },
+    {
+      "id": "faculty-3",
+      "description": "Er. Amit Negi - Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f3/800/1000",
+      "imageHint": "teacher three"
+    },
+    {
+      "id": "faculty-4",
+      "description": "Mrs. Shalini Bisht - Mentor",
+      "imageUrl": "https://picsum.photos/seed/drona_f4/800/1000",
+      "imageHint": "teacher four"
+    },
+    {
+      "id": "student-1",
+      "description": "Topper Student - Ishita Negi",
+      "imageUrl": "https://picsum.photos/seed/drona_s1/800/1000",
+      "imageHint": "happy student"
+    },
+    {
+      "id": "student-2",
+      "description": "Topper Student - Aryan Rawat",
+      "imageUrl": "https://picsum.photos/seed/drona_s2/800/1000",
+      "imageHint": "successful student"
+    },
+    {
+      "id": "student-3",
+      "description": "Topper Student - Sanya Gupta",
+      "imageUrl": "https://picsum.photos/seed/drona_s3/800/1000",
+      "imageHint": "intelligent student"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Smart Classroom View",
+      "imageUrl": "https://picsum.photos/seed/drona_g1/1200/800",
+      "imageHint": "classroom view"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Students in Library",
+      "imageUrl": "https://picsum.photos/seed/drona_g2/800/600",
+      "imageHint": "students focus"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Computer Lab Infrastructure",
+      "imageUrl": "https://picsum.photos/seed/drona_g3/800/600",
+      "imageHint": "computer lab"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Reception & Counseling Area",
+      "imageUrl": "https://picsum.photos/seed/drona_g4/1200/800",
+      "imageHint": "modern interior"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Achievement Result Board",
+      "imageUrl": "https://picsum.photos/seed/drona_g5/800/600",
+      "imageHint": "results board"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Parent Teacher Meeting",
+      "imageUrl": "https://picsum.photos/seed/drona_g6/800/600",
+      "imageHint": "office counseling"
+    }
+  ]
 }

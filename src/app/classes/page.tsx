@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useMemo, useState } from 'react';
@@ -6,21 +5,14 @@ import { Navbar } from '@/components/navbar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
-  Calendar, 
   Clock, 
-  Users, 
-  Video, 
-  Home, 
   MapPin, 
   Zap, 
-  ChevronRight, 
   Search, 
   ArrowRight,
-  GraduationCap,
-  Sparkles,
-  ShieldCheck
+  Video,
+  Home
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useFirestore, useCollection } from '@/firebase';
@@ -31,13 +23,12 @@ export default function ClassesPage() {
   const [filter, setFilter] = useState('');
   const firestore = useFirestore();
 
-  // Fetch real-time class data
   const classesQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'classes'), orderBy('status', 'asc'));
   }, [firestore]);
 
-  const { data: remoteClasses, loading } = useCollection(classesQuery);
+  const { data: remoteClasses } = useCollection(classesQuery);
 
   const staticClasses = [
     {
@@ -72,7 +63,6 @@ export default function ClassesPage() {
     c.grade.toLowerCase().includes(filter.toLowerCase())
   );
 
-  // COURSE SCHEMA FOR GOOGLE
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -86,7 +76,7 @@ export default function ClassesPage() {
         "provider": {
           "@type": "Organization",
           "name": "Drona IQ Academy",
-          "sameAs": "https://dronaiq.com"
+          "sameAs": "https://doondefenceexam.com"
         }
       }
     }))
@@ -145,7 +135,6 @@ export default function ClassesPage() {
     <div className="min-h-screen bg-muted/10 pb-20">
       <Navbar />
       
-      {/* COURSE SCHEMA SCRIPT */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}

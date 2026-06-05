@@ -1,4 +1,3 @@
-
 "use client"
 
 import { use } from 'react';
@@ -17,8 +16,8 @@ export default function LocalityLandingPage({ params }: { params: Promise<{ loca
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dronaiq.com" },
-      { "@type": "ListItem", "position": 2, "name": `Tuition in ${formattedLocality}`, "item": `https://dronaiq.com/tuition-in/${locality}` }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://doondefenceexam.com" },
+      { "@type": "ListItem", "position": 2, "name": `Tuition in ${formattedLocality}`, "item": `https://doondefenceexam.com/tuition-in/${locality}` }
     ]
   };
 

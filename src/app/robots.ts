@@ -1,4 +1,3 @@
-
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
@@ -8,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/student/', '/parent-dashboard/', '/tutor/dashboard/', '/assistant/'],
     },
-    sitemap: 'https://dronaiq.com/sitemap.xml',
-    host: 'https://dronaiq.com',
+    sitemap: 'https://doondefenceexam.com/sitemap.xml',
+    host: 'https://doondefenceexam.com',
   }
 }

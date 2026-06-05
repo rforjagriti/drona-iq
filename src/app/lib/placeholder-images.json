@@ -13,12 +13,6 @@
       "imageHint": "founder portrait"
     },
     {
-      "id": "campus-main",
-      "description": "Drona IQ Dehradun Campus Exterior",
-      "imageUrl": "https://picsum.photos/seed/drona_campus/1200/800",
-      "imageHint": "modern building"
-    },
-    {
       "id": "faculty-1",
       "description": "Dr. Vikram Singh - Mentor",
       "imageUrl": "https://picsum.photos/seed/drona_f1/800/1000",
@@ -59,12 +53,6 @@
       "description": "Topper Student - Sanya Gupta",
       "imageUrl": "https://picsum.photos/seed/drona_s3/800/1000",
       "imageHint": "intelligent student"
-    },
-    {
-      "id": "video-thumbnail",
-      "description": "Explainer Video Thumbnail",
-      "imageUrl": "https://picsum.photos/seed/drona_video/1280/720",
-      "imageHint": "video preview"
     },
     {
       "id": "gallery-1",

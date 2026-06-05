@@ -106,11 +106,15 @@ export function Navbar() {
     });
   };
 
-  // Prevent hydration errors by keeping HTML structure consistent
-  if (!mounted) return (
-    <header className="fixed top-0 z-[100] w-full flex flex-col h-28 bg-primary">
-    </header>
-  );
+  // Hydration safety: ensure same structure on server/client
+  if (!mounted) {
+    return (
+      <header className="fixed top-0 z-[100] w-full flex flex-col h-28 bg-primary">
+        <div className="bg-primary text-white py-2 px-4 border-b border-white/5 h-10"></div>
+        <div className="glass border-b border-white/10 h-20"></div>
+      </header>
+    );
+  }
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
@@ -141,11 +145,9 @@ export function Navbar() {
             <span className="hidden sm:flex items-center gap-2 whitespace-nowrap"><Clock className="h-3 w-3 text-accent shrink-0" /> 09:00 - 20:00</span>
           </div>
           <div className="flex gap-6 shrink-0 items-center">
-            {db && (
-              <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
-                <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
-              </span>
-            )}
+            <span className="hidden md:flex items-center gap-1.5 text-green-400 border border-green-400/20 px-2 py-0.5 rounded-full bg-green-400/5">
+              <Wifi className="h-2.5 w-2.5 animate-pulse" /> SECURE LINK ACTIVE
+            </span>
             <Link href="tel:+917878553385" className="hover:text-accent transition-colors flex items-center gap-2">
               <Phone className="h-3 w-3 text-accent" /> +91 78785 53385
             </Link>
@@ -228,33 +230,35 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4 min-w-[120px] justify-end">
-            {authLoading ? (
-              <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
-            ) : !user ? (
-              <Button 
-                onClick={handleLogin} 
-                className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all"
-              >
-                <LogIn className="h-3.5 w-3.5 text-accent" /> Login
-              </Button>
-            ) : (
-              <DropdownMenu>
-                <DropdownMenuTrigger className="outline-none">
-                  <Avatar className="h-9 w-9 border-2 border-accent/20 shadow-md">
-                    <AvatarImage src={user.photoURL || ''} />
-                    <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
-                  </Avatar>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
-                  <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
-                    <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
-                    <LogOut className="h-4 w-4" /> Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
+            <div className="flex items-center gap-2">
+              {authLoading ? (
+                <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
+              ) : !user ? (
+                <Button 
+                  onClick={handleLogin} 
+                  className="font-headline font-extrabold uppercase tracking-widest text-[9px] h-11 px-8 rounded-full shadow-xl bg-primary text-white flex items-center gap-2 hover:scale-105 transition-all"
+                >
+                  <LogIn className="h-3.5 w-3.5 text-accent" /> Login
+                </Button>
+              ) : (
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="outline-none">
+                    <Avatar className="h-9 w-9 border-2 border-accent/20 shadow-md">
+                      <AvatarImage src={user.photoURL || ''} />
+                      <AvatarFallback className="bg-accent text-white uppercase text-[10px] font-extrabold">{user.displayName?.[0] || 'U'}</AvatarFallback>
+                    </Avatar>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-64 p-3 rounded-2xl border-none shadow-2xl bg-white">
+                    <DropdownMenuItem asChild className="cursor-pointer rounded-xl py-3 hover:bg-muted/50">
+                      <Link href="/student" className="flex items-center gap-2 font-bold text-xs"><User className="h-4 w-4 text-accent" /> My Success Hub</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer rounded-xl py-3 flex items-center gap-2 font-bold text-xs">
+                      <LogOut className="h-4 w-4" /> Logout
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
+            </div>
             
             <Button variant="ghost" size="icon" className="lg:hidden rounded-xl h-11 w-11" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

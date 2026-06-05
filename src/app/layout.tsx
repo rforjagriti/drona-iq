@@ -6,7 +6,7 @@ import { FloatingActions } from '@/components/floating-actions';
 
 // ENTERPRISE SEO CONFIGURATION
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dronaiq.com'),
+  metadataBase: new URL('https://doondefenceexam.com'),
   title: {
     default: 'Drona IQ | Dehradun’s #1 Tuition & Home Tuition Hub',
     template: '%s | Drona IQ Dehradun'
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://dronaiq.com',
+    url: 'https://doondefenceexam.com',
     siteName: 'Drona IQ Academy',
     title: 'Drona IQ | Student Success OS Dehradun',
     description: 'Transforming potential into performance with Dehradun’s most advanced tuition network.',
@@ -75,8 +75,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Drona IQ Academy",
-    "url": "https://dronaiq.com",
-    "logo": "https://dronaiq.com/logo.png",
+    "url": "https://doondefenceexam.com",
+    "logo": "https://doondefenceexam.com/logo.png",
     "sameAs": [
       "https://droneshwardefenceacademy.com",
       "https://facebook.com/dronaiq",
@@ -104,7 +104,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Drona IQ Dehradun Hub",
-    "image": "https://dronaiq.com/images/campus-main.jpg",
+    "image": "https://doondefenceexam.com/images/campus-main.jpg",
     "telePhone": "+917878553385",
     "priceRange": "$$",
     "address": organizationSchema.address,

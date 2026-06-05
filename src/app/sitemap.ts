@@ -1,8 +1,7 @@
-
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dronaiq.com'
+  const baseUrl = 'https://doondefenceexam.com'
   
   const areas = [
     "Rajpur Road", "Sahastradhara Road", "Jakhan", "Canal Road", "Old Rajpur", "Dalanwala", 
