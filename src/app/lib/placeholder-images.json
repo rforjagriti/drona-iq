@@ -11,7 +11,7 @@
       "id": "founder-photo",
       "description": "Dr. Amit Negi portrait",
       "imageUrl": "/images/Amit-Negi.webp",
-      "imageHint": "teacher one"
+      "imageHint": "teacher"
     },
     {
       "id": "faculty-1",
@@ -54,6 +54,54 @@
       "description": "Mr. Brijesh Sir - GS Mentor",
       "imageUrl": "/images/brijesh_kumar.webp",
       "imageHint": "teacher gs"
+    },
+    {
+      "id": "student-1",
+      "description": "Ishita Negi - Success Story",
+      "imageUrl": "/images/ishita-negi.png",
+      "imageHint": "student success"
+    },
+    {
+      "id": "student-2",
+      "description": "Aryan Rawat - Success Story",
+      "imageUrl": "/images/aryan-rawat.png",
+      "imageHint": "student success"
+    },
+    {
+      "id": "student-3",
+      "description": "Sanya Gupta - Success Story",
+      "imageUrl": "/images/sanya-gupta.png",
+      "imageHint": "student success"
+    },
+    {
+      "id": "class-5-7",
+      "description": "Classes 5-7 Program Image",
+      "imageUrl": "/images/class5-7.png",
+      "imageHint": "classroom kids"
+    },
+    {
+      "id": "class-8-9",
+      "description": "Classes 8-9 Program Image",
+      "imageUrl": "/images/class8-9.png",
+      "imageHint": "student learning"
+    },
+    {
+      "id": "class-10",
+      "description": "Class 10 Program Image",
+      "imageUrl": "/images/class-10.png",
+      "imageHint": "board exam student"
+    },
+    {
+      "id": "class-11s",
+      "description": "Class 11-12 Science Image",
+      "imageUrl": "/images/class11-12.png",
+      "imageHint": "science lab student"
+    },
+    {
+      "id": "class-11c",
+      "description": "Class 11-12 Commerce Image",
+      "imageUrl": "/images/class 12-11.png",
+      "imageHint": "commerce student"
     }
   ]
 }
