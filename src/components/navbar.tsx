@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -126,24 +127,24 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
-      {/* Domain Error Instruction Bar - Only shows if auth fails due to unauthorized domain */}
+      {/* Domain Error Instruction Bar - Show when domain is unauthorized */}
       {authErrorDomain && (
         <div className="bg-blue-700 text-white p-4 text-center animate-in slide-in-from-top duration-500">
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
             <div className="flex items-center gap-2 text-sm">
               <AlertCircle className="h-5 w-5 text-accent" />
-              <span className="font-bold">FIX REQUIRED:</span> Add <code className="bg-black/20 px-2 py-1 rounded font-mono">{authErrorDomain}</code> to Firebase Authorized Domains.
+              <span className="font-bold uppercase tracking-tight">Login Fix:</span> Add <code className="bg-black/20 px-2 py-1 rounded font-mono text-xs">{authErrorDomain}</code> to Authorized Domains.
             </div>
             <div className="flex gap-2">
-              <Button onClick={copyDomain} size="sm" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-9 px-4 text-[10px] font-bold uppercase tracking-widest">
+              <Button onClick={copyDomain} size="sm" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-9 px-4 text-[9px] font-bold uppercase tracking-widest">
                 <Copy className="h-3 w-3 mr-2" /> Copy Domain
               </Button>
               <Link 
                 href={`https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings`}
                 target="_blank"
               >
-                <Button size="sm" className="bg-accent text-primary hover:bg-accent/90 h-9 px-4 text-[10px] font-black uppercase tracking-widest">
-                  <ExternalLink className="h-3 w-3 mr-2" /> Open Console
+                <Button size="sm" className="bg-accent text-primary hover:bg-accent/90 h-9 px-4 text-[9px] font-black uppercase tracking-widest">
+                  <ExternalLink className="h-3 w-3 mr-2" /> Open Firebase
                 </Button>
               </Link>
             </div>
