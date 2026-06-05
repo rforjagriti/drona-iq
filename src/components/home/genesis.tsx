@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 
 export function GenesisSection() {
-  // Direct path matches exact case in public/images/
+  // Using the exact case-sensitive path as seen in public/images/
   const founderImg = "/images/Amit-Negi.webp";
   
   return (

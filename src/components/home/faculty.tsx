@@ -29,39 +29,31 @@ export function FacultySection() {
       role: "Lead Math Faculty",
       exp: "17+ Years",
       tags: ["Calculus King", "Academic Strategy"],
-      imageUrl: "/images/Lokesh-Garg.webp",
+      imageUrl: "/images/lokesh_garg.webp",
       desc: "Mathematics wizard with 17+ years of track record. Specializes in advanced calculus and board-topping techniques across Dehradun."
     },
     {
-      name: "Mrs. Suruchi Tiwari",
-      role: "Chemistry Expert",
-      exp: "8+ Years",
-      tags: ["Organic Chem Specialist", "Comp. Expert"],
-      imageUrl: "/images/Suruchi-Tiwari.webp",
-      desc: "Chemistry expert with 8 years of specialization in competitive patterns. Known for simplifying complex organic reactions and molecular logic."
-    },
-    {
-      name: "Mrs. Amita",
+      name: "Mrs. Amita Sharma",
       role: "English Proficiency Lead",
       exp: "6+ Years",
       tags: ["Grammar Expert", "Soft Skills"],
-      imageUrl: "/images/Amita.webp",
+      imageUrl: "/images/amita-sharma.webp",
       desc: "English proficiency mentor with 6 years experience. Expert in communication skills and grammar logic for Olympiads and Board exams."
     },
     {
-      name: "Mrs. Sapna",
+      name: "Mrs. Sapna Tiwari",
       role: "Biology Specialist",
       exp: "6+ Years",
       tags: ["Medical Foundation", "Life Sciences"],
-      imageUrl: "/images/Sapna.webp",
+      imageUrl: "/images/sapna-tiwari.webp",
       desc: "Biology specialist with 6 years experience. Passionate about medical foundation and life sciences for high-performance scholars."
     },
     {
-      name: "Mr. Brijesh",
+      name: "Mr. Brijesh Kumar",
       role: "GS & Social Sciences Lead",
       exp: "10+ Years",
       tags: ["History & Geo", "General Studies"],
-      imageUrl: "/images/Brijesh.webp",
+      imageUrl: "/images/brijesh_kumar.webp",
       desc: "General Studies (GS) expert. Bringing deep insights into history, geography, and current affairs for holistic competitive growth."
     }
   ];

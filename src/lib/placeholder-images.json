@@ -27,31 +27,31 @@
     {
       "id": "faculty-3",
       "description": "Er. Lokesh Garg - Mathematics Mentor",
-      "imageUrl": "/images/Lokesh-Garg.webp",
+      "imageUrl": "/images/lokesh_garg.webp",
       "imageHint": "teacher three"
     },
     {
       "id": "faculty-4",
       "description": "Mrs. Suruchi Tiwari - Chemistry Mentor",
-      "imageUrl": "/images/Suruchi-Tiwari.webp",
+      "imageUrl": "/images/sapna-tiwari.webp",
       "imageHint": "teacher four"
     },
     {
       "id": "faculty-5",
       "description": "Mrs. Amita Ma'am - English Mentor",
-      "imageUrl": "/images/Amita.webp",
+      "imageUrl": "/images/amita-sharma.webp",
       "imageHint": "teacher female"
     },
     {
       "id": "faculty-6",
       "description": "Mrs. Sapna Ma'am - Biology Mentor",
-      "imageUrl": "/images/Sapna.webp",
+      "imageUrl": "/images/sapna-tiwari.webp",
       "imageHint": "teacher biology"
     },
     {
       "id": "faculty-7",
       "description": "Mr. Brijesh Sir - GS Mentor",
-      "imageUrl": "/images/Brijesh.webp",
+      "imageUrl": "/images/brijesh_kumar.webp",
       "imageHint": "teacher gs"
     }
   ]

@@ -12,7 +12,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 
 /**
  * Returns the image URL for a given ID.
- * Maps IDs to the exact .webp files in public/images/
+ * Maps IDs to the exact .webp files in public/images/ as per screenshot.
  */
 export function getPlaceholderById(id: string): string {
   if (id === 'founder-photo' || id === 'faculty-1') {
@@ -22,19 +22,16 @@ export function getPlaceholderById(id: string): string {
     return '/images/rahul_pratap.webp';
   }
   if (id === 'faculty-3') {
-    return '/images/Lokesh-Garg.webp';
-  }
-  if (id === 'faculty-4') {
-    return '/images/Suruchi-Tiwari.webp';
+    return '/images/lokesh_garg.webp';
   }
   if (id === 'faculty-5') {
-    return '/images/Amita.webp';
+    return '/images/amita-sharma.webp';
   }
   if (id === 'faculty-6') {
-    return '/images/Sapna.webp';
+    return '/images/sapna-tiwari.webp';
   }
   if (id === 'faculty-7') {
-    return '/images/Brijesh.webp';
+    return '/images/brijesh_kumar.webp';
   }
   
   const img = PlaceHolderImages.find(i => i.id === id);
