@@ -89,42 +89,6 @@
       "description": "Humanities leaders",
       "imageUrl": "https://picsum.photos/seed/humanities_hub/800/1000",
       "imageHint": "history students"
-    },
-    {
-      "id": "gallery-1",
-      "description": "Smart Classroom View",
-      "imageUrl": "https://picsum.photos/seed/drona_g1/1200/800",
-      "imageHint": "classroom view"
-    },
-    {
-      "id": "gallery-2",
-      "description": "Students in Library",
-      "imageUrl": "https://picsum.photos/seed/drona_g2/800/600",
-      "imageHint": "students focus"
-    },
-    {
-      "id": "gallery-3",
-      "description": "Computer Lab Infrastructure",
-      "imageUrl": "https://picsum.photos/seed/drona_g3/800/600",
-      "imageHint": "computer lab"
-    },
-    {
-      "id": "gallery-4",
-      "description": "Reception & Counseling Area",
-      "imageUrl": "https://picsum.photos/seed/drona_g4/1200/800",
-      "imageHint": "modern interior"
-    },
-    {
-      "id": "gallery-5",
-      "description": "Achievement Result Board",
-      "imageUrl": "https://picsum.photos/seed/drona_g5/800/600",
-      "imageHint": "results board"
-    },
-    {
-      "id": "gallery-6",
-      "description": "Parent Teacher Meeting",
-      "imageUrl": "https://picsum.photos/seed/drona_g6/800/600",
-      "imageHint": "office counseling"
     }
   ]
 }

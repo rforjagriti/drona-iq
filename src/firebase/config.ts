@@ -1,8 +1,8 @@
 'use client';
 
 /**
- * Drona IQ - Official Working Firebase Configuration
- * Using the verified API Key (AIzaSyBlW...) as the newer one was suspended.
+ * Drona IQ - Official Firebase Configuration
+ * Using the confirmed working API Key.
  */
 export const firebaseConfig = {
   apiKey: "AIzaSyBlW-xQrBREbvZlwqPScfIAHk7_PvRqLl0",
