@@ -10,13 +10,13 @@
     {
       "id": "founder-photo",
       "description": "Founder Dr. Amit Negi portrait",
-      "imageUrl": "https://colab.googleusercontent.com/external_content/picasa/picasa_original/72057594037927936/AUM-A5p5C0G0G0G0G0G0G0G0G0G0G0G0G0G0G0G0G0",
+      "imageUrl": "/images/amit-negi.jpg",
       "imageHint": "founder portrait"
     },
     {
       "id": "faculty-1",
       "description": "Dr. Amit Negi - Chief Academic Architect",
-      "imageUrl": "https://colab.googleusercontent.com/external_content/picasa/picasa_original/72057594037927936/AUM-A5p5C0G0G0G0G0G0G0G0G0G0G0G0G0G0G0G0G0",
+      "imageUrl": "/images/amit-negi.jpg",
       "imageHint": "teacher one"
     },
     {
