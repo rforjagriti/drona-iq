@@ -4,14 +4,14 @@
     {
       "id": "hero-student",
       "description": "Main banner student image",
-      "imageUrl": "https://picsum.photos/seed/drona_hero/1200/1600",
+      "imageUrl": "/images/drona-iq.webp",
       "imageHint": "cinematic student"
     },
     {
       "id": "founder-photo",
-      "description": "Founder Dr. Amit Negi portrait",
+      "description": "Dr. Amit Negi portrait",
       "imageUrl": "/images/Amit-Negi.webp",
-      "imageHint": "founder portrait"
+      "imageHint": "teacher one"
     },
     {
       "id": "faculty-1",
@@ -33,7 +33,7 @@
     },
     {
       "id": "faculty-4",
-      "description": "Mrs. Suruchi Tiwari - Chemistry Mentor",
+      "description": "Miss Sapna Tiwari - Chemistry Mentor",
       "imageUrl": "/images/sapna-tiwari.webp",
       "imageHint": "teacher four"
     },
@@ -45,7 +45,7 @@
     },
     {
       "id": "faculty-6",
-      "description": "Mrs. Sapna Ma'am - Biology Mentor",
+      "description": "Miss Sapna Ma'am - Biology Mentor",
       "imageUrl": "/images/sapna-tiwari.webp",
       "imageHint": "teacher biology"
     },

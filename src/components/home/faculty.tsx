@@ -10,7 +10,7 @@ export function FacultySection() {
   const mentors = [
     {
       name: "Dr. Amit Negi",
-      role: "Founder & Chief Academic Architect",
+      role: "Chief Academic Architect",
       exp: "7+ Years",
       tags: ["PhD in IR", "UPSC Veteran", "Logic Head"],
       imageUrl: "/images/Amit-Negi.webp",
@@ -41,7 +41,7 @@ export function FacultySection() {
       desc: "English proficiency mentor with 6 years experience. Expert in communication skills and grammar logic for Olympiads and Board exams."
     },
     {
-      name: "Mrs. Sapna Tiwari",
+      name: "Miss Sapna Tiwari",
       role: "Biology Specialist",
       exp: "6+ Years",
       tags: ["Medical Foundation", "Life Sciences"],
