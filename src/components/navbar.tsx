@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -18,7 +19,9 @@ import {
   Clock,
   Wifi,
   UserCheck,
-  AlertCircle
+  AlertCircle,
+  Copy,
+  ExternalLink
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUser, useAuth, useFirestore } from '@/firebase';
@@ -37,7 +40,7 @@ import { toast } from '@/hooks/use-toast';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [authError, setAuthError] = useState<string | null>(null);
+  const [authErrorDomain, setAuthErrorDomain] = useState<string | null>(null);
   
   const { user, loading: authLoading } = useUser();
   const auth = useAuth();
@@ -50,7 +53,7 @@ export function Navbar() {
   const handleLogin = async () => {
     if (!auth || !db) return;
     
-    setAuthError(null);
+    setAuthErrorDomain(null);
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
@@ -79,12 +82,12 @@ export function Navbar() {
       console.error("Auth Error:", error.code, error.message);
       
       if (error.code === 'auth/unauthorized-domain') {
-        const domain = typeof window !== 'undefined' ? window.location.hostname : 'your domain';
-        setAuthError(domain);
+        const domain = typeof window !== 'undefined' ? window.location.hostname : 'current domain';
+        setAuthErrorDomain(domain);
         toast({
           variant: "destructive",
           title: "Domain Not Authorized",
-          description: "Please add this domain to Firebase Console settings.",
+          description: "This domain needs to be added to Firebase Console.",
         });
       } else {
         toast({
@@ -93,6 +96,13 @@ export function Navbar() {
           description: error.message || "Please check your connection.",
         });
       }
+    }
+  };
+
+  const copyDomain = () => {
+    if (authErrorDomain) {
+      navigator.clipboard.writeText(authErrorDomain);
+      toast({ title: "Copied!", description: "Domain copied to clipboard." });
     }
   };
 
@@ -106,7 +116,6 @@ export function Navbar() {
     });
   };
 
-  // Hydration safety: ensure same structure on server/client
   if (!mounted) {
     return (
       <header className="fixed top-0 z-[100] w-full flex flex-col h-28 bg-primary">
@@ -119,20 +128,26 @@ export function Navbar() {
   return (
     <header className="fixed top-0 z-[100] w-full flex flex-col shadow-2xl">
       {/* Domain Error Instruction Bar */}
-      {authError && (
-        <div className="bg-blue-600 text-white p-4 text-center text-xs animate-in slide-in-from-top">
+      {authErrorDomain && (
+        <div className="bg-blue-700 text-white p-4 text-center animate-in slide-in-from-top duration-500">
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
-            <div className="flex items-center gap-2">
-              <AlertCircle className="h-4 w-4" />
-              <span className="font-bold">CRITICAL:</span> Domain <strong>{authError}</strong> is not authorized.
+            <div className="flex items-center gap-2 text-sm">
+              <AlertCircle className="h-5 w-5 text-accent" />
+              <span className="font-bold">FIX REQUIRED:</span> Add <code className="bg-black/20 px-2 py-1 rounded font-mono">{authErrorDomain}</code> to Firebase Authorized Domains.
             </div>
-            <Link 
-              href={`https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings`}
-              target="_blank"
-              className="bg-white text-blue-700 px-4 py-1.5 rounded-full font-black uppercase tracking-widest hover:bg-blue-50 transition-colors"
-            >
-              Fix in Firebase Console
-            </Link>
+            <div className="flex gap-2">
+              <Button onClick={copyDomain} size="sm" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-9 px-4 text-[10px] font-bold uppercase tracking-widest">
+                <Copy className="h-3 w-3 mr-2" /> Copy Domain
+              </Button>
+              <Link 
+                href={`https://console.firebase.google.com/u/0/project/dronaiq/authentication/settings`}
+                target="_blank"
+              >
+                <Button size="sm" className="bg-accent text-primary hover:bg-accent/90 h-9 px-4 text-[10px] font-black uppercase tracking-widest">
+                  <ExternalLink className="h-3 w-3 mr-2" /> Open Console
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       )}
@@ -168,7 +183,6 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Nav Links */}
           <div className="hidden lg:flex items-center space-x-8">
             <Link href="/why-drona-iq" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Why DIQ?</Link>
             <Link href="/academic-health-check" className="text-[10px] font-extrabold uppercase tracking-widest text-primary/70 hover:text-accent transition-colors">Audit</Link>
@@ -266,7 +280,6 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Sidebar */}
         {isOpen && (
           <div className="lg:hidden absolute top-20 inset-x-0 h-screen bg-white z-[90] p-6 space-y-4 animate-in slide-in-from-top duration-300 overflow-y-auto pb-40">
              <Link href="/why-drona-iq" className="block p-4 bg-muted/50 rounded-2xl font-bold uppercase text-xs" onClick={() => setIsOpen(false)}>Why DIQ?</Link>
