@@ -40,7 +40,7 @@ export function SuccessHallSection() {
             <Badge className="bg-accent text-primary border-none px-6 py-2 uppercase font-extrabold tracking-widest text-[10px]">The Hall of Excellence</Badge>
             <h2 className="text-4xl md:text-7xl font-extrabold text-primary uppercase tracking-tighter leading-none">Proven <br/> <span className="text-accent italic">Outcomes.</span></h2>
           </div>
-          <p className="text-lg text-muted-foreground font-light max-w-sm italic">
+          <p className="text-lg text-muted-foreground font-light max-sm italic">
             "Results are not accidents. They are the calculated output of the Drona IQ Success OS."
           </p>
         </div>

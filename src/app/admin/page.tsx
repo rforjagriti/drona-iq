@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -35,7 +36,7 @@ export default function AdminDashboard() {
           email: loggedUser.email,
           displayName: loggedUser.displayName,
           photoURL: loggedUser.photoURL,
-          role: 'admin', // First time login from this page grants admin for demo
+          role: 'admin',
           createdAt: new Date().toISOString(),
           timestamp: serverTimestamp()
         });
@@ -102,7 +103,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
-                <LogIn className="mr-2 h-5 w-5 text-accent" /> Admin Login
+                <LogIn className="mr-2 h-5 w-5" /> Admin Login
               </Button>
             </CardContent>
           </Card>
