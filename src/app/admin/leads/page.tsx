@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useMemo, useState } from 'react';
@@ -43,19 +44,17 @@ export default function AdminLeads() {
       const result = await signInWithPopup(auth, provider);
       const loggedUser = result.user;
       const userRef = doc(firestore, 'users', loggedUser.uid);
-      const userSnap = await getDoc(userRef);
-
-      if (!userSnap.exists()) {
-        await setDoc(userRef, {
-          uid: loggedUser.uid,
-          email: loggedUser.email,
-          displayName: loggedUser.displayName,
-          photoURL: loggedUser.photoURL,
-          role: 'admin',
-          createdAt: new Date().toISOString(),
-          timestamp: serverTimestamp()
-        });
-      }
+      
+      await setDoc(userRef, {
+        uid: loggedUser.uid,
+        email: loggedUser.email,
+        displayName: loggedUser.displayName,
+        photoURL: loggedUser.photoURL,
+        role: 'admin',
+        lastLogin: new Date().toISOString(),
+        timestamp: serverTimestamp()
+      }, { merge: true });
+      
     } catch (error) {
       console.error("Auth Error:", error);
     }
@@ -97,7 +96,7 @@ export default function AdminLeads() {
     return (
       <div className="min-h-screen flex flex-col bg-muted/10">
         <Navbar />
-        <main className="flex-1 flex items-center justify-center p-4">
+        <main className="flex-1 flex items-center justify-center p-4 pt-32">
           <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
             <CardContent className="space-y-8">
               <div className="bg-red-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
@@ -106,18 +105,17 @@ export default function AdminLeads() {
               <div className="space-y-4">
                 <h2 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tight">Access Restricted</h2>
                 <div className="bg-muted/50 p-4 rounded-xl">
-                  <p className="text-primary font-bold text-xs leading-relaxed">
-                    Please contact Droneshwar Defence Academy at <span className="text-accent">6399000437</span>, they will provide you log in id and password.
+                  <p className="text-primary font-bold text-sm leading-relaxed">
+                    Please contact Droneshwar Defence Academy at <span className="text-accent underline">6399000437</span>.
                   </p>
                 </div>
               </div>
-              {!user ? (
-                <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
-                  <LogIn className="mr-2 h-5 w-5" /> Admin Login
-                </Button>
-              ) : (
-                <Link href="/" className="w-full">
-                  <Button variant="outline" className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest">Return Home</Button>
+              <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
+                <LogIn className="mr-2 h-5 w-5" /> Admin Login
+              </Button>
+              {user && (
+                <Link href="/" className="block mt-4">
+                  <p className="text-xs text-muted-foreground hover:underline">Return to Home Page</p>
                 </Link>
               )}
             </CardContent>

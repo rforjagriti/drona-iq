@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -42,19 +43,18 @@ export default function AdminDashboard() {
       const result = await signInWithPopup(auth, provider);
       const loggedUser = result.user;
       const userRef = doc(firestore, 'users', loggedUser.uid);
-      const userSnap = await getDoc(userRef);
-
-      if (!userSnap.exists()) {
-        await setDoc(userRef, {
-          uid: loggedUser.uid,
-          email: loggedUser.email,
-          displayName: loggedUser.displayName,
-          photoURL: loggedUser.photoURL,
-          role: 'admin',
-          createdAt: new Date().toISOString(),
-          timestamp: serverTimestamp()
-        });
-      }
+      
+      // UPDATED: Force set role to admin when logging in via Admin portal restricted screen
+      await setDoc(userRef, {
+        uid: loggedUser.uid,
+        email: loggedUser.email,
+        displayName: loggedUser.displayName,
+        photoURL: loggedUser.photoURL,
+        role: 'admin',
+        lastLogin: new Date().toISOString(),
+        timestamp: serverTimestamp()
+      }, { merge: true });
+      
     } catch (error) {
       console.error("Auth Error:", error);
     }
@@ -98,7 +98,7 @@ export default function AdminDashboard() {
     );
   }
 
-  // Unauthorized UI with required contact message
+  // Unauthorized UI
   if (!user || (profile && profile.role !== 'admin')) {
     return (
       <div className="min-h-screen flex flex-col bg-muted/10">
