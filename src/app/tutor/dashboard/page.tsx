@@ -82,54 +82,33 @@ export default function TutorDashboard() {
     );
   }
 
-  if (!user) {
+  if (!user || (profile && profile.role !== 'tutor' && profile.role !== 'admin')) {
     return (
       <div className="min-h-screen flex flex-col bg-muted/10">
         <Navbar />
-        <main className="flex-1 flex items-center justify-center p-4">
+        <main className="flex-1 flex items-center justify-center p-4 pt-32">
           <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
             <CardContent className="space-y-8">
               <div className="bg-blue-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
                 <UserCheckIcon className="h-12 w-12 text-blue-600" />
               </div>
               <div className="space-y-4">
-                <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Faculty Access</h2>
+                <h2 className="text-4xl font-extrabold font-headline text-primary uppercase tracking-tight">Faculty Access Restricted</h2>
                 <div className="bg-muted/50 p-4 rounded-xl">
                   <p className="text-primary font-bold text-sm leading-relaxed">
-                    Please contact Droneshwar Defence Academy at <span className="text-accent">6399000437</span>, they will provide you log in id and password.
+                    Please contact Droneshwar Defence Academy at <span className="text-accent underline">6399000437</span>.
                   </p>
+                  <p className="text-[10px] text-muted-foreground mt-2 uppercase font-bold tracking-widest">They will provide you login ID and password.</p>
                 </div>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-blue-600 text-white py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
                 <LogIn className="mr-2 h-5 w-5 text-accent" /> Educator Login
               </Button>
-            </CardContent>
-          </Card>
-        </main>
-      </div>
-    );
-  }
-
-  // Role Protection
-  if (profile && profile.role !== 'tutor' && profile.role !== 'admin') {
-    return (
-      <div className="min-h-screen flex flex-col bg-muted/10">
-        <Navbar />
-        <main className="flex-1 flex items-center justify-center p-4">
-          <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white">
-            <CardContent className="space-y-8">
-              <div className="bg-orange-50 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto">
-                <Lock className="h-12 w-12 text-orange-600" />
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-3xl font-extrabold font-headline text-primary uppercase tracking-tight">Access Denied</h2>
-                <p className="text-muted-foreground font-light px-6">
-                  This portal is for faculty members. Your account role is <span className="font-bold text-primary uppercase">{profile.role}</span>.
-                </p>
-              </div>
-              <Link href="/" className="w-full">
-                <Button variant="outline" className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest">Return Home</Button>
-              </Link>
+              {user && (
+                <Link href="/" className="block mt-4">
+                  <p className="text-xs text-muted-foreground hover:underline">Return to Home Page</p>
+                </Link>
+              )}
             </CardContent>
           </Card>
         </main>

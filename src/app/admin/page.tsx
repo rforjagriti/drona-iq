@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -104,7 +103,7 @@ export default function AdminDashboard() {
     return (
       <div className="min-h-screen flex flex-col bg-muted/10">
         <Navbar />
-        <main className="flex-1 flex items-center justify-center p-4">
+        <main className="flex-1 flex items-center justify-center p-4 pt-32">
           <Card className="max-w-md w-full border-none shadow-2xl text-center py-12 rounded-[2.5rem] bg-white overflow-hidden relative">
             <div className="absolute top-0 right-0 p-8 opacity-5"><ShieldAlert className="h-32 w-32" /></div>
             <CardContent className="space-y-8 relative z-10">
@@ -120,13 +119,12 @@ export default function AdminDashboard() {
                   <p className="text-[10px] text-muted-foreground mt-2 uppercase font-bold tracking-widest">They will provide you login ID and password.</p>
                 </div>
               </div>
-              {!user ? (
-                <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white hover:bg-red-700 py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
-                  <LogIn className="mr-2 h-5 w-5" /> Admin Login
-                </Button>
-              ) : (
-                <Link href="/" className="w-full">
-                  <Button variant="outline" className="w-full py-6 rounded-2xl font-bold uppercase tracking-widest border-primary text-primary">Return Home</Button>
+              <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white hover:bg-red-700 py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
+                <LogIn className="mr-2 h-5 w-5" /> Admin Login
+              </Button>
+              {user && (
+                <Link href="/" className="block mt-4">
+                  <p className="text-xs text-muted-foreground hover:underline">Return to Home Page</p>
                 </Link>
               )}
             </CardContent>
