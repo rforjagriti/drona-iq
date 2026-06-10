@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Navbar } from '@/components/navbar';
@@ -27,6 +26,8 @@ import { collection, query, orderBy, doc, getDoc, setDoc, serverTimestamp } from
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useMemo } from 'react';
 
+const MASTER_ADMIN_EMAIL = 'rforjagriti@gmail.com';
+
 export default function AdminDashboard() {
   const { user, loading: authLoading } = useUser();
   const auth = useAuth();
@@ -42,19 +43,19 @@ export default function AdminDashboard() {
     try {
       const result = await signInWithPopup(auth, provider);
       const loggedUser = result.user;
-      const userRef = doc(firestore, 'users', loggedUser.uid);
-      
-      // UPDATED: Force set role to admin when logging in via Admin portal restricted screen
-      await setDoc(userRef, {
-        uid: loggedUser.uid,
-        email: loggedUser.email,
-        displayName: loggedUser.displayName,
-        photoURL: loggedUser.photoURL,
-        role: 'admin',
-        lastLogin: new Date().toISOString(),
-        timestamp: serverTimestamp()
-      }, { merge: true });
-      
+
+      if (loggedUser.email === MASTER_ADMIN_EMAIL) {
+        const userRef = doc(firestore, 'users', loggedUser.uid);
+        await setDoc(userRef, {
+          uid: loggedUser.uid,
+          email: loggedUser.email,
+          displayName: loggedUser.displayName,
+          photoURL: loggedUser.photoURL,
+          role: 'admin',
+          lastLogin: new Date().toISOString(),
+          timestamp: serverTimestamp()
+        }, { merge: true });
+      }
     } catch (error) {
       console.error("Auth Error:", error);
     }
@@ -98,8 +99,8 @@ export default function AdminDashboard() {
     );
   }
 
-  // Unauthorized UI
-  if (!user || (profile && profile.role !== 'admin')) {
+  // Unauthorized UI: Strict email check
+  if (!user || user.email !== MASTER_ADMIN_EMAIL) {
     return (
       <div className="min-h-screen flex flex-col bg-muted/10">
         <Navbar />
@@ -116,7 +117,7 @@ export default function AdminDashboard() {
                   <p className="text-primary font-bold text-sm leading-relaxed">
                     Please contact Droneshwar Defence Academy at <span className="text-accent underline">6399000437</span>. 
                   </p>
-                  <p className="text-[10px] text-muted-foreground mt-2 uppercase font-bold tracking-widest">They will provide you login ID and password.</p>
+                  <p className="text-[10px] text-muted-foreground mt-2 uppercase font-bold tracking-widest">Only the master ID (rforjagriti@gmail.com) can access this dashboard.</p>
                 </div>
               </div>
               <Button onClick={handleLogin} className="w-full font-headline bg-red-600 text-white hover:bg-red-700 py-7 h-auto rounded-2xl text-lg uppercase tracking-widest font-black shadow-xl">
